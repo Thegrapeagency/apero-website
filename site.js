@@ -23,3 +23,12 @@
     },{passive:true});
   }
 })();
+// bloom4 in-view trigger
+(function(){
+  var b=document.querySelectorAll('.bloom4');
+  if(!b.length)return;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){e.target.classList.add('in')},250);io.unobserve(e.target);}})},{threshold:.4});
+    b.forEach(function(el){io.observe(el)});
+  } else { b.forEach(function(el){el.classList.add('in')}); }
+})();
