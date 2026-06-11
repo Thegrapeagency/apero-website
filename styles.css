@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&display=swap');
 
 :root{
   --panna:#F4EAD6;--panna-2:#EBDCBE;--burro:#EEB24A;--terracotta:#C45F38;
   --mattone:#9E4326;--salvia:#8C9A6A;--espresso:#231B13;
   --ink-70:rgba(35,27,19,.7);--ink-50:rgba(35,27,19,.5);--ink-30:rgba(35,27,19,.3);
   --line:rgba(35,27,19,.16);
-  --disp:'Bodoni Moda',serif;--body:'Hanken Grotesk',sans-serif;
+  --disp:'Bodoni Moda',serif;--body:'DM Sans',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
