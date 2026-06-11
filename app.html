@@ -2,12 +2,12 @@
 <title>De Aperokiezer · APÉRO</title><meta name="description" content="APÉRO viert het uur tussen werk en diner: zes werelden, zes rituelen, één menselijke reflex.">
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#F4EAD6">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head><body>
-<nav><a class="brand" href="index.html">APÉR<span class="flower"></span></a><div class="links"><a href="index.html#werelden" class="">De Werelden</a><a href="magazine/index.html" class="">Magazine</a><a href="blog/index.html" class="">Blog</a><a href="podcast.html" class="">Podcast</a><a href="app.html" class="on">De Aperokiezer</a></div></nav>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><style>:root{--accent:var(--burro)}</style></head><body>
+<nav><a class="brand" href="index.html">AP&Eacute;R<span class="flower"></span></a><div class="links"><a href="verhaal.html" class="">Het Verhaal</a><a href="index.html#werelden" class="">De Werelden</a><a href="magazine/index.html" class="">Magazine</a><a href="blog/index.html" class="">Blog</a><a href="podcast.html" class="">Podcast</a><a href="app.html" class="on">De Aperokiezer</a></div></nav>
 <style>
 .qt{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4vw,44px);line-height:1.1;margin:10px 0 30px}
-.opt{display:block;width:100%;text-align:left;font-family:var(--body);font-size:17px;color:var(--espresso);background:var(--panna);border:1px solid var(--line);padding:18px 22px;margin-bottom:12px;cursor:pointer;transition:all .15s;border-radius:2px}
-.opt:hover{border-color:var(--terracotta);background:var(--panna-2);transform:translateX(4px)}
+.opt{display:block;width:100%;text-align:left;font-family:var(--body);font-size:17px;color:var(--espresso);background:var(--panna);border:1px solid var(--line);padding:18px 22px;margin-bottom:12px;cursor:pointer;transition:all .2s;border-radius:2px}
+.opt:hover{border-color:var(--accent,var(--terracotta));background:var(--panna-2);transform:translateX(6px)}
 .res{font-size:18px;line-height:1.7;color:var(--ink-70);max-width:50ch;margin-bottom:30px}
 #quiz{min-height:380px}
 </style>
@@ -15,6 +15,7 @@
 <div class="wrap inner"><div class="kicker">App</div><h1>De Aperokiezer</h1>
 <p class="standfirst">Drie vragen, zes werelden. Ontdek welk aperitief bij jou hoort en waar je op het festival moet beginnen.</p></div></header>
 <section style="padding-top:10px"><div class="narrow"><div id="quiz"></div></div></section>
+<div class="marquee"><div class="track"><span>aperire</span><span class="flower fl"></span><span>open de avond</span><span class="flower fl"></span><span>het uur tussen werk en diner</span><span class="flower fl"></span><span>ap&eacute;ro &middot; aperitivo &middot; vermut &middot; atay</span><span class="flower fl"></span><span>aperire</span><span class="flower fl"></span><span>open de avond</span><span class="flower fl"></span><span>het uur tussen werk en diner</span><span class="flower fl"></span><span>ap&eacute;ro &middot; aperitivo &middot; vermut &middot; atay</span><span class="flower fl"></span></div></div>
 <script>
 const W = {
  italie:{n:'Italië, het podium',d:'Jij drinkt om erbij te zijn. Jouw glas: een Negroni of een Spritz met Select, met olijven die je niet besteld hebt.',u:'werelden/italie.html'},
@@ -44,7 +45,7 @@ function render(){
  if(step<Q.length){
   const q=Q[step];
   el.innerHTML='<div class="kicker">Vraag '+(step+1)+' van '+Q.length+'</div><h2 class="qt">'+q.q+'</h2>'+
-   q.a.map(([t,w])=>'<button class="opt" onclick="pick(\''+w+'\')">'+t+'</button>').join('');
+   q.a.map(([t,w])=>'<button class="opt" onclick="pick(\\''+w+'\\')">'+t+'</button>').join('');
  } else {
   let best=Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0];
   const w=W[best];
@@ -55,8 +56,9 @@ function render(){
 document.addEventListener('DOMContentLoaded', start);
 </script>
 <footer><div class="wrap"><div class="fgrid">
-<div><div class="flogo">APÉR<span class="flower"></span></div><div class="ftag">Open de avond &middot; Utrecht &middot; MMXXVII</div></div>
-<div><h4>Ontdek</h4><a href="index.html#werelden">De zes werelden</a><a href="magazine/index.html">Magazine</a><a href="blog/index.html">Blog</a><a href="podcast.html">Podcast</a></div>
-<div><h4>Festival</h4><a href="app.html">De Aperokiezer</a><a href="mailto:hallo@apero.nl">Contact &amp; partners</a><a href="https://www.instagram.com/apero.festival">Instagram</a></div>
-</div><div class="base"><span>APÉRO &middot; het uur tussen werk en diner</span><span>aperire &middot; openen</span></div></div></footer>
+<div><div class="flogo">AP&Eacute;R<span class="flower"></span></div><div class="ftag">Open de avond &middot; Utrecht &middot; MMXXVII</div></div>
+<div><h4>Ontdek</h4><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De zes werelden</a><a href="magazine/index.html">Magazine</a><a href="blog/index.html">Blog</a></div>
+<div><h4>Festival</h4><a href="podcast.html">Podcast</a><a href="app.html">De Aperokiezer</a><a href="mailto:hallo@apero.nl">Contact &amp; partners</a><a href="https://www.instagram.com/apero.festival">Instagram</a></div>
+</div><div class="base"><span>AP&Eacute;RO &middot; het uur tussen werk en diner</span><span>aperire &middot; openen</span></div></div></footer>
+<script src="site.js"></script>
 </body></html>
