@@ -1,0 +1,1 @@
+{"name": "APÉRO Magazine", "short_name": "APÉRO Mag", "start_url": "lezen.html", "scope": "./", "display": "standalone", "background_color": "#F4EAD6", "theme_color": "#C45F38", "description": "Het magazine van APÉRO: longreads over de aperocultuur van Europa.", "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml"}]}
