@@ -1,0 +1,144 @@
+/* ============================================================
+   APÉRO — merk-basis  ·  apero-tokens.css
+   Eén bestand met alle tokens + bouwstenen.
+   Koppel dit en je hebt het hele systeem: kleuren, type,
+   de bloei-O, het patroon, het boog-frame en de fresco-wash.
+   ------------------------------------------------------------
+   Fonts: Bodoni Moda (display) + Hanken Grotesk (tekst).
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,600&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root{
+  /* — kleur — */
+  --panna:#F4EAD6;       /* crème · het papier */
+  --panna-2:#EBDCBE;     /* dieper crème · vlak */
+  --burro:#EEB24A;       /* boter · het licht */
+  --terracotta:#C45F38;  /* terracotta · de klei */
+  --mattone:#9E4326;     /* baksteen · de schaduw */
+  --salvia:#8C9A6A;      /* salie · het groen */
+  --espresso:#231B13;    /* espresso · de inkt */
+  --ink-70:rgba(35,27,19,.7);
+  --ink-50:rgba(35,27,19,.5);
+  --ink-30:rgba(35,27,19,.3);
+  --line:rgba(35,27,19,.16);
+  /* — type — */
+  --disp:'Bodoni Moda',serif;     /* display, koppen, de O */
+  --body:'Hanken Grotesk',sans-serif; /* tekst & interface */
+  /* — vorm — */
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --arch-radius:50% 50% 8px 8px / 32% 32% 0 0;
+}
+
+/* ---- basis ---- */
+.apero-body{background:var(--panna);color:var(--espresso);font-family:var(--body);
+  font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* ============================================================
+   DE BLOEI-O  ·  quatrefoil met open hart
+   <span class="flower"></span>  — schaal met width/height of font-size
+   ============================================================ */
+.flower{position:relative;display:inline-block;flex:none;aspect-ratio:1/1;width:1em;height:1em;
+  --p1:var(--terracotta);--p2:var(--terracotta);--hole:var(--panna);
+  background:
+    radial-gradient(circle closest-side at 50% 26%, var(--p2) 99%,transparent 100%),
+    radial-gradient(circle closest-side at 50% 74%, var(--p2) 99%,transparent 100%),
+    radial-gradient(circle closest-side at 26% 50%, var(--p1) 99%,transparent 100%),
+    radial-gradient(circle closest-side at 74% 50%, var(--p1) 99%,transparent 100%);}
+.flower::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--hole)}
+.flower.duo{--p1:var(--terracotta);--p2:var(--burro)} /* alleen voor constructie-uitleg */
+.flower.gold{--p1:var(--burro);--p2:var(--burro)}
+.flower.sage{--p1:var(--salvia);--p2:var(--salvia)}
+.flower.cream{--p1:var(--panna);--p2:var(--panna);--hole:var(--espresso)}
+
+/* tegel-blok rond de O (woordmerk-variant) */
+.o-block{display:inline-flex;align-items:center;justify-content:center;background:var(--panna);
+  border:1px solid rgba(35,27,19,.12);border-radius:.08em;padding:.12em;
+  box-shadow:0 .03em .1em rgba(35,27,19,.16)}
+.o-block .flower{margin:0}
+
+/* woordmerk: APÉR + bloei-O */
+.lockup{font-family:var(--disp);font-weight:800;line-height:.86;letter-spacing:-.01em;
+  display:inline-flex;align-items:center;color:var(--espresso)}
+.lockup .flower{width:.78em;height:.78em;margin-left:.05em}
+
+/* ============================================================
+   HET PATROON  ·  één cirkel, eindeloze bloei
+   <div class="petals"></div>  — stel --c in voor de schaal
+   ============================================================ */
+.petals{
+  --c:120px;--a:var(--terracotta);--b:var(--burro);
+  background-color:var(--panna);
+  background-image:
+    radial-gradient(circle calc(var(--c)*0.6) at 25% 25%, var(--a) 99%,transparent 100%),
+    radial-gradient(circle calc(var(--c)*0.6) at 75% 75%, var(--a) 99%,transparent 100%),
+    radial-gradient(circle calc(var(--c)*0.6) at 75% 25%, var(--b) 99%,transparent 100%),
+    radial-gradient(circle calc(var(--c)*0.6) at 25% 75%, var(--b) 99%,transparent 100%);
+  background-size:calc(var(--c)*2) calc(var(--c)*2);}
+
+/* korrel-overlay — leg over elk vlak voor de geschilderde textuur */
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.55;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E")}
+
+/* zachte crème-spotlight voor leesbaarheid op patroon/fresco — vlak, geen verloop */
+.veil{position:absolute;inset:0;pointer-events:none;background:rgba(244,234,214,.4)}
+.veil.soft{background:rgba(244,234,214,.26)}
+
+/* ============================================================
+   FRESCO  ·  het geschilderde beeld (richting A · Leggero)
+   Altijd ingelijst + getoond met crème-wash. Nooit full-bleed rauw.
+   <div class="arch"><div class="fresco" style="background-image:url(...)"></div><div class="wash"></div></div>
+   ============================================================ */
+.fresco{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat}
+/* vlakke crème-overlay — géén verloop (Merkbijbel: geen gradients) */
+.wash{position:absolute;inset:0;pointer-events:none;background:rgba(244,234,214,.34)}
+.wash.soft{background:rgba(244,234,214,.22)}
+.wash.strong{background:rgba(244,234,214,.5)}
+
+/* ============================================================
+   DE CARTOUCHE  ·  de vaste manier waarop tekst op beeld landt
+   Crème kader, terracotta rand, serif-tekst. Vervangt verlopen.
+   <div class="cartouche"><span class="ct-k">kicker</span>
+     <div class="ct-t">Titel</div><div class="ct-s">ondertitel</div></div>
+   ============================================================ */
+.cartouche{position:relative;background:var(--panna);border:1.5px solid var(--terracotta);
+  padding:22px 28px;color:var(--espresso);box-shadow:0 24px 50px -34px rgba(35,27,19,.55)}
+.cartouche::after{content:"";position:absolute;inset:5px;border:1px solid rgba(196,95,56,.42);pointer-events:none}
+.cartouche>*{position:relative;z-index:1}
+.cartouche .ct-k{display:block;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px}
+.cartouche .ct-t{font-family:var(--disp);font-weight:700;line-height:1.04;letter-spacing:-.01em}
+.cartouche .ct-s{font-family:var(--disp);font-style:italic;color:var(--mattone);margin-top:6px}
+
+/* het boog-frame — gekozen kaderstijl */
+.arch{position:relative;overflow:hidden;border-radius:var(--arch-radius);
+  box-shadow:0 0 0 1px var(--line), inset 0 0 0 1px rgba(244,234,214,.5), 0 30px 60px -42px rgba(35,27,19,.5)}
+.arch .fresco{background-position:center 32%}
+
+/* de bloei-O als venster op het fresco (versmelting) */
+.o-fresco{position:relative;display:inline-block;aspect-ratio:1/1;width:1em;height:1em;flex:none;vertical-align:-.06em;
+  background-image:var(--o-img);background-size:cover;background-position:center;
+  -webkit-mask:
+    radial-gradient(circle closest-side at 50% 26%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 50% 74%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 26% 50%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 74% 50%, #000 99%,transparent 100%);
+  mask:
+    radial-gradient(circle closest-side at 50% 26%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 50% 74%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 26% 50%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 74% 50%, #000 99%,transparent 100%);
+  -webkit-mask-composite:source-over;mask-composite:add}
+.o-fresco::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--panna);
+  box-shadow:0 0 0 1px rgba(35,27,19,.10) inset}
+
+/* ============================================================
+   KLEINE ONDERDELEN
+   ============================================================ */
+.eyebrow{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--terracotta)}
+.btn{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--espresso);color:var(--panna);padding:14px 28px;border-radius:100px;border:0;cursor:pointer;
+  display:inline-block;text-decoration:none;transition:background .25s,transform .3s var(--spring)}
+.btn:hover{background:var(--terracotta);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--espresso);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.ghost:hover{background:var(--espresso);color:var(--panna)}
+.chip{font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-70);border:1px solid var(--line);border-radius:100px;padding:7px 14px;display:inline-block}
