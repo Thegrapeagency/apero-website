@@ -1,0 +1,1819 @@
+{
+  "meta": {
+    "merk": "APÉRO Culture",
+    "beschrijving": "Redactionele single source of truth. Het dashboard leest dit bij laden en exporteert ernaar terug (commit = canoniek). Live-items zijn geparset uit de echte blog/werelden-paginas.",
+    "versie": 1,
+    "gegenereerd": "2026-06-21T13:48:57.704Z",
+    "site": "https://www.apero-culture.com",
+    "themas": [
+      "italie",
+      "frankrijk",
+      "spanje",
+      "anijsgordel",
+      "portugal",
+      "maghreb",
+      "nederland",
+      "algemeen"
+    ],
+    "types": [
+      "longread",
+      "blog",
+      "landingsfeit",
+      "social-carrousel",
+      "reel",
+      "recept",
+      "nieuwsbrief",
+      "podcast",
+      "verdieping"
+    ],
+    "statuses": [
+      "idee",
+      "concept",
+      "klaar",
+      "gepland",
+      "live"
+    ],
+    "kanalen": [
+      "site",
+      "instagram",
+      "linkedin",
+      "mail",
+      "spotify",
+      "youtube"
+    ]
+  },
+  "items": [
+    {
+      "id": "6850f96e-3846-4433-8528-7a365757d935",
+      "type": "blog",
+      "thema": "algemeen",
+      "titel": "Waarom bitter het nieuwe zoet is",
+      "ondertitel": "",
+      "samenvatting": "Waarom bitter het nieuwe zoet is",
+      "body": "Er is iets vreemds aan de hand met de mens en bitterheid. Evolutionair gezien is bitter een alarmsignaal: gif, bederf, niet eten. Elke baby trekt hetzelfde gezicht bij zijn eerste hap witlof. En toch staat er in elke serieuze aperitiefcultuur ter wereld een bittere drank op tafel. Campari. Vermout. Gentiaan. Kina. Hoe kan het dat het ritueel van het genieten wereldwijd gebouwd is op een smaak die we van nature haten?\n\nHet antwoord begint bij de apotheek. Vrijwel elke klassieke aperitiefdrank was ooit een medicijn. Het woord aperitief zelf komt van het Latijnse aperitivus, een medische term voor middelen die de eetlust openden. Vermout begon als kruidenwijn met alsem tegen maagklachten, kina-aperitieven als verpakking voor het bittere malariamedicijn kinine, en de Italiaanse amari werden tot diep in de twintigste eeuw in apotheken verkocht. Bitter was nooit de bedoeling, bitter was de bijwerking. Dat wij het lekker zijn gaan vinden, is een van de mooiste ongelukken van de gastronomie.\n\nMaar er is een tweede laag, en die is interessanter. Bitterheid vertraagt. Een zoete drank nodigt uit tot grote slokken, een bittere dwingt tot kleine. Probeer maar eens een Negroni achterover te slaan: je lichaam werkt niet mee. De Italianen hebben dat fysiologische trucje verheven tot een nationale esthetiek. Het bittere glas is een ingebouwde rem, en precies daarom is het het perfecte aperitief: het rekt het uur op in plaats van het te verkorten.\n\nEn nu, anno 2026, beleeft bitter zijn derde leven. De generatie die minder drinkt, ontdekt dat bitterheid het enige smaakprofiel is dat een alcoholvrij aperitief volwassen maakt. Zoet smaakt naar limonade, maar bitter smaakt naar een besluit. Vandaar de explosie van alcoholvrije bitters en aperitieven in precies dat register: gentiaan, kruiden, sinaasappelschil. De cirkel is rond. Wat als medicijn begon, werd genot, en wat genot werd, is nu het gereedschap waarmee een nieuwe generatie het ritueel zonder alcohol herbouwt.\n\nWie op APERO zijn eerste slok Campari of alcoholvrije bitter neemt en zijn gezicht voelt samentrekken: dat is geen afkeer. Dat is je lichaam dat de rem leert kennen. Het tweede slokje smaakt al anders. Het derde smaakt naar een uur dat langer duurt.\n\n&larr; Alle blogsVolgende: Het louche-effect, of waarom je naar een glas blijft kijken &rarr;",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [
+        {
+          "kind": "kicker",
+          "label": "Essay"
+        }
+      ],
+      "carouselRef": null,
+      "bron": "live op de site (blog/bitter.html)",
+      "slug": "blog/bitter.html",
+      "liveUrl": "https://www.apero-culture.com/blog/bitter.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "fff5553d-bcb6-491f-8951-071781eaed46",
+      "type": "blog",
+      "thema": "algemeen",
+      "titel": "Dranken die geboren werden uit een verbod",
+      "ondertitel": "",
+      "samenvatting": "Dranken die geboren werden uit een verbod",
+      "body": "Sommige dranken zijn uitgevonden. De interessantste zijn ontsnapt. Wie de stamboom van het Europese aperitief natrekt, ontdekt een patroon dat bijna een natuurwet is: elk verbod baart een drank, en de nieuwe drank wordt groter dan de oude.\n\nNeem de pastis. In 1915 verbood Frankrijk absint: te sterk, te groen, te bohemien, met de Eerste Wereldoorlog als morele dekmantel. Zeventien jaar lang zat een natie van anijsdrinkers droog, tot Paul Ricard in 1932 een anijsdrank zonder alsem op de markt bracht en er een levenshouding bij verkocht: le vrai pastis de Marseille. Het Vichy-regime verbood de pastis in 1940 opnieuw, na de bevrijding kwam hij terug als volksheld, en toen de staat in 1951 reclame voor anijsdranken verbood, antwoordde concurrent Pernod door zijn drank simpelweg 51 te noemen en Ricard door geen drank meer te adverteren maar asbakken, karaffen en petanqueballen. Heel Frankrijk stond vol Ricard zonder dat er één fles in beeld kwam. Het reclameverbod werd de beste campagne die het merk ooit had.\n\nHet patroon is ouder dan Frankrijk. De Spaanse vermut dankt zijn bodegacultuur deels aan het feit dat het vat goedkoper was dan de fles en de wet op het vat soepeler. De porthandel explodeerde in de achttiende eeuw omdat Engeland zijn handel met Frankrijk blokkeerde en de Engelsen hun wijn ergens anders moesten halen: zonder die handelsoorlog geen lodges in Gaia, geen demarcatie van 1756, geen portonico. En zelfs de Marokkaanse muntthee, het alcoholvrije kroonjuweel van APERO, ontstond door een geblokkeerde markt: Britse handelaren die hun Chinese gunpowder-thee tijdens de Krimoorlog niet in de Oostzee kwijt konden en uitweken naar Marokkaanse havens.\n\nDe les voor iedereen die met merken, markten of festivals werkt: schaarste en restricties zijn geen rem op cultuur, ze zijn de drukcabine waarin cultuur ontstaat. Een drank die alles mag, wordt zelden interessant. Een drank die ergens omheen moest, heeft per definitie een verhaal.\n\nEn verhalen, daar drinkt een mens uiteindelijk op.\n\n&larr; Alle blogsVolgende: Het aperitief van de generatie die minder drinkt &rarr;",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [
+        {
+          "kind": "kicker",
+          "label": "Geschiedenis"
+        }
+      ],
+      "carouselRef": null,
+      "bron": "live op de site (blog/geboren-uit-verbod.html)",
+      "slug": "blog/geboren-uit-verbod.html",
+      "liveUrl": "https://www.apero-culture.com/blog/geboren-uit-verbod.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "dc5a8097-9ef6-4bae-95dd-f4b90eec5ef0",
+      "type": "blog",
+      "thema": "algemeen",
+      "titel": "Het aperitief van de generatie die minder drinkt",
+      "ondertitel": "",
+      "samenvatting": "Het aperitief van de generatie die minder drinkt",
+      "body": "Er gaat een cijfer rond in de drankindustrie dat bestuurders nerveus maakt: elke nieuwe generatie drinkt minder alcohol dan de vorige. De reflex van de industrie is voorspelbaar, alcoholvrije varianten in dezelfde flessen, maar wie goed kijkt naar wat er werkelijk gebeurt, ziet iets veel interessanters. De jongste generatie schaft niet het drinken af. Ze schaft het gedachteloze af.\n\nKijk naar Spanje. De vermut was in de jaren tachtig de drank van opa, en het waren juist twintigers en dertigers die hem rond 2010 terughaalden. Niet omdat vermut hip was, maar omdat het ritueel klopte: langzaam, lokaal, goedkoop, analoog, met een vaste plek in de week. Kijk naar Frankrijk, waar jonge Fransen minder drinken maar de apéro onverminderd vieren, met alcoholvrije pastis, kombucha en een steeds rijkere planche. Kijk naar Libanon en Griekenland, waar jonge producenten arak en ouzo naar de cocktailbars van Beiroet en Athene tillen. Het patroon is overal hetzelfde: het glas verandert, het uur blijft.\n\nDat is de omkering waar de hele drankindustrie nog aan moet wennen. Decennialang was de drank het product en het moment de marketing. Voor de nieuwe generatie is het moment het product en de drank een van de mogelijke invullingen. Wie dat begrijpt, begrijpt waarom een Marokkaanse theeceremonie op een aperitieffestival geen sympathieke uitzondering is maar het hoofdprogramma. Atay bewijst al anderhalve eeuw wat de industrie nu pas ontdekt: de pauze, de aandacht en de schenkende hand hebben geen alcoholpercentage nodig.\n\nVoor APERO betekent dit dat alcoholvrij bij ons geen aparte kaart is, geen schap met spijtproducten achterin. Elke wereld op het festival heeft een volwaardige alcoholvrije invulling, van de bittere Italiaanse analoog tot de thee die van dertig centimeter hoogte wordt geschonken. Want de vraag van deze tijd is niet: wat drink je? De vraag is: wat open je?\n\n&larr; Alle blogsVolgende: Waarom bitter het nieuwe zoet is &rarr;",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [
+        {
+          "kind": "kicker",
+          "label": "Toekomst"
+        }
+      ],
+      "carouselRef": null,
+      "bron": "live op de site (blog/generatie-minder-drinken.html)",
+      "slug": "blog/generatie-minder-drinken.html",
+      "liveUrl": "https://www.apero-culture.com/blog/generatie-minder-drinken.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "35164e06-6f88-49dc-914f-541c21c68f69",
+      "type": "blog",
+      "thema": "anijsgordel",
+      "titel": "Het louche-effect, of waarom je naar een glas blijft kijken",
+      "ondertitel": "",
+      "samenvatting": "Het louche-effect, of waarom je naar een glas blijft kijken",
+      "body": "Er zijn niet veel dranken die iets dóen. Wijn ligt stil in het glas, bier schuimt even en geeft het op. Maar schenk water bij een ouzo, een arak of een pastis, en er gebeurt iets wat al eeuwen lang elke tafel even stilllegt: de heldere drank slaat traag melkwit uit, in wolken, alsof er weer in het glas trekt.\n\nHet verschijnsel heet louchen, en de verklaring is verrassend elegant. Anijsolie, de ziel van al deze dranken, lost uitstekend op in alcohol en helemaal niet in water. Zolang de drank puur is, blijft de olie onzichtbaar opgelost. Komt er water bij, dan daalt het alcoholpercentage, raakt de olie zijn houvast kwijt en vormt hij miljoenen microscopische druppeltjes die het licht breken. Geen kleurstof, geen truc: zuivere natuurkunde, uitgevoerd als theater.\n\nElke cultuur langs wat wij de anijsgordel noemen heeft er eigen woorden en eigen wetten voor. De Libanezen noemen hun melkwitte arak halib el assad, de melk van leeuwen, en hanteren een strikte volgorde: eerst arak, dan water, dan pas ijs. Wie het ijs te vroeg toevoegt, laat de anijsolie schrikken en stollen tot een vettige film op het glas, en verraadt in één handeling dat hij niet van hier is. De Grieken doen het rustiger aan: zelf water toevoegen, zelf de sterkte bepalen, zelf kijken hoe de wolk zich vormt.\n\nEn dat kijken is het punt. Het louche-effect is een klok zonder wijzers. Het laat zien dat er iets onomkeerbaars is gebeurd: dit glas is aangelengd, deze avond is geopend, er wordt vanaf nu langzaam gedronken. In een wereld vol dranken die je naast je werk kunt drinken, is de anijsdrank er een die aandacht eist voordat hij iets teruggeeft.\n\nOp APERO laten we het effect live zien aan de bar, en we durven te voorspellen welk moment het meest gefilmd gaat worden. Niet de cocktailshaker, niet de sabrage. De wolk.\n\n&larr; Alle blogsVolgende: Nederland heeft een borrel, maar geen aperitief. Of toch wel? &rarr;",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [
+        {
+          "kind": "kicker",
+          "label": "Wetenschap"
+        }
+      ],
+      "carouselRef": null,
+      "bron": "live op de site (blog/louche-effect.html)",
+      "slug": "blog/louche-effect.html",
+      "liveUrl": "https://www.apero-culture.com/blog/louche-effect.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "f529230a-7743-4509-904a-bfe09a3a4940",
+      "type": "blog",
+      "thema": "nederland",
+      "titel": "Nederland heeft een borrel, maar geen aperitief. Of toch wel?",
+      "ondertitel": "",
+      "samenvatting": "Nederland heeft een borrel, maar geen aperitief. Of toch wel?",
+      "body": "Laten we eerlijk zijn over onszelf. Nederland kent het woord borrel, en op papier lijkt dat op een aperitief: einde werkdag, een drankje, iets hartigs erbij. Maar wie de zes werelden van APERO naast de Nederlandse vrijdagmiddagborrel legt, ziet het verschil meteen. De borrel is een sociale afspraak, het aperitief is een levenshouding. De borrel heeft een eindtijd, het aperitief heeft een richting: de tafel. De borrel staat in de agenda, het aperitief vervangt de agenda.\n\nToch is het Nederlandse fundament er wel degelijk. We hadden ooit een eigen aperitiefcultuur van wereldformaat: de jenever, geschonken in een tulpglas dat zo vol werd gegoten dat je de eerste slok buigend moest nemen, het beroemde kopstootje ernaast, de bittergarnituur op de leestafel. Het bruine café was ons antwoord op de bodega en de ouzeri, en het bitterballetje is, als je er even afstand van neemt, een volwaardige meze. Wat we kwijtraakten is niet de vorm maar het tempo. De borrel werd een netwerkmoment, de vrijmibo een verplichting met bier, en het moment tussen middag en avond werd de file.\n\nInteressant genoeg wijst alles erop dat Nederland er klaar voor is om dat uur terug te pakken. De terrascultuur is er. De spritz heeft de massa al overtuigd dat een bitter drankje om zes uur normaal is. De generatie onder de veertig drinkt bewuster en zoekt naar precies wat het aperitief biedt: een ritueel met inhoud in plaats van volume. En de Nederlandse eetcultuur, lang het zwakke punt, is volwassen genoeg geworden om het hapje serieus te nemen.\n\nWat ontbreekt is het verhaal, en dat is precies waarom APERO bestaat. Niet om Nederland te leren drinken, dat kunnen we al. Om Nederland te leren openen: de avond, het gesprek, de tafel. De Italianen hebben er honderdvijftig jaar over gedaan. Wij hebben het voordeel dat we mogen afkijken bij de besten.\n\n&larr; Alle blogsVolgende: Dranken die geboren werden uit een verbod &rarr;",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [
+        {
+          "kind": "kicker",
+          "label": "Opinie"
+        }
+      ],
+      "carouselRef": null,
+      "bron": "live op de site (blog/nederland-borrel.html)",
+      "slug": "blog/nederland-borrel.html",
+      "liveUrl": "https://www.apero-culture.com/blog/nederland-borrel.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "2e4a5855-ea3f-4108-b3a5-93d3080180be",
+      "type": "landingsfeit",
+      "thema": "anijsgordel",
+      "titel": "De anijsgordel",
+      "ondertitel": "",
+      "samenvatting": "Hier wordt de drank zwakker gemaakt, en juist dat is het ritueel.",
+      "body": "Hoofdstuk 01De drank die van kleur verschiet\n\nEr bestaat een drank die je niet kunt haasten omdat hij het je laat zien. Schenk water bij een glas ouzo of arak en de heldere vloeistof slaat melkwit uit, traag en wolkig, als mist die een haven binnentrekt. Chemici noemen het louching: de anijsolie lost wel op in alcohol, niet in water, en bij het mengen ontstaat een emulsie die het licht breekt. De Libanezen hebben er een betere naam voor. Zij noemen hun arak halib el assad, de melk van leeuwen.\n\nVan het Griekse eiland Lesbos tot de Libanese Bekavallei loopt een gordel van anijs, en overal langs die gordel gelden dezelfde drie wetten. Je drinkt het nooit alleen. Je drinkt het nooit snel. En je drinkt het nooit zonder eten. De anijsgordel is het deel van de wereld waar het aperitief geen voorprogramma is maar een bouwwerk van uren, waar drank en tafel zo in elkaar geschoven zijn dat niemand meer kan zeggen waar de borrel eindigt en de maaltijd begint. Dat is geen vaagheid, het is architectuur.\n\nBij Barbayanni op Lesbos, sinds 1860 in familiehanden, staat nog de eerste alambiek: een koperen ketel uit 1858, gebouwd in Constantinopel, waarop de familie haar recepturen tot vandaag test. Vijf generaties, één ketel, één geheim.\n\nHoofdstuk 02Lesbos: het eiland dat van één drank leeft\n\nWie de veerboot naar Lesbos neemt en doorrijdt naar het zuiden, komt in Plomari, een stadje dat zijn bestaan aan anijs dankt. Lesbos telt zeventien distilleerderijen die samen de helft van alle Griekse ouzo maken, en Plomari is er het hart van, compleet met een eigen ouzomuseum. Bij Barbayanni, sinds 1860 in familiehanden, staat nog de eerste alambiek, een koperen distilleerketel die in 1858 in Constantinopel werd gebouwd en waarop de familie haar recepturen tot op vandaag test. Vijf generaties, één ketel, één geheim.\n\nDe wortels van de drank liggen verder terug, bij de monniken van de berg Athos, die in de veertiende eeuw hun druivendistillaat tsipouro met anijs op smaak brachten. De eerste echte distilleerderij opende in 1856 in Tyrnavos, na de Griekse onafhankelijkheid, en in de anderhalve eeuw daarna werd ouzo wat het nu is: het nationale aperitief en zo ongeveer de nationale identiteit in vloeibare vorm. In 2006 maakte de Europese Unie dat officieel: ouzo is een beschermde aanduiding en mag alleen nog in Griekenland en op Cyprus worden gemaakt. Een drank met een paspoort.\n\nMaar het…",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "live op de site (werelden/anijsgordel.html)",
+      "slug": "werelden/anijsgordel.html",
+      "liveUrl": "https://www.apero-culture.com/werelden/anijsgordel.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "8f4f5bb1-13a4-4679-91fc-27d02b1fd90a",
+      "type": "landingsfeit",
+      "thema": "frankrijk",
+      "titel": "Frankrijk, de pauze",
+      "ondertitel": "",
+      "samenvatting": "In Frankrijk staat het aperitief gewoon op de klok.",
+      "body": "Hoofdstuk 01Het uur dat op de klok staat\n\nIn mei 2010 verzamelden zich negenduizend mensen op een plein in Nantes. Geen demonstratie, geen concert, geen voetbalwedstrijd. Een aperitief. Iemand had op Facebook een apéro géant uitgeroepen, een reuzenborrel, en negenduizend wildvreemden kwamen opdagen met flessen, klapstoelen en saucisson. In dezelfde weken gebeurde het in Rennes, in Montpellier, in tientallen steden. De Franse overheid wist zich er geen raad mee, want er was geen wet tegen. Hoe verbied je een volk het enige wat het collectief heilig heeft verklaard: het uur van de apéro?\n\nDat is het eerste wat je over Frankrijk moet begrijpen. L'heure de l'apéro is geen marketingterm en geen gewoonte, het is een tijdseenheid. De Fransen zeggen het zoals ze de middag of de avond zeggen, alsof het op de klok staat, ergens tussen zes en negen, rekbaar als kauwgom maar onverwoestbaar als graniet. Het is het scharnier van de Franse dag: aan de ene kant het werk, de school, de boodschappen, aan de andere kant het leven. En het scharnier draait op iets verbluffend eenvoudigs. Een glas, een zak chips, een worst, en de mededeling dat niemand meer ergens heen hoeft.\n\nIn mei 2010 verzamelden zich negenduizend mensen op een plein in Nantes. Geen concert, geen demonstratie. Een aperitief, uitgeroepen op Facebook. De overheid wist zich er geen raad mee, want hoe verbied je een volk zijn heiligste uur?\n\nHoofdstuk 02De democratie van de saucisson\n\nHet Franse aperitief is gastvrij omdat het lui is. Dat is geen belediging, het is het systeem. Wie in Frankrijk voor het diner wordt uitgenodigd, weet dat de gastvrouw uren in de keuken heeft gestaan en gedraagt zich daarnaar. Wie voor de apéro wordt uitgenodigd, weet dat er niets is voorbereid behalve het openen van een fles en het opentrekken van een blik tapenade. Juist daarom is de drempel zo laag. De buurvrouw die iets komt terugbrengen, schuift aan. De vriend van de zoon blijft hangen. De schoonouders komen langs zonder dat het een staatsbezoek wordt. De apéro is het enige Franse instituut zonder dresscode en zonder rangorde, en in een land dat protocol heeft verheven tot volkssport is dat een klein wonder.\n\nWat er op tafel staat, leest als een landkaart. In de Provence pastis en koude rosé, met olijven en pissaladière. In het zuidwesten een glas zoete Jurançon of een Floc de Gascogne. In Normandië iets met appels, in…",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "live op de site (werelden/frankrijk.html)",
+      "slug": "werelden/frankrijk.html",
+      "liveUrl": "https://www.apero-culture.com/werelden/frankrijk.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "f46cb61b-603c-4d2b-b784-8d9e11c978d8",
+      "type": "landingsfeit",
+      "thema": "italie",
+      "titel": "Italië, het podium",
+      "ondertitel": "",
+      "samenvatting": "Het aperitivo is geen pauze van het leven, het is het optreden.",
+      "body": "Hoofdstuk 01Het uur waarop Italië zichzelf wordt\n\nOp 14 november 1867 werd in Milaan een jongen geboren in een winkelpassage. Niet ernaast, niet erboven: erin. De Galleria Vittorio Emanuele II was net opgeleverd, Gaspare Campari had er op de hoek met de Piazza del Duomo zijn Caffè Campari geopend, en zijn zoon Davide kwam ter wereld als eerste burger van Milaan die in de Galleria geboren werd. Je kunt het een toevalligheid noemen. Je kunt ook zeggen: het aperitief heeft in Italië een geboorteakte, en er staat een adres op.\n\nWie wil begrijpen wat het aperitivo voor Italië betekent, moet eerst begrijpen wat het niet is. Het is geen happy hour. Er wordt niets goedkoper, er wordt niets weggegoten, er wordt niemand dronken. Het aperitivo is het tegenovergestelde van ontsnappen: het is verschijnen. Tussen zes en acht uur 's avonds verandert elke Italiaanse stad in een toneel, en iedereen heeft een rol. De barman die het schaaltje olijven neerzet voordat erom gevraagd is. De vriendinnen die elkaar drie keer per week zien en elkaar begroeten alsof het drie jaar was. De man van tachtig die zijn Americano drinkt op de stoel waar hij hem in 1975 ook dronk. Het glas is hier geen doel. Het is een toegangsbewijs tot het uur waarop je niets hoeft en alles mag.\n\nHoofdstuk 02Turijn, 1786: de apotheker van de koning\n\nDe sociale geschiedenis van het aperitivo begint niet in een bar maar in een kruidenwinkel. Turijn, 1786. Antonio Benedetto Carpano, kruidenhandelaar, mengt zoete Piemontese moscatowijn met alcohol en zo'n dertig kruiden en specerijen. De ruggengraat van het recept is alsem, in het Duits Wermut, en zo heet de drank al snel ook: vermout. Het verhaal wil dat de winkel van Carpano zo populair werd dat hij dag en nacht open bleef, en dat het hof van Savoye de drank omarmde als verfijnd alternatief voor de zware rode wijn van het platteland.\n\nWat er werkelijk gebeurde, is socialer dan het recept. Turijn was een hofstad, stijf van de etiquette, en de vermout gaf de stad een nieuw soort ruimte: het café waar je vóór het diner gezien kon worden. In de eeuw die volgde werd Turijn de hoofdstad van een drinkcultuur die op zitten was gebouwd. De caffè storici die er nog steeds staan, met hun marmer, fluweel en spiegels, waren geen kroegen maar salons. Bij Caffè Mulassano aan de Piazza Castello, sinds 1907 op die plek, kwamen koning en koningin koffie drinken, en daar werd…",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "live op de site (werelden/italie.html)",
+      "slug": "werelden/italie.html",
+      "liveUrl": "https://www.apero-culture.com/werelden/italie.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "99c9a7fd-c0bf-4a80-b804-98f66f12cbdb",
+      "type": "landingsfeit",
+      "thema": "maghreb",
+      "titel": "Marokko, zonder alcohol",
+      "ondertitel": "",
+      "samenvatting": "Het aperitief is geen drank, het is de schenkende hand.",
+      "body": "Hoofdstuk 01Drie glazen\n\nEr is een Marokkaans spreekwoord dat het hele ritueel in één adem samenvat: het eerste glas is zacht als het leven, het tweede sterk als de liefde, het derde bitter als de dood. Wie in Marokko thee krijgt aangeboden, krijgt dus geen drankje. Hij krijgt een verhaal in drie bedrijven, en wie na het eerste bedrijf opstaat, heeft niet alleen de thee maar de gastheer afgewezen.\n\nAtay, de Marokkaanse muntthee, is het bewijs van de kernstelling van APERO: het aperitief zit niet in de alcohol. Alles wat een glas vermout in Turijn doet, of een pastis in Marseille, doet de thee hier ook, en vaak grondiger. Hij opent het gesprek. Hij markeert de overgang van buiten naar binnen, van vreemde naar gast. Hij dwingt tot zitten, want atay drink je niet staand en niet onderweg. En hij wordt geschonken door een ander, wat misschien wel de oudste definitie van gastvrijheid is: iemand anders bepaalt dat jij mag blijven.\n\nHet suikerbrood, een kegel van tweeënhalve kilo in blauw papier, wordt cadeau gedaan bij bruiloften, meegenomen naar condoleances en geschonken bij verzoeningen tussen families. Suiker is in Marokko geen ingrediënt. Het is een boodschapper.\n\nHoofdstuk 02Een geschiedenis met een omweg\n\nDe Marokkaanse theecultuur voelt eeuwenoud en is verrassend jong, en haar geboorteverhaal is een van de mooiste toevalligheden van de handelsgeschiedenis. Halverwege de negentiende eeuw, rond de Krimoorlog, konden Britse handelsschepen hun lading Chinese gunpowder-thee niet kwijt op de Baltische markten. Ze weken uit naar de havens van Marokko, en wat als noodoplossing begon, werd binnen twee generaties een nationale identiteit. Marokko nam de Chinese groene thee, voegde er verse munt en suiker aan toe, en maakte er iets van dat nergens anders bestaat: geen Chinese ceremonie, geen Britse theetijd, maar atay, met een eigen grammatica, een eigen servies en een eigen tempo.\n\nDat tempo is het wezenlijke. In een Marokkaans huishouden wordt thee gezet bij elke aankomst, elk afscheid, elke onderhandeling, elk verdriet. Het is de klok waarmee het sociale leven wordt opgewonden. En anders dan in veel theeculturen is het zetten hier traditioneel vaak het domein van de gastheer, het familiehoofd, dat de bereiding niet delegeert: wie schenkt, eert. De thee bereiden voor een gast is geen huishoudelijke taak maar een gebaar van rang en respect, en het wordt met dezelfde…",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "live op de site (werelden/marokko.html)",
+      "slug": "werelden/marokko.html",
+      "liveUrl": "https://www.apero-culture.com/werelden/marokko.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "61e318be-d172-45b8-9320-fe2ff28d7883",
+      "type": "landingsfeit",
+      "thema": "portugal",
+      "titel": "Portugal, de verrassing",
+      "ondertitel": "",
+      "samenvatting": "Portugal exporteerde zijn beste verhaal en hield zijn beste geheim.",
+      "body": "Hoofdstuk 01De drank die thuisbleef\n\nSommige landen exporteren hun beste verhaal en houden hun beste geheim. Portugal verscheepte drie eeuwen lang zijn rode en tawny port de wereld over, naar Engelse clubs en Nederlandse kelders, en hield ondertussen iets achter voor zichzelf: de witte port, koud, licht en gemengd met tonic, gedronken op granieten stoepjes terwijl de toeristen aan de overkant van de rivier in de rij stonden voor de vintage.\n\nIn Porto heet het drankje portonico, of gewoon porto tonico, en het is er zo vanzelfsprekend als koffie. Twee delen tonic op één deel witte port, ijs, een schil citroen of sinaasappel, een takje munt. Het glas is lichter dan menig biertje, en dat is precies de bedoeling: dit is een aperitief om lang mee te doen, niet om snel mee te zijn. Wie het voor het eerst drinkt, heeft steevast dezelfde reactie, en die reactie is voor APERO goud waard: waarom kende ik dit niet?\n\nHoofdstuk 021756: de markies die de wijnkaart uitvond\n\nOm te begrijpen waarom dit drankje zo'n stamboom heeft, moet je de Douro op, de rivier die zich door het noorden van Portugal kerft langs hellingen zo steil dat de wijngaarden er in terrassen uitgehakt zijn als amfitheaters. Dit is de oudste afgebakende en gereguleerde wijnstreek ter wereld, en de afbakening was geen romantiek maar crisismanagement. Halverwege de achttiende eeuw kelderde de kwaliteit van de port en tierde de fraude: er werd gerommeld met vlierbessensap en met wijn van buiten de vallei. De markies van Pombal, de man die na de aardbeving van Lissabon zo ongeveer heel Portugal opnieuw aan het ontwerpen was, greep in. In 1756 richtte hij de Companhia op die de portproductie ging reguleren, en hij liet de grenzen van het wijngebied fysiek vastleggen met granieten zuilen, de marcos pombalinos. Het werden er 335, geplaatst in twee golven, in 1756 en 1761. Ongeveer een derde staat er nog, verspreid tussen de wijngaarden, als grenspalen van een land dat alleen uit wijn bestaat. Een jaar later volgde de eerste volledige classificatie van de wijngaarden: de beste mochten exporteren, de rest was voor thuis. De wijnkaart als wetboek.\n\nDe logistiek werd legende. De wijn zakte de rivier af in rabelo's, platte houten boten die de stroomversnellingen van de Douro trotseerden, naar de lodges van Vila Nova de Gaia, de stad aan de overkant van Porto waar de Engelse en Portugese huizen hun vaten lieten…",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "live op de site (werelden/portugal.html)",
+      "slug": "werelden/portugal.html",
+      "liveUrl": "https://www.apero-culture.com/werelden/portugal.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "1c0030e7-7c04-4236-8e50-982dd7a11521",
+      "type": "landingsfeit",
+      "thema": "spanje",
+      "titel": "Spanje, de revival",
+      "ondertitel": "",
+      "samenvatting": "De drank van opa werd de hipste van Spanje.",
+      "body": "Hoofdstuk 01Het werkwoord dat een drank werd\n\nIn het Catalaans kun je een vermut doen. Fer el vermut, zeggen ze in Barcelona, en let op het werkwoord: niet drinken, niet nemen, maar doen. Zoals je een wandeling doet of een dutje. De taal verraadt wat het glas verzwijgt: in Spanje is vermut geen drank, het is een activiteit, en wel een met een vaste plek in de week. Zondag, na de mis en vóór de familielunch, ergens tussen twaalf en half twee. Het enige grote aperitiefritueel van Europa dat niet de avond opent maar de middag.\n\nHet beeld is in heel Catalonië hetzelfde en al ruim een eeuw oud. Een bodega met vaten tegen de muur, marmeren tafeltjes, drie generaties van dezelfde familie. Kleine glazen donkerrode vermut met een schijfje sinaasappel en een olijf aan een prikker. Een sifón op tafel, zo'n ouderwetse spuitfles waarmee je het glas naar smaak verlengt. Een blikje ansjovis, een schaaltje chips, gespannen verwachting over wat de grootmoeder straks serveert. De vermut is het wachtkamermuziekje van de zondagslunch, en juist daarom zo geliefd: het is het enige moment van de week waarop wachten het programma is.\n\nHoofdstuk 02Hoe Italië Spanje binnenkwam en Spaans werd\n\nDe vermut kwam eind negentiende eeuw met Italiaanse migranten en Italiaanse export naar Catalonië, en Barcelona was er klaar voor. De stad had een van de grootste Italiaanse gemeenschappen buiten Italië, en de cafés van de Eixample zochten een drank die bij hun nieuwe burgerlijke zelfbewustzijn paste. Het tekent de status van die jaren dat de importeur van Martini in Barcelona een bar liet ontwerpen door niemand minder dan Antoni Gaudí. De vermut was modern, stedelijk en een tikje frivool, en Catalonië maakte er vervolgens iets eigens van: donkerder, ronder, zoeter, met meer karamel en minder pretentie, getapt uit het vat voor een paar cent.\n\nHet ware epicentrum lag niet in Barcelona maar honderd kilometer zuidelijker, in Reus. Dat provinciestadje bij Tarragona groeide uit tot de vermouthoofdstad van Spanje, met op het hoogtepunt zo'n dertig producenten binnen de stadsgrenzen, waaronder huizen als Yzaguirre en Miró die vandaag nog bestaan. Reus had de wijn, de kruidenhandel en de havenverbinding, en het had vooral de tijdgeest mee: rond 1900 was een glas vermut in Catalonië wat een espresso in Italië was, een dagelijkse vanzelfsprekendheid met een eigen infrastructuur.\n\nEn toen kwam de lange…",
+      "status": "live",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "live op de site (werelden/spanje.html)",
+      "slug": "werelden/spanje.html",
+      "liveUrl": "https://www.apero-culture.com/werelden/spanje.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "1eaa3ed2-9ce9-478b-9e9d-8438d8983271",
+      "type": "longread",
+      "thema": "maghreb",
+      "titel": "De schenkende hand",
+      "ondertitel": "Marokko, een wijnland dat thee schenkt",
+      "samenvatting": "Het volledige verhaal: van Romeinse wijn bij Volubilis tot de muntthee van dertig centimeter hoog, en de bewuste keuze voor een ritueel zonder alcohol.",
+      "body": "Begin bij een misverstand, want dat is waar dit verhaal het interessantst wordt. Vraag een willekeurige bezoeker naar drinken in Marokko en je krijgt twee zekerheden terug: het is muntthee, en er is geen alcohol. De eerste klopt half. De tweede klopt niet.\n\nMarokko maakt al wijn sinds de oudheid. Onder de Romeinen werd Volubilis een serieus wijncentrum. Toen de islam kwam remde dat de wijnbouw, maar het doofde hem niet. En toen de Fransen kwamen bouwden ze er een industrie op die nog draait: Les Celliers de Meknès maakt zo'n 85 procent van de Marokkaanse wijn.\n\nDus nee, Marokko is geen droog land. En juist dat maakt zijn belangrijkste sociale ritueel zo veelzeggend. Want dat ritueel is, tegen die hele achtergrond in, alcoholvrij.\n\nDe gastheer schenkt van dertig centimeter hoog, om de thee te luchten, te koelen en die schuimkraag te zetten, de rghwa. En dan de drie glazen: zacht als het leven, sterk als de liefde, bitter als de dood.\n\nWant dat is wat hier werkelijk wordt geschonken. Niet de thee. De tijd, de aandacht, de boodschap dat jij er even mag zijn. Een wijnland dat zijn warmste moment niet aan de fles ophing maar aan de hand die inschenkt.",
+      "status": "klaar",
+      "publishDate": "2026-12-10",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "merkstrategie/marokko-content-verdeling.md",
+      "slug": "werelden/marokko-longread.html",
+      "liveUrl": "https://www.apero-culture.com/werelden/marokko-longread.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "208b23b0-9450-4083-8d48-7d957a00c616",
+      "type": "blog",
+      "thema": "maghreb",
+      "titel": "De thee die per ongeluk in Marokko belandde",
+      "ondertitel": "",
+      "samenvatting": "Hoe groene thee in de 19e eeuw via een oorlog en een diplomatiek cadeau het nationale ritueel van Marokko werd.",
+      "body": "Er is een hardnekkig misverstand over Marokko en muntthee: dat het er altijd was. Dat is niet zo. De echte doorbraak was een logistiek ongeluk: tijdens de Krimoorlog zaten Britse handelaren met bergen onverkochte gunpowder-thee en stuurden de lading naar Noord-Afrika. Marokko maakte het zijne met munt en suiker. Een drank die binnenkwam door een oorlog en een misverstand, en die nu het eerste is wat een Marokkaan je aanbiedt.",
+      "status": "klaar",
+      "publishDate": "2026-12-17",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "merkstrategie/marokko-content-verdeling.md",
+      "slug": "blog/marokko-thee-geschiedenis.html",
+      "liveUrl": "https://www.apero-culture.com/blog/marokko-thee-geschiedenis.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "dc7dbf61-4dd0-4543-b62f-5ddbe7eb1ac0",
+      "type": "blog",
+      "thema": "maghreb",
+      "titel": "Het glas dat won toen de wereld minder ging drinken",
+      "ondertitel": "",
+      "samenvatting": "Terwijl de halve wereld zoekt naar een volwassen alcoholvrij ritueel, had Marokko het al eeuwen klaarstaan.",
+      "body": "Er klopt iemand op de deur, en binnen een minuut staat de berrad op het vuur. Atay is geen drankje, het is een vorm: de gastheer schenkt, iedereen schuift aan, de tijd rekt op. Precies dat, het ritueel boven de inhoud, is wat de no-low beweging nu probeert na te bouwen. Een goed aperitief zit niet in het glas. Het zit in de hand die schenkt.",
+      "status": "klaar",
+      "publishDate": "2026-12-24",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "merkstrategie/marokko-content-verdeling.md",
+      "slug": "blog/marokko-atay-nu.html",
+      "liveUrl": "https://www.apero-culture.com/blog/marokko-atay-nu.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "458c4d88-e61c-41e8-b4d9-bfb678c88e4a",
+      "type": "recept",
+      "thema": "maghreb",
+      "titel": "Recept: atay b'nana + briouats",
+      "ondertitel": "",
+      "samenvatting": "De signature serve van de Maghreb-maand, met het klassieke hapje dat bij het welkomstmoment hoort.",
+      "body": "De serve: spoel gunpowder groene thee kort, doe verse kruizemunt en suiker erbij in de berrad, laat trekken op laag vuur en schenk van dertig centimeter hoog voor de schuimkraag. Het hapje: briouats, krokante gevulde driehoekjes, die naast het glas verschijnen als er bezoek is.",
+      "status": "klaar",
+      "publishDate": "2026-12-24",
+      "kanalen": [
+        "instagram",
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "merkstrategie/marokko-content-verdeling.md",
+      "slug": "recepten/atay-bnana.html",
+      "liveUrl": "https://www.apero-culture.com/recepten/atay-bnana.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "94fd3cc2-8ae4-4909-87c9-9a3205540682",
+      "type": "verdieping",
+      "thema": "maghreb",
+      "titel": "Thee als product: gunpowder, de Chinese handel, de suikereconomie",
+      "ondertitel": "",
+      "samenvatting": "Het verhaal van het blad zelf: gunpowder, de Chinese handel, de Krimoorlog-dump en de suikereconomie. Puur productverhaal, dus bewust van de hoofdlijn af.",
+      "body": "Een los verdiepingsstuk buiten de hoofdtijdlijn. Het gaat over het product (het theeblad, de handel, de suiker), niet over het welkomstmoment, en kaapt daarom de maand-wereld niet. Nog te schrijven vanuit het onderzoek.",
+      "status": "klaar",
+      "publishDate": null,
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "publicatie-pijplijn.md + onderzoek-marokko.md",
+      "slug": "verdieping/thee-als-product.html",
+      "liveUrl": "https://www.apero-culture.com/verdieping/thee-als-product.html",
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "f81ed3f6-b00d-458a-8df7-0841f9a16be2",
+      "type": "landingsfeit",
+      "thema": "italie",
+      "titel": "Italië, het podium: landenpagina-feiten verversen",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-03",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "989a772b-cd62-458d-acce-5f8865be7270",
+      "type": "social-carrousel",
+      "thema": "italie",
+      "titel": "Opening: Italië, het podium",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-03",
+      "kanalen": [
+        "instagram",
+        "linkedin"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "41055d0a-c921-4451-bd78-202a9868a5e0",
+      "type": "nieuwsbrief",
+      "thema": "italie",
+      "titel": "De Inschenker: Italië, het podium",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-03",
+      "kanalen": [
+        "mail"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "d2474f0e-952a-4677-8dac-3fcbfa870f11",
+      "type": "longread",
+      "thema": "italie",
+      "titel": "Longread: Italië, het podium",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-10",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "80021591-fa90-4bbc-ba30-856926d0bad1",
+      "type": "podcast",
+      "thema": "italie",
+      "titel": "De Importeur Vertelt: Italië, het podium",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-10",
+      "kanalen": [
+        "spotify",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "82c9e1e7-c8c8-4e05-854e-02a9df0f1851",
+      "type": "reel",
+      "thema": "italie",
+      "titel": "Sfeerloop: Italië, het podium",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-10",
+      "kanalen": [
+        "instagram",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "566b2f5b-9924-489b-b305-304dc12a6fdb",
+      "type": "blog",
+      "thema": "italie",
+      "titel": "Blog: het verleden van het moment (Italië, het podium)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-17",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "a307a248-0fd2-40ae-8745-946c63229f30",
+      "type": "social-carrousel",
+      "thema": "italie",
+      "titel": "Wist je dat: Italië, het podium",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-17",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "259f7e50-a43e-4cc8-bf3e-ceccd98f4f28",
+      "type": "blog",
+      "thema": "italie",
+      "titel": "Blog: het heden van het moment (Italië, het podium)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-24",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "d221c9ea-ba9d-4518-af82-3d559ea5194f",
+      "type": "recept",
+      "thema": "italie",
+      "titel": "Recept: signature serve + hapje (Italië, het podium)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-24",
+      "kanalen": [
+        "instagram",
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "c116d644-ae73-460f-92ba-84382df0729e",
+      "type": "social-carrousel",
+      "thema": "italie",
+      "titel": "Quote-carrousel: Italië, het podium",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-07-24",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "f83ed97a-f517-4fe2-aadc-321b74714b49",
+      "type": "landingsfeit",
+      "thema": "nederland",
+      "titel": "Nederland pakt terug: landenpagina-feiten verversen",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-03",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "48c59efc-4ece-419b-a27a-01287442bd84",
+      "type": "social-carrousel",
+      "thema": "nederland",
+      "titel": "Opening: Nederland pakt terug",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-03",
+      "kanalen": [
+        "instagram",
+        "linkedin"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "3639558f-d62a-47ae-8b56-dcc03599a5a4",
+      "type": "nieuwsbrief",
+      "thema": "nederland",
+      "titel": "De Inschenker: Nederland pakt terug",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-03",
+      "kanalen": [
+        "mail"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "3e4a1a40-be86-4852-bc0c-33be3326f1a6",
+      "type": "longread",
+      "thema": "nederland",
+      "titel": "Longread: Nederland pakt terug",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-10",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "483b48d4-8133-4e6b-bc12-ae51f47fbe6f",
+      "type": "podcast",
+      "thema": "nederland",
+      "titel": "De Importeur Vertelt: Nederland pakt terug",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-10",
+      "kanalen": [
+        "spotify",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "9d48be2b-801d-4275-82ac-fefcc8798567",
+      "type": "reel",
+      "thema": "nederland",
+      "titel": "Sfeerloop: Nederland pakt terug",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-10",
+      "kanalen": [
+        "instagram",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "32325c32-c6f6-41c3-8cea-e126c5e937be",
+      "type": "blog",
+      "thema": "nederland",
+      "titel": "Blog: het verleden van het moment (Nederland pakt terug)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-17",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "e42d14d0-4a15-4b7e-bbbe-e1877667a097",
+      "type": "social-carrousel",
+      "thema": "nederland",
+      "titel": "Wist je dat: Nederland pakt terug",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-17",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "2c546b64-18ac-4367-9359-1e878099a4f2",
+      "type": "blog",
+      "thema": "nederland",
+      "titel": "Blog: het heden van het moment (Nederland pakt terug)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-24",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "bff1ec42-4eef-43b5-85a7-8d6813f1593a",
+      "type": "recept",
+      "thema": "nederland",
+      "titel": "Recept: signature serve + hapje (Nederland pakt terug)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-24",
+      "kanalen": [
+        "instagram",
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "2c86aeb1-5d12-408a-bb91-145b2b08f833",
+      "type": "social-carrousel",
+      "thema": "nederland",
+      "titel": "Quote-carrousel: Nederland pakt terug",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "gepland",
+      "publishDate": "2026-08-24",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "241744b9-a489-41a4-825a-0949ba60fee0",
+      "type": "landingsfeit",
+      "thema": "spanje",
+      "titel": "Spanje, de revival: landenpagina-feiten verversen",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-03",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "7c95586c-a619-4fe1-a4af-47bf7a510aca",
+      "type": "social-carrousel",
+      "thema": "spanje",
+      "titel": "Opening: Spanje, de revival",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-03",
+      "kanalen": [
+        "instagram",
+        "linkedin"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "3645bd4b-e814-43a7-a50f-ff68cd7c43a6",
+      "type": "nieuwsbrief",
+      "thema": "spanje",
+      "titel": "De Inschenker: Spanje, de revival",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-03",
+      "kanalen": [
+        "mail"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "4f4c9488-94e1-497e-99e5-1af63f062456",
+      "type": "longread",
+      "thema": "spanje",
+      "titel": "Longread: Spanje, de revival",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-10",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "93e0a319-9aba-4253-952f-219f0bb70fda",
+      "type": "podcast",
+      "thema": "spanje",
+      "titel": "De Importeur Vertelt: Spanje, de revival",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-10",
+      "kanalen": [
+        "spotify",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "a601b73b-f0af-4d0a-a1ac-e737fc5e193f",
+      "type": "reel",
+      "thema": "spanje",
+      "titel": "Sfeerloop: Spanje, de revival",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-10",
+      "kanalen": [
+        "instagram",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "9e550cc0-67ab-4892-b318-d38bae10c678",
+      "type": "blog",
+      "thema": "spanje",
+      "titel": "Blog: het verleden van het moment (Spanje, de revival)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-17",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "1427ca93-8762-4bb7-b5f8-4450d95daba0",
+      "type": "social-carrousel",
+      "thema": "spanje",
+      "titel": "Wist je dat: Spanje, de revival",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-17",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "35f271ee-f151-4560-9426-8142e865d625",
+      "type": "blog",
+      "thema": "spanje",
+      "titel": "Blog: het heden van het moment (Spanje, de revival)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-24",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "ac5bf40f-7574-40ea-9541-3ce177b1ffc5",
+      "type": "recept",
+      "thema": "spanje",
+      "titel": "Recept: signature serve + hapje (Spanje, de revival)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-24",
+      "kanalen": [
+        "instagram",
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "884e1a26-57b6-4508-9e82-c8697139b4e6",
+      "type": "social-carrousel",
+      "thema": "spanje",
+      "titel": "Quote-carrousel: Spanje, de revival",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-09-24",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "053913f2-a369-48f2-9588-efceb31ac3a4",
+      "type": "landingsfeit",
+      "thema": "frankrijk",
+      "titel": "Frankrijk + de anijsgordel: landenpagina-feiten verversen",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-03",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "09573c3d-da5c-4928-b1b7-d8ebc0684a6f",
+      "type": "social-carrousel",
+      "thema": "frankrijk",
+      "titel": "Opening: Frankrijk + de anijsgordel",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-03",
+      "kanalen": [
+        "instagram",
+        "linkedin"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "b30e66db-0469-4e57-b89f-0713336fd413",
+      "type": "nieuwsbrief",
+      "thema": "frankrijk",
+      "titel": "De Inschenker: Frankrijk + de anijsgordel",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-03",
+      "kanalen": [
+        "mail"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "170a07f3-eeba-49a7-82b4-08e7ab7e182b",
+      "type": "longread",
+      "thema": "frankrijk",
+      "titel": "Longread: Frankrijk + de anijsgordel",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-10",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "33d7303c-a327-4b3d-aac9-d7f129774009",
+      "type": "podcast",
+      "thema": "frankrijk",
+      "titel": "De Importeur Vertelt: Frankrijk + de anijsgordel",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-10",
+      "kanalen": [
+        "spotify",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "4ee9488f-a9b2-4f8e-933b-7ef67ea809ab",
+      "type": "reel",
+      "thema": "frankrijk",
+      "titel": "Sfeerloop: Frankrijk + de anijsgordel",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-10",
+      "kanalen": [
+        "instagram",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "9cf7233f-1430-4708-95e0-41537f7aad55",
+      "type": "blog",
+      "thema": "frankrijk",
+      "titel": "Blog: het verleden van het moment (Frankrijk + de anijsgordel)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-17",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "7a5a1e45-0755-4e8d-8156-869b6ada0561",
+      "type": "social-carrousel",
+      "thema": "frankrijk",
+      "titel": "Wist je dat: Frankrijk + de anijsgordel",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-17",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "28f721c0-211c-4119-ad9c-e1d04eccd916",
+      "type": "blog",
+      "thema": "frankrijk",
+      "titel": "Blog: het heden van het moment (Frankrijk + de anijsgordel)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-24",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "92deaeac-7391-4534-a697-08a22ddeec7a",
+      "type": "recept",
+      "thema": "frankrijk",
+      "titel": "Recept: signature serve + hapje (Frankrijk + de anijsgordel)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-24",
+      "kanalen": [
+        "instagram",
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "68cd4e2f-8cbf-40bf-90de-90004916ea99",
+      "type": "social-carrousel",
+      "thema": "frankrijk",
+      "titel": "Quote-carrousel: Frankrijk + de anijsgordel",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-10-24",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "85a1fe9e-bc0f-4f7d-b8aa-435f91811332",
+      "type": "landingsfeit",
+      "thema": "portugal",
+      "titel": "Portugal, de verrassing: landenpagina-feiten verversen",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-03",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "431cf27d-c1e9-42f2-9b1d-44c604dcf892",
+      "type": "social-carrousel",
+      "thema": "portugal",
+      "titel": "Opening: Portugal, de verrassing",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-03",
+      "kanalen": [
+        "instagram",
+        "linkedin"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "c7d2447a-e53d-4ff6-9304-0cc8653d53b7",
+      "type": "nieuwsbrief",
+      "thema": "portugal",
+      "titel": "De Inschenker: Portugal, de verrassing",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-03",
+      "kanalen": [
+        "mail"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "676edb2e-79ad-43e9-9a5b-7fa46b5ea324",
+      "type": "longread",
+      "thema": "portugal",
+      "titel": "Longread: Portugal, de verrassing",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-10",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "4dbbf480-4362-4f5d-b454-7fff99db3bea",
+      "type": "podcast",
+      "thema": "portugal",
+      "titel": "De Importeur Vertelt: Portugal, de verrassing",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-10",
+      "kanalen": [
+        "spotify",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "1103b873-a4b2-4783-87a2-e7f66f5750f7",
+      "type": "reel",
+      "thema": "portugal",
+      "titel": "Sfeerloop: Portugal, de verrassing",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-10",
+      "kanalen": [
+        "instagram",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "f6ee40cc-891a-422e-9795-d045acf3bb44",
+      "type": "blog",
+      "thema": "portugal",
+      "titel": "Blog: het verleden van het moment (Portugal, de verrassing)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-17",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "4c68a31c-6390-4d3e-af35-c00336beedcf",
+      "type": "social-carrousel",
+      "thema": "portugal",
+      "titel": "Wist je dat: Portugal, de verrassing",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-17",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "7e55904f-c943-4b9e-9c72-b60d153272f1",
+      "type": "blog",
+      "thema": "portugal",
+      "titel": "Blog: het heden van het moment (Portugal, de verrassing)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-24",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "1b54afcd-0032-4088-82b6-ebe8e33765b4",
+      "type": "recept",
+      "thema": "portugal",
+      "titel": "Recept: signature serve + hapje (Portugal, de verrassing)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-24",
+      "kanalen": [
+        "instagram",
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "a7311984-580f-4bd9-ae89-7a4a27e17ce0",
+      "type": "social-carrousel",
+      "thema": "portugal",
+      "titel": "Quote-carrousel: Portugal, de verrassing",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "idee",
+      "publishDate": "2026-11-24",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "4739354d-b186-404f-b771-e1e03ecb46ac",
+      "type": "landingsfeit",
+      "thema": "maghreb",
+      "titel": "De Maghreb, de schenkende hand: landenpagina-feiten verversen",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-03",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "5b5e70b7-0615-488d-95f1-679f4ddf401a",
+      "type": "social-carrousel",
+      "thema": "maghreb",
+      "titel": "Opening: De Maghreb, de schenkende hand",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-03",
+      "kanalen": [
+        "instagram",
+        "linkedin"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "6c0c2415-f34d-4dcd-a804-40093fabc33a",
+      "type": "nieuwsbrief",
+      "thema": "maghreb",
+      "titel": "De Inschenker: De Maghreb, de schenkende hand",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-03",
+      "kanalen": [
+        "mail"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "d767f661-84a2-4b37-8db7-bad9b412552a",
+      "type": "longread",
+      "thema": "maghreb",
+      "titel": "Longread: De Maghreb, de schenkende hand",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-10",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "ca16236f-10e6-4858-bcf0-9899b42acf57",
+      "type": "podcast",
+      "thema": "maghreb",
+      "titel": "De Importeur Vertelt: De Maghreb, de schenkende hand",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-10",
+      "kanalen": [
+        "spotify",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "1767c925-8c36-440d-96f7-a2768044180d",
+      "type": "reel",
+      "thema": "maghreb",
+      "titel": "Sfeerloop: De Maghreb, de schenkende hand",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-10",
+      "kanalen": [
+        "instagram",
+        "youtube"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "70b575f3-89bb-4964-9ac6-4ec41b7a22dc",
+      "type": "blog",
+      "thema": "maghreb",
+      "titel": "Blog: het verleden van het moment (De Maghreb, de schenkende hand)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-17",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "eef83eea-757d-4845-a414-f58803c03934",
+      "type": "social-carrousel",
+      "thema": "maghreb",
+      "titel": "Wist je dat: De Maghreb, de schenkende hand",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-17",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "ce18e9aa-487c-48b3-9ca4-35db08a4f733",
+      "type": "blog",
+      "thema": "maghreb",
+      "titel": "Blog: het heden van het moment (De Maghreb, de schenkende hand)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-24",
+      "kanalen": [
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "91f5d714-7ebe-4ecd-a11e-f250da856bb7",
+      "type": "recept",
+      "thema": "maghreb",
+      "titel": "Recept: signature serve + hapje (De Maghreb, de schenkende hand)",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-24",
+      "kanalen": [
+        "instagram",
+        "site"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    },
+    {
+      "id": "310a6a57-15f1-4096-ba29-02042691240d",
+      "type": "social-carrousel",
+      "thema": "maghreb",
+      "titel": "Quote-carrousel: De Maghreb, de schenkende hand",
+      "ondertitel": "",
+      "samenvatting": "",
+      "body": "",
+      "status": "concept",
+      "publishDate": "2026-12-24",
+      "kanalen": [
+        "instagram"
+      ],
+      "assets": [],
+      "carouselRef": null,
+      "bron": "maandmotor (publicatie-pijplijn.md)",
+      "slug": null,
+      "liveUrl": null,
+      "createdAt": "2026-06-21T13:48:57.704Z",
+      "updatedAt": "2026-06-21T13:48:57.704Z"
+    }
+  ]
+}
