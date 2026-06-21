@@ -86,6 +86,16 @@
   .month-h .mt{font-family:var(--disp);font-weight:700;font-size:20px;color:var(--espresso)}
   .month-h .accent{width:34px;height:8px;border-radius:100px}
   .month-h .mw{margin-left:auto;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-50)}
+  /* stats-balk */
+  .stats{max-width:1380px;margin:0 auto;padding:16px 22px 0;display:flex;gap:10px;flex-wrap:wrap}
+  .stat{flex:1;min-width:120px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;transition:border-color .15s,transform .15s var(--spring)}
+  .stat:hover{border-color:var(--terracotta);transform:translateY(-1px)}
+  .stat .num{font-family:var(--disp);font-weight:800;font-size:26px;line-height:1;color:var(--espresso)}
+  .stat .lab{font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-50);margin-top:5px;display:flex;align-items:center;gap:6px}
+  .stat .bar{height:4px;border-radius:100px;margin-top:9px;background:var(--panna-2);overflow:hidden}
+  .stat .bar i{display:block;height:100%;border-radius:100px}
+  @media(max-width:760px){.stat{min-width:calc(50% - 10px)}}
+
   .weeks{display:grid;grid-template-columns:repeat(4,1fr)}
   .week{border-right:1px solid var(--line);padding:12px;min-height:130px}
   .week:last-child{border-right:none}
@@ -158,6 +168,12 @@
   .lint{font-size:12px;color:var(--mattone);font-weight:600;margin-top:6px;display:none}
   .lint.show{display:block}
   .hintbox{font-size:12px;color:var(--ink-50);line-height:1.45;margin-top:6px}
+  .mdprev{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;max-height:320px;overflow:auto}
+  .mdprev h1,.mdprev h2,.mdprev h3{font-family:var(--disp);color:var(--espresso);margin:.4em 0 .3em;line-height:1.15}
+  .mdprev h1{font-size:22px}.mdprev h2{font-size:18px}.mdprev h3{font-size:15px}
+  .mdprev p{font-size:14px;line-height:1.6;color:var(--ink-70);margin:.5em 0}
+  .mdprev ul{margin:.4em 0;padding-left:18px}.mdprev li{font-size:14px;line-height:1.55;color:var(--ink-70);margin:.2em 0}
+  .mdprev a{color:var(--terracotta)}
   .detect{font-size:12px;font-weight:600;margin-top:8px}
   .detect.md{color:#5a6b34}.detect.json{color:#8a5a1f}
 
@@ -188,6 +204,7 @@
   </nav>
 </header>
 
+<div class="stats" id="stats"></div>
 <main id="main"></main>
 
 <!-- item-modal -->
@@ -379,11 +396,21 @@ function renderTijdlijn(){
     mc.appendChild(weeks); main.appendChild(mc);
   });
 
-  // ongeplande / verdiepingsspoor
-  var loose = S.items.filter(function(it){ return !it.publishDate; });
+  // Gepubliceerd (live, zonder datum) — los van "ongepland"
+  var published = S.items.filter(function(it){ return !it.publishDate && it.status==='live'; });
+  if(published.length){
+    var pc=document.createElement('div'); pc.className='month';
+    pc.innerHTML='<div class="month-h"><span class="accent" style="background:var(--salvia)"></span><span class="mt">Gepubliceerd</span><span class="mw">'+published.length+' live op de site</span></div>';
+    var pb=document.createElement('div'); pb.className='week'; pb.style.minHeight='70px'; pb.style.display='grid'; pb.style.gridTemplateColumns='repeat(auto-fill,minmax(240px,1fr))'; pb.style.gap='8px';
+    published.forEach(function(it){ pb.insertAdjacentHTML('beforeend', cardHTML(it)); });
+    pc.appendChild(pb); main.appendChild(pc);
+  }
+
+  // Ongepland (nog geen datum, nog niet live) — drop-zone om te plannen
+  var loose = S.items.filter(function(it){ return !it.publishDate && it.status!=='live'; });
   var lc=document.createElement('div'); lc.className='month';
-  lc.innerHTML='<div class="month-h"><span class="accent" style="background:#9a9a9a"></span><span class="mt">Verdiepingsspoor &amp; ongepland</span><span class="mw">los, buiten de tijdlijn</span></div>';
-  var lb=document.createElement('div'); lb.className='week'; lb.dataset.month=''; lb.dataset.week='0'; lb.style.minHeight='90px';
+  lc.innerHTML='<div class="month-h"><span class="accent" style="background:#9a9a9a"></span><span class="mt">Ongepland &amp; verdiepingsspoor</span><span class="mw">sleep naar een week om te plannen</span></div>';
+  var lb=document.createElement('div'); lb.className='week'; lb.dataset.month=''; lb.dataset.week='0'; lb.style.minHeight='80px'; lb.style.display='grid'; lb.style.gridTemplateColumns='repeat(auto-fill,minmax(240px,1fr))'; lb.style.gap='8px';
   if(loose.length){ loose.forEach(function(it){ lb.insertAdjacentHTML('beforeend', cardHTML(it)); }); }
   else { lb.innerHTML='<div class="empty">Niets ongepland.</div>'; }
   lc.appendChild(lb); main.appendChild(lc);
@@ -505,19 +532,17 @@ function matchFilter(it){
    DRAG & DROP  (generiek voor tijdlijn + kanban)
    ============================================================ */
 function wireDragCards(onDrop, dropSelector){
-  var dragId=null;
+  var dragId=null, didDrag=false;
   document.querySelectorAll('.card[draggable]').forEach(function(card){
-    card.addEventListener('dragstart',function(e){ dragId=card.dataset.id; card.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; });
-    card.addEventListener('dragend',function(){ card.classList.remove('dragging'); document.querySelectorAll('.drop').forEach(function(d){d.classList.remove('drop');}); });
+    card.addEventListener('dragstart',function(e){ dragId=card.dataset.id; didDrag=true; card.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; try{e.dataTransfer.setData('text/plain',card.dataset.id);}catch(_){} });
+    card.addEventListener('dragend',function(){ card.classList.remove('dragging'); document.querySelectorAll('.drop').forEach(function(d){d.classList.remove('drop');}); setTimeout(function(){ didDrag=false; },50); });
+    // klik opent item, maar nooit als er net gesleept is
+    card.addEventListener('click',function(){ if(didDrag){ didDrag=false; return; } openItem(card.dataset.id); });
   });
   document.querySelectorAll(dropSelector).forEach(function(zone){
     zone.addEventListener('dragover',function(e){ e.preventDefault(); zone.classList.add('drop'); e.dataTransfer.dropEffect='move'; });
-    zone.addEventListener('dragleave',function(){ zone.classList.remove('drop'); });
+    zone.addEventListener('dragleave',function(e){ if(e.target===zone) zone.classList.remove('drop'); });
     zone.addEventListener('drop',function(e){ e.preventDefault(); zone.classList.remove('drop'); var card=document.querySelector('.card[data-id="'+dragId+'"]'); if(card) onDrop(card, zone); });
-  });
-  // klik op kaart opent item (maar niet tijdens drag)
-  document.querySelectorAll('.card[draggable]').forEach(function(card){
-    card.addEventListener('click',function(){ openItem(card.dataset.id); });
   });
 }
 
@@ -547,7 +572,10 @@ function itemFormHTML(it){
      + '<label class="fl">Titel</label><input type="text" data-k="titel" value="'+esc(it.titel)+'"><div class="lint" data-lint="titel"></div>'
      + '<label class="fl">Ondertitel</label><input type="text" data-k="ondertitel" value="'+esc(it.ondertitel)+'">'
      + '<label class="fl">Samenvatting</label><textarea data-k="samenvatting" rows="2">'+esc(it.samenvatting)+'</textarea><div class="lint" data-lint="samenvatting"></div>'
-     + '<label class="fl">Body (markdown)</label><textarea data-k="body" rows="9">'+esc(it.body)+'</textarea><div class="lint" data-lint="body"></div>'
+     + '<label class="fl" style="display:flex;align-items:center;gap:10px">Body (markdown)<button type="button" class="btn2 ghost sm" id="bodyToggle" style="margin-left:auto;padding:4px 10px">Voorbeeld</button></label>'
+     + '<textarea data-k="body" rows="9">'+esc(it.body)+'</textarea>'
+     + '<div class="mdprev" id="bodyPrev" style="display:none"></div>'
+     + '<div class="lint" data-lint="body"></div>'
      + '<div class="grid2">'
        + '<div><label class="fl">Status</label><select data-k="status">'+statusOpts+'</select></div>'
        + '<div><label class="fl">Publicatiedatum</label><input type="date" data-k="publishDate" value="'+(it.publishDate||'')+'"></div>'
@@ -593,7 +621,35 @@ function bindItemForm(it){
   var mLive=m.querySelector('#mLive'); if(mLive && !mLive.disabled) mLive.onclick=function(){ window.open(it.liveUrl,'_blank','noopener'); };
   m.querySelector('#mDel').onclick=function(){ if(confirm('Dit item verwijderen?')){ S.items=S.items.filter(function(x){return x.id!==it.id;}); save(); closeModal(); render(); toast('Verwijderd'); } };
   var mk=m.querySelector('#mkCar'); if(mk) mk.onclick=function(){ openInGenerator(it); };
+  // markdown-voorbeeld togglen
+  var tgl=m.querySelector('#bodyToggle'), ta=m.querySelector('[data-k="body"]'), prev=m.querySelector('#bodyPrev');
+  if(tgl) tgl.onclick=function(){
+    var showing = prev.style.display!=='none';
+    if(showing){ prev.style.display='none'; ta.style.display='block'; tgl.textContent='Voorbeeld'; }
+    else { prev.innerHTML=mdToHtml(ta.value); prev.style.display='block'; ta.style.display='none'; tgl.textContent='Bewerk'; }
+  };
   runLint(it);
+}
+
+/* mini-markdown -> HTML (kop, vet, cursief, lijst, alinea, link) */
+function mdToHtml(md){
+  if(!md) return '<p class="empty">Nog geen tekst.</p>';
+  var lines=String(md).split('\n'), html='', inList=false;
+  function inline(s){
+    return esc(s)
+      .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+      .replace(/(^|[^*])\*([^*]+)\*/g,'$1<em>$2</em>')
+      .replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  }
+  lines.forEach(function(ln){
+    if(/^\s*[-*]\s+/.test(ln)){ if(!inList){html+='<ul>';inList=true;} html+='<li>'+inline(ln.replace(/^\s*[-*]\s+/,''))+'</li>'; return; }
+    if(inList){ html+='</ul>'; inList=false; }
+    if(/^#{1,3}\s+/.test(ln)){ var lvl=ln.match(/^#+/)[0].length; html+='<h'+lvl+'>'+inline(ln.replace(/^#+\s+/,''))+'</h'+lvl+'>'; }
+    else if(ln.trim()===''){ /* spatie */ }
+    else { html+='<p>'+inline(ln)+'</p>'; }
+  });
+  if(inList) html+='</ul>';
+  return html;
 }
 function closeModal(){ document.getElementById('ov').classList.remove('open'); }
 document.getElementById('ov').addEventListener('click',function(e){ if(e.target.id==='ov') closeModal(); });
@@ -765,11 +821,35 @@ function refreshWeekFlag(){
 function byId(id){ return S.items.find(function(x){return x.id===id;}); }
 function render(){
   document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('active', t.dataset.view===VIEW); });
+  renderStats();
   if(VIEW==='tijdlijn') renderTijdlijn();
   else if(VIEW==='werelden') renderWerelden();
   else if(VIEW==='kanban') renderKanban();
   else if(VIEW==='lijst') renderLijst();
   updateCounts(); refreshWeekFlag();
+}
+/* compacte stats-balk: klik filtert de lijst op die status */
+function renderStats(){
+  var el=document.getElementById('stats'); if(!el) return;
+  var total=S.items.length || 1;
+  var cells=[
+    {key:'live', label:'Live', color:'var(--salvia)'},
+    {key:'gepland', label:'Gepland', color:'var(--terracotta)'},
+    {key:'klaar', label:'Klaar', color:'#5a6b34'},
+    {key:'concept', label:'Concept', color:'var(--burro)'},
+    {key:'idee', label:'Idee', color:'#9a9a9a'}
+  ];
+  el.innerHTML = cells.map(function(c){
+    var n=S.items.filter(function(i){return i.status===c.key;}).length;
+    var pct=Math.round(n/total*100);
+    return '<div class="stat" data-statfilter="'+c.key+'">'
+      + '<div class="num">'+n+'</div>'
+      + '<div class="lab">'+statusPill(c.key)+'</div>'
+      + '<div class="bar"><i style="width:'+pct+'%;background:'+c.color+'"></i></div></div>';
+  }).join('');
+  el.querySelectorAll('[data-statfilter]').forEach(function(s){
+    s.onclick=function(){ FILTER={q:'',type:'',thema:'',status:s.getAttribute('data-statfilter')}; setView('lijst'); };
+  });
 }
 function setView(v){ VIEW=v; render(); window.scrollTo(0,0); }
 function updateCounts(){ document.getElementById('nTijd').textContent=S.items.length; document.getElementById('nLijst').textContent=S.items.filter(matchFilter).length; }
