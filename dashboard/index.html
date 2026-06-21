@@ -617,7 +617,7 @@ function bindItemForm(it){
   m.querySelector('#mx').onclick=closeModal;
   m.querySelector('#mSave').onclick=function(){ save(); closeModal(); render(); toast('Opgeslagen'); };
   m.querySelector('#mPlan').onclick=function(){ it.status='gepland'; if(!it.publishDate) it.publishDate=todayStr(); applyAutoLive(); save(); closeModal(); render(); toast('Op gepland gezet'); };
-  m.querySelector('#mPub').onclick=function(){ it.status='live'; if(!it.publishDate) it.publishDate=todayStr(); save(); closeModal(); render(); toast('Gepubliceerd (live)'); };
+  m.querySelector('#mPub').onclick=function(){ publishItem(it); };
   var mLive=m.querySelector('#mLive'); if(mLive && !mLive.disabled) mLive.onclick=function(){ window.open(it.liveUrl,'_blank','noopener'); };
   m.querySelector('#mDel').onclick=function(){ if(confirm('Dit item verwijderen?')){ S.items=S.items.filter(function(x){return x.id!==it.id;}); save(); closeModal(); render(); toast('Verwijderd'); } };
   var mk=m.querySelector('#mkCar'); if(mk) mk.onclick=function(){ openInGenerator(it); };
@@ -730,6 +730,30 @@ function openInGenerator(it){
     + '&tekst='+encodeURIComponent(tekst);
   window.open('../tools/apero-carousel-generator.html'+qs, '_blank', 'noopener');
   toast('Generator geopend, voorgevuld');
+}
+
+/* ============================================================
+   PUBLICEREN  (echte publicatie via /api/publish)
+   Stuurt de volledige content + itemId; de server rendert een
+   on-brand artikelpagina, commit pagina + content.json, Vercel
+   zet het live. Bij succes spiegelen we status/slug/liveUrl lokaal.
+   ============================================================ */
+function publishItem(it){
+  var hasText = (it.body && it.body.trim()) || it.type==='landingsfeit';
+  if(!hasText && !confirm('Dit item heeft nog (bijna) geen tekst. Toch een pagina publiceren?')) return;
+  if(!confirm('"'+it.titel+'" nu live zetten op apero-culture.com?')) return;
+  toast('Publiceren…');
+  fetch('/api/publish',{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ content:S, itemId:it.id }) })
+    .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,status:r.status,j:j}; }); })
+    .then(function(res){
+      if(!res.ok){ throw new Error(res.j && res.j.error ? res.j.error : ('HTTP '+res.status)); }
+      // server is autoritair: spiegel het resultaat lokaal
+      it.status='live'; it.publishDate=res.j.publishDate||it.publishDate||todayStr();
+      it.slug=res.j.slug||it.slug; it.liveUrl=res.j.liveUrl||it.liveUrl; it.updatedAt=nowISO();
+      save(); closeModal(); render();
+      toast('Live gezet, deploy loopt (±10s)');
+    })
+    .catch(function(e){ toast('Publiceren mislukt: '+e.message); });
 }
 
 /* ============================================================

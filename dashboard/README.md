@@ -7,7 +7,25 @@ Het redactionele brein: hier zie je wat er wanneer gepubliceerd moet worden, voe
 - **Canoniek: `/data/content.json`** (single source of truth). Het dashboard leest dit bij laden en exporteert ernaar terug. De geëxporteerde `content.json` commit je in de repo, dat is de echte opslag.
 - **Werkstatus: `localStorage['apero_content_v1']`** zodat niets verloren gaat tussen sessies. Knop **Reset** wist de werkstatus en herlaadt uit `content.json`.
 - **Roundtrip-veilig:** lezen -> bewerken -> *Exporteer content.json* -> committen -> opnieuw laden geeft exact dezelfde data (geverifieerd byte-identiek).
-- **Optionele 1-klik-opslag:** `api/save-content.js` (Vercel function) commit `content.json` via de GitHub API. Staat UIT (`SAVE_API_ENABLED=false`); aanzetten zodra repo + `GITHUB_TOKEN` bestaan (zie de file).
+- **Optionele 1-klik-opslag:** `api/save-content.mjs` (Vercel function) commit `content.json` via de GitHub API.
+
+## Publiceren (echte pagina's live zetten)
+
+De knop **Publiceer nu** in een item roept `api/publish.mjs` aan. Die:
+1. rendert het item tot een on-brand artikelpagina (zelfde opbouw als de rest van de site: nav, `article-hero`, `prose/narrow`, footer, `styles.css`);
+2. commit de pagina (op de slug van het item) + de bijgewerkte `content.json` in één commit via de GitHub Git Data API;
+3. Vercel deployt automatisch, de pagina staat binnen ~10s live op `apero-culture.com/<slug>`.
+
+**Eenmalige setup** (Vercel → Project `apero-website` → Settings → Environment Variables):
+
+| Env-var | Waarde |
+|---|---|
+| `GITHUB_TOKEN` | Fine-grained PAT met **Contents: read and write** op `Thegrapeagency/apero-website` |
+| `GITHUB_REPO` | `Thegrapeagency/apero-website` (default, optioneel) |
+| `GITHUB_BRANCH` | `main` (default, optioneel) |
+| `CONTENT_PATH` | `dashboard/data/content.json` (default, optioneel) |
+
+Zolang `GITHUB_TOKEN` niet gezet is, geeft Publiceren een nette melding en gebeurt er niets. De route zit achter dezelfde basic-auth als het dashboard, dus alleen de redactie kan publiceren; het token blijft server-side.
 
 ## De vier views
 
