@@ -199,7 +199,8 @@ nav.top.scrolled{box-shadow:0 1px 0 var(--line)}
 .hero .petals{animation:petalbreathe 7s ease-in-out infinite}
 .article-hero .petals{animation:petalbreathe 9s ease-in-out infinite}
 .cw .petals,.cover .petals{animation:petalbreathe 8s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.hero .petals,.article-hero .petals,.cover .petals{animation:none}}
+footer .petals{animation:petalbreathe 9s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.hero .petals,.article-hero .petals,.cover .petals,footer .petals{animation:none}}
 /* de O popt het woordmerk in */
 @keyframes oPop{from{scale:.2;opacity:0}}
 .hero .wm .flower{animation:oPop 1.1s var(--spring) .5s both}

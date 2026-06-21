@@ -75,6 +75,18 @@
     radial-gradient(circle calc(var(--c)*0.6) at 25% 75%, var(--b) 99%,transparent 100%);
   background-size:calc(var(--c)*2) calc(var(--c)*2);}
 
+/* het veld ademt: elk bolletje beweegt los maar synchroon */
+@keyframes petalbreathe{
+  0%,100%{background-position:0 0,0 0,0 0,0 0}
+  50%{background-position:
+    calc(var(--c)*-.1) calc(var(--c)*-.1),
+    calc(var(--c)*.1)  calc(var(--c)*.1),
+    calc(var(--c)*.1)  calc(var(--c)*-.1),
+    calc(var(--c)*-.1) calc(var(--c)*.1)}
+}
+header .petals,footer .petals{animation:petalbreathe 9s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){header .petals,footer .petals{animation:none}}
+
 /* korrel-overlay — leg over elk vlak voor de geschilderde textuur */
 .grain{position:absolute;inset:0;pointer-events:none;opacity:.55;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E")}
