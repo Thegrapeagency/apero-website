@@ -1,0 +1,14 @@
+Beelden per land voor APÉRO Culture.
+
+Naamgeving: kleine letters, geen spaties, geen accenten, streepje als scheidingsteken.
+Formaat: .jpg of .webp (liefst liggend, minimaal ~1600px breed).
+
+Aanbevolen bestandsnamen (sluiten aan op de zes werelden van de site):
+  italie.jpg        (Italië)
+  frankrijk.jpg     (Frankrijk)
+  spanje.jpg        (Spanje)
+  griekenland.jpg   (de anijsgordel)
+  turkije.jpg       (de anijsgordel)
+  libanon.jpg       (de anijsgordel)
+  portugal.jpg      (Portugal)
+  marokko.jpg       (Marokko)
