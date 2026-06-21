@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APÉRO · Carousel-generator</title>
+
+<!-- §0.1 + §9.2  apero-tokens.css ongewijzigd geïmporteerd (kleur, type, bouwstenen, font-import) -->
+<link rel="stylesheet" href="../apero-tokens.css">
+
+<!-- §9.4  export-library: html-to-image (toPng) -->
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+
+<style>
+  /* ---- alleen UI-chroom; raakt de slide-tokens niet aan ---- */
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--panna-2);color:var(--espresso);font-family:var(--body);font-weight:400}
+  .app{display:grid;grid-template-columns:420px 1fr;height:100vh;overflow:hidden}
+
+  /* linker paneel */
+  .panel{background:var(--panna);border-right:1px solid var(--line);overflow-y:auto;padding:24px}
+  .panel h1{font-family:var(--disp);font-weight:800;font-size:30px;margin:0 0 2px;letter-spacing:-.01em}
+  .panel .sub{font-style:italic;font-family:var(--disp);color:var(--mattone);font-size:16px;margin-bottom:20px}
+  fieldset{border:1px solid var(--line);border-radius:10px;padding:14px;margin:0 0 16px}
+  legend{font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta);padding:0 6px}
+  label{display:block;font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-70);margin:10px 0 4px}
+  input,select,textarea{width:100%;font-family:var(--body);font-size:14px;padding:9px 10px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--espresso)}
+  textarea{resize:vertical;min-height:64px;line-height:1.45}
+  .row{display:flex;gap:8px}
+  .row>*{flex:1}
+  .hint{font-size:11px;color:var(--ink-50);margin-top:4px;line-height:1.4}
+  .lint{font-size:12px;color:var(--mattone);font-weight:600;margin-top:6px;display:none}
+  .lint.show{display:block}
+  .count{font-size:11px;color:var(--ink-50);font-weight:600;margin-top:5px;letter-spacing:.02em}
+  .count.near{color:var(--burro)}
+  .count.over{color:var(--terracotta)}
+
+  /* slide-lijst */
+  .slides-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+  .slide-item{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;cursor:pointer;background:#fff;transition:border-color .2s}
+  .slide-item.active{border-color:var(--terracotta);box-shadow:inset 0 0 0 1px var(--terracotta)}
+  .slide-item .idx{font-family:var(--disp);font-weight:700;font-size:16px;width:26px;color:var(--terracotta)}
+  .slide-item .ty{flex:1;font-size:13px;font-weight:600}
+  .slide-item .mini{font-size:11px;color:var(--ink-50);text-transform:capitalize}
+  .iconbtn{border:1px solid var(--line);background:#fff;border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:13px;line-height:1;color:var(--ink-70)}
+  .iconbtn:hover{border-color:var(--terracotta);color:var(--terracotta)}
+
+  .btnui{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:var(--espresso);color:var(--panna);padding:12px 16px;border-radius:100px;border:0;cursor:pointer;transition:background .2s}
+  .btnui:hover{background:var(--terracotta)}
+  .btnui.ghost{background:transparent;color:var(--espresso);box-shadow:inset 0 0 0 1px var(--line)}
+  .btnui.ghost:hover{background:var(--espresso);color:var(--panna)}
+  .btnui.full{width:100%;display:block;margin-top:8px}
+  .btnui[disabled]{opacity:.5;cursor:not-allowed}
+
+  /* werkblad rechts */
+  .stage{position:relative;overflow:auto;padding:40px;display:flex;flex-wrap:wrap;gap:34px;align-content:flex-start;justify-content:center}
+  .card{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .card .cap{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-50)}
+  .card.active .frame{outline:3px solid var(--terracotta);outline-offset:4px}
+  .frame{position:relative;background:var(--panna);box-shadow:0 30px 60px -40px rgba(35,27,19,.6);cursor:pointer}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--espresso);color:var(--panna);padding:14px 24px;border-radius:100px;font-weight:600;font-size:13px;letter-spacing:.04em;opacity:0;pointer-events:none;transition:opacity .3s;z-index:50}
+  .toast.show{opacity:1}
+
+  /* §9.1 offscreen ware-grootte render-container, nooit scale */
+  #render-pool{position:fixed;left:-99999px;top:0;pointer-events:none}
+</style>
+</head>
+<body class="apero-body">
+<div class="app">
+
+  <!-- ============ LINKER PANEEL ============ -->
+  <aside class="panel">
+    <h1>Carousel-generator</h1>
+    <div class="sub">on-brand slides, één klik export</div>
+
+    <fieldset>
+      <legend>Carousel</legend>
+      <label>Set-naam (in bestandsnaam)</label>
+      <input id="setName" value="italie" placeholder="bijv. italie">
+      <div class="row">
+        <div>
+          <label>Formaat</label>
+          <select id="format">
+            <option value="4:5">Carousel · 1080×1350</option>
+            <option value="1:1">Vierkant · 1080×1080</option>
+            <option value="9:16">Story · 1080×1920</option>
+          </select>
+        </div>
+        <div>
+          <label>Achtergrond-systeem</label>
+          <select id="scheme">
+            <option value="creme">Crème (default)</option>
+            <option value="terracotta">Terracotta-vlak</option>
+            <option value="salvia">Salie-vlak</option>
+            <option value="espresso">Espresso-vlak</option>
+          </select>
+        </div>
+      </div>
+      <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;margin-top:12px">
+        <input type="checkbox" id="pageInd" checked style="width:auto"> Pagina-indicator tonen (01 / 0n)
+      </label>
+      <label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;margin-top:6px">
+        <input type="checkbox" id="markEl" checked style="width:auto"> Klein vast woordmerk in hoek
+      </label>
+      <div class="row" style="margin-top:8px">
+        <div>
+          <label>Export-scherpte</label>
+          <select id="pixelRatio">
+            <option value="2">2× (scherp)</option>
+            <option value="1">1×</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Slides (3–10)</legend>
+      <div class="slides-list" id="slidesList"></div>
+      <select id="addType">
+        <option value="cover">Cover · de haak</option>
+        <option value="verhaal">Verhaal · tekst</option>
+        <option value="citaat">Citaat · cartouche</option>
+        <option value="beeld">Beeld · fresco</option>
+        <option value="lijst">Lijst · line-up</option>
+        <option value="slot">Slot · CTA</option>
+      </select>
+      <button class="btnui full ghost" id="addSlide">+ Slide toevoegen</button>
+    </fieldset>
+
+    <fieldset id="editorWrap">
+      <legend>Slide bewerken</legend>
+      <div id="editor"></div>
+    </fieldset>
+
+    <button class="btnui full" id="exportOne">Exporteer deze slide</button>
+    <button class="btnui full" id="exportAll">Exporteer alle slides</button>
+  </aside>
+
+  <!-- ============ WERKBLAD ============ -->
+  <main class="stage" id="stage"></main>
+</div>
+
+<div id="render-pool"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   APÉRO carousel-generator
+   - importeert apero-tokens.css ongewijzigd (zie <link>)
+   - slide-structuren gelift uit apero-templates.js, aangepast
+     naar het carousel-canvas (default 1080×1350)
+   - houdt §8 (merkregels, lint) en §9 (export) aan
+   ============================================================ */
+(function(){
+  "use strict";
+
+  /* ---- lokale fresco-bibliotheek (productie-beelden uit de repo, §9.3) ----
+     Hergebruikt de bestaande, geoptimaliseerde beelden in /assets (zelfde
+     origin, dus CORS-veilig voor de PNG-export). */
+  var FRESCOES = [
+    "../assets/fresco/fresco-01.jpg","../assets/fresco/fresco-02.jpg","../assets/fresco/fresco-04.jpg",
+    "../assets/fresco/fresco-06.jpg","../assets/fresco/fresco-10.jpg","../assets/fresco/fresco-12.jpg",
+    "../assets/fresco/fresco-16.jpg","../assets/fresco/fresco-23.jpg",
+    "../assets/landen/italie.jpg","../assets/landen/frankrijk.jpg","../assets/landen/spanje.jpg",
+    "../assets/landen/portugal.jpg","../assets/landen/marokko.jpg","../assets/landen/anijsgordel.jpg"
+  ];
+  var DEFAULT_IMG = FRESCOES[0];
+
+  /* ---- formaten (§1) ---- */
+  var FORMATS = {
+    "4:5":  {w:1080,h:1350},
+    "1:1":  {w:1080,h:1080},
+    "9:16": {w:1080,h:1920}
+  };
+
+  /* ---- §8 lint: verboden in tekst ---- */
+  var CLICHES = ["ontdek","duik in","unieke ervaring","feest voor de zintuigen","iconisch","niet voor niets","proeverij"];
+  function lintText(s){
+    if(!s) return null;
+    var low = s.toLowerCase();
+    if(/[—–]/.test(s)) return "Geen lange streepjes (— of –). Gebruik komma, punt of ronde haken.";
+    if(/\bU\b/.test(s)) return null; // losse hoofdletter-U kan een afkorting zijn; alleen woord 'u' weren
+    if(/(^|\s)u(\s|[,.!?])/i.test(" "+s+" ") && /\bu\b/.test(low)) {
+      // 'u' als aanspreekvorm
+      if(/\bu\b/.test(low)) return "Gebruik 'je', nooit 'u'.";
+    }
+    for(var k=0;k<CLICHES.length;k++){ if(low.indexOf(CLICHES[k])>-1) return "Reclamecliché/jargon: “"+CLICHES[k]+"”. Schrijf het concreter.";}
+    var caps = s.replace(/[^A-Za-zÀ-ÿ ]/g,"").trim();
+    if(caps.length>14 && caps===caps.toUpperCase() && /[A-Z].*\s.*[A-Z]/.test(caps)) return "Geen ALL CAPS-zinnen (alleen woordmerk/kicker).";
+    return null;
+  }
+
+  function esc(s){ return (s==null?"":String(s)).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+  /* ============================================================
+     STATE
+     ============================================================ */
+  var state = {
+    setName:"italie",
+    format:"4:5",
+    scheme:"creme",
+    pageInd:true,
+    markEl:true,
+    pixelRatio:2,
+    slides:[],
+    active:0
+  };
+
+  /* default content per type (stem uit de Merkbijbel) */
+  function blank(type){
+    switch(type){
+      case "cover":   return {type:"cover", kicker:"Een onderzoek naar de apéro", titel:"Het uur gaat open.", achtergrond:"fresco", beeldUrl:DEFAULT_IMG};
+      case "verhaal": return {type:"verhaal", kop:"Torino, 1786", body:"Antonio Benedetto Carpano mengt witte wijn met kruiden en noemt het vermout. Het aperitief is geboren."};
+      case "citaat":  return {type:"citaat", quote:"Aperire, openen. De avond begint met één glas.", bron:"@apero.festival", vlak:"terracotta", beeldUrl:DEFAULT_IMG};
+      case "beeld":   return {type:"beeld", beeldUrl:DEFAULT_IMG, onderschrift:"Het uur tussen werk en diner"};
+      case "lijst":   return {type:"lijst", kop:"De zes werelden", items:["Vermout-uur","Bar der Klassiekers","De Lange Tafel","Het Apéro-college"]};
+      case "slot":    return {type:"slot", payoff:"Open de avond.", handle:"apero-festival.nl"};
+    }
+  }
+
+  /* ============================================================
+     SLIDE-RENDER  (gelift uit apero-templates.js → carousel-canvas)
+     Elke functie geeft de INNER-HTML van een slide terug; de
+     buitenste node (op ware px-grootte) wordt door buildNode gezet.
+     ============================================================ */
+  var SCHEME_BG = {creme:"var(--panna)", terracotta:"var(--terracotta)", salvia:"var(--salvia)", espresso:"var(--espresso)"};
+  var SCHEME_ON_DARK = {creme:false, terracotta:true, salvia:true, espresso:true};
+
+  function pageTag(idx,total,dark){
+    if(!state.pageInd) return "";
+    var col = dark ? "rgba(244,234,214,.7)" : "var(--ink-50)";
+    return '<div style="position:absolute;top:64px;right:80px;z-index:6;font-family:var(--body);font-weight:600;font-size:22px;letter-spacing:.16em;color:'+col+'">'
+      + String(idx+1).padStart(2,"0")+" / "+String(total).padStart(2,"0")+'</div>';
+  }
+  function markTag(dark){
+    if(!state.markEl) return "";
+    var flower = dark ? '<span class="flower cream"></span>' : '<span class="flower"></span>';
+    var col = dark ? "var(--panna)" : "var(--espresso)";
+    return '<div class="lockup" style="position:absolute;left:80px;bottom:60px;z-index:6;font-size:34px;color:'+col+'">APÉR'+flower+'</div>';
+  }
+  function grain(){ return '<div class="grain" style="z-index:7"></div>'; }
+
+  /* 1 · COVER — kicker + grote Bodoni-hook; fresco (indien gekozen)
+     ALTIJD in een .arch (§8), nooit full-bleed. Tekst op crème eronder. */
+  function rCover(d,idx,total){
+    var fresco = d.achtergrond==="fresco";
+    var archBlock = fresco
+      ? '<div class="arch" style="height:660px;border-radius:50% 50% 10px 10px / 24% 24% 0 0">'
+        + '<div class="fresco" style="background-image:url(\''+esc(d.beeldUrl||DEFAULT_IMG)+'\')"></div>'
+        + '<div class="wash soft"></div></div>'
+      : '';
+    var textBlock = ''
+      + '<div style="display:flex;flex-direction:column;gap:26px">'
+        + '<div class="eyebrow" style="font-size:24px;letter-spacing:.26em">'+esc(d.kicker)+'</div>'
+        + '<div style="font-family:var(--disp);font-weight:800;font-size:'+(fresco?96:118)+'px;line-height:.92;letter-spacing:-.01em;color:var(--espresso)">'+esc(d.titel)+'</div>'
+      + '</div>';
+    var inner = fresco
+      ? '<div data-fitbox style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;padding:80px;gap:46px">'+archBlock+textBlock+'</div>'
+      : '<div data-fitbox style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:center;padding:96px 80px">'+textBlock+'</div>';
+    return ''
+      + '<div class="petals" style="position:absolute;inset:0;--c:200px;opacity:'+(fresco?0:.2)+'"></div>'
+      + (fresco?'':'<div class="veil soft"></div>')
+      + grain()
+      + pageTag(idx,total,false)
+      + inner
+      + markTag(false);
+  }
+
+  /* 2 · VERHAAL — crème, kop + body, ruim wit */
+  function rVerhaal(d,idx,total){
+    return ''
+      + '<div class="petals" style="position:absolute;inset:0;--c:220px;opacity:.16"></div>'
+      + '<div class="veil soft"></div>'
+      + grain()
+      + pageTag(idx,total,false)
+      + '<div data-fitbox style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:center;padding:120px 80px;gap:34px">'
+        + '<div style="font-family:var(--disp);font-weight:700;font-size:96px;line-height:.96;letter-spacing:-.01em;color:var(--espresso)">'+esc(d.kop)+'</div>'
+        + '<div style="font-family:var(--body);font-weight:400;font-size:38px;line-height:1.5;color:var(--ink-70);max-width:840px;text-wrap:pretty">'+esc(d.body)+'</div>'
+      + '</div>'
+      + markTag(false);
+  }
+
+  /* 3 · CITAAT — vol merkkleur-vlak óf fresco, tekst in .cartouche */
+  function rCitaat(d,idx,total){
+    var onFresco = d.vlak==="fresco";
+    var dark = onFresco ? false : SCHEME_ON_DARK[d.vlak] !== false;
+    var bg = onFresco
+      ? '<div class="fresco" style="background-image:url(\''+esc(d.beeldUrl||DEFAULT_IMG)+'\')"></div><div class="wash"></div>'
+      : '';
+    return ''
+      + bg
+      + grain()
+      + pageTag(idx,total,dark && !onFresco)
+      + '<div data-fitbox style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:110px 90px">'
+        + '<div class="cartouche" style="max-width:880px;padding:48px 52px">'
+          + '<span class="ct-k">apéro</span>'
+          + '<div class="ct-t" style="font-size:62px">'+esc(d.quote)+'</div>'
+          + (d.bron?'<div class="ct-s" style="font-size:32px">'+esc(d.bron)+'</div>':'')
+        + '</div>'
+      + '</div>'
+      + markTag(dark && !onFresco);
+  }
+
+  /* 4 · BEELD — .arch + .fresco groot, korte kicker eronder */
+  function rBeeld(d,idx,total){
+    return ''
+      + grain()
+      + pageTag(idx,total,false)
+      + '<div style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;padding:80px;gap:40px">'
+        + '<div class="arch" style="flex:1;border-radius:50% 50% 10px 10px / 22% 22% 0 0">'
+          + '<div class="fresco" style="background-image:url(\''+esc(d.beeldUrl||DEFAULT_IMG)+'\')"></div>'
+          + '<div class="wash soft"></div>'
+        + '</div>'
+        + (d.onderschrift?'<div class="eyebrow" style="font-size:24px;letter-spacing:.24em;text-align:center;padding-bottom:30px">'+esc(d.onderschrift)+'</div>':'')
+      + '</div>'
+      + markTag(false);
+  }
+
+  /* 5 · LIJST — gelift uit Social line-up, dunne --line dividers */
+  function rLijst(d,idx,total){
+    var items = (d.items||[]).filter(function(x){return x && x.trim();});
+    var rows = items.map(function(it,n){
+      var last = n===items.length-1;
+      return '<div style="font-family:var(--disp);font-weight:700;font-size:72px;line-height:1.1;'
+        + (last?'':'border-bottom:2px solid var(--line);')+'padding:26px 0;color:var(--espresso)">'+esc(it)+'</div>';
+    }).join("");
+    return ''
+      + '<div class="petals" style="position:absolute;inset:0;--c:200px;opacity:.18"></div>'
+      + '<div class="veil soft"></div>'
+      + grain()
+      + pageTag(idx,total,false)
+      + '<div data-fitbox style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:center;padding:104px 80px">'
+        + '<div class="eyebrow" style="font-size:24px;letter-spacing:.26em;margin-bottom:30px">'+esc(d.kop)+'</div>'
+        + '<div>'+rows+'</div>'
+      + '</div>'
+      + markTag(false);
+  }
+
+  /* 6 · SLOT — woordmerk groot, payoff italic, handle. Geen schreeuw (§8) */
+  function rSlot(d,idx,total){
+    return ''
+      + '<div class="petals" style="position:absolute;inset:0;--c:200px;opacity:.2"></div>'
+      + '<div class="veil"></div>'
+      + grain()
+      + pageTag(idx,total,false)
+      + '<div data-fitbox style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:110px 80px;gap:36px">'
+        + '<div class="lockup" style="font-size:150px">APÉR<span class="flower"></span></div>'
+        + '<div style="font-family:var(--disp);font-style:italic;font-weight:500;font-size:52px;color:var(--mattone)">'+esc(d.payoff)+'</div>'
+        + '<div style="font-family:var(--body);font-weight:600;font-size:26px;letter-spacing:.18em;text-transform:uppercase;color:var(--espresso)">'+esc(d.handle)+'</div>'
+      + '</div>';
+  }
+
+  var RENDER = {cover:rCover, verhaal:rVerhaal, citaat:rCitaat, beeld:rBeeld, lijst:rLijst, slot:rSlot};
+
+  /* buitenste slide-node op ware grootte (§9.1) */
+  function buildNode(d,idx,total){
+    var f = FORMATS[state.format];
+    var darkVlak = (d.type==="citaat" && d.vlak!=="fresco") ? SCHEME_ON_DARK[d.vlak]!==false : false;
+    var bg;
+    if(d.type==="citaat" && d.vlak!=="fresco"){ bg = SCHEME_BG[d.vlak]||"var(--panna)"; }
+    else if((d.type==="cover" && d.achtergrond!=="fresco")){ bg = SCHEME_BG[state.scheme]; }
+    else { bg = "var(--panna)"; }
+    // op gekleurd vlak: tekst-kleur omkeren naar crème (§2)
+    var node = document.createElement("div");
+    node.style.cssText = "width:"+f.w+"px;height:"+f.h+"px;position:relative;overflow:hidden;background:"+bg+";font-family:var(--body)"
+      + (darkVlak?";color:var(--panna)":"");
+    node.innerHTML = RENDER[d.type](d,idx,total);
+    if(darkVlak){
+      // forceer crème-tekst op het gekleurde vlak (cover-titels/eyebrows)
+      node.querySelectorAll('[style*="var(--espresso)"]').forEach(function(el){
+        el.style.color = "var(--panna)";
+      });
+    }
+    return node;
+  }
+
+  /* ------------------------------------------------------------
+     AUTO-FIT — laat de gebruiker veel tekst kwijt: content die
+     niet in het canvas past krimpt mee (binnen leesbaarheidsgrens
+     §3, nooit kleiner dan ~24px). Werkt op de [data-fitbox]-laag.
+     Moet draaien terwijl de node in de DOM staat (preview + export);
+     ancestor-scale van de preview beïnvloedt clientHeight niet.
+     ------------------------------------------------------------ */
+  function applyFit(node){
+    var box = node.querySelector("[data-fitbox]");
+    if(!box) return;
+    var cs = getComputedStyle(box);
+    var inner = document.createElement("div");
+    inner.style.display = "flex";
+    inner.style.flexDirection = "column";
+    inner.style.width = "100%";
+    inner.style.gap = cs.gap;
+    inner.style.alignItems = cs.alignItems;
+    inner.style.textAlign = cs.textAlign;
+    while(box.firstChild){ inner.appendChild(box.firstChild); }
+    box.appendChild(inner);
+    var avail = box.clientHeight - parseFloat(cs.paddingTop||0) - parseFloat(cs.paddingBottom||0);
+    var need = inner.scrollHeight;
+    if(need > avail && need > 0){
+      var k = Math.max(0.42, avail / need);   // ondergrens ~ 24px op de kleinste body
+      inner.style.transform = "scale("+k+")";
+      inner.style.transformOrigin = "center center";
+    }
+  }
+
+  /* ============================================================
+     PREVIEW  (geschaalde kloon — export gebruikt ongeschaalde node)
+     ============================================================ */
+  var stage = document.getElementById("stage");
+  function previewScale(){
+    var f = FORMATS[state.format];
+    // pas in ~330px breed kaartje
+    return Math.min(330/f.w, 430/f.h);
+  }
+  function renderStage(){
+    stage.innerHTML="";
+    var total = state.slides.length;
+    var sc = previewScale();
+    var f = FORMATS[state.format];
+    state.slides.forEach(function(d,idx){
+      var card = document.createElement("div");
+      card.className = "card"+(idx===state.active?" active":"");
+      var frame = document.createElement("div");
+      frame.className="frame";
+      frame.style.width = (f.w*sc)+"px";
+      frame.style.height = (f.h*sc)+"px";
+      var node = buildNode(d,idx,total);
+      node.style.transformOrigin="top left";
+      node.style.transform="scale("+sc+")";
+      frame.appendChild(node);
+      frame.addEventListener("click",function(){ state.active=idx; renderAll(); });
+      var cap = document.createElement("div");
+      cap.className="cap";
+      cap.textContent = String(idx+1).padStart(2,"0")+" · "+d.type;
+      card.appendChild(frame); card.appendChild(cap);
+      stage.appendChild(card);
+      applyFit(node);                 // pas ná mount in de DOM (clientHeight nodig)
+    });
+  }
+
+  /* ============================================================
+     SLIDE-LIJST + EDITOR (linker paneel)
+     ============================================================ */
+  var slidesList = document.getElementById("slidesList");
+  function renderList(){
+    slidesList.innerHTML="";
+    state.slides.forEach(function(d,idx){
+      var row = document.createElement("div");
+      row.className="slide-item"+(idx===state.active?" active":"");
+      row.innerHTML = '<span class="idx">'+String(idx+1).padStart(2,"0")+'</span>'
+        + '<span class="ty">'+d.type.charAt(0).toUpperCase()+d.type.slice(1)+'</span>';
+      var up=document.createElement("button"); up.className="iconbtn"; up.textContent="↑";
+      var dn=document.createElement("button"); dn.className="iconbtn"; dn.textContent="↓";
+      var del=document.createElement("button"); del.className="iconbtn"; del.textContent="✕";
+      up.onclick=function(e){e.stopPropagation();move(idx,-1);};
+      dn.onclick=function(e){e.stopPropagation();move(idx,1);};
+      del.onclick=function(e){e.stopPropagation();remove(idx);};
+      row.appendChild(up);row.appendChild(dn);row.appendChild(del);
+      row.addEventListener("click",function(){state.active=idx;renderAll();});
+      slidesList.appendChild(row);
+    });
+  }
+  function move(idx,dir){
+    var j=idx+dir; if(j<0||j>=state.slides.length) return;
+    var t=state.slides[idx]; state.slides[idx]=state.slides[j]; state.slides[j]=t;
+    state.active=j; renderAll();
+  }
+  function remove(idx){
+    if(state.slides.length<=1) return;
+    state.slides.splice(idx,1);
+    state.active=Math.max(0,Math.min(state.active,state.slides.length-1));
+    renderAll();
+  }
+
+  /* veld-definities per type voor de editor */
+  function imgSelect(id,val){
+    var opts = FRESCOES.map(function(u,n){
+      return '<option value="'+u+'"'+(u===val?" selected":"")+'>fresco-'+String(n+1).padStart(2,"0")+'</option>';
+    }).join("");
+    var custom = (val && FRESCOES.indexOf(val)===-1) ? '<option value="'+esc(val)+'" selected>(eigen URL)</option>' : '';
+    return '<select data-k="'+id+'" data-img="1">'+opts+custom+'</select>'
+      + '<input data-k="'+id+'" data-imgurl="1" placeholder="of plak eigen beeld-URL" value="'+esc(val||"")+'" style="margin-top:6px">';
+  }
+
+  var editor = document.getElementById("editor");
+  function renderEditor(){
+    var d = state.slides[state.active];
+    if(!d){ editor.innerHTML="<div class='hint'>Geen slide geselecteerd.</div>"; return; }
+    var h = "";
+    // comfort-grens (tekens) per veld: tot hier past het op volle grootte,
+    // daarna laat de auto-fit de tekst krimpen.
+    function fld(label,key,el,limit){
+      return '<label>'+label+'</label>'+el
+        + (limit?'<div class="count" data-count="'+key+'" data-limit="'+limit+'"></div>':'')
+        + '<div class="lint" data-lint="'+key+'"></div>';
+    }
+    switch(d.type){
+      case "cover":
+        h += fld("Kicker (UPPERCASE kort)","kicker",'<input data-k="kicker" value="'+esc(d.kicker)+'">',42);
+        h += fld("Titel (de haak, max ~6 woorden)","titel",'<textarea data-k="titel">'+esc(d.titel)+'</textarea>',(d.achtergrond==="fresco"?32:42));
+        h += '<label>Achtergrond</label><select data-k="achtergrond"><option value="fresco"'+(d.achtergrond==="fresco"?" selected":"")+'>Fresco in beeld</option><option value="creme"'+(d.achtergrond!=="fresco"?" selected":"")+'>Crème / vlak</option></select>';
+        h += '<label>Fresco</label>'+imgSelect("beeldUrl",d.beeldUrl);
+        break;
+      case "verhaal":
+        h += fld("Kop (begin vaak met plaats + jaar)","kop",'<input data-k="kop" value="'+esc(d.kop)+'">',28);
+        h += fld("Body (één feit per slide)","body",'<textarea data-k="body">'+esc(d.body)+'</textarea>',300);
+        break;
+      case "citaat":
+        h += fld("Quote","quote",'<textarea data-k="quote">'+esc(d.quote)+'</textarea>',130);
+        h += fld("Bron (optioneel)","bron",'<input data-k="bron" value="'+esc(d.bron||"")+'">');
+        h += '<label>Vlak</label><select data-k="vlak">'
+          + ['terracotta','salvia','espresso','fresco'].map(function(v){return '<option value="'+v+'"'+(d.vlak===v?" selected":"")+'>'+v+'</option>';}).join("")
+          + '</select>';
+        h += '<div class="hint" data-frescorow style="'+(d.vlak==="fresco"?"":"display:none")+'"><label>Fresco</label>'+imgSelect("beeldUrl",d.beeldUrl)+'</div>';
+        break;
+      case "beeld":
+        h += '<label>Fresco</label>'+imgSelect("beeldUrl",d.beeldUrl);
+        h += fld("Onderschrift (kort, optioneel)","onderschrift",'<input data-k="onderschrift" value="'+esc(d.onderschrift||"")+'">',46);
+        break;
+      case "lijst":
+        h += fld("Kop","kop",'<input data-k="kop" value="'+esc(d.kop)+'">',34);
+        h += '<label>Regels (3–5, één per regel)</label><textarea data-k="items" style="min-height:120px">'+esc((d.items||[]).join("\n"))+'</textarea>';
+        h += '<div class="count" data-count="items" data-limit="26"></div>';
+        h += '<div class="lint" data-lint="items"></div>';
+        break;
+      case "slot":
+        h += fld("Payoff (italic)","payoff",'<input data-k="payoff" value="'+esc(d.payoff)+'">',34);
+        h += fld("Handle / URL","handle",'<input data-k="handle" value="'+esc(d.handle)+'">',40);
+        break;
+    }
+    editor.innerHTML = h;
+    bindEditor();
+    runLint();
+  }
+
+  function bindEditor(){
+    editor.querySelectorAll("[data-k]").forEach(function(inp){
+      var ev = (inp.tagName==="SELECT")?"change":"input";
+      inp.addEventListener(ev,function(){
+        var d = state.slides[state.active];
+        var k = inp.getAttribute("data-k");
+        if(k==="items"){ d.items = inp.value.split("\n").map(function(s){return s;}).filter(function(s){return s.trim();}); }
+        else if(inp.hasAttribute("data-imgurl")){ if(inp.value.trim()){ d.beeldUrl = inp.value.trim(); } }
+        else { d[k] = inp.value; }
+        // vlak=fresco rij tonen
+        if(k==="vlak"){ renderEditor(); }
+        if(k==="achtergrond"){ renderEditor(); }
+        renderList(); renderStage(); runLint();
+      });
+    });
+  }
+
+  /* §8 lint + comfort-tellers zichtbaar maken */
+  function runLint(){
+    var d = state.slides[state.active]; if(!d) return;
+    editor.querySelectorAll("[data-lint]").forEach(function(box){
+      var k = box.getAttribute("data-lint");
+      var val = (k==="items") ? (d.items||[]).join("  ") : d[k];
+      var msg = lintText(val);
+      if(k==="items"){
+        var n=(d.items||[]).filter(function(s){return s.trim();}).length;
+        if(n<3||n>5){ msg = "Lijst werkt met 3–5 regels (nu "+n+")."; }
+      }
+      if(msg){ box.textContent="⚠ "+msg; box.classList.add("show"); }
+      else { box.textContent=""; box.classList.remove("show"); }
+    });
+    runCounts();
+  }
+
+  /* comfort-teller: tot de grens past het op volle grootte, daarna krimpt de auto-fit */
+  function runCounts(){
+    var d = state.slides[state.active]; if(!d) return;
+    editor.querySelectorAll("[data-count]").forEach(function(box){
+      var k = box.getAttribute("data-count");
+      var limit = Number(box.getAttribute("data-limit"));
+      var now, label;
+      if(k==="items"){
+        // langste regel telt; comfort is per regel
+        var lines = (d.items||[]).filter(function(s){return s.trim();});
+        now = lines.reduce(function(m,s){return Math.max(m,s.length);},0);
+        label = now+" / "+limit+" tekens (langste regel)";
+      } else {
+        now = (d[k]||"").length;
+        label = now+" / "+limit+" tekens";
+      }
+      box.textContent = (now>limit ? "↓ krimpt · " : "") + label;
+      box.classList.toggle("over", now>limit);
+      box.classList.toggle("near", now<=limit && now>limit*0.85);
+    });
+  }
+
+  /* ============================================================
+     EXPORT  (§9)
+     ============================================================ */
+  var pool = document.getElementById("render-pool");
+  function waitImages(node){
+    var imgs = [];
+    node.querySelectorAll('[style*="background-image"]').forEach(function(el){
+      var m = /url\(['"]?([^'")]+)['"]?\)/.exec(el.getAttribute("style")||"");
+      if(m && /\.(png|jpe?g|webp|svg)/i.test(m[1])){ imgs.push(m[1]); }
+    });
+    return Promise.all(imgs.map(function(src){
+      return new Promise(function(res){
+        var im = new Image();
+        im.onload=function(){ (im.decode?im.decode().then(res,res):res()); };
+        im.onerror=res;
+        im.src=src;
+      });
+    }));
+  }
+
+  async function exportSlide(idx){
+    var d = state.slides[idx], total = state.slides.length;
+    var node = buildNode(d,idx,total);          // ware grootte, geen scale (§9.1)
+    pool.appendChild(node);
+    try{
+      await document.fonts.ready;               // §9.2
+      applyFit(node);                           // auto-fit op ware grootte vóór capture
+      await waitImages(node);                   // §9.3
+      var f = FORMATS[state.format];
+      var dataUrl = await htmlToImage.toPng(node,{
+        width:f.w, height:f.h,
+        pixelRatio: Number(state.pixelRatio),   // §9.4  1× of 2×
+        cacheBust:true,
+        backgroundColor: undefined,
+        style:{ transform:"none" }
+      });
+      var a = document.createElement("a");
+      a.download = "apero-carousel-"+(state.setName||"set")+"-"+String(idx+1).padStart(2,"0")+".png"; // §9.6
+      a.href = dataUrl;
+      a.click();
+      return true;
+    } finally {
+      pool.removeChild(node);
+    }
+  }
+
+  async function exportAll(){
+    toast("Exporteren… ("+state.slides.length+" slides)");
+    for(var i=0;i<state.slides.length;i++){
+      await exportSlide(i);                      // §9.7 in volgorde
+      await new Promise(function(r){setTimeout(r,350);}); // browser-download throttle
+    }
+    toast("Klaar · "+state.slides.length+" PNG's gedownload");
+  }
+
+  /* ============================================================
+     UI-BINDING
+     ============================================================ */
+  function bindCarousel(){
+    var map = {setName:"setName",format:"format",scheme:"scheme",pixelRatio:"pixelRatio"};
+    Object.keys(map).forEach(function(id){
+      var el=document.getElementById(id);
+      el.addEventListener(el.tagName==="SELECT"?"change":"input",function(){
+        state[map[id]] = el.value; renderAll();
+      });
+    });
+    document.getElementById("pageInd").addEventListener("change",function(){state.pageInd=this.checked;renderAll();});
+    document.getElementById("markEl").addEventListener("change",function(){state.markEl=this.checked;renderAll();});
+    document.getElementById("addSlide").addEventListener("click",function(){
+      if(state.slides.length>=10){ toast("Max 10 slides per carousel."); return; }
+      var t = document.getElementById("addType").value;
+      state.slides.push(blank(t));
+      state.active = state.slides.length-1;
+      renderAll();
+    });
+    document.getElementById("exportOne").addEventListener("click",function(){ exportSlide(state.active); });
+    document.getElementById("exportAll").addEventListener("click",exportAll);
+  }
+
+  function renderAll(){ renderList(); renderEditor(); renderStage(); }
+
+  /* ---- toast ---- */
+  var toastEl=document.getElementById("toast"), toastT;
+  function toast(msg){ toastEl.textContent=msg; toastEl.classList.add("show"); clearTimeout(toastT); toastT=setTimeout(function(){toastEl.classList.remove("show");},2600); }
+
+  /* ============================================================
+     KOPPELING MET HET DASHBOARD
+     Heen: dashboard opent ?source=dashboard&itemId&titel&tekst&thema
+           -> prefill cover/citaat/verhaal + setName = thema.
+     Terug: knop "Koppel aan dashboard" schrijft naar localStorage
+           'apero_carousel_refs' = { <itemId>: {carouselRef, slides, ts} };
+           het dashboard merget dat bij focus terug in het item.
+     ============================================================ */
+  var DASH = (function(){
+    var q={}; (location.search||"").replace(/^\?/,"").split("&").forEach(function(p){ if(!p) return; var kv=p.split("="); q[decodeURIComponent(kv[0])]=decodeURIComponent((kv[1]||"").replace(/\+/g,"%20")); });
+    return q.source==="dashboard" ? q : null;
+  })();
+
+  function startSlides(){
+    if(DASH){
+      var titel = DASH.titel || "Het uur gaat open.";
+      var tekst = DASH.tekst || "";
+      var cover=blank("cover");   cover.titel=titel; cover.kicker="APÉRO Culture";
+      var citaat=blank("citaat"); if(tekst) citaat.quote=tekst;
+      var verhaal=blank("verhaal"); verhaal.kop=titel; if(tekst) verhaal.body=tekst;
+      return [cover, verhaal, citaat, blank("beeld"), blank("lijst"), blank("slot")];
+    }
+    return [blank("cover"),blank("verhaal"),blank("citaat"),blank("beeld"),blank("lijst"),blank("slot")];
+  }
+
+  function injectDashLink(){
+    if(!DASH || !DASH.itemId) return;
+    var b=document.createElement("button");
+    b.className="btnui full"; b.style.background="var(--salvia)";
+    b.textContent="✓ Koppel carrousel aan dashboard-item";
+    b.addEventListener("click",function(){
+      var refs; try{ refs=JSON.parse(localStorage.getItem("apero_carousel_refs")||"{}"); }catch(e){ refs={}; }
+      refs[DASH.itemId]={ carouselRef:(state.setName||"set")+"-"+state.slides.length+"-slides", slides:state.slides.length, ts:new Date().toISOString() };
+      localStorage.setItem("apero_carousel_refs", JSON.stringify(refs));
+      toast("Gekoppeld aan dashboard-item, terug naar het dashboard-tab");
+    });
+    document.getElementById("exportAll").insertAdjacentElement("afterend", b);
+  }
+
+  /* ============================================================
+     START
+     ============================================================ */
+  if(DASH && DASH.thema){ state.setName = DASH.thema; }
+  state.slides = startSlides();
+  bindCarousel();
+  injectDashLink();
+  renderAll();
+  if(DASH){ toast("Voorgevuld vanuit het dashboard"); }
+})();
+</script>
+</body>
+</html>

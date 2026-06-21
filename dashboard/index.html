@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APÉRO Culture · Content-dashboard</title>
+
+<!-- apero-tokens.css ONGEWIJZIGD geïmporteerd (kleur, type, bloei-O, cartouche) -->
+<link rel="stylesheet" href="../apero-tokens.css">
+
+<!--
+============================================================
+ APÉRO Culture — Content-dashboard (het redactionele brein)
+ ------------------------------------------------------------
+ WAAR STAAT DE DATA / HOE LOOPT DE FLOW
+ - Canoniek bestand: /data/content.json (single source of truth).
+   Het dashboard leest dit bij laden en exporteert ernaar terug.
+   De geëxporteerde content.json commit je in de repo = echte opslag.
+ - Werkstatus: alles staat tijdens het werken ook in localStorage
+   ('apero_content_v1'), zodat niets verloren gaat tussen sessies.
+ - Roundtrip: lezen -> bewerken -> "Exporteer content.json" ->
+   committen -> opnieuw laden geeft exact dezelfde data terug.
+ - Optionele upgrade (uit, netjes voorbereid): /api/save-content
+   (Vercel function) kan content.json via de GitHub API committen,
+   zodat "opslaan" één klik wordt. Zet SAVE_API_ENABLED op true zodra
+   de repo + GITHUB_TOKEN bestaan.
+
+ KOPPELING MET DE CAROUSEL-GENERATOR (aparte app, zelfde origin)
+ - Heen: "Maak carrousel" opent /tools/apero-carousel-generator.html
+   met querystring (itemId, titel, tekst, thema). De generator start
+   voorgevuld.
+ - Terug: de generator schrijft een verwijzing naar localStorage-sleutel
+   'apero_carousel_refs' = { <itemId>: {carouselRef, slides, ts} }.
+   Het dashboard merget die bij laden/focus in het item (carouselRef),
+   zodat je ziet dat de visual klaar is. Beide apps delen dezelfde
+   apero-tokens.css en dezelfde content.json.
+============================================================
+-->
+
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--panna-2);color:var(--espresso);font-family:var(--body);font-weight:400;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+
+  /* ---- kop ---- */
+  header.top{position:sticky;top:0;z-index:30;background:var(--panna);border-bottom:1px solid var(--line)}
+  .bar{max-width:1380px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .brand{font-family:var(--disp);font-weight:800;font-size:23px;color:var(--espresso);display:flex;align-items:center;gap:9px;letter-spacing:-.01em}
+  .brand .flower{width:.82em;height:.82em}
+  .brand .cul{font-family:var(--body);font-weight:600;font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--terracotta);margin-top:2px}
+  .grow{flex:1}
+  .week-flag{font-family:var(--body);font-size:12px;font-weight:600;color:var(--mattone);background:var(--panna-2);border:1px solid var(--line);border-radius:100px;padding:7px 14px;cursor:pointer}
+  .week-flag b{color:var(--terracotta)}
+
+  .btn2{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.06em;background:var(--espresso);color:var(--panna);padding:10px 16px;border-radius:100px;border:0;cursor:pointer;transition:background .2s,transform .2s var(--spring);white-space:nowrap}
+  .btn2:hover{background:var(--terracotta);transform:translateY(-1px)}
+  .btn2.ghost{background:transparent;color:var(--espresso);box-shadow:inset 0 0 0 1px var(--line)}
+  .btn2.ghost:hover{background:var(--espresso);color:var(--panna)}
+  .btn2.sm{padding:7px 12px;font-size:11px}
+  .btn2[disabled]{opacity:.42;cursor:not-allowed;transform:none}
+
+  /* ---- tabs ---- */
+  nav.tabs{max-width:1380px;margin:0 auto;padding:0 22px;display:flex;gap:4px}
+  .tab{font-family:var(--body);font-weight:600;font-size:13px;letter-spacing:.04em;padding:13px 18px;border:0;background:transparent;color:var(--ink-50);cursor:pointer;border-bottom:2px solid transparent;display:flex;align-items:center;gap:7px}
+  .tab:hover{color:var(--espresso)}
+  .tab.active{color:var(--espresso);border-bottom-color:var(--terracotta)}
+  .tab .n{font-size:11px;color:var(--ink-50);background:var(--panna-2);border-radius:100px;padding:1px 7px}
+
+  main{max-width:1380px;margin:0 auto;padding:22px}
+
+  /* ---- badges & pills ---- */
+  .badge{font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;color:#fff;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+  .badge .fam{font-size:10px;opacity:.85}
+  .pill{font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:100px;white-space:nowrap;cursor:pointer;border:0}
+  .s-idee{background:var(--panna-2);color:#5B5249}
+  .s-concept{background:#FAE3C2;color:#8a5a1f}
+  .s-klaar{background:#E6E9D6;color:#5a6b34}
+  .s-gepland{background:#F4D9CC;color:#9E4326}
+  .s-live{background:var(--salvia);color:#fff}
+  .thema-dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+
+  /* ---- tijdlijn ---- */
+  .month{margin:0 0 22px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .month-h{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--panna);border-bottom:1px solid var(--line)}
+  .month-h .mt{font-family:var(--disp);font-weight:700;font-size:20px;color:var(--espresso)}
+  .month-h .accent{width:34px;height:8px;border-radius:100px}
+  .month-h .mw{margin-left:auto;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-50)}
+  .weeks{display:grid;grid-template-columns:repeat(4,1fr)}
+  .week{border-right:1px solid var(--line);padding:12px;min-height:130px}
+  .week:last-child{border-right:none}
+  .week.drop{background:var(--panna-2);outline:2px dashed var(--terracotta);outline-offset:-6px}
+  .week h4{font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-50);margin:0 0 9px}
+  @media(max-width:900px){.weeks{grid-template-columns:1fr 1fr}.week:nth-child(2){border-right:none}}
+  @media(max-width:560px){.weeks{grid-template-columns:1fr}.week{border-right:none;border-bottom:1px solid var(--line)}}
+
+  .card{border:1px solid var(--line);border-radius:10px;padding:9px 10px;margin-bottom:8px;background:#fff;cursor:grab;transition:border-color .15s,box-shadow .15s;position:relative}
+  .card:hover{border-color:var(--terracotta);box-shadow:0 6px 16px -12px rgba(35,27,19,.5)}
+  .card.dragging{opacity:.45}
+  .card .ctop{display:flex;align-items:center;gap:6px;justify-content:space-between;margin-bottom:6px}
+  .card .ttl{font-family:var(--body);font-size:13px;line-height:1.34;color:var(--espresso)}
+  .card .cmeta{display:flex;align-items:center;gap:7px;margin-top:7px;flex-wrap:wrap}
+  .card .ref{font-size:14px;line-height:1}
+  .card .cdate{font-family:var(--body);font-size:10px;color:var(--ink-50)}
+
+  /* ---- werelden ---- */
+  .worlds{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+  .world{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+  .world-h{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  .world-h .wn{font-family:var(--disp);font-weight:700;font-size:18px}
+  .world-h .wc{margin-left:auto;font-size:11px;font-weight:600;color:var(--ink-50)}
+  .world-bar{height:5px}
+  .world-body{padding:10px 14px;max-height:420px;overflow:auto}
+  .wrow{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}
+  .wrow:last-child{border-bottom:none}
+  .wrow:hover .wttl{color:var(--terracotta)}
+  .wrow .wttl{font-size:13px;line-height:1.3;flex:1}
+
+  /* ---- kanban ---- */
+  .kan{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:start}
+  @media(max-width:1080px){.kan{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.kan{grid-template-columns:1fr}}
+  .kcol{background:#fff;border:1px solid var(--line);border-radius:12px;min-height:160px}
+  .kcol.drop{outline:2px dashed var(--terracotta);outline-offset:-4px;background:var(--panna)}
+  .kcol h3{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin:0;padding:12px 12px 8px;display:flex;justify-content:space-between;align-items:center}
+  .kcol .kc{font-size:10px;color:var(--ink-50);background:var(--panna-2);border-radius:100px;padding:1px 7px}
+  .kbody{padding:0 10px 12px;display:flex;flex-direction:column}
+
+  /* ---- lijst ---- */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+  .filters input[type=search],.filters select{font-family:var(--body);font-size:13px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--espresso)}
+  .filters input[type=search]{min-width:230px}
+  table.list{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  table.list th{font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-50);text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);background:var(--panna)}
+  table.list td{padding:10px 12px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:middle}
+  table.list tr:last-child td{border-bottom:none}
+  table.list tr:hover td{background:#FFFDF8}
+  .ttl-edit{font-family:var(--body);font-size:13px;color:var(--espresso);border:1px solid transparent;border-radius:6px;padding:4px 6px;width:100%;background:transparent}
+  .ttl-edit:focus{border-color:var(--line);background:#fff;outline:none}
+  td .dt{font-family:var(--body);font-size:12px;padding:5px 6px;border:1px solid var(--line);border-radius:6px;background:#fff}
+
+  /* ---- modal ---- */
+  .ov{position:fixed;inset:0;background:rgba(35,27,19,.46);z-index:60;display:none;align-items:flex-start;justify-content:center;padding:34px 18px;overflow:auto}
+  .ov.open{display:flex}
+  .modal{background:var(--panna);border-radius:16px;max-width:760px;width:100%;box-shadow:0 40px 90px -50px rgba(35,27,19,.8);position:relative}
+  .modal-h{position:sticky;top:0;background:var(--panna);border-bottom:1px solid var(--line);padding:16px 22px;display:flex;align-items:center;gap:10px;border-radius:16px 16px 0 0;z-index:2}
+  .modal-h .mh-t{font-family:var(--disp);font-weight:700;font-size:18px}
+  .modal-b{padding:18px 22px}
+  .modal-f{position:sticky;bottom:0;background:var(--panna);border-top:1px solid var(--line);padding:14px 22px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-radius:0 0 16px 16px}
+  .x{margin-left:auto;border:0;background:transparent;font-size:22px;line-height:1;cursor:pointer;color:var(--ink-50)}
+  label.fl{display:block;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-70);margin:14px 0 5px}
+  .modal input[type=text],.modal textarea,.modal select,.modal input[type=date]{width:100%;font-family:var(--body);font-size:14px;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--espresso)}
+  .modal textarea{resize:vertical;line-height:1.5}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .chk{display:flex;flex-wrap:wrap;gap:8px}
+  .chk label{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink-70);border:1px solid var(--line);border-radius:100px;padding:6px 11px;cursor:pointer;background:#fff}
+  .chk input{accent-color:var(--terracotta)}
+  .lint{font-size:12px;color:var(--mattone);font-weight:600;margin-top:6px;display:none}
+  .lint.show{display:block}
+  .hintbox{font-size:12px;color:var(--ink-50);line-height:1.45;margin-top:6px}
+  .detect{font-size:12px;font-weight:600;margin-top:8px}
+  .detect.md{color:#5a6b34}.detect.json{color:#8a5a1f}
+
+  .empty{color:var(--ink-50);font-size:13px;font-style:italic;padding:8px 2px}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--espresso);color:var(--panna);padding:13px 22px;border-radius:100px;font-weight:600;font-size:13px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:90}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="bar">
+    <div class="brand">APÉR<span class="flower"></span>O <span class="cul">Culture · redactie</span></div>
+    <div class="grow"></div>
+    <button class="week-flag" id="weekFlag" title="Wat moet er deze week live?"></button>
+    <button class="btn2" id="btnNew">+ Nieuw item</button>
+    <button class="btn2 ghost sm" id="btnExport">Exporteer content.json</button>
+    <button class="btn2 ghost sm" id="btnImport">Importeer</button>
+    <button class="btn2 ghost sm" id="btnScan" title="Lees klaargezette content uit de repo-bronnen">Scan repo</button>
+    <button class="btn2 ghost sm" id="btnReload" title="Herlaad uit /data/content.json">Reset</button>
+    <input type="file" id="fileImport" accept="application/json" hidden>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-view="tijdlijn">Tijdlijn <span class="n" id="nTijd"></span></button>
+    <button class="tab" data-view="werelden">Werelden</button>
+    <button class="tab" data-view="kanban">Kanban</button>
+    <button class="tab" data-view="lijst">Lijst <span class="n" id="nLijst"></span></button>
+  </nav>
+</header>
+
+<main id="main"></main>
+
+<!-- item-modal -->
+<div class="ov" id="ov">
+  <div class="modal" id="modal"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+/* ============================================================
+   CONSTANTEN — uitsluitend uit het merksysteem (geen willekeur)
+   ============================================================ */
+var THEMES = [
+  {id:'italie',     naam:'Italië, het podium',         accent:'#C45F38'},
+  {id:'nederland',  naam:'Nederland pakt terug',       accent:'#5B5249'},
+  {id:'spanje',     naam:'Spanje, de revival',         accent:'#EEB24A'},
+  {id:'frankrijk',  naam:'Frankrijk, de pauze',        accent:'#9E4326'},
+  {id:'anijsgordel',naam:'De anijsgordel',             accent:'#8C9A6A'},
+  {id:'portugal',   naam:'Portugal, de verrassing',    accent:'#7a5a1f'},
+  {id:'maghreb',    naam:'De Maghreb, de schenkende hand', accent:'#8a5a1f'},
+  {id:'algemeen',   naam:'Algemeen',                   accent:'#9a9a9a'}
+];
+var THEME = {}; THEMES.forEach(function(t){THEME[t.id]=t;});
+
+// type -> {label, kleur, familie}  (familie: artikel | social | audio | mail)
+var TYPES = {
+  longread:        {label:'Longread',        kleur:'#7a5a1f', fam:'artikel'},
+  blog:            {label:'Blog',            kleur:'#C45F38', fam:'artikel'},
+  landingsfeit:    {label:'Landenfeit',      kleur:'#9E4326', fam:'artikel'},
+  'social-carrousel':{label:'Carrousel',     kleur:'#231B13', fam:'social'},
+  reel:            {label:'Reel',            kleur:'#5B5249', fam:'social'},
+  recept:          {label:'Recept',          kleur:'#8C9A6A', fam:'artikel'},
+  nieuwsbrief:     {label:'Nieuwsbrief',     kleur:'#b07a2e', fam:'mail'},
+  podcast:         {label:'Podcast',         kleur:'#5a6b34', fam:'audio'},
+  verdieping:      {label:'Verdieping',      kleur:'#9a9a9a', fam:'artikel'}
+};
+var FAM_GLYPH = {artikel:'¶', social:'▦', audio:'♪', mail:'✉'};
+var TYPE_ORDER = ['landingsfeit','longread','blog','recept','social-carrousel','reel','podcast','nieuwsbrief','verdieping'];
+
+var STATUSES = ['idee','concept','klaar','gepland','live'];
+var STATUS_LABEL = {idee:'Idee',concept:'Concept',klaar:'Klaar',gepland:'Gepland',live:'Live'};
+var CHANNELS = [
+  {id:'site',label:'Site'},{id:'instagram',label:'Instagram'},{id:'linkedin',label:'LinkedIn'},
+  {id:'mail',label:'Mail'},{id:'spotify',label:'Spotify'},{id:'youtube',label:'YouTube'}
+];
+
+// maand-volgorde voor de tijdlijn (de maandmotor): YYYY-MM -> lead-thema
+var MONTH_THEME = {
+  '2026-07':'italie','2026-08':'nederland','2026-09':'spanje',
+  '2026-10':'frankrijk','2026-11':'portugal','2026-12':'maghreb'
+};
+var MONTH_NAAM = {'01':'januari','02':'februari','03':'maart','04':'april','05':'mei','06':'juni','07':'juli','08':'augustus','09':'september','10':'oktober','11':'november','12':'december'};
+
+var LS_KEY = 'apero_content_v1';
+var LS_REFS = 'apero_carousel_refs';     // generator -> dashboard terugkoppeling
+var SAVE_API_ENABLED = false;            // zet aan zodra /api/save-content + GITHUB_TOKEN bestaan
+
+/* ============================================================
+   STATE
+   ============================================================ */
+var S = { meta:null, items:[] };
+var VIEW = 'tijdlijn';
+var FILTER = {q:'',type:'',thema:'',status:''};
+
+function uuid(){
+  if(crypto && crypto.randomUUID) return crypto.randomUUID();
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0,v=c==='x'?r:(r&0x3|0x8);return v.toString(16);});
+}
+function nowISO(){ return new Date().toISOString(); }
+function save(){ localStorage.setItem(LS_KEY, JSON.stringify(S)); }
+
+/* merge generator-terugkoppeling (carouselRef) in de items */
+function mergeCarouselRefs(){
+  var refs; try{ refs = JSON.parse(localStorage.getItem(LS_REFS)||'{}'); }catch(e){ refs={}; }
+  var changed=false;
+  Object.keys(refs).forEach(function(id){
+    var it = S.items.find(function(x){return x.id===id;});
+    if(it && it.carouselRef !== refs[id].carouselRef){
+      it.carouselRef = refs[id].carouselRef;
+      if(refs[id].slides){ it.assets = (it.assets||[]).filter(function(a){return a.kind!=='carousel';}); it.assets.push({kind:'carousel',slides:refs[id].slides,ts:refs[id].ts}); }
+      it.updatedAt = nowISO(); changed=true;
+    }
+  });
+  if(changed) save();
+  return changed;
+}
+
+/* ============================================================
+   DATA LADEN  (localStorage werkstatus, anders /data/content.json)
+   ============================================================ */
+function normalize(raw){
+  // garandeer alle velden zodat roundtrip stabiel is
+  return {
+    id: raw.id || uuid(),
+    type: raw.type || 'blog',
+    thema: raw.thema || 'algemeen',
+    titel: raw.titel || '(zonder titel)',
+    ondertitel: raw.ondertitel || '',
+    samenvatting: raw.samenvatting || '',
+    body: raw.body || '',
+    status: STATUSES.indexOf(raw.status)>-1 ? raw.status : 'idee',
+    publishDate: raw.publishDate || null,
+    kanalen: Array.isArray(raw.kanalen) ? raw.kanalen : [],
+    assets: Array.isArray(raw.assets) ? raw.assets : [],
+    carouselRef: raw.carouselRef || null,
+    bron: raw.bron || '',
+    slug: raw.slug || null,
+    liveUrl: raw.liveUrl || (raw.slug ? 'https://www.apero-culture.com/'+String(raw.slug).replace(/^\//,'') : null),
+    createdAt: raw.createdAt || nowISO(),
+    updatedAt: raw.updatedAt || nowISO()
+  };
+}
+
+function adoptData(data){
+  S.meta = data.meta || {merk:'APÉRO Culture',versie:1};
+  S.items = (data.items||[]).map(normalize);
+}
+
+function loadInitial(){
+  var ls = localStorage.getItem(LS_KEY);
+  if(ls){
+    try{ adoptData(JSON.parse(ls)); applyAutoLive(); mergeCarouselRefs(); boot(); return; }catch(e){ /* val door naar fetch */ }
+  }
+  fetch('./data/content.json',{cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error('geen content.json'); return r.json(); })
+    .then(function(d){ adoptData(d); applyAutoLive(); mergeCarouselRefs(); save(); boot(); })
+    .catch(function(){ adoptData({items:[]}); boot(); toast('content.json niet gevonden, leeg gestart'); });
+}
+
+/* geplande items met datum vandaag of in het verleden -> live */
+function applyAutoLive(){
+  var today = todayStr();
+  var n=0;
+  S.items.forEach(function(it){
+    if(it.status==='gepland' && it.publishDate && it.publishDate <= today){ it.status='live'; it.updatedAt=nowISO(); n++; }
+  });
+  return n;
+}
+function todayStr(){ var d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+
+/* ============================================================
+   HELPERS — render-bouwstenen
+   ============================================================ */
+function esc(s){ return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function typeBadge(t){ var d=TYPES[t]||{label:t,kleur:'#999',fam:'artikel'}; return '<span class="badge" style="background:'+d.kleur+'"><span class="fam">'+(FAM_GLYPH[d.fam]||'')+'</span>'+d.label+'</span>'; }
+function statusPill(s){ return '<span class="pill s-'+s+'">'+(STATUS_LABEL[s]||s)+'</span>'; }
+function themaDot(th){ var a=(THEME[th]||{}).accent||'#999'; return '<span class="thema-dot" style="background:'+a+'"></span>'; }
+function weekOf(dateStr){ if(!dateStr) return null; var d=parseInt(dateStr.slice(8,10),10); return Math.min(4, Math.floor((d-1)/7)+1); }
+function monthKey(dateStr){ return dateStr ? dateStr.slice(0,7) : null; }
+function fmtDate(s){ if(!s) return 'geen datum'; var p=s.split('-'); return parseInt(p[2],10)+' '+(MONTH_NAAM[p[1]]||p[1]); }
+
+function cardHTML(it){
+  var ref = it.carouselRef ? '<span class="ref" title="Carrousel gekoppeld">🎞️</span>' : '';
+  return '<div class="card" draggable="true" data-id="'+it.id+'">'
+    + '<div class="ctop">'+typeBadge(it.type)+statusPill(it.status)+'</div>'
+    + '<div class="ttl">'+esc(it.titel)+'</div>'
+    + '<div class="cmeta">'+themaDot(it.thema)+'<span class="cdate">'+fmtDate(it.publishDate)+'</span>'+ref+'</div>'
+    + '</div>';
+}
+
+/* ============================================================
+   VIEW: TIJDLIJN  (maand + 4 weken, drag-drop naar andere week/maand)
+   ============================================================ */
+function renderTijdlijn(){
+  var main=document.getElementById('main'); main.innerHTML='';
+  var months = Object.keys(MONTH_THEME);
+  // voeg ook maanden toe die in data zitten maar niet in de motor
+  S.items.forEach(function(it){ var mk=monthKey(it.publishDate); if(mk && months.indexOf(mk)<0) months.push(mk); });
+  months.sort();
+
+  months.forEach(function(mk){
+    var thema = MONTH_THEME[mk] || dominantThema(mk);
+    var acc = (THEME[thema]||{}).accent||'#999';
+    var mc=document.createElement('div'); mc.className='month';
+    var mm=mk.slice(5,7), yr=mk.slice(0,4);
+    mc.innerHTML='<div class="month-h"><span class="accent" style="background:'+acc+'"></span>'
+      + '<span class="mt">'+cap(MONTH_NAAM[mm])+' '+yr+'</span>'
+      + '<span class="mw">'+(THEME[thema]?THEME[thema].naam:'')+'</span></div>';
+    var weeks=document.createElement('div'); weeks.className='weeks';
+    for(var w=1;w<=4;w++){
+      var col=document.createElement('div'); col.className='week'; col.dataset.month=mk; col.dataset.week=w;
+      col.innerHTML='<h4>Week '+w+'</h4>';
+      S.items.filter(function(it){ return monthKey(it.publishDate)===mk && weekOf(it.publishDate)===w; })
+        .forEach(function(it){ col.insertAdjacentHTML('beforeend', cardHTML(it)); });
+      weeks.appendChild(col);
+    }
+    mc.appendChild(weeks); main.appendChild(mc);
+  });
+
+  // ongeplande / verdiepingsspoor
+  var loose = S.items.filter(function(it){ return !it.publishDate; });
+  var lc=document.createElement('div'); lc.className='month';
+  lc.innerHTML='<div class="month-h"><span class="accent" style="background:#9a9a9a"></span><span class="mt">Verdiepingsspoor &amp; ongepland</span><span class="mw">los, buiten de tijdlijn</span></div>';
+  var lb=document.createElement('div'); lb.className='week'; lb.dataset.month=''; lb.dataset.week='0'; lb.style.minHeight='90px';
+  if(loose.length){ loose.forEach(function(it){ lb.insertAdjacentHTML('beforeend', cardHTML(it)); }); }
+  else { lb.innerHTML='<div class="empty">Niets ongepland.</div>'; }
+  lc.appendChild(lb); main.appendChild(lc);
+
+  wireDragCards(function(card, dropEl){
+    var it = byId(card.dataset.id); if(!it) return;
+    var mk = dropEl.dataset.month, wk = parseInt(dropEl.dataset.week,10);
+    if(!mk){ it.publishDate=null; }
+    else { var day = wk<=1?'03':wk===2?'10':wk===3?'17':'24'; it.publishDate = mk+'-'+day; if(it.status==='idee'||it.status==='concept'){ /* datum gezet, status mag blijven */ } }
+    it.updatedAt=nowISO(); save(); render();
+  }, '.week');
+}
+function dominantThema(mk){ var c={}; S.items.filter(function(i){return monthKey(i.publishDate)===mk;}).forEach(function(i){c[i.thema]=(c[i.thema]||0)+1;}); var best='algemeen',n=-1; Object.keys(c).forEach(function(k){if(c[k]>n){n=c[k];best=k;}}); return best; }
+function cap(s){ return s? s.charAt(0).toUpperCase()+s.slice(1):s; }
+
+/* ============================================================
+   VIEW: WERELDEN  (per thema, eigen accent)
+   ============================================================ */
+function renderWerelden(){
+  var main=document.getElementById('main'); main.innerHTML='';
+  var wrap=document.createElement('div'); wrap.className='worlds';
+  THEMES.forEach(function(t){
+    var its=S.items.filter(function(i){return i.thema===t.id;});
+    if(!its.length) return;
+    its.sort(function(a,b){ return TYPE_ORDER.indexOf(a.type)-TYPE_ORDER.indexOf(b.type); });
+    var live=its.filter(function(i){return i.status==='live';}).length;
+    var w=document.createElement('div'); w.className='world';
+    w.innerHTML='<div class="world-bar" style="background:'+t.accent+'"></div>'
+      + '<div class="world-h"><span class="wn">'+esc(t.naam)+'</span><span class="wc">'+its.length+' items · '+live+' live</span></div>';
+    var body=document.createElement('div'); body.className='world-body';
+    its.forEach(function(it){
+      var row=document.createElement('div'); row.className='wrow'; row.dataset.id=it.id;
+      row.innerHTML=typeBadge(it.type)+'<span class="wttl">'+esc(it.titel)+'</span>'+statusPill(it.status);
+      row.onclick=function(){ openItem(it.id); };
+      body.appendChild(row);
+    });
+    w.appendChild(body); wrap.appendChild(w);
+  });
+  main.appendChild(wrap);
+}
+
+/* ============================================================
+   VIEW: KANBAN  (sleep tussen status-kolommen)
+   ============================================================ */
+function renderKanban(){
+  var main=document.getElementById('main'); main.innerHTML='';
+  var kan=document.createElement('div'); kan.className='kan';
+  STATUSES.forEach(function(st){
+    var its=S.items.filter(function(i){return i.status===st;});
+    var col=document.createElement('div'); col.className='kcol'; col.dataset.status=st;
+    col.innerHTML='<h3>'+STATUS_LABEL[st]+'<span class="kc">'+its.length+'</span></h3>';
+    var body=document.createElement('div'); body.className='kbody'; body.dataset.status=st;
+    if(!its.length){ body.innerHTML='<div class="empty">leeg</div>'; }
+    its.forEach(function(it){ body.insertAdjacentHTML('beforeend', cardHTML(it)); });
+    col.appendChild(body); kan.appendChild(col);
+  });
+  main.appendChild(kan);
+  wireDragCards(function(card, dropEl){
+    var it=byId(card.dataset.id); if(!it) return;
+    var ns = dropEl.dataset.status;
+    it.status=ns;
+    if(ns==='gepland' && it.publishDate && it.publishDate<=todayStr()) it.status='live';
+    if(ns==='live' && !it.publishDate) it.publishDate=todayStr();
+    it.updatedAt=nowISO(); save(); render();
+  }, '.kbody');
+}
+
+/* ============================================================
+   VIEW: LIJST  (zoek + filter, inline edit)
+   ============================================================ */
+function renderLijst(){
+  var main=document.getElementById('main'); main.innerHTML='';
+  var f=document.createElement('div'); f.className='filters';
+  f.innerHTML='<input type="search" id="fq" placeholder="Zoek titel, samenvatting, body…" value="'+esc(FILTER.q)+'">'
+    + selFilter('ftype','Alle types', Object.keys(TYPES).map(function(k){return [k,TYPES[k].label];}), FILTER.type)
+    + selFilter('fthema','Alle werelden', THEMES.map(function(t){return [t.id,t.naam];}), FILTER.thema)
+    + selFilter('fstatus','Alle statussen', STATUSES.map(function(s){return [s,STATUS_LABEL[s]];}), FILTER.status)
+    + '<span class="grow"></span>';
+  main.appendChild(f);
+
+  var rows=S.items.filter(matchFilter).sort(function(a,b){ return (a.publishDate||'9999')<(b.publishDate||'9999')?-1:1; });
+  var t=document.createElement('table'); t.className='list';
+  t.innerHTML='<thead><tr><th>Type</th><th>Wereld</th><th>Titel</th><th>Status</th><th>Datum</th><th>Kanalen</th><th></th></tr></thead>';
+  var tb=document.createElement('tbody');
+  if(!rows.length){ tb.innerHTML='<tr><td colspan="7" class="empty">Geen items voor dit filter.</td></tr>'; }
+  rows.forEach(function(it){
+    var tr=document.createElement('tr'); tr.dataset.id=it.id;
+    var live = '<button class="btn2 sm ghost" '+(it.status==='live'&&it.liveUrl?'':'disabled')+' data-live="'+it.id+'">Bekijk live</button>';
+    tr.innerHTML='<td>'+typeBadge(it.type)+'</td>'
+      + '<td>'+themaDot(it.thema)+' '+esc((THEME[it.thema]||{}).naam||it.thema)+'</td>'
+      + '<td><input class="ttl-edit" data-tedit="'+it.id+'" value="'+esc(it.titel)+'"></td>'
+      + '<td><span class="pill s-'+it.status+'" data-cycle="'+it.id+'">'+STATUS_LABEL[it.status]+'</span></td>'
+      + '<td><input type="date" class="dt" data-date="'+it.id+'" value="'+(it.publishDate||'')+'"></td>'
+      + '<td style="font-size:11px;color:var(--ink-50)">'+(it.kanalen.join(', ')||'—')+'</td>'
+      + '<td style="white-space:nowrap"><button class="btn2 sm" data-open="'+it.id+'">Open</button> '+live+'</td>';
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb); main.appendChild(t);
+
+  document.getElementById('fq').addEventListener('input', function(){ FILTER.q=this.value; var c=this.selectionStart; renderLijst(); var n=document.getElementById('fq'); n.focus(); n.setSelectionRange(c,c); });
+  bindFilter('ftype','type'); bindFilter('fthema','thema'); bindFilter('fstatus','status');
+  main.querySelectorAll('[data-tedit]').forEach(function(inp){ inp.addEventListener('change',function(){ var it=byId(inp.dataset.tedit); it.titel=inp.value; it.updatedAt=nowISO(); save(); updateCounts(); }); });
+  main.querySelectorAll('[data-date]').forEach(function(inp){ inp.addEventListener('change',function(){ var it=byId(inp.dataset.date); it.publishDate=inp.value||null; applyAutoLive(); it.updatedAt=nowISO(); save(); }); });
+  main.querySelectorAll('[data-cycle]').forEach(function(el){ el.style.cursor='pointer'; el.onclick=function(){ var it=byId(el.dataset.cycle); it.status=STATUSES[(STATUSES.indexOf(it.status)+1)%STATUSES.length]; it.updatedAt=nowISO(); save(); render(); }; });
+  main.querySelectorAll('[data-open]').forEach(function(b){ b.onclick=function(){ openItem(b.dataset.open); }; });
+  main.querySelectorAll('[data-live]').forEach(function(b){ if(!b.disabled) b.onclick=function(){ var it=byId(b.dataset.live); window.open(it.liveUrl,'_blank','noopener'); }; });
+}
+function selFilter(id,all,opts,val){ var o='<option value="">'+all+'</option>'+opts.map(function(p){return '<option value="'+p[0]+'"'+(val===p[0]?' selected':'')+'>'+esc(p[1])+'</option>';}).join(''); return '<select id="'+id+'">'+o+'</select>'; }
+function bindFilter(id,key){ var el=document.getElementById(id); if(el) el.onchange=function(){ FILTER[key]=el.value; renderLijst(); }; }
+function matchFilter(it){
+  if(FILTER.type && it.type!==FILTER.type) return false;
+  if(FILTER.thema && it.thema!==FILTER.thema) return false;
+  if(FILTER.status && it.status!==FILTER.status) return false;
+  if(FILTER.q){ var q=FILTER.q.toLowerCase(); var hay=(it.titel+' '+it.samenvatting+' '+it.body).toLowerCase(); if(hay.indexOf(q)<0) return false; }
+  return true;
+}
+
+/* ============================================================
+   DRAG & DROP  (generiek voor tijdlijn + kanban)
+   ============================================================ */
+function wireDragCards(onDrop, dropSelector){
+  var dragId=null;
+  document.querySelectorAll('.card[draggable]').forEach(function(card){
+    card.addEventListener('dragstart',function(e){ dragId=card.dataset.id; card.classList.add('dragging'); e.dataTransfer.effectAllowed='move'; });
+    card.addEventListener('dragend',function(){ card.classList.remove('dragging'); document.querySelectorAll('.drop').forEach(function(d){d.classList.remove('drop');}); });
+  });
+  document.querySelectorAll(dropSelector).forEach(function(zone){
+    zone.addEventListener('dragover',function(e){ e.preventDefault(); zone.classList.add('drop'); e.dataTransfer.dropEffect='move'; });
+    zone.addEventListener('dragleave',function(){ zone.classList.remove('drop'); });
+    zone.addEventListener('drop',function(e){ e.preventDefault(); zone.classList.remove('drop'); var card=document.querySelector('.card[data-id="'+dragId+'"]'); if(card) onDrop(card, zone); });
+  });
+  // klik op kaart opent item (maar niet tijdens drag)
+  document.querySelectorAll('.card[draggable]').forEach(function(card){
+    card.addEventListener('click',function(){ openItem(card.dataset.id); });
+  });
+}
+
+/* ============================================================
+   ITEM-MODAL  (volledige editor + acties)
+   ============================================================ */
+function openItem(id){
+  var it=byId(id); if(!it) return;
+  var m=document.getElementById('modal');
+  m.innerHTML = itemFormHTML(it);
+  document.getElementById('ov').classList.add('open');
+  bindItemForm(it);
+}
+function itemFormHTML(it){
+  var typeOpts=Object.keys(TYPES).map(function(k){return '<option value="'+k+'"'+(it.type===k?' selected':'')+'>'+TYPES[k].label+'</option>';}).join('');
+  var themaOpts=THEMES.map(function(t){return '<option value="'+t.id+'"'+(it.thema===t.id?' selected':'')+'>'+esc(t.naam)+'</option>';}).join('');
+  var statusOpts=STATUSES.map(function(s){return '<option value="'+s+'"'+(it.status===s?' selected':'')+'>'+STATUS_LABEL[s]+'</option>';}).join('');
+  var chans=CHANNELS.map(function(c){return '<label><input type="checkbox" data-chan="'+c.id+'"'+(it.kanalen.indexOf(c.id)>-1?' checked':'')+'> '+c.label+'</label>';}).join('');
+  var isCarousel = (it.type==='social-carrousel'||it.type==='reel');
+  return ''
+   + '<div class="modal-h">'+typeBadge(it.type)+'<span class="mh-t">Item bewerken</span><button class="x" id="mx">×</button></div>'
+   + '<div class="modal-b">'
+     + '<div class="grid2">'
+       + '<div><label class="fl">Type</label><select data-k="type">'+typeOpts+'</select></div>'
+       + '<div><label class="fl">Wereld / thema</label><select data-k="thema">'+themaOpts+'</select></div>'
+     + '</div>'
+     + '<label class="fl">Titel</label><input type="text" data-k="titel" value="'+esc(it.titel)+'"><div class="lint" data-lint="titel"></div>'
+     + '<label class="fl">Ondertitel</label><input type="text" data-k="ondertitel" value="'+esc(it.ondertitel)+'">'
+     + '<label class="fl">Samenvatting</label><textarea data-k="samenvatting" rows="2">'+esc(it.samenvatting)+'</textarea><div class="lint" data-lint="samenvatting"></div>'
+     + '<label class="fl">Body (markdown)</label><textarea data-k="body" rows="9">'+esc(it.body)+'</textarea><div class="lint" data-lint="body"></div>'
+     + '<div class="grid2">'
+       + '<div><label class="fl">Status</label><select data-k="status">'+statusOpts+'</select></div>'
+       + '<div><label class="fl">Publicatiedatum</label><input type="date" data-k="publishDate" value="'+(it.publishDate||'')+'"></div>'
+     + '</div>'
+     + '<label class="fl">Kanalen</label><div class="chk">'+chans+'</div>'
+     + '<div class="grid2">'
+       + '<div><label class="fl">Slug (op apero-culture.com)</label><input type="text" data-k="slug" value="'+esc(it.slug||'')+'" placeholder="blog/voorbeeld.html"></div>'
+       + '<div><label class="fl">Bron</label><input type="text" data-k="bron" value="'+esc(it.bron)+'"></div>'
+     + '</div>'
+     + (it.carouselRef?'<div class="hintbox">🎞️ Carrousel gekoppeld: <code>'+esc(it.carouselRef)+'</code></div>':'')
+   + '</div>'
+   + '<div class="modal-f">'
+     + (isCarousel?'<button class="btn2" id="mkCar">Maak carrousel</button>':'')
+     + '<button class="btn2 ghost" id="mPlan">Zet op gepland</button>'
+     + '<button class="btn2 ghost" id="mPub">Publiceer nu</button>'
+     + '<button class="btn2 ghost" id="mLive" '+(it.status==='live'&&it.liveUrl?'':'disabled')+'>Bekijk live</button>'
+     + '<span class="grow" style="flex:1"></span>'
+     + '<button class="btn2 ghost" id="mDel" style="color:var(--mattone)">Verwijder</button>'
+     + '<button class="btn2" id="mSave">Opslaan</button>'
+   + '</div>';
+}
+function bindItemForm(it){
+  var m=document.getElementById('modal');
+  function setK(k,v){ it[k]=v; it.updatedAt=nowISO(); }
+  m.querySelectorAll('[data-k]').forEach(function(inp){
+    var ev=(inp.tagName==='SELECT'||inp.type==='date')?'change':'input';
+    inp.addEventListener(ev,function(){
+      var k=inp.getAttribute('data-k'); var v=inp.value;
+      if(k==='publishDate') v=v||null;
+      setK(k,v);
+      if(k==='slug'){ it.liveUrl = v ? 'https://www.apero-culture.com/'+v.replace(/^\//,'') : null; }
+      runLint(it);
+      if(k==='type'){ m.querySelector('.modal-h .badge').outerHTML=typeBadge(v); }
+    });
+  });
+  m.querySelectorAll('[data-chan]').forEach(function(c){
+    c.addEventListener('change',function(){ var id=c.getAttribute('data-chan'); var i=it.kanalen.indexOf(id); if(c.checked && i<0) it.kanalen.push(id); if(!c.checked && i>-1) it.kanalen.splice(i,1); it.updatedAt=nowISO(); });
+  });
+  m.querySelector('#mx').onclick=closeModal;
+  m.querySelector('#mSave').onclick=function(){ save(); closeModal(); render(); toast('Opgeslagen'); };
+  m.querySelector('#mPlan').onclick=function(){ it.status='gepland'; if(!it.publishDate) it.publishDate=todayStr(); applyAutoLive(); save(); closeModal(); render(); toast('Op gepland gezet'); };
+  m.querySelector('#mPub').onclick=function(){ it.status='live'; if(!it.publishDate) it.publishDate=todayStr(); save(); closeModal(); render(); toast('Gepubliceerd (live)'); };
+  var mLive=m.querySelector('#mLive'); if(mLive && !mLive.disabled) mLive.onclick=function(){ window.open(it.liveUrl,'_blank','noopener'); };
+  m.querySelector('#mDel').onclick=function(){ if(confirm('Dit item verwijderen?')){ S.items=S.items.filter(function(x){return x.id!==it.id;}); save(); closeModal(); render(); toast('Verwijderd'); } };
+  var mk=m.querySelector('#mkCar'); if(mk) mk.onclick=function(){ openInGenerator(it); };
+  runLint(it);
+}
+function closeModal(){ document.getElementById('ov').classList.remove('open'); }
+document.getElementById('ov').addEventListener('click',function(e){ if(e.target.id==='ov') closeModal(); });
+
+/* ============================================================
+   §8 VOICE-LINT  (zelfde regels als de generator + extra)
+   ============================================================ */
+var CLICHES = ['ontdek','duik in','unieke ervaring','feest voor de zintuigen','iconisch','niet voor niets','proeverij'];
+function lintText(s){
+  if(!s) return null;
+  if(/[—–]/.test(s)) return 'Geen lange streepjes (— of –). Gebruik komma, punt of ronde haken.';
+  if(/\bAPERO\b/.test(s)) return 'Schrijf APÉRO met accent, nooit "APERO".';
+  var low=s.toLowerCase();
+  for(var i=0;i<CLICHES.length;i++){ if(low.indexOf(CLICHES[i])>-1) return 'Vermijd "'+CLICHES[i]+'" (cliché/jargon, zie merkbijbel).'; }
+  if(/\bu\b/.test(low) && !/\bje\b|\bje\b/.test(low)){ /* zachte hint */ }
+  return null;
+}
+function runLint(it){
+  var m=document.getElementById('modal'); if(!m) return;
+  ['titel','samenvatting','body'].forEach(function(k){
+    var box=m.querySelector('[data-lint="'+k+'"]'); if(!box) return;
+    var msg=lintText(it[k]);
+    if(msg){ box.textContent='⚠ '+msg; box.classList.add('show'); } else { box.classList.remove('show'); box.textContent=''; }
+  });
+}
+
+/* ============================================================
+   NIEUW ITEM  (plak markdown óf JSON, auto-detect)
+   ============================================================ */
+function openNew(){
+  var m=document.getElementById('modal');
+  m.innerHTML = ''
+   + '<div class="modal-h"><span class="mh-t">Nieuw item</span><button class="x" id="mx">×</button></div>'
+   + '<div class="modal-b">'
+     + '<label class="fl">Plak hier (markdown of een JSON-item)</label>'
+     + '<textarea id="paste" rows="10" placeholder="# Titel van het stuk&#10;&#10;De eerste alinea wordt body…&#10;&#10;— of plak een JSON-object volgens het datamodel —"></textarea>'
+     + '<div class="detect" id="detect"></div>'
+     + '<div class="hintbox">Markdown: de eerste <code>#</code>-kop of de eerste regel wordt de titel, de rest de body. JSON: een object (of array) volgens het datamodel wordt direct geïmporteerd. Daarna vul je type, wereld en datum aan.</div>'
+     + '<div class="grid2" id="newMeta" style="margin-top:14px">'
+       + '<div><label class="fl">Type</label><select id="nType">'+Object.keys(TYPES).map(function(k){return '<option value="'+k+'">'+TYPES[k].label+'</option>';}).join('')+'</select></div>'
+       + '<div><label class="fl">Wereld / thema</label><select id="nThema">'+THEMES.map(function(t){return '<option value="'+t.id+'">'+esc(t.naam)+'</option>';}).join('')+'</select></div>'
+     + '</div>'
+   + '</div>'
+   + '<div class="modal-f"><span class="grow" style="flex:1"></span><button class="btn2" id="nAdd">Item toevoegen</button></div>';
+  document.getElementById('ov').classList.add('open');
+  document.getElementById('mx').onclick=closeModal;
+  var ta=document.getElementById('paste'), det=document.getElementById('detect');
+  ta.addEventListener('input',function(){ var d=detect(ta.value); det.className='detect '+d.kind; det.textContent = ta.value.trim()? (d.kind==='json'?'Herkend als JSON-item'+(d.count>1?'s ('+d.count+')':''):'Herkend als markdown'):''; });
+  document.getElementById('nAdd').onclick=function(){
+    var raw=ta.value.trim(); if(!raw){ toast('Niets om toe te voegen'); return; }
+    var d=detect(raw);
+    if(d.kind==='json'){
+      var arr=Array.isArray(d.data)?d.data:[d.data]; var n=0;
+      arr.forEach(function(o){ var it=normalize(o); it.id=o.id||uuid(); S.items.push(it); n++; });
+      save(); closeModal(); render(); toast(n+' item(s) geïmporteerd uit JSON');
+    } else {
+      var it=normalize({ type:document.getElementById('nType').value, thema:document.getElementById('nThema').value, titel:d.titel, body:d.body, status:'concept' });
+      S.items.push(it); save(); closeModal(); render(); openItem(it.id); toast('Markdown toegevoegd, vul de rest aan');
+    }
+  };
+}
+function detect(raw){
+  var t=raw.trim();
+  if((t[0]==='{'||t[0]==='[')){ try{ var data=JSON.parse(t); var count=Array.isArray(data)?data.length:1; return {kind:'json',data:data,count:count}; }catch(e){} }
+  // markdown
+  var lines=t.split('\n'); var titel=lines[0].replace(/^#+\s*/,'').trim(); var body=lines.slice(1).join('\n').trim();
+  return {kind:'md',titel:titel||'(zonder titel)',body:body};
+}
+
+/* ============================================================
+   KOPPELING -> GENERATOR  (querystring + terugkoppeling via localStorage)
+   ============================================================ */
+function openInGenerator(it){
+  var tekst = it.samenvatting || (it.body||'').split('\n').filter(Boolean)[0] || '';
+  var qs = '?source=dashboard&itemId='+encodeURIComponent(it.id)
+    + '&thema='+encodeURIComponent(it.thema)
+    + '&titel='+encodeURIComponent(it.titel)
+    + '&tekst='+encodeURIComponent(tekst);
+  window.open('../tools/apero-carousel-generator.html'+qs, '_blank', 'noopener');
+  toast('Generator geopend, voorgevuld');
+}
+
+/* ============================================================
+   EXPORT / IMPORT  content.json  (roundtrip-veilig)
+   ============================================================ */
+function exportJSON(){
+  var data={ meta:Object.assign({}, S.meta, {versie:(S.meta&&S.meta.versie||1), geexporteerd:nowISO()}), items:S.items };
+  var blob=new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='content.json'; a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);},1000);
+  toast('content.json gedownload — commit dit in de repo');
+}
+function importJSON(file){
+  var r=new FileReader();
+  r.onload=function(){ try{ var d=JSON.parse(r.result); adoptData(d); applyAutoLive(); mergeCarouselRefs(); save(); render(); toast('content.json geïmporteerd ('+S.items.length+' items)'); }catch(e){ toast('Ongeldige JSON'); } };
+  r.readAsText(file);
+}
+
+/* "Scan repo / importeer bestaande content" — haalt de ECHTE live pagina's
+   op (blog + werelden, zelfde origin) en zet ze als 'live'-items, met
+   titel/samenvatting/body uit de HTML. Gededupliceerd op slug, en bestaande
+   items worden bijgewerkt i.p.v. gedupliceerd bij een herhaalde scan. */
+var SCAN_SOURCES = [
+  {slug:'blog/bitter.html', type:'blog', thema:'algemeen'},
+  {slug:'blog/geboren-uit-verbod.html', type:'blog', thema:'algemeen'},
+  {slug:'blog/generatie-minder-drinken.html', type:'blog', thema:'algemeen'},
+  {slug:'blog/louche-effect.html', type:'blog', thema:'anijsgordel'},
+  {slug:'blog/nederland-borrel.html', type:'blog', thema:'nederland'},
+  {slug:'werelden/anijsgordel.html', type:'landingsfeit', thema:'anijsgordel'},
+  {slug:'werelden/frankrijk.html', type:'landingsfeit', thema:'frankrijk'},
+  {slug:'werelden/italie.html', type:'landingsfeit', thema:'italie'},
+  {slug:'werelden/marokko.html', type:'landingsfeit', thema:'maghreb'},
+  {slug:'werelden/portugal.html', type:'landingsfeit', thema:'portugal'},
+  {slug:'werelden/spanje.html', type:'landingsfeit', thema:'spanje'}
+];
+function parseLive(html, src){
+  var d=document.createElement('div'); d.innerHTML=html;
+  var titel=(d.querySelector('title')||{}).textContent||src.slug;
+  titel=titel.replace(/\s*·\s*AP[ÉE]RO.*$/i,'').trim();
+  var meta=d.querySelector('meta[name="description"]'); var sam=meta?meta.getAttribute('content'):'';
+  var art=d.querySelector('article')||d.querySelector('main')||d;
+  var body=(art.textContent||'').replace(/\s+/g,' ').trim(); if(body.length>2400) body=body.slice(0,2400)+'…';
+  return {titel:titel, samenvatting:sam, body:body};
+}
+function scanRepo(){
+  toast('Live pagina’s scannen…');
+  Promise.all(SCAN_SOURCES.map(function(src){
+    return fetch('../'+src.slug,{cache:'no-store'})
+      .then(function(r){ return r.ok?r.text():null; })
+      .then(function(html){ return html?Object.assign({src:src}, parseLive(html,src)):null; })
+      .catch(function(){ return null; });
+  })).then(function(results){
+    var added=0, updated=0, fail=0;
+    results.forEach(function(res){
+      if(!res){ fail++; return; }
+      var s=res.src;
+      var dup=S.items.find(function(x){ return x.slug===s.slug; });
+      if(dup){
+        dup.titel=res.titel; dup.samenvatting=res.samenvatting; dup.body=res.body;
+        dup.status='live'; dup.liveUrl='https://www.apero-culture.com/'+s.slug; dup.updatedAt=nowISO(); updated++;
+      } else {
+        S.items.push(normalize({ type:s.type, thema:s.thema, status:'live', slug:s.slug,
+          titel:res.titel, samenvatting:res.samenvatting, body:res.body, kanalen:['site'],
+          bron:'live op de site ('+s.slug+')' }));
+        added++;
+      }
+    });
+    save(); render();
+    toast('Scan klaar: '+added+' nieuw, '+updated+' bijgewerkt'+(fail?', '+fail+' niet bereikt':''));
+  });
+}
+
+/* ============================================================
+   KOP-INDICATOR: wat moet er deze week / vandaag live?
+   ============================================================ */
+function refreshWeekFlag(){
+  var today=todayStr();
+  var d=new Date(); var in7=new Date(d.getTime()+7*864e5); var in7s=in7.getFullYear()+'-'+String(in7.getMonth()+1).padStart(2,'0')+'-'+String(in7.getDate()).padStart(2,'0');
+  var due=S.items.filter(function(it){ return it.status==='gepland' && it.publishDate && it.publishDate<=in7s; });
+  var liveToday=S.items.filter(function(it){ return it.publishDate===today && it.status==='live'; });
+  var el=document.getElementById('weekFlag');
+  el.innerHTML = 'Deze week live: <b>'+due.length+'</b> · vandaag <b>'+liveToday.length+'</b>';
+  el.onclick=function(){ FILTER={q:'',type:'',thema:'',status:'gepland'}; setView('lijst'); };
+}
+
+/* ============================================================
+   BOOT & ROUTER
+   ============================================================ */
+function byId(id){ return S.items.find(function(x){return x.id===id;}); }
+function render(){
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('active', t.dataset.view===VIEW); });
+  if(VIEW==='tijdlijn') renderTijdlijn();
+  else if(VIEW==='werelden') renderWerelden();
+  else if(VIEW==='kanban') renderKanban();
+  else if(VIEW==='lijst') renderLijst();
+  updateCounts(); refreshWeekFlag();
+}
+function setView(v){ VIEW=v; render(); window.scrollTo(0,0); }
+function updateCounts(){ document.getElementById('nTijd').textContent=S.items.length; document.getElementById('nLijst').textContent=S.items.filter(matchFilter).length; }
+
+function boot(){
+  document.querySelectorAll('.tab').forEach(function(t){ t.onclick=function(){ setView(t.dataset.view); }; });
+  document.getElementById('btnNew').onclick=openNew;
+  document.getElementById('btnExport').onclick=exportJSON;
+  document.getElementById('btnImport').onclick=function(){ document.getElementById('fileImport').click(); };
+  document.getElementById('fileImport').onchange=function(){ if(this.files[0]) importJSON(this.files[0]); this.value=''; };
+  document.getElementById('btnScan').onclick=scanRepo;
+  document.getElementById('btnReload').onclick=function(){ if(confirm('Werkstatus wissen en opnieuw uit /data/content.json laden?')){ localStorage.removeItem(LS_KEY); location.reload(); } };
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
+  // terugkoppeling uit generator oppikken bij terugkeer naar tab
+  window.addEventListener('focus', function(){ if(mergeCarouselRefs()) render(); });
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden && mergeCarouselRefs()) render(); });
+  render();
+}
+
+var toastEl=document.getElementById('toast'), toastT;
+function toast(msg){ toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(function(){toastEl.classList.remove('show');},2600); }
+
+loadInitial();
+</script>
+</body>
+</html>
