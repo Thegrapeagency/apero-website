@@ -28,25 +28,28 @@
   "inLanguage": "nl",
   "publisher": {"@type": "Organization", "name": "APÉRO Culture", "url": "https://apero-culture.nl"},
   "hasDefinedTerm": [
+    {"@type": "DefinedTerm", "name": "aperire", "description": "Latijn voor openen. De stam onder apéritif, aperitivo en apéro: de aperitief opent letterlijk de eetlust, het gesprek en de avond."},
     {"@type": "DefinedTerm", "name": "aperitivo", "description": "De Italiaanse aperitiefcultuur: een licht en vaak bitter drankje vlak voor het eten, meestal met wat hapjes erbij, om de eetlust en de avond te openen. Het woord komt van het Latijnse aperire, openen."},
     {"@type": "DefinedTerm", "name": "apéro", "description": "Franse verkorting van apéritif. Het staat zowel voor het drankje als voor het informele moment waarop je vlak voor het eten samen iets drinkt en bijpraat."},
     {"@type": "DefinedTerm", "name": "vermut", "description": "Gearomatiseerde, versterkte wijn op basis van alsem en kruiden, droog of zoet. In Spanje is la hora del vermut een eigen aperitiefmoment, vaak op zondagmiddag met ijs en een schijfje sinaasappel."},
+    {"@type": "DefinedTerm", "name": "spritz", "description": "Venetiaanse aperitief van mousserende wijn, een bittere likeur zoals Aperol of Campari en een scheut bruiswater, met ijs en een schijf sinaasappel. Licht, bitterzoet en gemaakt om buiten te drinken."},
+    {"@type": "DefinedTerm", "name": "negroni", "description": "Italiaanse cocktail van gelijke delen gin, rode vermut en Campari, geserveerd op ijs met sinaasappel. Ontstaan in Florence en uitgesproken bitter, een aperitief voor wie van pittig houdt."},
+    {"@type": "DefinedTerm", "name": "portonico", "description": "Portugese aperitief van witte port aangelengd met tonic, geserveerd over veel ijs met munt of een schil citrus. Frisser en lichter dan port puur, en bedoeld voor vóór het eten."},
     {"@type": "DefinedTerm", "name": "pastis", "description": "Franse anijslikeur uit de streek rond Marseille. Je schenkt hem puur in en lengt hem aan met koud water, waardoor hij troebel wit wordt door het louche-effect."},
-    {"@type": "DefinedTerm", "name": "ouzo", "description": "Griekse sterkedrank op anijs- en steranijssmaak. Met water of ijs kleurt hij melkachtig wit, het klassieke louche-effect, en hoort hij bij de meze aan tafel."},
+    {"@type": "DefinedTerm", "name": "ouzo", "description": "Griekse sterkedrank met anijs- en steranijssmaak. Met water of ijs kleurt hij melkachtig wit, het klassieke louche-effect, en hoort hij bij de meze aan tafel."},
     {"@type": "DefinedTerm", "name": "rakı", "description": "Turks distillaat van druiven met anijs, bijgenaamd aslansütü, leeuwenmelk, omdat het wit en troebel wordt zodra je er water bij doet. Vast onderdeel van de gedeelde tafel."},
     {"@type": "DefinedTerm", "name": "arak", "description": "Levantijns anijsdistillaat op druivenbasis, met name uit Libanon en Syrië. Ook arak louchet wit met water en wordt langzaam gedronken bij een lange reeks meze."},
     {"@type": "DefinedTerm", "name": "het louche-effect", "description": "Het wit en troebel worden van een heldere anijsdrank zodra je er water bij doet. De anijsolie lost dan niet meer op en vormt microdruppels die het licht verstrooien, een stukje natuurkunde dat je in je glas ziet gebeuren."},
-    {"@type": "DefinedTerm", "name": "portonico", "description": "Portugese aperitief van witte port aangelengd met tonic, geserveerd over veel ijs met munt of een schil citrus. Frisser en lichter dan port puur, en bedoeld voor vóór het eten."},
-    {"@type": "DefinedTerm", "name": "atay", "description": "Marokkaanse muntthee van groene thee, verse munt en suiker, van hoogte ingeschonken zodat er schuim op komt. Het is het alcoholvrije aperitiefritueel: niet de drank maar de schenkende hand staat centraal."},
-    {"@type": "DefinedTerm", "name": "spritz", "description": "Venetiaanse aperitief van mousserende wijn, een bittere likeur zoals Aperol of Campari en een scheut bruiswater, met ijs en een schijf sinaasappel. Licht, bitterzoet en gemaakt om buiten te drinken."},
-    {"@type": "DefinedTerm", "name": "negroni", "description": "Italiaanse cocktail van gelijke delen gin, rode vermut en Campari, geserveerd op ijs met sinaasappel. Ontstaan in Florence en uitgesproken bitter, een aperitief voor wie van pittig houdt."},
-    {"@type": "DefinedTerm", "name": "aperire", "description": "Latijn voor openen. De stam onder apéritif, aperitivo en apéro: de aperitief opent letterlijk de eetlust, het gesprek en de avond."}
+    {"@type": "DefinedTerm", "name": "atay", "description": "Marokkaanse muntthee van groene thee, verse munt en suiker, van hoogte ingeschonken zodat er schuim op komt. Het is het alcoholvrije aperitiefritueel: niet de drank maar de schenkende hand staat centraal."}
   ]
 }
 </script>
 
 <style>
+  html{scroll-behavior:smooth}
   .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+  .narrow{max-width:860px;margin:0 auto;padding:0 28px}
+
   nav.top{position:sticky;top:0;z-index:50;background:rgba(244,234,214,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   nav.top .in{max-width:1100px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px}
   nav.top .lk{font-family:var(--disp);font-weight:800;font-size:20px;display:inline-flex;align-items:center;color:var(--espresso);text-decoration:none}
@@ -57,39 +60,57 @@
   nav.top .links a:hover,nav.top .links a[aria-current]{color:var(--terracotta)}
   @media(max-width:860px){nav.top .links{display:none}}
 
+  /* ---- hero ---- */
   .lex-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:var(--panna)}
   .lex-hero .petals{position:absolute;inset:0;--c:130px;opacity:.4}
-  .lex-hero-in{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:64px 28px 52px}
-  .lex-hero h1{font-family:var(--disp);font-weight:800;line-height:.92;letter-spacing:-.01em;color:var(--espresso);font-size:clamp(44px,8vw,96px);margin:14px 0 0}
+  .lex-hero-in{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:62px 28px 46px}
+  .lex-hero h1{font-family:var(--disp);font-weight:800;line-height:.92;letter-spacing:-.01em;color:var(--espresso);font-size:clamp(44px,8vw,92px);margin:14px 0 0}
   .lex-hero h1 .flower{width:.62em;height:.62em;margin-left:.04em;vertical-align:-.02em}
-  .lex-hero .lede{font-family:var(--body);font-size:clamp(17px,2vw,20px);line-height:1.6;color:var(--ink-70);max-width:760px;margin:22px 0 0}
+  .lex-hero .lede{font-family:var(--body);font-size:clamp(17px,2vw,20px);line-height:1.6;color:var(--ink-70);max-width:62ch;margin:22px 0 0}
 
-  .searchbar{position:relative;max-width:760px;margin:30px 0 0}
+  .searchbar{position:relative;max-width:62ch;margin:30px 0 0}
   .searchbar input{width:100%;box-sizing:border-box;font-family:var(--body);font-size:16px;color:var(--espresso);
     background:var(--panna);border:1.5px solid var(--line);border-radius:100px;padding:15px 22px 15px 50px;outline:none;
     transition:border-color .2s,box-shadow .2s}
   .searchbar input:focus{border-color:var(--terracotta);box-shadow:0 0 0 4px rgba(196,95,56,.12)}
   .searchbar input::placeholder{color:var(--ink-50)}
   .searchbar svg{position:absolute;left:20px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--terracotta);pointer-events:none}
-  .countline{font-family:var(--body);font-size:13px;color:var(--ink-50);margin:12px 4px 0}
 
-  section.lex{padding:54px 0 70px;position:relative}
-  .divtag{display:flex;align-items:center;gap:14px;margin-bottom:26px}
-  .divtag .num{font-family:var(--disp);font-weight:700;color:var(--terracotta);font-size:18px}
-  .divtag .ln{height:1px;width:46px;background:var(--line)}
+  /* ---- springindex ---- */
+  .jump{display:flex;flex-wrap:wrap;gap:9px;max-width:62ch;margin:18px 0 0}
+  .jump a{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-70);border:1px solid var(--line);border-radius:100px;padding:8px 15px;text-decoration:none;
+    transition:background .2s,color .2s,border-color .2s}
+  .jump a:hover{background:var(--espresso);color:var(--panna);border-color:var(--espresso)}
+  .countline{font-family:var(--body);font-size:13px;color:var(--ink-50);margin:18px 0 0}
 
-  .terms{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media(max-width:760px){.terms{grid-template-columns:1fr}}
-  .term{background:var(--panna-2);border:1px solid var(--line);border-radius:14px;padding:24px 26px;position:relative;scroll-margin-top:90px}
-  .term .head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:9px}
-  .term h3{font-family:var(--disp);font-weight:700;font-size:25px;line-height:1.05;color:var(--espresso);margin:0}
-  .term .origin{font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);white-space:nowrap}
-  .term p{font-family:var(--body);color:var(--ink-70);font-size:15px;line-height:1.6;margin:0}
-  .term[hidden]{display:none}
+  /* ---- glossary ---- */
+  .glossary{padding:18px 0 78px}
+  .lexgroup{scroll-margin-top:84px;padding:42px 0 8px;border-top:1px solid var(--line)}
+  .lexgroup:first-of-type{border-top:0;padding-top:30px}
+  .lexgroup-head{margin-bottom:10px}
+  .lexgroup-head .num{font-family:var(--disp);font-weight:700;color:var(--terracotta);font-size:18px;margin-right:12px}
+  .lexgroup-head h2{font-family:var(--disp);font-weight:700;font-size:clamp(26px,3.6vw,38px);line-height:1.04;letter-spacing:-.01em;color:var(--espresso);display:inline}
+  .lexgroup-head .gintro{font-family:var(--disp);font-style:italic;font-size:clamp(16px,1.9vw,19px);color:var(--mattone);margin:12px 0 0;max-width:60ch}
 
-  .noresults{font-family:var(--disp);font-style:italic;font-size:20px;color:var(--mattone);padding:30px 4px;display:none}
+  .entry{display:grid;grid-template-columns:minmax(180px,230px) 1fr;gap:18px 40px;align-items:baseline;
+    padding:24px 0;border-bottom:1px solid var(--line)}
+  .lexgroup .entry:last-child{border-bottom:0}
+  .entry .term{font-family:var(--disp);font-weight:700;font-size:25px;line-height:1.05;color:var(--espresso);margin:0}
+  .entry .origin{display:block;font-family:var(--body);font-weight:600;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--terracotta);margin-top:7px}
+  .entry .def{font-family:var(--body);color:var(--ink-70);font-size:16px;line-height:1.68;margin:0;max-width:64ch}
+  .entry[hidden]{display:none}
+  .lexgroup[hidden]{display:none}
+  @media(max-width:680px){
+    .entry{grid-template-columns:1fr;gap:8px;padding:22px 0}
+    .entry .def{font-size:15.5px}
+  }
+
+  .noresults{font-family:var(--disp);font-style:italic;font-size:20px;color:var(--mattone);padding:34px 0;display:none}
   .noresults.show{display:block}
 
+  /* ---- footer ---- */
   footer{position:relative;overflow:hidden;background:var(--panna-2);padding:62px 0}
   .fcols{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;position:relative;z-index:2}
   footer h4{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-50);margin:0 0 12px}
@@ -123,89 +144,107 @@
   <div class="lex-hero-in">
     <span class="eyebrow">Lexicon · het woordenboek van de apero</span>
     <h1>Lexic<span class="flower"></span>n</h1>
-    <p class="lede">Wat is een aperitivo nou eigenlijk, waar komt het woord vermut vandaan en waarom wordt ouzo wit als je er water bij doet? Hier staan de begrippen van de aperocultuur, kort en feitelijk, zodat je aan elke tafel weet waar je het over hebt.</p>
+    <p class="lede">Wat is een aperitivo nou eigenlijk, waar komt het woord vermut vandaan en waarom wordt ouzo wit als je er water bij doet? Hier staan de begrippen van de aperocultuur, kort en feitelijk, geordend van het oerwoord tot de schenkende hand.</p>
     <div class="searchbar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="search" id="lexSearch" placeholder="Zoek een begrip, bijvoorbeeld vermut of louche" aria-label="Zoek in het lexicon" autocomplete="off">
     </div>
+    <nav class="jump" id="lexJump" aria-label="Spring naar een categorie">
+      <a href="#het-woord">Het woord</a>
+      <a href="#in-het-glas">In het glas</a>
+      <a href="#de-anijsgordel">De anijsgordel</a>
+      <a href="#zonder-alcohol">Zonder alcohol</a>
+    </nav>
     <p class="countline" id="lexCount" aria-live="polite">13 begrippen</p>
   </div>
 </header>
 
-<section class="lex">
-  <div class="wrap">
-    <div class="divtag"><span class="num">A—Z</span><span class="ln"></span><span class="eyebrow">De begrippen</span></div>
+<main class="glossary">
+  <div class="narrow" id="lexList">
 
-    <div class="terms" id="lexList">
-      <article class="term" id="aperitivo" data-term="aperitivo">
-        <div class="head"><h3>aperitivo</h3><span class="origin">Italië</span></div>
-        <p>De Italiaanse aperitiefcultuur: een licht en vaak bitter drankje vlak voor het eten, meestal met wat hapjes erbij, om de eetlust en de avond te openen. Het woord komt van het Latijnse aperire, openen.</p>
+    <section class="lexgroup" id="het-woord" data-group>
+      <div class="lexgroup-head">
+        <span class="num">I</span><h2>Het woord</h2>
+        <p class="gintro">Waar het mee begint: de Latijnse stam en de twee woorden die je het vaakst hoort.</p>
+      </div>
+      <article class="entry" data-term="aperire">
+        <div><h3 class="term">aperire</h3><span class="origin">Latijn · de stam</span></div>
+        <p class="def">Latijn voor openen. De stam onder apéritif, aperitivo en apéro: de aperitief opent letterlijk de eetlust, het gesprek en de avond.</p>
       </article>
-
-      <article class="term" id="apero" data-term="apéro apero">
-        <div class="head"><h3>apéro</h3><span class="origin">Frankrijk</span></div>
-        <p>Franse verkorting van apéritif. Het staat zowel voor het drankje als voor het informele moment waarop je vlak voor het eten samen iets drinkt en bijpraat.</p>
+      <article class="entry" data-term="aperitivo">
+        <div><h3 class="term">aperitivo</h3><span class="origin">Italië</span></div>
+        <p class="def">De Italiaanse aperitiefcultuur: een licht en vaak bitter drankje vlak voor het eten, meestal met wat hapjes erbij, om de eetlust en de avond te openen. Het woord komt van het Latijnse aperire, openen.</p>
       </article>
-
-      <article class="term" id="vermut" data-term="vermut vermout">
-        <div class="head"><h3>vermut</h3><span class="origin">Spanje · Italië</span></div>
-        <p>Gearomatiseerde, versterkte wijn op basis van alsem en kruiden, droog of zoet. In Spanje is la hora del vermut een eigen aperitiefmoment, vaak op zondagmiddag met ijs en een schijfje sinaasappel.</p>
+      <article class="entry" data-term="apéro apero">
+        <div><h3 class="term">apéro</h3><span class="origin">Frankrijk</span></div>
+        <p class="def">Franse verkorting van apéritif. Het staat zowel voor het drankje als voor het informele moment waarop je vlak voor het eten samen iets drinkt en bijpraat.</p>
       </article>
+    </section>
 
-      <article class="term" id="pastis" data-term="pastis">
-        <div class="head"><h3>pastis</h3><span class="origin">Frankrijk</span></div>
-        <p>Franse anijslikeur uit de streek rond Marseille. Je schenkt hem puur in en lengt hem aan met koud water, waardoor hij troebel wit wordt door het louche-effect.</p>
+    <section class="lexgroup" id="in-het-glas" data-group>
+      <div class="lexgroup-head">
+        <span class="num">II</span><h2>In het glas</h2>
+        <p class="gintro">De klassiekers die je besteld krijgt, van de zondagse vermut tot de spritz op het terras.</p>
+      </div>
+      <article class="entry" data-term="vermut vermout">
+        <div><h3 class="term">vermut</h3><span class="origin">Spanje · Italië</span></div>
+        <p class="def">Gearomatiseerde, versterkte wijn op basis van alsem en kruiden, droog of zoet. In Spanje is la hora del vermut een eigen aperitiefmoment, vaak op zondagmiddag met ijs en een schijfje sinaasappel.</p>
       </article>
-
-      <article class="term" id="ouzo" data-term="ouzo">
-        <div class="head"><h3>ouzo</h3><span class="origin">Griekenland</span></div>
-        <p>Griekse sterkedrank met anijs- en steranijssmaak. Met water of ijs kleurt hij melkachtig wit, het klassieke louche-effect, en hoort hij bij de meze aan tafel.</p>
+      <article class="entry" data-term="spritz">
+        <div><h3 class="term">spritz</h3><span class="origin">Italië · Venetië</span></div>
+        <p class="def">Venetiaanse aperitief van mousserende wijn, een bittere likeur zoals Aperol of Campari en een scheut bruiswater, met ijs en een schijf sinaasappel. Licht, bitterzoet en gemaakt om buiten te drinken.</p>
       </article>
-
-      <article class="term" id="raki" data-term="rakı raki">
-        <div class="head"><h3>rakı</h3><span class="origin">Turkije</span></div>
-        <p>Turks distillaat van druiven met anijs, bijgenaamd aslansütü, leeuwenmelk, omdat het wit en troebel wordt zodra je er water bij doet. Vast onderdeel van de gedeelde tafel.</p>
+      <article class="entry" data-term="negroni">
+        <div><h3 class="term">negroni</h3><span class="origin">Italië · Florence</span></div>
+        <p class="def">Italiaanse cocktail van gelijke delen gin, rode vermut en Campari, geserveerd op ijs met sinaasappel. Ontstaan in Florence en uitgesproken bitter, een aperitief voor wie van pittig houdt.</p>
       </article>
-
-      <article class="term" id="arak" data-term="arak">
-        <div class="head"><h3>arak</h3><span class="origin">Levant</span></div>
-        <p>Levantijns anijsdistillaat op druivenbasis, met name uit Libanon en Syrië. Ook arak louchet wit met water en wordt langzaam gedronken bij een lange reeks meze.</p>
+      <article class="entry" data-term="portonico portonic">
+        <div><h3 class="term">portonico</h3><span class="origin">Portugal</span></div>
+        <p class="def">Portugese aperitief van witte port aangelengd met tonic, geserveerd over veel ijs met munt of een schil citrus. Frisser en lichter dan port puur, en bedoeld voor vóór het eten.</p>
       </article>
+    </section>
 
-      <article class="term" id="louche-effect" data-term="louche-effect louche">
-        <div class="head"><h3>het louche-effect</h3><span class="origin">Natuurkunde</span></div>
-        <p>Het wit en troebel worden van een heldere anijsdrank zodra je er water bij doet. De anijsolie lost dan niet meer op en vormt microdruppels die het licht verstrooien, een stukje natuurkunde dat je in je glas ziet gebeuren.</p>
+    <section class="lexgroup" id="de-anijsgordel" data-group>
+      <div class="lexgroup-head">
+        <span class="num">III</span><h2>De anijsgordel</h2>
+        <p class="gintro">Een gordel van anijsdranken die melkwit kleuren zodra er water bij gaat, en juist dat is het ritueel.</p>
+      </div>
+      <article class="entry" data-term="pastis">
+        <div><h3 class="term">pastis</h3><span class="origin">Frankrijk</span></div>
+        <p class="def">Franse anijslikeur uit de streek rond Marseille. Je schenkt hem puur in en lengt hem aan met koud water, waardoor hij troebel wit wordt door het louche-effect.</p>
       </article>
-
-      <article class="term" id="portonico" data-term="portonico portonic">
-        <div class="head"><h3>portonico</h3><span class="origin">Portugal</span></div>
-        <p>Portugese aperitief van witte port aangelengd met tonic, geserveerd over veel ijs met munt of een schil citrus. Frisser en lichter dan port puur, en bedoeld voor vóór het eten.</p>
+      <article class="entry" data-term="ouzo">
+        <div><h3 class="term">ouzo</h3><span class="origin">Griekenland</span></div>
+        <p class="def">Griekse sterkedrank met anijs- en steranijssmaak. Met water of ijs kleurt hij melkachtig wit, het klassieke louche-effect, en hoort hij bij de meze aan tafel.</p>
       </article>
-
-      <article class="term" id="atay" data-term="atay muntthee">
-        <div class="head"><h3>atay</h3><span class="origin">Marokko</span></div>
-        <p>Marokkaanse muntthee van groene thee, verse munt en suiker, van hoogte ingeschonken zodat er schuim op komt. Het is het alcoholvrije aperitiefritueel: niet de drank maar de schenkende hand staat centraal.</p>
+      <article class="entry" data-term="rakı raki">
+        <div><h3 class="term">rakı</h3><span class="origin">Turkije</span></div>
+        <p class="def">Turks distillaat van druiven met anijs, bijgenaamd aslansütü, leeuwenmelk, omdat het wit en troebel wordt zodra je er water bij doet. Vast onderdeel van de gedeelde tafel.</p>
       </article>
-
-      <article class="term" id="spritz" data-term="spritz">
-        <div class="head"><h3>spritz</h3><span class="origin">Italië · Venetië</span></div>
-        <p>Venetiaanse aperitief van mousserende wijn, een bittere likeur zoals Aperol of Campari en een scheut bruiswater, met ijs en een schijf sinaasappel. Licht, bitterzoet en gemaakt om buiten te drinken.</p>
+      <article class="entry" data-term="arak">
+        <div><h3 class="term">arak</h3><span class="origin">Levant · Libanon</span></div>
+        <p class="def">Levantijns anijsdistillaat op druivenbasis, met name uit Libanon en Syrië. Ook arak louchet wit met water en wordt langzaam gedronken bij een lange reeks meze.</p>
       </article>
-
-      <article class="term" id="negroni" data-term="negroni">
-        <div class="head"><h3>negroni</h3><span class="origin">Italië · Florence</span></div>
-        <p>Italiaanse cocktail van gelijke delen gin, rode vermut en Campari, geserveerd op ijs met sinaasappel. Ontstaan in Florence en uitgesproken bitter, een aperitief voor wie van pittig houdt.</p>
+      <article class="entry" data-term="louche-effect louche">
+        <div><h3 class="term">het louche-effect</h3><span class="origin">Natuurkunde</span></div>
+        <p class="def">Het wit en troebel worden van een heldere anijsdrank zodra je er water bij doet. De anijsolie lost dan niet meer op en vormt microdruppels die het licht verstrooien, een stukje natuurkunde dat je in je glas ziet gebeuren.</p>
       </article>
+    </section>
 
-      <article class="term" id="aperire" data-term="aperire">
-        <div class="head"><h3>aperire</h3><span class="origin">Latijn</span></div>
-        <p>Latijn voor openen. De stam onder apéritif, aperitivo en apéro: de aperitief opent letterlijk de eetlust, het gesprek en de avond.</p>
+    <section class="lexgroup" id="zonder-alcohol" data-group>
+      <div class="lexgroup-head">
+        <span class="num">IV</span><h2>Zonder alcohol</h2>
+        <p class="gintro">Het bewijs dat een aperitief niet om de drank draait, maar om de schenkende hand.</p>
+      </div>
+      <article class="entry" data-term="atay muntthee">
+        <div><h3 class="term">atay</h3><span class="origin">Marokko</span></div>
+        <p class="def">Marokkaanse muntthee van groene thee, verse munt en suiker, van hoogte ingeschonken zodat er schuim op komt. Het is het alcoholvrije aperitiefritueel: niet de drank maar de schenkende hand staat centraal.</p>
       </article>
-    </div>
+    </section>
 
-    <p class="noresults" id="lexNoResults">Niets gevonden. Probeer een ander woord, of blader gewoon door de lijst.</p>
   </div>
-</section>
+  <div class="narrow"><p class="noresults" id="lexNoResults">Niets gevonden. Probeer een ander woord, of blader gewoon door de lijst.</p></div>
+</main>
 
 <footer>
   <div class="petals" style="position:absolute;inset:0;--c:120px;opacity:.4"></div>
@@ -247,10 +286,12 @@
 <script>
   (function(){
     var input = document.getElementById('lexSearch');
-    var terms = Array.prototype.slice.call(document.querySelectorAll('#lexList .term'));
+    var entries = Array.prototype.slice.call(document.querySelectorAll('#lexList .entry'));
+    var groups = Array.prototype.slice.call(document.querySelectorAll('#lexList [data-group]'));
+    var jump = document.getElementById('lexJump');
     var count = document.getElementById('lexCount');
     var noResults = document.getElementById('lexNoResults');
-    var total = terms.length;
+    var total = entries.length;
 
     function norm(s){
       return s.toLowerCase()
@@ -261,18 +302,19 @@
     function filter(){
       var q = norm(input.value.trim());
       var visible = 0;
-      terms.forEach(function(t){
+      entries.forEach(function(t){
         var hay = norm(t.getAttribute('data-term') + ' ' + t.textContent);
         var hit = q === '' || hay.indexOf(q) !== -1;
         t.hidden = !hit;
         if(hit) visible++;
       });
+      groups.forEach(function(g){
+        var any = g.querySelector('.entry:not([hidden])');
+        g.hidden = !any;
+      });
+      jump.style.display = q === '' ? '' : 'none';
       noResults.classList.toggle('show', visible === 0);
-      if(q === ''){
-        count.textContent = total + ' begrippen';
-      } else {
-        count.textContent = visible + ' van ' + total + ' begrippen';
-      }
+      count.textContent = q === '' ? total + ' begrippen' : visible + ' van ' + total + ' begrippen';
     }
 
     input.addEventListener('input', filter);
