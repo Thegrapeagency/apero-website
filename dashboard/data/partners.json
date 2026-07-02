@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "beschrijving": "Partnerbestand van APÉRO. Het Studio-dashboard leest en bewerkt dit; het partnerportaal (/partner) toont per partner een gefilterde weergave via /api/partner-data. Inloggegevens staan NIET hier maar in de Vercel env-var PARTNER_AUTH (slug:wachtwoord;...).",
+    "versie": 1,
+    "statussen": ["lead", "in gesprek", "voorstel", "akkoord", "live"],
+    "werelden": ["italie", "frankrijk", "spanje", "anijsgordel", "portugal", "marokko", "overig"]
+  },
+  "partners": [
+    {
+      "slug": "voorbeeldpartner",
+      "naam": "Voorbeeldpartner (verwijder mij)",
+      "wereld": "italie",
+      "status": "lead",
+      "contact": { "naam": "", "mail": "", "telefoon": "" },
+      "deal": { "format": "bar binnen een wereld", "bijdrage": "", "notities": "Dit is een voorbeeldrecord dat laat zien welke velden er zijn. Maak per echte partner een kopie en verwijder dit item." },
+      "deliverables": [
+        { "t": "Kennismakingsgesprek", "af": false },
+        { "t": "Voorstel gestuurd", "af": false },
+        { "t": "Handtekening / akkoord", "af": false },
+        { "t": "Logo + merkmateriaal ontvangen", "af": false },
+        { "t": "Productinformatie voor magazine/lexicon", "af": false },
+        { "t": "Barplan + signature serve afgestemd", "af": false },
+        { "t": "Vermelding op partnerpagina live", "af": false }
+      ],
+      "portaal": {
+        "welkom": "Welkom bij APÉRO. Hier volg je alles rond onze samenwerking: de planning, wat we van elkaar nodig hebben en het materiaal dat klaarstaat.",
+        "documenten": []
+      }
+    }
+  ],
+  "wereldSlots": [
+    { "wereld": "italie", "bar": "Bar I · Het podium", "serve": "Negroni & Spritz met Select", "partner": null },
+    { "wereld": "frankrijk", "bar": "Bar II · De pauze", "serve": "Pastis, één op vijf", "partner": null },
+    { "wereld": "spanje", "bar": "Bar III · De revival", "serve": "Vermut uit het vat, met sifón", "partner": null },
+    { "wereld": "anijsgordel", "bar": "Bar IV · De vertraging", "serve": "Ouzo & arak, melkwit geslagen", "partner": null },
+    { "wereld": "portugal", "bar": "Bar V · De verrassing", "serve": "Portonico, ijskoud met munt", "partner": null },
+    { "wereld": "marokko", "bar": "Bar VI · De schenkende hand", "serve": "Atay, van dertig centimeter hoog", "partner": null }
+  ]
+}
