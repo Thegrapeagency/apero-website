@@ -1,4 +1,4 @@
-/* APÉRO Magazine app */
+/* APÉRO app: kiosk, werelden, lexicon, quiz, reader */
 (function(){
 'use strict';
 
@@ -10,18 +10,36 @@ var LS={
 function $(id){return document.getElementById(id)}
 function el(tag,cls,html){var n=document.createElement(tag);if(cls)n.className=cls;if(html!=null)n.innerHTML=html;return n}
 function woorden(html){return String(html).replace(/<[^>]*>/g,' ').split(/\s+/).filter(Boolean).length}
-function leesmin(a){return Math.max(1,Math.round(woorden(a.html)/200))}
-function edMin(e){return e.arts.reduce(function(s,a){return s+leesmin(a)},0)}
 function fixImg(u){return u&&u.indexOf('assets/')===0?'../'+u:u}
-function key(e,a){return e+'-'+a}
 function tril(ms){try{if(navigator.vibrate)navigator.vibrate(ms||10)}catch(e){}}
+function romein(i){return ['I','II','III','IV','V','VI','VII','VIII'][i]||''}
 
-var prog=LS.get('prog')||{};           // {"ed-art": 0..1}
-function fractie(e,a){return prog[key(e,a)]||0}
-function gelezen(e,a){return fractie(e,a)>=.92}
-function edPct(e){var E=DATA.edities[e],s=0;E.arts.forEach(function(_,i){s+=fractie(e,i)});return Math.round(s/E.arts.length*100)}
+/* ---------- leeslijsten: magazine + werelden ---------- */
+function magItems(){
+  var uit=[];
+  DATA.edities.forEach(function(E,e){E.arts.forEach(function(A,a){
+    uit.push({soort:'mag',key:e+'-'+a,kop:E.titel,sub:E.sub,tag:A.tag,t:A.t,html:A.html,img:A.img,ed:e,art:a,groep:'e'+e});
+  })});
+  return uit;
+}
+function wereldItems(){
+  return WERELDEN.map(function(w,i){
+    return {soort:'wereld',key:'w-'+w.slug,kop:'De zes werelden',tag:w.nummer,t:w.naam,
+      statement:w.statement,standfirst:w.standfirst,hero:w.hero,html:w.html,wi:i,groep:'w'};
+  });
+}
+var LIJSTEN={mag:magItems(),wereld:wereldItems()};
+function leesmin(it){return Math.max(1,Math.round(woorden((it.statement||'')+(it.standfirst||'')+it.html)/200))}
+function vindPos(lijst,key){var i=LIJSTEN[lijst].findIndex(function(x){return x.key===key});return i<0?0:i}
 
-var ed=0,art=0;
+var prog=LS.get('prog')||{};
+function fractie(key){return prog[key]||0}
+function gelezen(key){return fractie(key)>=.92}
+function edPct(e){var arts=LIJSTEN.mag.filter(function(x){return x.ed===e}),s=0;
+  arts.forEach(function(x){s+=fractie(x.key)});return Math.round(s/arts.length*100)}
+
+var rl='mag',rpos=0;
+function huidig(){return LIJSTEN[rl][rpos]}
 
 /* ---------- nacht ---------- */
 function zetNacht(aan){
@@ -31,11 +49,13 @@ function zetNacht(aan){
   $('tgNight').classList.toggle('aan',!!aan);
   $('tgNight').setAttribute('aria-checked',!!aan);
 }
-$('btnNight').onclick=function(){zetNacht(!document.body.classList.contains('night'));tril()};
+function wisselNacht(){zetNacht(!document.body.classList.contains('night'));tril()}
+$('btnNight').onclick=wisselNacht;
+document.querySelectorAll('.wnight').forEach(function(b){b.onclick=wisselNacht});
 $('tgNight').onclick=function(){zetNacht(!document.body.classList.contains('night'))};
 
 /* ---------- schermen & tabs ---------- */
-var tabScr={kiosk:$('kiosk'),bladwijzers:$('bladwijzers'),meer:$('meer')};
+var tabScr={kiosk:$('kiosk'),werelden:$('werelden'),lexicon:$('lexicon'),bewaard:$('bewaard'),meer:$('meer')};
 var curTab='kiosk';
 function toonTab(t){
   curTab=t;
@@ -45,7 +65,9 @@ function toonTab(t){
     tabScr[k].classList.remove('right','left');
   });
   document.querySelectorAll('.tab').forEach(function(b){b.classList.toggle('on',b.dataset.tab===t)});
-  if(t==='bladwijzers')renderBM();
+  if(t==='kiosk'){renderKiosk();renderResume()}
+  if(t==='werelden')renderWerelden();
+  if(t==='bewaard')renderBM();
   if(t==='meer')renderStats();
 }
 document.querySelectorAll('.tab').forEach(function(b){
@@ -55,19 +77,20 @@ document.querySelectorAll('.tab').forEach(function(b){
 /* ---------- kiosk ---------- */
 var KLEUR=[['--terracotta','--burro'],['--salvia','--terracotta'],['--burro','--mattone']];
 function coverPetals(e,c){
-  var kl=DATA.edities[e].kleur||KLEUR[e%KLEUR.length];
+  var kl=(DATA.edities[e]&&DATA.edities[e].kleur)||KLEUR[e%KLEUR.length];
   return '--c:'+(c||'56px')+';--a:var('+kl[0]+');--b:var('+kl[1]+')';
 }
 function renderKiosk(){
   var c=$('carousel');c.innerHTML='';
   DATA.edities.forEach(function(E,i){
+    var min=LIJSTEN.mag.filter(function(x){return x.ed===i}).reduce(function(s,x){return s+leesmin(x)},0);
     var art0=E.arts.map(function(a){return a.t}).slice(0,3).join(' · ');
     var cov=el('div','kcover');
     cov.innerHTML='<div class="petals" style="'+coverPetals(i)+'"></div><div class="grain"></div>'+
       '<div class="cwm">AP&Eacute;R<span class="flower"></span></div>'+
       '<div class="ring" style="--p:'+edPct(i)+'"></div>'+
       '<div class="cv"><div class="ed">'+E.sub+'</div><h3>'+E.titel+'</h3><p>'+art0+'</p>'+
-      '<div class="cvm"><span>'+E.arts.length+' artikelen</span><span>'+edMin(E)+' min</span>'+
+      '<div class="cvm"><span>'+E.arts.length+' artikelen</span><span>'+min+' min</span>'+
       (edPct(i)>0?'<span style="color:var(--terracotta)">'+edPct(i)+'%</span>':'')+'</div></div>';
     if(edPct(i)>=92)cov.querySelector('.ring').classList.add('klaar');
     cov.onclick=function(){openEditie(i)};
@@ -90,37 +113,42 @@ $('carousel').addEventListener('scroll',function(){requestAnimationFrame(markMid
 
 function renderResume(){
   var l=LS.get('last'),r=$('resume');
-  if(l&&l.t&&!gelezen(l.ed,l.art)){
+  if(l&&l.key&&LIJSTEN[l.lijst]&&!gelezen(l.key)){
+    var pos=vindPos(l.lijst,l.key),it=LIJSTEN[l.lijst][pos];
+    if(it.key!==l.key){r.classList.remove('show');return}
     r.classList.add('show');
-    $('resumeT').textContent=l.t;
-    $('resumeS').textContent=DATA.edities[l.ed].titel+' · nog '+Math.max(1,Math.round(leesmin(DATA.edities[l.ed].arts[l.art])*(1-fractie(l.ed,l.art))))+' min';
-    r.onclick=function(){openEditie(l.ed,true);openReader(l.ed,l.art)};
+    $('resumeT').textContent=it.t;
+    $('resumeS').textContent=it.kop+' · nog '+Math.max(1,Math.round(leesmin(it)*(1-fractie(it.key))))+' min';
+    r.onclick=function(){openReader(l.lijst,pos)};
   } else r.classList.remove('show');
 }
 
-/* ---------- editie ---------- */
+/* ---------- editie: inhoudsopgave ---------- */
+var edNu=0;
 function openEditie(e,stil){
-  ed=e;var E=DATA.edities[e];
+  edNu=e;var E=DATA.edities[e];
+  var arts=LIJSTEN.mag.filter(function(x){return x.ed===e});
   $('eheroPetals').setAttribute('style',coverPetals(e,'15vmin'));
   $('eSub').textContent=E.sub;
   $('eTitel').textContent=E.titel;
-  $('eMeta').innerHTML='<span>'+E.arts.length+' artikelen</span><span>'+edMin(E)+' min lezen</span>'+(edPct(e)>0?'<span>'+edPct(e)+'% gelezen</span>':'');
+  var min=arts.reduce(function(s,x){return s+leesmin(x)},0);
+  $('eMeta').innerHTML='<span>'+E.arts.length+' artikelen</span><span>'+min+' min lezen</span>'+(edPct(e)>0?'<span>'+edPct(e)+'% gelezen</span>':'');
   var t=$('toclist');t.innerHTML='';
-  E.arts.forEach(function(a,i){
-    var it=el('div','tocitem');
-    it.innerHTML='<div class="tnum">'+(i+1)+'</div><div class="tmin"><div class="ttag">'+a.tag+'</div>'+
-      '<div class="tt">'+a.t+'</div><div class="tsub"><span>'+leesmin(a)+' min</span>'+
-      (gelezen(e,i)?'<span style="color:var(--terracotta)">gelezen</span>':(fractie(e,i)>0?'<span>'+Math.round(fractie(e,i)*100)+'%</span>':''))+'</div></div>'+
-      '<div class="ring'+(gelezen(e,i)?' klaar':'')+'" style="--p:'+Math.round(fractie(e,i)*100)+'"></div>';
-    it.onclick=function(){openReader(e,i)};
-    t.appendChild(it);
-    setTimeout(function(){it.classList.add('in')},stil?0:60+i*70);
+  arts.forEach(function(it,i){
+    var itEl=el('div','tocitem');
+    itEl.innerHTML='<div class="tnum">'+(i+1)+'</div><div class="tmin"><div class="ttag">'+it.tag+'</div>'+
+      '<div class="tt">'+it.t+'</div><div class="tsub"><span>'+leesmin(it)+' min</span>'+
+      (gelezen(it.key)?'<span style="color:var(--terracotta)">gelezen</span>':(fractie(it.key)>0?'<span>'+Math.round(fractie(it.key)*100)+'%</span>':''))+'</div></div>'+
+      '<div class="ring'+(gelezen(it.key)?' klaar':'')+'" style="--p:'+Math.round(fractie(it.key)*100)+'"></div>';
+    itEl.onclick=function(){openReader('mag',vindPos('mag',it.key))};
+    t.appendChild(itEl);
+    setTimeout(function(){itEl.classList.add('in')},stil?0:60+i*70);
   });
-  var verder=E.arts.findIndex(function(_,i){return !gelezen(e,i)});
+  var verder=arts.find(function(x){return !gelezen(x.key)})||arts[0];
   $('btnStart').textContent=edPct(e)>0&&edPct(e)<92?'Lees verder':'Begin te lezen';
-  $('btnStart').onclick=function(){openReader(e,verder<0?0:verder)};
+  $('btnStart').onclick=function(){openReader('mag',vindPos('mag',verder.key))};
   $('editie').classList.remove('right','uit');$('editie').classList.add('on');
-  $('kiosk').classList.add('left');
+  tabScr[curTab].classList.add('left');
   $('tabbar').classList.add('weg');
   if(!stil)try{history.pushState({s:'editie'},'')}catch(x){}
 }
@@ -128,84 +156,231 @@ function sluitEditie(){
   $('editie').classList.add('right');$('editie').classList.remove('on');
   tabScr[curTab].classList.remove('left','uit');tabScr[curTab].classList.add('on');
   $('tabbar').classList.remove('weg');
-  renderKiosk();renderResume();
+  toonTab(curTab);
 }
 $('btnBackKiosk').onclick=function(){tril();terug()};
+
+/* ---------- werelden ---------- */
+function renderWerelden(){
+  var mijn=LS.get('mijnwereld');
+  var qc=$('quizcard');
+  if(mijn&&QUIZ.werelden[mijn.key]){
+    var w=QUIZ.werelden[mijn.key];
+    qc.innerHTML='<div class="petals" style="--c:44px;--a:var(--salvia);--b:var(--burro)"></div><div class="grain"></div>'+
+      '<div class="qcv"><div class="klabel">Jouw wereld</div><div class="qct">'+w.n+'</div>'+
+      '<p>'+w.d+'</p><button class="qcbtn klein" id="qcOpnieuw">Doe de Aperokiezer opnieuw</button></div>';
+    qc.querySelector('#qcOpnieuw').onclick=function(ev){ev.stopPropagation();openQuiz(true)};
+    qc.onclick=function(){openReader('wereld',w.wereld)};
+  } else {
+    qc.innerHTML='<div class="petals" style="--c:44px;--a:var(--terracotta);--b:var(--burro)"></div><div class="grain"></div>'+
+      '<div class="qcv"><div class="klabel">De Aperokiezer</div><div class="qct">Welke wereld ben jij?</div>'+
+      '<p>Vijf vragen, zes werelden. Ontdek waar jouw avond opengaat.</p>'+
+      '<span class="qcbtn">Doe de test &rarr;</span></div>';
+    qc.onclick=function(){openQuiz()};
+  }
+  var c=$('wlijst');c.innerHTML='';
+  LIJSTEN.wereld.forEach(function(it,i){
+    var w=WERELDEN[i];
+    var mijnDit=mijn&&QUIZ.werelden[mijn.key]&&QUIZ.werelden[mijn.key].wereld===i;
+    var card=el('div','wcard');
+    card.innerHTML='<img src="'+fixImg(w.hero.u)+'" alt="'+w.naam+'" loading="lazy"><div class="wgrad"></div>'+
+      (mijnDit?'<span class="wbadge">Jouw wereld</span>':'')+
+      '<div class="wcv"><div class="klabel light">'+w.nummer+'</div><h3>'+w.naam+'</h3>'+
+      '<div class="wsub"><span>'+leesmin(it)+' min</span>'+
+      (gelezen(it.key)?'<span>&#10003; gelezen</span>':(fractie(it.key)>0?'<span>'+Math.round(fractie(it.key)*100)+'%</span>':''))+'</div></div>';
+    card.onclick=function(){openReader('wereld',i)};
+    c.appendChild(card);
+    setTimeout(function(){card.classList.add('in')},70+i*80);
+  });
+}
+
+/* ---------- lexicon ---------- */
+function renderLexicon(filter){
+  var c=$('lexlijst');c.innerHTML='';
+  var f=(filter||'').toLowerCase().trim();
+  LEXICON.groepen.forEach(function(g){
+    var hits=g.entries.filter(function(e){
+      if(!f)return true;
+      return (e.term+' '+e.zoek+' '+e.origin+' '+e.body).toLowerCase().indexOf(f)>-1;
+    });
+    if(!hits.length)return;
+    var sec=el('div','lexgroep');
+    sec.innerHTML='<div class="lexkop"><span class="lnum">'+g.num+'</span><h2>'+g.titel+'</h2></div>'+
+      (f?'':'<p class="lintro">'+g.intro+'</p>');
+    hits.forEach(function(e){
+      var ent=el('button','lexentry');
+      ent.innerHTML='<div class="lrow"><span class="lterm">'+e.term+'</span><span class="lorigin">'+e.origin+'</span><span class="lpijl">+</span></div>'+
+        '<div class="lbody"><div class="lbin">'+e.body+'</div></div>';
+      ent.onclick=function(){
+        var open=ent.classList.contains('open');
+        c.querySelectorAll('.lexentry.open').forEach(function(x){x.classList.remove('open');x.querySelector('.lbody').style.maxHeight='0px'});
+        if(!open){
+          ent.classList.add('open');
+          var b=ent.querySelector('.lbody');
+          b.style.maxHeight=b.querySelector('.lbin').offsetHeight+24+'px';
+          tril(6);
+        }
+      };
+      sec.appendChild(ent);
+    });
+    c.appendChild(sec);
+  });
+  if(!c.children.length)c.innerHTML='<div class="bmleeg"><span class="flower"></span><h3>Niets gevonden</h3><p>Geen term die daarop lijkt. Het lexicon groeit met elke editie mee.</p></div>';
+}
+$('lexZoek').addEventListener('input',function(){renderLexicon(this.value)});
+
+/* ---------- quiz: de Aperokiezer ---------- */
+var qStep=0,qScores={};
+function openQuiz(reset){
+  if(reset)LS.set('mijnwereld',null);
+  qStep=0;qScores={};
+  $('quiz').classList.remove('right');$('quiz').classList.add('on');
+  $('tabbar').classList.add('weg');
+  renderQuiz();
+  try{history.pushState({s:'quiz'},'')}catch(x){}
+}
+function sluitQuiz(){
+  $('quiz').classList.add('right');$('quiz').classList.remove('on');
+  $('tabbar').classList.remove('weg');
+  if(curTab==='werelden')renderWerelden();
+}
+$('btnQuizTerug').onclick=function(){tril();terug()};
+function renderQuiz(){
+  var b=$('quizbody');
+  if(qStep<QUIZ.vragen.length){
+    var q=QUIZ.vragen[qStep];
+    var blaadjes=QUIZ.vragen.map(function(_,i){return '<i class="flower sm'+(i<=qStep?' aan':'')+'"></i>'}).join('');
+    b.innerHTML='<div class="qprog">'+blaadjes+'</div>'+
+      '<div class="klabel" style="padding:0 22px">Vraag '+(qStep+1)+' van '+QUIZ.vragen.length+'</div>'+
+      '<h2 class="qvraag">'+q.q+'</h2><div class="qopts"></div>';
+    var opts=b.querySelector('.qopts');
+    q.a.forEach(function(paar,i){
+      var o=el('button','qopt',paar[0]);
+      o.onclick=function(){
+        tril(8);
+        qScores[paar[1]]=(qScores[paar[1]]||0)+1;
+        qStep++;
+        o.classList.add('gekozen');
+        setTimeout(renderQuiz,240);
+      };
+      opts.appendChild(o);
+      setTimeout(function(){o.classList.add('in')},40+i*55);
+    });
+  } else {
+    var best=Object.entries(qScores).sort(function(a,x){return x[1]-a[1]})[0][0];
+    var w=QUIZ.werelden[best],wd=WERELDEN[w.wereld];
+    LS.set('mijnwereld',{key:best,wereld:w.wereld});
+    b.innerHTML='<div class="qresult">'+
+      '<div class="qrfoto"><img src="'+fixImg(wd.hero.u)+'" alt="'+w.n+'"><div class="wgrad"></div>'+
+      '<div class="wcv"><div class="klabel light">Jouw wereld</div><h3>'+w.n+'</h3></div></div>'+
+      '<p class="qrd">'+w.d+'</p>'+
+      '<button class="bigbtn" id="qrLees">Lees jouw longread</button>'+
+      '<button class="qopnieuw" id="qrOpnieuw">Opnieuw doen</button></div>';
+    $('qrLees').onclick=function(){sluitQuiz();openReader('wereld',w.wereld)};
+    $('qrOpnieuw').onclick=function(){qStep=0;qScores={};renderQuiz()};
+    tril(20);
+  }
+}
+$('mQuiz').onclick=function(){openQuiz()};
 
 /* ---------- reader ---------- */
 var slides={prev:$('sPrev'),cur:$('sCur'),next:$('sNext')};
 var track=$('rtrack');
-function buur(e,a,d){
-  var E=DATA.edities[e];
-  if(d<0){if(a>0)return[e,a-1];if(e>0)return[e-1,DATA.edities[e-1].arts.length-1];return null}
-  if(a<E.arts.length-1)return[e,a+1];
-  if(e<DATA.edities.length-1)return[e+1,0];
-  return null;
-}
-function slideHTML(e,a){
-  var A=DATA.edities[e].arts[a];
-  var img=A.img?'<div class="foto"><img src="'+fixImg(A.img.u)+'" alt="'+A.img.c+'" loading="lazy"><span class="cap">'+A.img.c+'</span></div>':'';
-  return '<div class="rtag">'+A.tag+'</div><h1>'+A.t+'</h1><div class="rlt">'+leesmin(A)+' min · '+DATA.edities[e].titel+'</div>'+img+'<div class="kap">'+A.html+'</div>'+endcardHTML(e,a);
-}
-function endcardHTML(e,a){
-  var n=buur(e,a,1);
-  var h='<div class="endcard"><div class="fl-divider"><span></span><i class="flower sm"></i><span></span></div>';
-  h+='<div class="egedaan">'+(n?'Dat was “'+DATA.edities[e].arts[a].t+'”':'Dat was de laatste editie, voorlopig')+'</div>';
-  if(n){
-    var N=DATA.edities[n[0]].arts[n[1]];
-    h+='<button class="nextcard" data-ed="'+n[0]+'" data-art="'+n[1]+'"><span class="klabel">'+
-      (n[0]===e?'Volgende artikel':'Volgende editie: '+DATA.edities[n[0]].titel)+'</span>'+
-      '<div class="nt">'+N.t+'</div><div class="ns">'+N.tag+' · '+leesmin(N)+' min</div></button>';
+function slideHTML(it,pos){
+  var kern;
+  if(it.soort==='wereld'){
+    kern='<div class="whero"><img src="'+fixImg(it.hero.u)+'" alt="'+it.t+'"><div class="wgrad"></div>'+
+      '<div class="whead"><div class="klabel light">'+it.tag+'</div><h1>'+it.t+'</h1></div></div>'+
+      '<div class="rprose wprose"><div class="wstatement">'+it.statement+'</div>'+
+      '<div class="rlt">'+leesmin(it)+' min · longread</div>'+
+      '<p class="kap wstandf">'+it.standfirst+'</p>'+it.html+endcardHTML(pos)+'</div>';
   } else {
-    h+='<button class="nextcard" data-kiosk="1"><span class="klabel">Kiosk</span><div class="nt">Terug naar de kiosk</div><div class="ns">Nieuwe edities verschijnen per seizoen</div></button>';
+    var img=it.img?'<div class="foto"><img src="'+fixImg(it.img.u)+'" alt="'+it.img.c+'" loading="lazy"><span class="cap">'+it.img.c+'</span></div>':'';
+    kern='<div class="rprose"><div class="rtag">'+it.tag+'</div><h1>'+it.t+'</h1>'+
+      '<div class="rlt">'+leesmin(it)+' min · '+it.kop+'</div>'+img+'<div class="kap">'+it.html+'</div>'+endcardHTML(pos)+'</div>';
+  }
+  return kern;
+}
+function endcardHTML(pos){
+  var lijst=LIJSTEN[rl],it=lijst[pos],n=lijst[pos+1];
+  var h='<div class="endcard"><div class="fl-divider"><span></span><i class="flower sm"></i><span></span></div>';
+  h+='<div class="egedaan">'+(n?'Dat was "'+it.t+'"':(rl==='wereld'?'Dat waren de zes werelden':'Dat was de laatste editie, voorlopig'))+'</div>';
+  if(n){
+    var lab=rl==='wereld'?'Volgende wereld':(n.ed!==it.ed?'Volgende editie: '+n.kop:'Volgende artikel');
+    h+='<button class="nextcard" data-pos="'+(pos+1)+'"><span class="klabel">'+lab+'</span>'+
+      '<div class="nt">'+n.t+'</div><div class="ns">'+n.tag+' · '+leesmin(n)+' min</div></button>';
+  } else {
+    h+='<button class="nextcard" data-terug="1"><span class="klabel">'+(rl==='wereld'?'De werelden':'Kiosk')+'</span>'+
+      '<div class="nt">'+(rl==='wereld'?'Terug naar het overzicht':'Terug naar de kiosk')+'</div>'+
+      '<div class="ns">'+(rl==='wereld'?'Zes werelden, zes avonden':'Nieuwe edities verschijnen per seizoen')+'</div></button>';
   }
   return h+'</div>';
 }
-function vulSlide(sl,pos){
-  var p=buur(ed,art,pos)|| (pos===0?[ed,art]:null);
-  if(pos===0)p=[ed,art];
-  var prose=sl.querySelector('.rprose');
-  if(!p){prose.innerHTML='';return}
-  prose.innerHTML=slideHTML(p[0],p[1]);
+function vulSlide(sl,offset){
+  var pos=rpos+offset,lijst=LIJSTEN[rl];
+  var wrap=sl.querySelector('.rwrap');
+  sl.classList.remove('wmode');
+  if(pos<0||pos>=lijst.length){wrap.innerHTML='';return}
+  var it=lijst[pos];
+  if(it.soort==='wereld')sl.classList.add('wmode');
+  wrap.innerHTML=slideHTML(it,pos);
   sl.querySelector('.rscroll').scrollTop=0;
-  prose.querySelectorAll('.nextcard').forEach(function(b){
+  wrap.querySelectorAll('.nextcard').forEach(function(b){
     b.onclick=function(){
       tril();
-      if(b.dataset.kiosk){sluitReader();sluitEditie();return}
+      if(b.dataset.terug){sluitReader();if(rl==='wereld'){toonTab('werelden')}else{sluitEditie()}return}
       ga(1);
     };
   });
+  // links naar werelden-pagina's binnen de app houden
+  wrap.querySelectorAll('a[href*="werelden/"]').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      var m=a.getAttribute('href').match(/werelden\/([a-z-]+)\.html/);
+      var i=m?WERELDEN.findIndex(function(w){return w.slug===m[1]}):-1;
+      if(i>-1){ev.preventDefault();rl='wereld';rpos=i;renderReader();try{history.pushState({s:'reader'},'')}catch(x){}}
+    });
+  });
 }
 function renderReader(){
-  var E=DATA.edities[ed],A=E.arts[art];
-  $('rtitel').textContent=E.titel;
-  $('rmeta').textContent=A.tag+' · '+(art+1)+' / '+E.arts.length;
+  var it=huidig(),lijst=LIJSTEN[rl];
+  var groep=lijst.filter(function(x){return x.groep===it.groep});
+  var gi=groep.indexOf(it);
+  $('rtitel').textContent=it.kop;
+  $('rmeta').textContent=it.tag+' · '+(gi+1)+' / '+groep.length;
   vulSlide(slides.prev,-1);vulSlide(slides.cur,0);vulSlide(slides.next,1);
   track.classList.remove('anim');track.style.transform='translateX(-33.3333%)';
   var dots=$('rdots');dots.innerHTML='';
-  E.arts.forEach(function(_,i){dots.appendChild(el('i',i===art?'on':''))});
+  groep.forEach(function(x,i){dots.appendChild(el('i',i===gi?'on':''))});
   var bms=LS.get('bm')||{};
-  $('btnBM').classList.toggle('aan',!!bms[key(ed,art)]);
+  $('btnBM').classList.toggle('aan',!!bms[it.key]);
   $('reader').classList.remove('zen');
-  // herstel leespositie
   var sc=slides.cur.querySelector('.rscroll');
-  requestAnimationFrame(function(){
-    var f=fractie(ed,art);
+  setTimeout(function(){
+    var f=fractie(it.key);
     if(f>0&&f<.92)sc.scrollTop=f*(sc.scrollHeight-sc.clientHeight);
     updateBar();
-  });
+  },0);
   sc.querySelectorAll('img').forEach(function(im){im.addEventListener('load',updateBar,{once:true})});
   setTimeout(updateBar,400);
   kijkNaar(slides.cur);
-  LS.set('last',{ed:ed,art:art,t:A.t});
+  LS.set('last',{lijst:rl,key:it.key,t:it.t});
 }
 var io=null;
 function kijkNaar(sl){
   if(io)io.disconnect();
   io=new IntersectionObserver(function(es){
     es.forEach(function(x){if(x.isIntersecting)x.target.classList.add('zichtbaar')});
-  },{root:sl.querySelector('.rscroll'),threshold:.25});
-  sl.querySelectorAll('blockquote, .foto').forEach(function(n){io.observe(n)});
+  },{root:sl.querySelector('.rscroll'),threshold:.2});
+  sl.querySelectorAll('blockquote, .foto, .pull').forEach(function(n){io.observe(n)});
+  onthul();
+}
+/* failsafe naast de observer: onthul wat in beeld is */
+function onthul(){
+  var h=window.innerHeight;
+  slides.cur.querySelectorAll('blockquote:not(.zichtbaar), .foto:not(.zichtbaar), .pull:not(.zichtbaar)').forEach(function(n){
+    var r=n.getBoundingClientRect();
+    if(r.top<h*.92&&r.bottom>0)n.classList.add('zichtbaar');
+  });
 }
 function updateBar(){
   var sc=slides.cur.querySelector('.rscroll');
@@ -213,11 +388,11 @@ function updateBar(){
   if(max<=2){$('rbar').style.width='0%';return}
   var f=Math.min(1,sc.scrollTop/max);
   $('rbar').style.width=(f*100)+'%';
-  var A=DATA.edities[ed].arts[art];
-  var rest=Math.max(0,Math.round(leesmin(A)*(1-f)));
+  var it=huidig();
+  var rest=Math.max(0,Math.round(leesmin(it)*(1-f)));
   $('rMinuten').textContent=rest<=0?'uitgelezen':'nog '+rest+' min';
-  var oud=prog[key(ed,art)]||0;
-  if(f>oud){prog[key(ed,art)]=f;LS.set('prog',prog)}
+  var oud=prog[it.key]||0;
+  if(f>oud){prog[it.key]=f;LS.set('prog',prog)}
 }
 var lastY=0;
 function scrollGedrag(e){
@@ -225,7 +400,10 @@ function scrollGedrag(e){
   if(y>lastY+14&&y>120)$('reader').classList.add('zen');
   else if(y<lastY-14||y<60)$('reader').classList.remove('zen');
   lastY=y;
-  requestAnimationFrame(updateBar);
+  var hero=slides.cur.querySelector('.whero img');
+  if(hero&&y<window.innerHeight)hero.style.transform='translateY('+(y*.38)+'px) scale(1.05)';
+  updateBar();
+  onthul();
 }
 Object.keys(slides).forEach(function(k){
   slides[k].querySelector('.rscroll').addEventListener('scroll',function(ev){
@@ -233,8 +411,8 @@ Object.keys(slides).forEach(function(k){
   },{passive:true});
 });
 
-function openReader(e,a){
-  ed=e;art=a;lastY=0;
+function openReader(lijst,pos){
+  rl=lijst;rpos=Math.max(0,Math.min(LIJSTEN[lijst].length-1,pos));lastY=0;
   renderReader();
   $('reader').classList.remove('right');$('reader').classList.add('on');
   $('tabbar').classList.add('weg');
@@ -242,20 +420,17 @@ function openReader(e,a){
 }
 function sluitReader(){
   $('reader').classList.add('right');$('reader').classList.remove('on');
-  if($('editie').classList.contains('on')){openEditie(ed,true)}
-  else{$('tabbar').classList.remove('weg');renderKiosk();renderResume()}
+  if($('editie').classList.contains('on')&&rl==='mag'){openEditie(edNu,true)}
+  else{$('editie').classList.add('right');$('editie').classList.remove('on');$('tabbar').classList.remove('weg');toonTab(curTab)}
 }
 $('btnCloseReader').onclick=function(){tril();terug()};
 
 function ga(d){
-  var n=buur(ed,art,d);
-  if(!n)return;
+  var pos=rpos+d;
+  if(pos<0||pos>=LIJSTEN[rl].length)return;
   track.classList.add('anim');
   track.style.transform='translateX('+(d>0?-66.6666:0)+'%)';
-  setTimeout(function(){
-    ed=n[0];art=n[1];lastY=0;
-    renderReader();
-  },390);
+  setTimeout(function(){rpos=pos;lastY=0;renderReader()},390);
 }
 
 /* swipe met vinger-volgen */
@@ -274,7 +449,7 @@ function ga(d){
     if(as!=='h')return;
     e.preventDefault();
     dx=mx;
-    var rem=(dx<0&&!buur(ed,art,1))||(dx>0&&!buur(ed,art,-1))?.35:1;
+    var rem=(dx<0&&rpos>=LIJSTEN[rl].length-1)||(dx>0&&rpos<=0)?.35:1;
     track.style.transform='translateX(calc(-33.3333% + '+(dx*rem)+'px))';
   },{passive:false});
   track.addEventListener('touchend',function(){
@@ -282,8 +457,8 @@ function ga(d){
     var vlug=Math.abs(dx)/(Date.now()-t0+1)>.45;
     var w=window.innerWidth;
     if((Math.abs(dx)>w*.28||vlug)&&Math.abs(dx)>40){
-      var d=dx<0?1:-1;
-      if(buur(ed,art,d)){ga(d);return}
+      var d=dx<0?1:-1,pos=rpos+d;
+      if(pos>=0&&pos<LIJSTEN[rl].length){ga(d);return}
     }
     track.classList.add('anim');
     track.style.transform='translateX(-33.3333%)';
@@ -292,10 +467,10 @@ function ga(d){
 
 /* bladwijzer + burst */
 $('btnBM').onclick=function(){
-  var b=LS.get('bm')||{},k=key(ed,art);
-  if(b[k])delete b[k];
+  var b=LS.get('bm')||{},it=huidig();
+  if(b[it.key])delete b[it.key];
   else{
-    b[k]={ed:ed,art:art,t:DATA.edities[ed].arts[art].t,e:DATA.edities[ed].titel};
+    b[it.key]={key:it.key,lijst:rl,t:it.t,sub:it.kop,ed:it.ed};
     var r=this.getBoundingClientRect(),bu=$('burst');
     bu.style.left=(r.left+r.width/2)+'px';bu.style.top=(r.top+r.height/2)+'px';
     bu.innerHTML='';
@@ -309,7 +484,7 @@ $('btnBM').onclick=function(){
     tril(18);
   }
   LS.set('bm',b);
-  this.classList.toggle('aan',!!b[k]);
+  this.classList.toggle('aan',!!b[it.key]);
 };
 
 /* weergave-sheet */
@@ -330,25 +505,33 @@ function sheet(aan){$('sheet').classList.toggle('on',aan);$('scrim').classList.t
 $('btnAa').onclick=function(){sheet(true)};
 $('scrim').onclick=function(){sheet(false)};
 
-/* ---------- bladwijzers ---------- */
+/* ---------- bewaard ---------- */
 function renderBM(){
   var b=LS.get('bm')||{},ks=Object.keys(b),c=$('bmlist');
   if(!ks.length){
-    c.innerHTML='<div class="bmleeg"><span class="flower"></span><h3>Nog geen bladwijzers</h3><p>Tik tijdens het lezen op de bloem en het artikel wacht hier op je.</p></div>';
+    c.innerHTML='<div class="bmleeg"><span class="flower"></span><h3>Nog niets bewaard</h3><p>Tik tijdens het lezen op de bloem en het artikel wacht hier op je.</p></div>';
     return;
   }
   c.innerHTML='';
   ks.forEach(function(k){
     var x=b[k];
+    var lijst=x.lijst||'mag';
     var it=el('button','bmitem');
-    it.innerHTML='<div class="bband"><div class="petals" style="'+coverPetals(x.ed,'12px')+'"></div></div>'+
-      '<div class="bmin"><div class="bt">'+x.t+'</div><div class="bs">'+x.e+' · '+Math.round(fractie(x.ed,x.art)*100)+'% gelezen</div></div>'+
+    var band;
+    if(lijst==='wereld'){
+      var wi=LIJSTEN.wereld[vindPos('wereld',k)];
+      band='<div class="bband"><img src="'+fixImg(WERELDEN[wi.wi].hero.u)+'" alt=""></div>';
+    } else {
+      band='<div class="bband"><div class="petals" style="'+coverPetals(x.ed||parseInt(k)||0,'12px')+'"></div></div>';
+    }
+    it.innerHTML=band+
+      '<div class="bmin"><div class="bt">'+x.t+'</div><div class="bs">'+(x.sub||x.e||'')+' · '+Math.round(fractie(k)*100)+'% gelezen</div></div>'+
       '<span class="bx" data-k="'+k+'">&times;</span>';
     it.onclick=function(ev){
       if(ev.target.classList.contains('bx')){
         var bb=LS.get('bm')||{};delete bb[ev.target.dataset.k];LS.set('bm',bb);renderBM();return;
       }
-      openEditie(x.ed,true);openReader(x.ed,x.art);
+      openReader(lijst,vindPos(lijst,k));
     };
     c.appendChild(it);
   });
@@ -357,8 +540,8 @@ function renderBM(){
 /* ---------- meer / stats ---------- */
 function renderStats(){
   var tot=0,kl=0,min=0;
-  DATA.edities.forEach(function(E,e){E.arts.forEach(function(a,i){
-    tot++;if(gelezen(e,i))kl++;min+=Math.round(leesmin(a)*fractie(e,i));
+  ['mag','wereld'].forEach(function(l){LIJSTEN[l].forEach(function(it){
+    tot++;if(gelezen(it.key))kl++;min+=Math.round(leesmin(it)*fractie(it.key));
   })});
   $('statcard').innerHTML='<div class="st"><div class="sn">'+kl+'</div><div class="sl">gelezen</div></div>'+
     '<div class="st"><div class="sn">'+(tot-kl)+'</div><div class="sl">te gaan</div></div>'+
@@ -368,6 +551,7 @@ function renderStats(){
 /* ---------- terug / history ---------- */
 function terug(){
   if($('reader').classList.contains('on')){sluitReader();return}
+  if($('quiz').classList.contains('on')){sluitQuiz();return}
   if($('editie').classList.contains('on')){sluitEditie();return}
 }
 window.addEventListener('popstate',function(){terug()});
@@ -390,18 +574,38 @@ $('btnInstall').onclick=function(){if(defPrompt){defPrompt.prompt();defPrompt=nu
   if(ios&&!standalone)$('iosHint').hidden=false;
 })();
 
+/* ---------- migratie v1 -> v2 ---------- */
+(function(){
+  var b=LS.get('bm');
+  if(b){var anders=false;
+    Object.keys(b).forEach(function(k){
+      if(b[k]&&b[k].e&&!b[k].sub){b[k]={key:k,lijst:'mag',t:b[k].t,sub:b[k].e,ed:b[k].ed};anders=true}
+    });
+    if(anders)LS.set('bm',b);
+  }
+  var l=LS.get('last');
+  if(l&&l.t&&!l.key&&typeof l.ed==='number'){LS.set('last',{lijst:'mag',key:l.ed+'-'+l.art,t:l.t})}
+})();
+
 /* ---------- start ---------- */
 if(LS.get('night'))zetNacht(true);
 zetType();
 renderKiosk();
 renderResume();
+renderLexicon('');
+renderWerelden();
 window.addEventListener('resize',markMid);
 
 var p=new URLSearchParams(location.search);
 if(p.has('ed')){
   var pe=Math.min(DATA.edities.length-1,parseInt(p.get('ed'))||0);
   var pa=Math.min(DATA.edities[pe].arts.length-1,parseInt(p.get('art'))||0);
-  openEditie(pe,true);openReader(pe,pa);
+  openEditie(pe,true);openReader('mag',vindPos('mag',pe+'-'+pa));
+} else if(p.has('wereld')){
+  var wi=WERELDEN.findIndex(function(w){return w.slug===p.get('wereld')});
+  toonTab('werelden');if(wi>-1)openReader('wereld',wi);
+} else if(p.has('quiz')){
+  toonTab('werelden');openQuiz();
 }
 
 setTimeout(function(){$('splash').classList.add('weg')},1600);

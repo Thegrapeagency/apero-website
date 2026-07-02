@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-<title>APÉRO Magazine · de app</title>
-<meta name="description" content="De magazine-app van APÉRO: alle edities in één leesomgeving, gemaakt voor je telefoon. Installeerbaar, offline leesbaar.">
+<title>APÉRO · de app</title>
+<meta name="description" content="De app van APÉRO Culture: het magazine, de zes werelden, het lexicon en de Aperokiezer in één leesomgeving, gemaakt voor je telefoon.">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#F4EAD6" id="themecolor">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="APÉRO Mag">
+<meta name="apple-mobile-web-app-title" content="APÉRO">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +47,7 @@
       <span class="rgo">&rarr;</span>
     </div>
 
-    <div class="klabel kpad" id="kioskLabel">De edities</div>
+    <div class="klabel kpad">De edities</div>
     <div class="carousel" id="carousel"></div>
     <div class="cdots" id="cdots"></div>
 
@@ -57,6 +57,28 @@
     </div>
   </div>
 </main>
+
+<!-- Werelden -->
+<section id="werelden" class="screen uit">
+  <header class="apphead"><div class="ptitle">De zes werelden</div><button class="hbtn wnight" aria-label="Nachtmodus">&#9789;</button></header>
+  <div class="kscroll">
+    <p class="wintro">Zes manieren waarop Europa en de Maghreb de avond openen. Elke wereld is een longread: neem er de tijd voor die het onderwerp neemt.</p>
+    <div class="quizcard" id="quizcard"></div>
+    <div class="wlijst" id="wlijst"></div>
+  </div>
+</section>
+
+<!-- Lexicon -->
+<section id="lexicon" class="screen uit">
+  <header class="apphead"><div class="ptitle">Het lexicon</div><button class="hbtn wnight" aria-label="Nachtmodus">&#9789;</button></header>
+  <div class="kscroll">
+    <div class="zoekveld">
+      <input type="search" id="lexZoek" placeholder="Zoek een term&hellip;" autocomplete="off">
+    </div>
+    <div id="lexlijst"></div>
+    <p class="mnote klein" style="text-align:center">Het lexicon groeit met elke editie mee.</p>
+  </div>
+</section>
 
 <!-- Editie: inhoudsopgave -->
 <section id="editie" class="screen right">
@@ -77,6 +99,16 @@
   </div>
 </section>
 
+<!-- Quiz: de Aperokiezer -->
+<section id="quiz" class="screen right">
+  <header class="apphead">
+    <button class="hbtn" id="btnQuizTerug" aria-label="Terug">&larr;</button>
+    <div class="ptitle" style="font-size:20px">De Aperokiezer</div>
+    <span style="width:40px"></span>
+  </header>
+  <div class="kscroll" id="quizbody"></div>
+</section>
+
 <!-- Reader -->
 <section id="reader" class="screen right">
   <div class="rchrome rtop" id="rtop">
@@ -92,9 +124,9 @@
   </div>
   <div class="rprogress"><i id="rbar"></i></div>
   <div class="rtrack" id="rtrack">
-    <article class="rslide" id="sPrev"><div class="rscroll"><div class="rprose"></div></div></article>
-    <article class="rslide" id="sCur"><div class="rscroll"><div class="rprose"></div></div></article>
-    <article class="rslide" id="sNext"><div class="rscroll"><div class="rprose"></div></div></article>
+    <article class="rslide" id="sPrev"><div class="rscroll"><div class="rwrap"></div></div></article>
+    <article class="rslide" id="sCur"><div class="rscroll"><div class="rwrap"></div></div></article>
+    <article class="rslide" id="sNext"><div class="rscroll"><div class="rwrap"></div></div></article>
   </div>
   <div class="rchrome rbottom" id="rbottom">
     <div class="rdots" id="rdots"></div>
@@ -130,26 +162,26 @@
   </div>
 </div>
 
-<!-- Bladwijzers -->
-<section id="bladwijzers" class="screen right">
-  <header class="apphead"><div class="ptitle">Bladwijzers</div></header>
+<!-- Bewaard -->
+<section id="bewaard" class="screen uit">
+  <header class="apphead"><div class="ptitle">Bewaard</div><button class="hbtn wnight" aria-label="Nachtmodus">&#9789;</button></header>
   <div class="kscroll"><div id="bmlist" class="bmlist"></div></div>
 </section>
 
 <!-- Meer -->
-<section id="meer" class="screen right">
-  <header class="apphead"><div class="ptitle">Meer</div></header>
+<section id="meer" class="screen uit">
+  <header class="apphead"><div class="ptitle">Meer</div><button class="hbtn wnight" aria-label="Nachtmodus">&#9789;</button></header>
   <div class="kscroll">
     <div class="statcard" id="statcard"></div>
     <div class="klabel kpad">De app</div>
     <div class="linklist">
       <button id="btnInstall" class="mlink" hidden>Zet op je beginscherm <span>&rarr;</span></button>
-      <a class="mlink" href="../app.html">De Aperokiezer <span>&rarr;</span></a>
-      <a class="mlink" href="../lexicon.html">Het lexicon <span>&rarr;</span></a>
+      <button class="mlink" id="mQuiz">De Aperokiezer <span>&rarr;</span></button>
+      <a class="mlink" href="../podcast.html">De podcast <span>&rarr;</span></a>
       <a class="mlink" href="../index.html">Naar de website <span>&rarr;</span></a>
     </div>
     <div class="klabel kpad">Over</div>
-    <p class="mnote">AP&Eacute;RO Magazine hoort bij AP&Eacute;RO Culture, een onderzoek naar het uur tussen werk en diner. Van het Latijnse <em>aperire</em>: openen. Eenmaal geladen lees je alles ook zonder verbinding.</p>
+    <p class="mnote">AP&Eacute;RO hoort bij AP&Eacute;RO Culture, een onderzoek naar het uur tussen werk en diner. Van het Latijnse <em>aperire</em>: openen. Eenmaal geladen lees je alles ook zonder verbinding.</p>
     <div class="mnote klein" id="iosHint" hidden>Op iPhone: tik op het deelicoon in Safari en kies "Zet op beginscherm". De app opent dan volledig scherm, zonder browserbalk.</div>
   </div>
 </section>
@@ -157,7 +189,9 @@
 <!-- Tabbar -->
 <nav class="tabbar" id="tabbar">
   <button class="tab on" data-tab="kiosk"><i class="flower sm"></i><span>Kiosk</span></button>
-  <button class="tab" data-tab="bladwijzers"><span class="ticon">&#10047;</span><span>Bladwijzers</span></button>
+  <button class="tab" data-tab="werelden"><span class="ticon">&#9673;</span><span>Werelden</span></button>
+  <button class="tab" data-tab="lexicon"><span class="ticon">&para;</span><span>Lexicon</span></button>
+  <button class="tab" data-tab="bewaard"><span class="ticon">&#10047;</span><span>Bewaard</span></button>
   <button class="tab" data-tab="meer"><span class="ticon">&#8943;</span><span>Meer</span></button>
 </nav>
 
