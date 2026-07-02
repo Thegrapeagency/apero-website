@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partnerportaal · APÉRO</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --panna:#F4EAD6;--panna-2:#EBDCBE;--burro:#EEB24A;--terracotta:#C45F38;
+  --mattone:#9E4326;--salvia:#8C9A6A;--espresso:#231B13;
+  --ink-70:rgba(35,27,19,.7);--ink-50:rgba(35,27,19,.5);--line:rgba(35,27,19,.16);
+  --disp:'Bodoni Moda',serif;--body:'Hanken Grotesk',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--body);background:var(--panna);color:var(--espresso);-webkit-font-smoothing:antialiased}
+.flower{position:relative;display:inline-block;width:.8em;height:.8em;flex:none;
+  --p1:var(--terracotta);--p2:var(--terracotta);--hole:var(--panna);
+  background:
+    radial-gradient(circle closest-side at 50% 26%, var(--p2) 99%,transparent 100%),
+    radial-gradient(circle closest-side at 50% 74%, var(--p2) 99%,transparent 100%),
+    radial-gradient(circle closest-side at 26% 50%, var(--p1) 99%,transparent 100%),
+    radial-gradient(circle closest-side at 74% 50%, var(--p1) 99%,transparent 100%)}
+.flower::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--hole)}
+.petals{--c:110px;--a:var(--terracotta);--b:var(--burro);background-color:var(--panna);
+  background-image:
+    radial-gradient(circle calc(var(--c)*0.6) at 25% 25%, var(--a) 99%,transparent 100%),
+    radial-gradient(circle calc(var(--c)*0.6) at 75% 75%, var(--a) 99%,transparent 100%),
+    radial-gradient(circle calc(var(--c)*0.6) at 75% 25%, var(--b) 99%,transparent 100%),
+    radial-gradient(circle calc(var(--c)*0.6) at 25% 75%, var(--b) 99%,transparent 100%);
+  background-size:calc(var(--c)*2) calc(var(--c)*2)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.45;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E")}
+.klabel{font-weight:600;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--terracotta)}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+header{position:relative;overflow:hidden;padding:60px 0 44px;border-bottom:1px solid var(--line)}
+header .petals{position:absolute;inset:0;opacity:.5}
+header .veil{position:absolute;inset:0;background:linear-gradient(rgba(244,234,214,.55),var(--panna))}
+header .in{position:relative;z-index:2}
+.merk{font-family:var(--disp);font-weight:800;font-size:22px;display:inline-flex;align-items:center;margin-bottom:26px}
+.merk .sub{font-family:var(--body);font-weight:600;font-size:9px;letter-spacing:.3em;color:var(--terracotta);margin-left:9px}
+h1{font-family:var(--disp);font-weight:800;font-size:clamp(30px,6vw,46px);line-height:1.03;margin-top:8px;max-width:18ch}
+.standfirst{font-family:var(--disp);font-style:italic;font-size:clamp(16px,2.4vw,20px);color:var(--ink-70);margin-top:14px;max-width:52ch}
+section{padding:34px 0}
+.kaart{background:var(--panna);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:18px}
+.kaart.zacht{background:var(--panna-2)}
+.kaart h3{font-family:var(--disp);font-weight:700;font-size:19px;margin:6px 0 10px}
+.kaart p{font-size:14px;line-height:1.7;color:var(--ink-70)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.chip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;padding:5px 12px;background:var(--panna-2);border:1px solid var(--line)}
+.chip.terra{background:var(--terracotta);border-color:var(--terracotta);color:var(--panna)}
+.balk{height:9px;background:var(--panna-2);border-radius:100px;overflow:hidden;border:1px solid var(--line);margin:12px 0 6px}
+.balk i{display:block;height:100%;background:var(--terracotta);border-radius:100px}
+.check{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.check:last-child{border-bottom:none}
+.check .vink{flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-size:10px;transform:translateY(3px)}
+.check.af .vink{background:var(--salvia);border-color:var(--salvia);color:var(--panna)}
+.check.af span{color:var(--ink-50)}
+.knop{display:inline-block;font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--panna);background:var(--espresso);padding:12px 20px;border-radius:100px;text-decoration:none}
+.knop:hover{background:var(--terracotta)}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:12.5px;color:var(--ink-50)}
+#laden{padding:80px 24px;text-align:center;color:var(--ink-50);font-family:var(--disp);font-style:italic;font-size:18px}
+</style>
+</head>
+<body>
+<div id="laden">De tafel wordt gedekt&hellip;</div>
+<div id="portaal" style="display:none">
+<header>
+  <div class="petals"></div><div class="veil"></div><div class="grain"></div>
+  <div class="wrap in">
+    <div class="merk">AP&Eacute;R<span class="flower"></span><span class="sub">PARTNERPORTAAL</span></div>
+    <div class="klabel" id="pKicker"></div>
+    <h1 id="pTitel"></h1>
+    <p class="standfirst" id="pWelkom"></p>
+  </div>
+</header>
+<section><div class="wrap">
+  <div class="grid">
+    <div class="kaart"><span class="klabel">Jouw wereld</span><h3 id="pWereld"></h3><p id="pServe"></p><p style="margin-top:10px"><span class="chip terra" id="pStatus"></span></p></div>
+    <div class="kaart"><span class="klabel">Waar we staan</span><h3>Samen af te ronden</h3><div class="balk"><i id="pBalk"></i></div><p id="pTelling"></p></div>
+  </div>
+  <div class="kaart"><span class="klabel">Checklist</span><h3>De stappen naar het festival</h3><div id="pChecks"></div></div>
+  <div class="kaart zacht"><span class="klabel">Contact</span><h3>Eén adres voor alles</h3>
+    <p>Vragen, materiaal aanleveren of iets afstemmen: mail ons en we schenken bij.</p>
+    <p style="margin-top:14px"><a class="knop" href="mailto:hallo@apero-culture.nl?subject=Partner">hallo@apero-culture.nl</a></p></div>
+  <div class="kaart"><span class="klabel">Over AP&Eacute;RO</span><h3>Het verhaal waar je in meespeelt</h3>
+    <p>AP&Eacute;RO onderzoekt hoe Europa de avond opent en zet de conclusie in MMXXVII op tafel: een festival in Utrecht met zes werelden, zes bars en één lange tafel. Jouw merk wordt daar niet geproefd maar begrepen.</p>
+    <p style="margin-top:12px"><a href="../verhaal.html">Lees het volledige verhaal &rarr;</a></p></div>
+</div></section>
+<footer><div class="wrap">AP&Eacute;RO Culture &middot; partnerportaal &middot; een initiatief van The Grape Agency</div></footer>
+</div>
+<div id="fout" style="display:none;padding:80px 24px;text-align:center">
+  <p style="font-family:var(--disp);font-size:22px;font-weight:700">Hier klopt iets niet.</p>
+  <p style="color:var(--ink-70);margin-top:10px;font-size:14px" id="foutTekst"></p>
+</div>
+<script>
+(async function(){
+  var WERELD={italie:'Italië, het podium',frankrijk:'Frankrijk, de pauze',spanje:'Spanje, de revival',anijsgordel:'De anijsgordel',portugal:'Portugal, de verrassing',marokko:'Marokko, zonder alcohol',overig:'APÉRO'};
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  try{
+    var r=await fetch('../api/partner-data');
+    var d=null;
+    try{d=await r.json()}catch(e2){throw new Error('De partner-gegevens zijn hier niet bereikbaar. Ga naar www.apero-culture.com/partner en log in met je partnernaam.')}
+    if(!r.ok)throw new Error(d.error||'Kon je gegevens niet laden.');
+    var partner=null,slot=null;
+    if(d.rol==='partner'){partner=d.partner;slot=d.slot}
+    else{
+      // redactie: preview van een specifieke partner via ?preview=slug
+      var q=new URLSearchParams(location.search).get('preview');
+      partner=(d.partners||[]).find(function(p){return p.slug===q})||(d.partners||[]).filter(function(p){return p.slug!=='voorbeeldpartner'})[0];
+      if(!partner)throw new Error('Geen partner om te tonen. Voeg er een toe in de Studio.');
+      slot=(d.wereldSlots||[]).find(function(s){return s.partner===partner.slug})||null;
+    }
+    document.getElementById('pKicker').textContent='Partner · '+(WERELD[partner.wereld]||partner.wereld);
+    document.getElementById('pTitel').textContent='Welkom, '+partner.naam;
+    document.getElementById('pWelkom').textContent=(partner.portaal&&partner.portaal.welkom)||'';
+    document.getElementById('pWereld').textContent=slot?slot.bar:(WERELD[partner.wereld]||partner.wereld);
+    document.getElementById('pServe').textContent=slot?('Signature serve: '+slot.serve):'De invulling van jouw wereld stemmen we samen af.';
+    document.getElementById('pStatus').textContent=partner.status;
+    var dl=partner.deliverables||[],af=dl.filter(function(x){return x.af}).length;
+    document.getElementById('pBalk').style.width=Math.round(af/Math.max(1,dl.length)*100)+'%';
+    document.getElementById('pTelling').textContent=af+' van '+dl.length+' stappen afgerond.';
+    var c=document.getElementById('pChecks');
+    dl.forEach(function(x){
+      var div=document.createElement('div');div.className='check'+(x.af?' af':'');
+      div.innerHTML='<span class="vink">'+(x.af?'&#10003;':'')+'</span><span>'+esc(x.t)+'</span>';
+      c.appendChild(div);
+    });
+    document.getElementById('laden').style.display='none';
+    document.getElementById('portaal').style.display='';
+  }catch(e){
+    document.getElementById('laden').style.display='none';
+    document.getElementById('fout').style.display='';
+    document.getElementById('foutTekst').textContent=String(e.message||e);
+  }
+})();
+</script>
+</body>
+</html>

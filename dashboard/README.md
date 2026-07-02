@@ -48,3 +48,19 @@ Zolang `GITHUB_TOKEN` niet gezet is, geeft Publiceren een nette melding en gebeu
 ## Merkregels (afgedwongen)
 
 Importeert `apero-tokens.css` ongewijzigd. Voice-lint in de editor waarschuwt bij em-dashes, "proeverij", "APERO" zonder accent en reclame-clichés (merkbijbel §8). Themakleuren komen uit het palet, niet willekeurig.
+
+## APÉRO Studio (index.html)
+
+Sinds juli 2026 is /dashboard/ de Studio: het totaaldashboard met tien modules
+(overzicht, publicaties, generator, instagram, partners, ticketshop, draaiboek,
+statistieken, merk & assets, site & app, instellingen). Het oude publicatie-
+dashboard leeft voort als publicaties.html en draait ingebed in de Studio.
+
+- Cmd+K opent de command palette (modules, acties, partners, assets, publicaties)
+- Partnerportaal: /partner/ met per-partner logins via env PARTNER_AUTH
+  (slug:wachtwoord;...) — genereer de string in Studio → Partners → Logins beheren
+- Instagram: planner + merkbewaker werkt direct; rechtstreeks posten kan zodra
+  META_IG_TOKEN + META_IG_USER_ID in Vercel staan (zie api/instagram-publish.mjs)
+- Web analytics: meettag staat op alle pagina's; aanzetten in Vercel → Analytics
+- Lokale Studio-data (planning, draaiboek, partnerwijzigingen) leeft in de browser;
+  maak back-ups via Instellingen en commit partners.json na wijzigingen

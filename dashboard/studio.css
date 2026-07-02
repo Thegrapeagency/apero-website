@@ -1,0 +1,199 @@
+/* APÉRO Studio — het totaaldashboard. Tokens gespiegeld aan ../styles.css */
+:root{
+  --panna:#F4EAD6;--panna-2:#EBDCBE;--burro:#EEB24A;--terracotta:#C45F38;
+  --mattone:#9E4326;--salvia:#8C9A6A;--espresso:#231B13;--espresso-2:#2E2418;
+  --ink-70:rgba(35,27,19,.7);--ink-50:rgba(35,27,19,.5);--ink-30:rgba(35,27,19,.3);
+  --line:rgba(35,27,19,.16);--linelicht:rgba(244,234,214,.16);
+  --disp:'Bodoni Moda',serif;--body:'Hanken Grotesk',sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);--spring:cubic-bezier(.34,1.4,.44,1);
+  --zij:236px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:var(--body);background:var(--panna);color:var(--espresso);-webkit-font-smoothing:antialiased;overflow:hidden}
+button{font-family:var(--body);color:inherit;background:none;border:none;cursor:pointer}
+a{color:var(--mattone)}
+::selection{background:var(--burro);color:var(--espresso)}
+
+.flower{position:relative;display:inline-block;flex:none;width:.8em;height:.8em;aspect-ratio:1;
+  --p1:var(--terracotta);--p2:var(--terracotta);--hole:var(--espresso);
+  background:
+    radial-gradient(circle closest-side at 50% 26%, var(--p2) 99%,transparent 100%),
+    radial-gradient(circle closest-side at 50% 74%, var(--p2) 99%,transparent 100%),
+    radial-gradient(circle closest-side at 26% 50%, var(--p1) 99%,transparent 100%),
+    radial-gradient(circle closest-side at 74% 50%, var(--p1) 99%,transparent 100%)}
+.flower::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--hole)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.4;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E")}
+.klabel{font-weight:600;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--terracotta)}
+
+/* ---------- raamwerk ---------- */
+.studio{display:flex;height:100vh;height:100dvh}
+.zijbalk{width:var(--zij);flex:none;background:var(--espresso);color:var(--panna);display:flex;flex-direction:column;
+  border-right:1px solid var(--linelicht)}
+.zmerk{display:flex;align-items:center;gap:2px;padding:20px 20px 16px;font-family:var(--disp);font-weight:800;font-size:21px;color:var(--panna)}
+.zmerk .flower{margin:0 1px 0 2px}
+.zmerk .sub{font-family:var(--body);font-weight:600;font-size:9px;letter-spacing:.3em;color:var(--burro);margin-left:8px;transform:translateY(2px)}
+.znav{flex:1;overflow-y:auto;padding:6px 12px 12px;scrollbar-width:thin}
+.zkop{padding:16px 10px 6px;font-weight:600;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(244,234,214,.45)}
+.zlink{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:9px 10px;border-radius:7px;
+  font-size:13.5px;font-weight:500;color:rgba(244,234,214,.82);transition:background .18s,color .18s}
+.zlink .zi{width:19px;text-align:center;font-size:14px;flex:none;opacity:.85}
+.zlink:hover{background:var(--espresso-2);color:var(--panna)}
+.zlink.on{background:var(--terracotta);color:var(--panna);font-weight:600}
+.zlink .tel{margin-left:auto;font-size:10.5px;font-weight:700;background:rgba(244,234,214,.14);border-radius:100px;padding:2px 8px}
+.zlink.on .tel{background:rgba(35,27,19,.25)}
+.zvoet{padding:14px 20px;border-top:1px solid var(--linelicht);font-size:11px;color:rgba(244,234,214,.5);line-height:1.5}
+.zvoet a{color:var(--burro);text-decoration:none}
+
+.werk{flex:1;min-width:0;display:flex;flex-direction:column;position:relative}
+.topbar{flex:none;display:flex;align-items:center;gap:14px;padding:13px 22px;border-bottom:1px solid var(--line);background:rgba(244,234,214,.92);position:relative;z-index:5}
+.tkop{font-family:var(--disp);font-weight:800;font-size:20px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tzoek{margin-left:auto;display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:100px;
+  padding:8px 14px;font-size:12.5px;color:var(--ink-50);background:var(--panna);transition:border-color .2s}
+.tzoek:hover{border-color:var(--terracotta);color:var(--terracotta)}
+.tzoek kbd{font-family:var(--body);font-size:10px;font-weight:700;border:1px solid var(--line);border-radius:4px;padding:1px 5px;background:var(--panna-2)}
+.tlink{font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--espresso);text-decoration:none;
+  border:1px solid var(--line);border-radius:100px;padding:9px 15px;transition:all .2s;background:var(--panna)}
+.tlink:hover{background:var(--espresso);color:var(--panna)}
+.menuknop{display:none;font-size:19px;padding:4px 8px}
+
+.paneel{flex:1;min-height:0;overflow-y:auto;padding:26px 26px 60px;position:relative}
+.paneel.vol{padding:0;overflow:hidden;display:flex}
+.paneel.vol iframe{flex:1;width:100%;height:100%;border:none;background:var(--panna)}
+
+/* ---------- bouwstenen ---------- */
+.mkop{margin-bottom:20px;max-width:860px}
+.mkop h2{font-family:var(--disp);font-weight:800;font-size:clamp(24px,3vw,34px);line-height:1.05;margin:6px 0 8px}
+.mkop p{font-size:14px;line-height:1.65;color:var(--ink-70);max-width:64ch}
+.grid{display:grid;gap:16px}
+.grid.k2{grid-template-columns:1fr 1fr}
+.grid.k3{grid-template-columns:repeat(3,1fr)}
+.grid.k4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1180px){.grid.k4{grid-template-columns:1fr 1fr}.grid.k3{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.grid.k2,.grid.k3,.grid.k4{grid-template-columns:1fr}}
+.kaart{background:var(--panna);border:1px solid var(--line);border-radius:10px;padding:18px 20px;position:relative}
+.kaart.zacht{background:var(--panna-2)}
+.kaart h3{font-family:var(--disp);font-weight:700;font-size:17.5px;margin:6px 0 8px}
+.kaart .kl{display:block;margin-bottom:2px}
+.kaart p{font-size:13px;line-height:1.6;color:var(--ink-70)}
+.cijfer{font-family:var(--disp);font-weight:800;font-size:34px;line-height:1;color:var(--terracotta)}
+.cijfer.klein{font-size:24px}
+.cijfsub{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-50);margin-top:6px}
+
+.knop{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--panna);background:var(--espresso);padding:11px 18px;border-radius:100px;text-decoration:none;transition:background .2s,transform .2s}
+.knop:hover{background:var(--terracotta);transform:translateY(-1px)}
+.knop.geest{background:transparent;color:var(--espresso);box-shadow:inset 0 0 0 1px var(--line)}
+.knop.geest:hover{color:var(--panna);background:var(--espresso)}
+.knop.klein{padding:8px 13px;font-size:10.5px}
+.knop.terra{background:var(--terracotta)}
+.knop.terra:hover{background:var(--mattone)}
+.knop[disabled]{opacity:.45;pointer-events:none}
+.knoprij{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+.status{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--ink-70)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ink-30);flex:none}
+.status.ok i{background:var(--salvia)}
+.status.uit i{background:var(--burro)}
+.status.fout i{background:var(--mattone)}
+
+.chip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  border-radius:100px;padding:4px 10px;background:var(--panna-2);border:1px solid var(--line);color:var(--ink-70)}
+.chip.terra{background:var(--terracotta);border-color:var(--terracotta);color:var(--panna)}
+.chip.salvia{background:var(--salvia);border-color:var(--salvia);color:var(--panna)}
+.chip.burro{background:var(--burro);border-color:var(--burro);color:var(--espresso)}
+
+.veld{margin-bottom:12px}
+.veld label{display:block;font-weight:600;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-50);margin-bottom:6px}
+.veld input,.veld textarea,.veld select{width:100%;font-family:var(--body);font-size:14px;color:var(--espresso);
+  background:var(--panna);border:1px solid var(--line);border-radius:8px;padding:10px 12px;outline:none}
+.veld input:focus,.veld textarea:focus,.veld select:focus{border-color:var(--terracotta)}
+.veld textarea{resize:vertical;min-height:90px;line-height:1.6}
+
+.tabel{width:100%;border-collapse:collapse;font-size:13px}
+.tabel th{text-align:left;font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-50);
+  padding:8px 10px;border-bottom:1px solid var(--line)}
+.tabel td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tabel tr:hover td{background:rgba(238,178,74,.08)}
+
+.leeg{border:1.5px dashed var(--line);border-radius:12px;padding:34px 26px;text-align:center;color:var(--ink-50)}
+.leeg .flower{--hole:var(--panna);width:30px;height:30px;opacity:.5;margin-bottom:12px}
+.leeg h4{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--espresso);margin-bottom:6px}
+.leeg p{font-size:13px;line-height:1.6;max-width:44ch;margin:0 auto}
+
+.balk{height:8px;background:var(--panna-2);border-radius:100px;overflow:hidden;border:1px solid var(--line)}
+.balk i{display:block;height:100%;background:var(--terracotta);border-radius:100px;transition:width .5s var(--ease)}
+
+.check{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer;font-size:13.5px;line-height:1.5}
+.check:last-child{border-bottom:none}
+.check input{margin-top:3px;accent-color:var(--terracotta);width:15px;height:15px;flex:none;cursor:pointer}
+.check.af span{color:var(--ink-50);text-decoration:line-through}
+
+.lint{margin-top:8px;display:flex;flex-direction:column;gap:5px}
+.lint .melding{font-size:11.5px;color:var(--mattone);display:flex;gap:6px;align-items:baseline}
+.lint .melding.ok{color:var(--salvia)}
+
+.medias{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.media{position:relative;border:2px solid var(--line);border-radius:8px;overflow:hidden;aspect-ratio:1;cursor:pointer;background:var(--panna-2)}
+.media img{width:100%;height:100%;object-fit:cover;display:block}
+.media:hover{border-color:var(--burro)}
+.media.gekozen{border-color:var(--terracotta)}
+.media .mnaam{position:absolute;left:0;right:0;bottom:0;font-size:9px;font-weight:600;padding:3px 6px;
+  background:rgba(35,27,19,.65);color:var(--panna);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.kleur{border-radius:10px;border:1px solid var(--line);overflow:hidden;cursor:pointer}
+.kleur .vlak{height:64px}
+.kleur .kinfo{padding:9px 12px;font-size:11px;background:var(--panna)}
+.kleur .kinfo b{display:block;font-size:12.5px}
+.kleur .kinfo span{color:var(--ink-50)}
+
+.igpost{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px;background:var(--panna)}
+.igpost .igr{display:flex;gap:12px;align-items:flex-start}
+.igpost .igbeeld{width:64px;height:64px;border-radius:8px;object-fit:cover;flex:none;border:1px solid var(--line);background:var(--panna-2)}
+.igpost .igtekst{flex:1;min-width:0}
+.igpost .igcap{font-size:13px;line-height:1.5;color:var(--ink-70);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.igpost .igmeta{display:flex;gap:10px;margin-top:6px;font-size:11px;color:var(--ink-50);align-items:center;flex-wrap:wrap}
+
+/* command palette */
+.cp-scrim{position:fixed;inset:0;background:rgba(35,27,19,.45);z-index:200;opacity:0;visibility:hidden;transition:opacity .2s}
+.cp-scrim.on{opacity:1;visibility:visible}
+.cp{position:fixed;left:50%;top:14vh;transform:translateX(-50%) scale(.98);width:min(560px,92vw);z-index:210;
+  background:var(--panna);border:1px solid var(--line);border-radius:14px;box-shadow:0 30px 80px rgba(35,27,19,.35);
+  opacity:0;visibility:hidden;transition:all .22s var(--spring);overflow:hidden}
+.cp.on{opacity:1;visibility:visible;transform:translateX(-50%) scale(1)}
+.cp input{width:100%;font-family:var(--body);font-size:16px;padding:16px 20px;border:none;outline:none;background:transparent;color:var(--espresso);border-bottom:1px solid var(--line)}
+.cp .cplijst{max-height:46vh;overflow-y:auto;padding:8px}
+.cpitem{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:10px 12px;border-radius:8px;font-size:13.5px}
+.cpitem .ci{width:20px;text-align:center;opacity:.7}
+.cpitem .csub{margin-left:auto;font-size:10.5px;color:var(--ink-50);letter-spacing:.08em;text-transform:uppercase}
+.cpitem.actief,.cpitem:hover{background:var(--panna-2)}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:300;
+  background:var(--espresso);color:var(--panna);font-size:13px;font-weight:600;padding:12px 20px;border-radius:100px;
+  opacity:0;transition:all .3s var(--spring);pointer-events:none;max-width:90vw;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%)}
+
+/* modaal */
+.mscrim{position:fixed;inset:0;background:rgba(35,27,19,.45);z-index:150;opacity:0;visibility:hidden;transition:opacity .25s}
+.mscrim.on{opacity:1;visibility:visible}
+.modaal{position:fixed;right:0;top:0;bottom:0;width:min(560px,94vw);z-index:160;background:var(--panna);
+  border-left:1px solid var(--line);transform:translateX(102%);transition:transform .32s var(--ease);
+  display:flex;flex-direction:column}
+.modaal.on{transform:none}
+.modaal .mhead{flex:none;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line)}
+.modaal .mhead h3{font-family:var(--disp);font-weight:800;font-size:20px}
+.modaal .mbody{flex:1;overflow-y:auto;padding:20px 22px 40px}
+.msluit{font-size:20px;padding:4px 10px;border-radius:100px;border:1px solid var(--line)}
+.msluit:hover{color:var(--terracotta);border-color:var(--terracotta)}
+
+/* responsief */
+@media(max-width:900px){
+  .zijbalk{position:fixed;inset:0 25% 0 0;z-index:120;transform:translateX(-102%);transition:transform .3s var(--ease);box-shadow:20px 0 60px rgba(35,27,19,.3)}
+  .zijbalk.open{transform:none}
+  .menuknop{display:block}
+  .paneel{padding:18px 16px 60px}
+  .tzoek span{display:none}
+  .tlink{display:none}
+}

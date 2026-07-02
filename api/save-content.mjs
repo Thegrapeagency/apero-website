@@ -18,6 +18,11 @@
    zodat "Opslaan naar repo" één klik wordt. Tot die tijd 503.
    ============================================================ */
 export default async function handler(req, res) {
+  if (req.method === 'GET') {
+    // statusprobe voor de Studio: is de 1-klik-opslag geconfigureerd?
+    res.status(200).json({ actief: !!(process.env.GITHUB_TOKEN && process.env.GITHUB_REPO) });
+    return;
+  }
   if (req.method !== 'POST') { res.status(405).json({ error: 'POST only' }); return; }
 
   const { GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH = 'main', CONTENT_PATH = 'dashboard/data/content.json', SAVE_SECRET } = process.env;
