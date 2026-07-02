@@ -1,0 +1,16 @@
+{
+  "name": "APÉRO Magazine",
+  "short_name": "APÉRO Mag",
+  "description": "Het magazine van APÉRO: longreads over de aperocultuur van Europa, in een leesomgeving gemaakt voor je telefoon.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4EAD6",
+  "theme_color": "#F4EAD6",
+  "icons": [
+    {"src": "../icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<title>APÉRO Magazine · de app</title>
+<meta name="description" content="De magazine-app van APÉRO: alle edities in één leesomgeving, gemaakt voor je telefoon. Installeerbaar, offline leesbaar.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#F4EAD6" id="themecolor">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="APÉRO Mag">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<!-- Splash: de O bloeit open -->
+<div id="splash" aria-hidden="true">
+  <div class="bloom">
+    <span class="pt p1"></span><span class="pt p2"></span><span class="pt p3"></span><span class="pt p4"></span>
+    <span class="heart"></span>
+  </div>
+  <div class="wm">AP&Eacute;R<span class="flower"></span></div>
+  <div class="tag">open de avond</div>
+</div>
+
+<!-- Kiosk -->
+<main id="kiosk" class="screen on">
+  <header class="apphead">
+    <div class="brand">AP&Eacute;R<span class="flower"></span><span class="cul">MAGAZINE</span></div>
+    <button class="hbtn" id="btnNight" aria-label="Nachtmodus">&#9789;</button>
+  </header>
+
+  <div class="kscroll">
+    <div id="resume" class="resume">
+      <div class="rmin">
+        <div class="klabel">Lees verder waar je was</div>
+        <div class="rtit" id="resumeT"></div>
+        <div class="rsub" id="resumeS"></div>
+      </div>
+      <span class="rgo">&rarr;</span>
+    </div>
+
+    <div class="klabel kpad" id="kioskLabel">De edities</div>
+    <div class="carousel" id="carousel"></div>
+    <div class="cdots" id="cdots"></div>
+
+    <div class="kfoot">
+      <div class="fl-divider"><span></span><i class="flower sm"></i><span></span></div>
+      <p>AP&Eacute;RO Magazine is het tijdschrift van een onderzoek naar de aperocultuur. Nieuwe edities verschijnen per seizoen, elke editie leest als een avond: je begint licht en eindigt ergens anders dan je dacht.</p>
+    </div>
+  </div>
+</main>
+
+<!-- Editie: inhoudsopgave -->
+<section id="editie" class="screen right">
+  <div class="ehero" id="ehero">
+    <div class="petals" id="eheroPetals"></div>
+    <div class="grain"></div>
+    <div class="eveil"></div>
+    <button class="backbtn" id="btnBackKiosk" aria-label="Terug naar kiosk">&larr;</button>
+    <div class="ehead">
+      <div class="klabel light" id="eSub"></div>
+      <h1 id="eTitel"></h1>
+      <div class="emeta" id="eMeta"></div>
+    </div>
+  </div>
+  <div class="escroll">
+    <div class="toclist" id="toclist"></div>
+    <button class="bigbtn" id="btnStart">Begin te lezen</button>
+  </div>
+</section>
+
+<!-- Reader -->
+<section id="reader" class="screen right">
+  <div class="rchrome rtop" id="rtop">
+    <button class="hbtn" id="btnCloseReader" aria-label="Terug">&larr;</button>
+    <div class="rmid">
+      <div class="rtitel" id="rtitel"></div>
+      <div class="rmeta" id="rmeta"></div>
+    </div>
+    <div class="ract">
+      <button class="hbtn bm" id="btnBM" aria-label="Bladwijzer">&#10047;</button>
+      <button class="hbtn" id="btnAa" aria-label="Weergave">Aa</button>
+    </div>
+  </div>
+  <div class="rprogress"><i id="rbar"></i></div>
+  <div class="rtrack" id="rtrack">
+    <article class="rslide" id="sPrev"><div class="rscroll"><div class="rprose"></div></div></article>
+    <article class="rslide" id="sCur"><div class="rscroll"><div class="rprose"></div></div></article>
+    <article class="rslide" id="sNext"><div class="rscroll"><div class="rprose"></div></div></article>
+  </div>
+  <div class="rchrome rbottom" id="rbottom">
+    <div class="rdots" id="rdots"></div>
+    <div class="rleft" id="rMinuten"></div>
+  </div>
+  <div class="burst" id="burst"></div>
+</section>
+
+<!-- Weergave-sheet -->
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet">
+  <div class="grip"></div>
+  <div class="klabel">Weergave</div>
+  <div class="srow">
+    <span class="slbl">Letter</span>
+    <div class="seg">
+      <button id="fsMin">A<small>&minus;</small></button>
+      <span id="fsVal">18</span>
+      <button id="fsPlus">A<small>+</small></button>
+    </div>
+  </div>
+  <div class="srow">
+    <span class="slbl">Avond</span>
+    <button class="toggle" id="tgNight" role="switch" aria-checked="false"><i></i></button>
+  </div>
+  <div class="srow">
+    <span class="slbl">Regelafstand</span>
+    <div class="seg">
+      <button id="lhMin">&#8722;</button>
+      <span id="lhVal">ruim</span>
+      <button id="lhPlus">+</button>
+    </div>
+  </div>
+</div>
+
+<!-- Bladwijzers -->
+<section id="bladwijzers" class="screen right">
+  <header class="apphead"><div class="ptitle">Bladwijzers</div></header>
+  <div class="kscroll"><div id="bmlist" class="bmlist"></div></div>
+</section>
+
+<!-- Meer -->
+<section id="meer" class="screen right">
+  <header class="apphead"><div class="ptitle">Meer</div></header>
+  <div class="kscroll">
+    <div class="statcard" id="statcard"></div>
+    <div class="klabel kpad">De app</div>
+    <div class="linklist">
+      <button id="btnInstall" class="mlink" hidden>Zet op je beginscherm <span>&rarr;</span></button>
+      <a class="mlink" href="../app.html">De Aperokiezer <span>&rarr;</span></a>
+      <a class="mlink" href="../lexicon.html">Het lexicon <span>&rarr;</span></a>
+      <a class="mlink" href="../index.html">Naar de website <span>&rarr;</span></a>
+    </div>
+    <div class="klabel kpad">Over</div>
+    <p class="mnote">AP&Eacute;RO Magazine hoort bij AP&Eacute;RO Culture, een onderzoek naar het uur tussen werk en diner. Van het Latijnse <em>aperire</em>: openen. Eenmaal geladen lees je alles ook zonder verbinding.</p>
+    <div class="mnote klein" id="iosHint" hidden>Op iPhone: tik op het deelicoon in Safari en kies "Zet op beginscherm". De app opent dan volledig scherm, zonder browserbalk.</div>
+  </div>
+</section>
+
+<!-- Tabbar -->
+<nav class="tabbar" id="tabbar">
+  <button class="tab on" data-tab="kiosk"><i class="flower sm"></i><span>Kiosk</span></button>
+  <button class="tab" data-tab="bladwijzers"><span class="ticon">&#10047;</span><span>Bladwijzers</span></button>
+  <button class="tab" data-tab="meer"><span class="ticon">&#8943;</span><span>Meer</span></button>
+</nav>
+
+<script src="content.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
