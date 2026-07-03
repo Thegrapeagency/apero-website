@@ -61,6 +61,9 @@ html{scroll-behavior:smooth}
 .quote{font-family:var(--disp);font-style:italic;font-weight:600;font-size:clamp(24px,4.2vw,44px);line-height:1.25;max-width:26ch;color:var(--espresso)}
 .quote b{color:var(--terracotta);font-style:normal}
 .formats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+.formats.media3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:1000px){.formats.media3{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.formats.media3{grid-template-columns:1fr}}
 @media(max-width:1000px){.formats{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.formats{grid-template-columns:1fr}}
 .format{border:1px solid var(--line);border-radius:12px;padding:22px;background:var(--panna);position:relative;display:flex;flex-direction:column}
@@ -105,7 +108,7 @@ html{scroll-behavior:smooth}
     <span class="dnum onthul">Partnerpitch · Utrecht · MMXXVII</span>
     <div class="wm onthul v1">AP&Eacute;R<span class="flower"></span></div>
     <h1 class="dkop onthul v2" style="margin-top:26px">Claim een wereld.</h1>
-    <p class="dlede onthul v3">In MMXXVII bouwt AP&Eacute;RO een festival in Utrecht: zes bars rond één lange tafel, van de middag tot diep in de avond. Elke bar draagt precies één merk. Zes plekken dus. Dit is de uitnodiging.</p>
+    <p class="dlede onthul v3">In MMXXVII bouwt AP&Eacute;RO een festival in Utrecht: zes bars rond één lange tafel. Elke bar draagt precies één merk, met een jaar aan media eromheen: magazine, app, podcast en Instagram. Zes plekken dus. Dit is de uitnodiging.</p>
     <div class="onthul v4" style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#d9">Plan een gesprek</a><a class="btn ghost" href="#d2">Bekijk de pitch</a></div>
   </div>
   <span class="pijl">&darr;</span>
@@ -133,8 +136,8 @@ html{scroll-behavior:smooth}
 <section class="dia" id="d3">
   <div class="wrap">
     <span class="dnum onthul">02 · Wat AP&Eacute;RO is</span>
-    <h2 class="dkop onthul v1">Je stapt niet in een idee. Je stapt in een lopend verhaal.</h2>
-    <p class="dtekst onthul v2">AP&Eacute;RO publiceert al maanden: drie magazine-edities, zes longreads, een leesapp en een podcast in productie. Het festival is het sluitstuk van dat onderzoek, niet het startpunt. Jouw merk lift dus niet mee op een belofte maar op een lopende publicatie.</p>
+    <h2 class="dkop onthul v1">Een mediahuis met een festival. Niet andersom.</h2>
+    <p class="dtekst onthul v2">AP&Eacute;RO publiceert al maanden: drie magazine-edities, zes longreads, een leesapp en een podcast in productie. Het festival is één dag; de media draaien het hele jaar. Als partner koop je dus geen standplek maar een plek in een redactie die elke maand publiceert.</p>
     <div class="cijfers onthul v3">
       <div class="cij"><div class="n">3</div><div class="l">magazine-edities live</div></div>
       <div class="cij"><div class="n">6</div><div class="l">longreads over de werelden</div></div>
@@ -175,21 +178,43 @@ html{scroll-behavior:smooth}
   </div>
 </section>
 
+
+<!-- 5b · de mediawaarde -->
+<section class="dia" id="d5m">
+  <div class="wrap">
+    <span class="dnum onthul">05 · De mediawaarde</span>
+    <h2 class="dkop onthul v1">Eén festivaldag. Twaalf maanden media.</h2>
+    <p class="dtekst onthul v2">Dit is wat er als wereldpartner rond jouw merk gemaakt wordt, door onze redactie, in onze stijl:</p>
+    <div class="formats media3 onthul v3">
+      <div class="format"><span class="flabel">Longread</span><h3>Jouw wereld, uitgeschreven</h3><p>Een longread van meer dan tweeduizend woorden over jouw wereld en product. Blijvend op de site en in de app, niet één dag in een goodiebag.</p></div>
+      <div class="format"><span class="flabel">Magazine</span><h3>De seizoenseditie</h3><p>Artikelen rond jouw wereld in het magazine, gelezen in de app die mensen op hun telefoon installeren en offline meenemen.</p></div>
+      <div class="format"><span class="flabel">Podcast</span><h3>De Importeur Vertelt</h3><p>Een aflevering van 35 tot 45 minuten met jouw maker of importeur aan tafel, plus een korte Eén Glas-aflevering rond jouw drank.</p></div>
+      <div class="format"><span class="flabel">Instagram</span><h3>Een eigen serie</h3><p>Carrousels en reels rond jouw wereld in onze vaste cadans, gemaakt met onze eigen beeldtaal en generator.</p></div>
+      <div class="format"><span class="flabel">Lexicon</span><h3>In het naslagwerk</h3><p>Jouw drank en termen opgenomen in het lexicon, op de site en in de app. Daar zoeken lezers hun termen op, jaar in jaar uit.</p></div>
+      <div class="format"><span class="flabel">Campagne</span><h3>Festival &amp; pers</h3><p>Partnerpagina, persbericht en een plek in de campagne richting kaartverkoop, tot en met de festivaldag zelf.</p></div>
+    </div>
+    <div class="duo" style="margin-top:26px">
+      <p class="dtekst onthul v4"><b>Jouw eigen maand.</b> Onze contentkalender draait elke maand om één wereld. Als wereldpartner is die maand van jou: magazine, Instagram en podcast wijzen dan allemaal jouw kant op.</p>
+      <p class="dtekst onthul v4"><b>Alles mag je hergebruiken.</b> Elke longread, foto, carrousel en aflevering over jouw merk zet je zelf opnieuw in: op je site, je socials, in je salesgesprekken. Dat staat gewoon in de deal, zonder extra kosten.</p>
+    </div>
+  </div>
+</section>
+
 <!-- 6 · wat je krijgt / wat jij levert -->
 <section class="dia" id="d6">
   <div class="wrap">
-    <span class="dnum onthul">05 · De verdeling</span>
+    <span class="dnum onthul">06 · De verdeling</span>
     <h2 class="dkop onthul v1">Wij bouwen alles. Jij levert drie dingen.</h2>
     <div class="duo" style="margin-top:34px">
       <div class="blok donker onthul v2">
         <h3>Wat AP&Eacute;RO levert</h3>
         <ul>
+          <li>Het mediapakket hierboven: longread, magazine, podcast, Instagram-serie en lexicon, twaalf maanden lang</li>
+          <li>Jouw eigen maand in de contentkalender</li>
           <li>Jouw bar op het festival: ontwerp, bouw, bemanning en vergunning</li>
-          <li>Een longread en magazine-inbedding rond jouw wereld en product</li>
-          <li>Een aflevering in de podcastserie De Importeur Vertelt</li>
-          <li>Vermelding op de partnerpagina en in de festivalcommunicatie</li>
+          <li>Partnerpagina, persbericht en de campagne richting kaartverkoop</li>
           <li>Een eigen partnerportaal met planning en checklist, altijd actueel</li>
-          <li>Een jaar lang zichtbaarheid in het onderzoek, niet één dag op een beurs</li>
+          <li>Hergebruiksrecht op alle content die we over jouw merk maken</li>
         </ul>
       </div>
       <div class="blok onthul v3">
@@ -208,11 +233,11 @@ html{scroll-behavior:smooth}
 <!-- 7 · de formats -->
 <section class="dia" id="d7">
   <div class="wrap">
-    <span class="dnum onthul">06 · De formats</span>
+    <span class="dnum onthul">07 · De formats</span>
     <h2 class="dkop onthul v1">Vier manieren om in te stappen</h2>
     <div class="formats onthul v2">
-      <div class="format top"><span class="flabel">Exclusief · 6 plekken</span><h3>Wereldpartner</h3><p>Jouw merk draagt een van de zes werelden: de bar, de serve, de longread, de masterclass en de podcastaflevering. Het volledige pakket, één merk per wereld.</p></div>
-      <div class="format"><span class="flabel">Programma</span><h3>Masterclasspartner</h3><p>Een eigen masterclass of tasting binnen een wereld, met jouw maker of importeur als verteller.</p></div>
+      <div class="format top"><span class="flabel">Exclusief · 6 plekken</span><h3>Wereldpartner</h3><p>Het volledige mediapakket plus de bar: longread, magazine, podcast, Instagram-serie, jouw eigen maand en de masterclass. Eén merk per wereld.</p></div>
+      <div class="format"><span class="flabel">Programma</span><h3>Masterclasspartner</h3><p>Een eigen masterclass binnen een wereld, met jouw maker als verteller. We leggen hem vast voor onze kanalen, dus hij werkt door na de festivaldag.</p></div>
       <div class="format"><span class="flabel">Redactie</span><h3>Magazinepartner</h3><p>Jouw product en verhaal redactioneel ingebed in een magazine-editie en het lexicon. Inhoud voorop, altijd in AP&Eacute;RO-stijl.</p></div>
       <div class="format"><span class="flabel">Audio</span><h3>Podcastpartner</h3><p>Een aflevering van De Importeur Vertelt rond jouw merk: het verhaal achter het glas, verteld door de mensen die het schenken.</p></div>
     </div>
@@ -223,7 +248,7 @@ html{scroll-behavior:smooth}
 <!-- 8 · zo werkt het -->
 <section class="dia" id="d8">
   <div class="wrap">
-    <span class="dnum onthul">07 · Zo werkt het</span>
+    <span class="dnum onthul">08 · Zo werkt het</span>
     <h2 class="dkop onthul v1">Van gesprek tot gedekte tafel</h2>
     <div class="stappen">
       <div class="stap onthul v1"><span class="snum">Stap één</span><h3>Het gesprek</h3><p>Een uur, liefst met een glas erbij. We kijken welke wereld bij je merk past en wat je wil vertellen.</p></div>
@@ -237,7 +262,7 @@ html{scroll-behavior:smooth}
 <section class="dia slotP" id="d9">
   <div class="petals"></div><div class="grain"></div>
   <div class="wrap">
-    <span class="dnum onthul">08 · Aan tafel</span>
+    <span class="dnum onthul">09 · Aan tafel</span>
     <h2 class="dkop onthul v1">Open de avond met ons.</h2>
     <p class="dlede onthul v2">Zes werelden, zes plekken. Mail ons en we plannen het gesprek; binnen een week weet je of jouw wereld nog vrij is.</p>
     <div class="onthul v3" style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
