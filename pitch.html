@@ -86,6 +86,19 @@ html{scroll-behavior:smooth}
 .slotP .dnum{color:rgba(244,234,214,.4)}
 
 
+
+/* ---- bewegende fresco's ---- */
+.arch{position:relative;overflow:hidden;border-radius:50% 50% 8px 8px / 32% 32% 0 0;border:1px solid var(--line)}
+.arch .fresco{position:absolute;inset:0;background-size:cover;background-position:center 32%}
+.arch .fmv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.arch .wash{position:absolute;inset:0;pointer-events:none;background:rgba(244,234,214,.18)}
+.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hgrid .arch{height:min(62vh,540px)}
+@media(max-width:980px){.hgrid{grid-template-columns:1fr;gap:26px}.hgrid .arch{height:300px;max-width:520px}}
+.mduo{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;margin-top:8px}
+.mduo .arch{height:min(48vh,420px)}
+@media(max-width:980px){.mduo{grid-template-columns:1fr;gap:24px}.mduo .arch{height:280px;max-width:520px}}
+
 /* ---- animatielaag ---- */
 #vgang{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;background:transparent;pointer-events:none}
 #vgang i{display:block;height:100%;width:0;background:var(--terracotta);transition:width .15s linear}
@@ -140,6 +153,7 @@ html{scroll-behavior:smooth}
   .dia{min-height:auto;page-break-after:always;padding:40px 0;border-bottom:none}
   .onthul{opacity:1 !important;transform:none !important}
   .wkaart{break-inside:avoid}
+  .arch .fmv{display:none !important}
   body{background:#fff}
 }
 .printknop{position:fixed;left:22px;bottom:18px;z-index:60;font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--panna);border:1px solid var(--line);border-radius:100px;padding:10px 16px;cursor:pointer;color:var(--espresso)}
@@ -155,11 +169,16 @@ html{scroll-behavior:smooth}
 <section class="dia heroP" id="d1">
   <div class="petals"></div><div class="veil"></div><div class="grain"></div>
   <div class="wrap">
-    <span class="dnum onthul">Partnerpitch · Utrecht · MMXXVII</span>
-    <div class="wm onthul v1">AP&Eacute;R<span class="flower"></span></div>
-    <h1 class="dkop onthul v2" style="margin-top:26px">Claim een wereld.</h1>
-    <p class="dlede onthul v3">In MMXXVII bouwt AP&Eacute;RO een festival in Utrecht: zes bars rond één lange tafel. Elke bar draagt precies één merk, met een jaar aan media eromheen: magazine, app, podcast en Instagram. Zes plekken dus. Dit is de uitnodiging.</p>
-    <div class="onthul v4" style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#d9">Plan een gesprek</a><a class="btn ghost" href="#d2">Bekijk de pitch</a></div>
+    <div class="hgrid">
+      <div>
+        <span class="dnum onthul">Partnerpitch · Utrecht · MMXXVII</span>
+        <div class="wm onthul v1">AP&Eacute;R<span class="flower"></span></div>
+        <h1 class="dkop onthul v2" style="margin-top:26px">Claim een wereld.</h1>
+        <p class="dlede onthul v3">In MMXXVII bouwt AP&Eacute;RO een festival in Utrecht: zes bars rond één lange tafel. Elke bar draagt precies één merk, met een jaar aan media eromheen: magazine, app, podcast en Instagram. Zes plekken dus. Dit is de uitnodiging.</p>
+        <div class="onthul v4" style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#d9">Plan een gesprek</a><a class="btn ghost" href="#d2">Bekijk de pitch</a></div>
+      </div>
+      <div class="arch onthul v3"><div class="fresco" style="background-image:url('assets/motion/hero-poster.jpg')"></div><video class="fmv" autoplay muted loop playsinline preload="metadata" poster="assets/motion/hero-poster.jpg"><source src="assets/motion/hero.mp4" type="video/mp4"></video><div class="wash"></div><div class="grain"></div></div>
+    </div>
   </div>
   <span class="pijl">&darr;</span>
 </section>
@@ -187,7 +206,13 @@ html{scroll-behavior:smooth}
   <div class="wrap">
     <span class="dnum onthul">02 · Wat AP&Eacute;RO is</span>
     <h2 class="dkop onthul v1">Een mediahuis met een festival. Niet andersom.</h2>
-    <p class="dtekst onthul v2">AP&Eacute;RO publiceert al maanden: drie magazine-edities, zes longreads, een leesapp en een podcast in productie. Het festival is één dag; de media draaien het hele jaar. Als partner koop je dus geen standplek maar een plek in een redactie die elke maand publiceert.</p>
+    <div class="mduo">
+      <div>
+        <p class="dtekst onthul v2">AP&Eacute;RO publiceert al maanden: drie magazine-edities, zes longreads, een leesapp en een podcast in productie. Het festival is één dag; de media draaien het hele jaar. Als partner koop je dus geen standplek maar een plek in een redactie die elke maand publiceert.</p>
+        <p class="dtekst onthul v3">Alles in een eigen beeldtaal: de fresco's, het petal-patroon en de typografie op deze pagina, tot en met het bewegende beeld hiernaast. Die stijl ligt klaar voor jouw wereld.</p>
+      </div>
+      <div class="arch onthul v3"><div class="fresco" style="background-image:url('assets/motion/lexicon-poster.jpg')"></div><video class="fmv" autoplay muted loop playsinline preload="metadata" poster="assets/motion/lexicon-poster.jpg"><source src="assets/motion/lexicon.mp4" type="video/mp4"></video><div class="wash"></div><div class="grain"></div></div>
+    </div>
     <div class="cijfers onthul v3">
       <div class="cij"><div class="n" data-tel="3">3</div><div class="l">magazine-edities live</div></div>
       <div class="cij"><div class="n" data-tel="6">6</div><div class="l">longreads over de werelden</div></div>
@@ -368,6 +393,10 @@ html{scroll-behavior:smooth}
     k.innerHTML=woorden.map(function(w){return '<span class="w"><i>'+w+'</i></span>'}).join(' ');
     k.querySelectorAll('.w i').forEach(function(el2,i){el2.style.transitionDelay=(0.06+i*0.06)+'s'});
   });
+
+  // fresco-video's zeker laten spelen (sommige browsers wachten op interactie)
+  function speel(){document.querySelectorAll('video.fmv').forEach(function(v){if(v.paused)v.play().catch(function(){})})}
+  speel();window.addEventListener('scroll',speel,{passive:true,once:true});
 
   // voortgangsbalk
   var vg=document.querySelector('#vgang i');
