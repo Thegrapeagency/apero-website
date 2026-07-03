@@ -85,6 +85,55 @@ html{scroll-behavior:smooth}
 .slotP .dlede{color:rgba(244,234,214,.8)}
 .slotP .dnum{color:rgba(244,234,214,.4)}
 
+
+/* ---- animatielaag ---- */
+#vgang{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;background:transparent;pointer-events:none}
+#vgang i{display:block;height:100%;width:0;background:var(--terracotta);transition:width .15s linear}
+.w{display:inline-block;overflow:hidden;vertical-align:bottom}
+.w i{display:inline-block;font-style:inherit;transform:translateY(112%);transition:transform .85s cubic-bezier(.22,.61,.36,1)}
+.onthul.in .w i{transform:none}
+.heroP .wm .flower{transform:scale(0) rotate(-120deg);transition:transform .9s cubic-bezier(.34,1.5,.44,1) .5s}
+.onthul.in.wm .flower,.wm.onthul.in .flower{transform:none}
+.cij .n{will-change:contents}
+.werelddeck .wkaart{opacity:0;transform:translateY(34px) scale(.96);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.werelddeck.in .wkaart{opacity:1;transform:none}
+.werelddeck.in .wkaart:nth-child(1){transition-delay:.05s}.werelddeck.in .wkaart:nth-child(2){transition-delay:.15s}
+.werelddeck.in .wkaart:nth-child(3){transition-delay:.25s}.werelddeck.in .wkaart:nth-child(4){transition-delay:.35s}
+.werelddeck.in .wkaart:nth-child(5){transition-delay:.45s}.werelddeck.in .wkaart:nth-child(6){transition-delay:.55s}
+.wkaart{transform-style:preserve-3d;will-change:transform}
+.wkaart .beschikbaar{transform:scale(0)}
+.werelddeck.in .beschikbaar{animation:pop .55s cubic-bezier(.34,1.5,.44,1) forwards}
+.werelddeck.in .wkaart:nth-child(1) .beschikbaar{animation-delay:.55s}.werelddeck.in .wkaart:nth-child(2) .beschikbaar{animation-delay:.68s}
+.werelddeck.in .wkaart:nth-child(3) .beschikbaar{animation-delay:.81s}.werelddeck.in .wkaart:nth-child(4) .beschikbaar{animation-delay:.94s}
+.werelddeck.in .wkaart:nth-child(5) .beschikbaar{animation-delay:1.07s}.werelddeck.in .wkaart:nth-child(6) .beschikbaar{animation-delay:1.2s}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.quote.onthul{transform:none;clip-path:inset(0 100% 0 0);transition:opacity .4s,clip-path 1.4s cubic-bezier(.22,.61,.36,1) .2s}
+.quote.onthul.in{clip-path:inset(0 -2% 0 0)}
+.formats .format{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.formats.in .format{opacity:1;transform:none}
+.formats.in .format:nth-child(1){transition-delay:.05s}.formats.in .format:nth-child(2){transition-delay:.14s}
+.formats.in .format:nth-child(3){transition-delay:.23s}.formats.in .format:nth-child(4){transition-delay:.32s}
+.formats.in .format:nth-child(5){transition-delay:.41s}.formats.in .format:nth-child(6){transition-delay:.5s}
+.slotP .petals{animation:petalbreathe 8s ease-in-out infinite}
+.slotP .flower.draai{position:absolute;right:6vw;top:50%;width:180px;height:180px;opacity:.25;transform:translateY(-50%);animation:draai 40s linear infinite;--p1:var(--burro);--p2:var(--terracotta);--hole:var(--espresso)}
+@keyframes draai{from{transform:translateY(-50%) rotate(0)}to{transform:translateY(-50%) rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){
+  .w i{transform:none;transition:none}
+  .werelddeck .wkaart,.formats .format{opacity:1;transform:none;transition:none}
+  .wkaart .beschikbaar{transform:none;animation:none !important}
+  .quote.onthul{clip-path:none}
+  .heroP .wm .flower{transform:none;transition:none}
+  #vgang{display:none}
+  .slotP .flower.draai{animation:none}
+}
+@media print{
+  .w i{transform:none !important}
+  .werelddeck .wkaart,.formats .format{opacity:1 !important;transform:none !important}
+  .wkaart .beschikbaar{transform:none !important}
+  .quote.onthul{clip-path:none !important}
+  #vgang{display:none}
+}
+
 /* ---- print: hetzelfde verhaal als PDF-deck ---- */
 @media print{
   nav.top,.dots,.pijl,.printknop,footer{display:none !important}
@@ -98,6 +147,7 @@ html{scroll-behavior:smooth}
 </style></head><body>
 <nav class="top"><div class="in"><a class="lk" href="index.html">AP&Eacute;R<span class="flower"></span><span class="cul">CULTURE</span></a><div class="links"><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De werelden</a><a href="lezen.html">Magazine</a><a href="lexicon.html">Lexicon</a><a href="festival.html">Festival</a></div></div></nav>
 
+<div id="vgang"><i></i></div>
 <div class="dots" id="dots"></div>
 <button class="printknop" onclick="window.print()">Bewaar als PDF</button>
 
@@ -125,9 +175,9 @@ html{scroll-behavior:smooth}
     </div>
     <div class="cijfers onthul v4">
       <div class="cij"><div class="n">18:00</div><div class="l">het uur dat overal bestaat</div></div>
-      <div class="cij"><div class="n">6</div><div class="l">werelden, elk één partner</div></div>
-      <div class="cij"><div class="n">2000+</div><div class="l">jaar aperocultuur als verhaal</div></div>
-      <div class="cij"><div class="n">1</div><div class="l">lange tafel in Utrecht</div></div>
+      <div class="cij"><div class="n" data-tel="6">6</div><div class="l">werelden, elk één partner</div></div>
+      <div class="cij"><div class="n" data-tel="2000" data-suffix="+">2000+</div><div class="l">jaar aperocultuur als verhaal</div></div>
+      <div class="cij"><div class="n" data-tel="1">1</div><div class="l">lange tafel in Utrecht</div></div>
     </div>
   </div>
 </section>
@@ -139,10 +189,10 @@ html{scroll-behavior:smooth}
     <h2 class="dkop onthul v1">Een mediahuis met een festival. Niet andersom.</h2>
     <p class="dtekst onthul v2">AP&Eacute;RO publiceert al maanden: drie magazine-edities, zes longreads, een leesapp en een podcast in productie. Het festival is één dag; de media draaien het hele jaar. Als partner koop je dus geen standplek maar een plek in een redactie die elke maand publiceert.</p>
     <div class="cijfers onthul v3">
-      <div class="cij"><div class="n">3</div><div class="l">magazine-edities live</div></div>
-      <div class="cij"><div class="n">6</div><div class="l">longreads over de werelden</div></div>
-      <div class="cij"><div class="n">1</div><div class="l">leesapp, offline op elke telefoon</div></div>
-      <div class="cij"><div class="n">4</div><div class="l">podcastformats in productie</div></div>
+      <div class="cij"><div class="n" data-tel="3">3</div><div class="l">magazine-edities live</div></div>
+      <div class="cij"><div class="n" data-tel="6">6</div><div class="l">longreads over de werelden</div></div>
+      <div class="cij"><div class="n" data-tel="1">1</div><div class="l">leesapp, offline op elke telefoon</div></div>
+      <div class="cij"><div class="n" data-tel="4">4</div><div class="l">podcastformats in productie</div></div>
     </div>
     <p class="dtekst onthul v4" style="margin-top:26px">Kijk zelf even rond: <a href="lezen.html">het magazine</a>, <a href="werelden/italie.html">de longreads</a>, <a href="app/">de app</a>. Daar komt jouw merk tussen te staan.</p>
   </div>
@@ -260,7 +310,7 @@ html{scroll-behavior:smooth}
 
 <!-- 9 · slot -->
 <section class="dia slotP" id="d9">
-  <div class="petals"></div><div class="grain"></div>
+  <div class="petals"></div><span class="flower draai"></span><div class="grain"></div>
   <div class="wrap">
     <span class="dnum onthul">09 · Aan tafel</span>
     <h2 class="dkop onthul v1">Open de avond met ons.</h2>
@@ -305,6 +355,73 @@ html{scroll-behavior:smooth}
     var idx=dias.findIndex(function(d){return d.offsetTop<=mid&&d.offsetTop+d.offsetHeight>mid});
     var n=(e.key==='ArrowDown'||e.key==='PageDown')?idx+1:idx-1;
     if(n>=0&&n<dias.length){e.preventDefault();dias[n].scrollIntoView({behavior:'smooth'})}
+  });
+})();
+</script>
+<script>
+(function(){
+  var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // koppen woord voor woord (behalve als reduced motion)
+  if(!rm)document.querySelectorAll('.dkop').forEach(function(k){
+    var woorden=k.textContent.split(' ');
+    k.innerHTML=woorden.map(function(w){return '<span class="w"><i>'+w+'</i></span>'}).join(' ');
+    k.querySelectorAll('.w i').forEach(function(el2,i){el2.style.transitionDelay=(0.06+i*0.06)+'s'});
+  });
+
+  // voortgangsbalk
+  var vg=document.querySelector('#vgang i');
+  function balk(){
+    var h=document.documentElement;
+    var f=h.scrollTop/(h.scrollHeight-h.clientHeight);
+    if(vg)vg.style.width=(f*100)+'%';
+  }
+  window.addEventListener('scroll',balk,{passive:true});balk();
+
+  // hero-petals parallax
+  var hp=document.querySelector('.heroP .petals');
+  if(hp&&!rm)window.addEventListener('scroll',function(){
+    var y=window.scrollY;
+    if(y<window.innerHeight*1.2)hp.style.transform='translateY('+(y*.28)+'px)';
+  },{passive:true});
+
+  // cijfers tellen op zodra zichtbaar
+  var geteld=new WeakSet();
+  function tel(el2){
+    if(geteld.has(el2)||rm)return;geteld.add(el2);
+    var doel=parseInt(el2.dataset.tel,10),suffix=el2.dataset.suffix||'';
+    var start=null,duur=Math.min(1400,500+doel);
+    function stap(t){
+      if(!start)start=t;
+      var f=Math.min(1,(t-start)/duur);
+      f=1-Math.pow(1-f,3);
+      el2.textContent=Math.round(doel*f)+suffix;
+      if(f<1)requestAnimationFrame(stap);else el2.textContent=doel+suffix;
+    }
+    requestAnimationFrame(stap);
+  }
+  var ioTel=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)tel(e.target)})},{threshold:.6});
+  document.querySelectorAll('[data-tel]').forEach(function(el2){ioTel.observe(el2)});
+  // failsafe bij scroll
+  window.addEventListener('scroll',function(){
+    document.querySelectorAll('[data-tel]').forEach(function(el2){
+      var r=el2.getBoundingClientRect();
+      if(r.top<window.innerHeight*.85&&r.bottom>0)tel(el2);
+    });
+  },{passive:true});
+
+  // wereldkaarten: 3D-tilt met de muis
+  if(!rm&&matchMedia('(hover:hover)').matches)document.querySelectorAll('.wkaart').forEach(function(k){
+    k.addEventListener('mousemove',function(e){
+      var r=k.getBoundingClientRect();
+      var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      k.style.transform='perspective(800px) rotateY('+(x*7)+'deg) rotateX('+(-y*7)+'deg) translateY(-4px)';
+      k.style.transition='transform .1s';
+    });
+    k.addEventListener('mouseleave',function(){
+      k.style.transition='transform .5s cubic-bezier(.22,.61,.36,1)';
+      k.style.transform='';
+    });
   });
 })();
 </script>
