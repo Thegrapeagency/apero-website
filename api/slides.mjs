@@ -82,7 +82,9 @@ const SCHEMA = {
 export default async function handler(req, res) {
   if (req.method !== 'POST') { res.status(405).json({ error: 'POST only' }); return; }
 
-  const key = process.env.ANTHROPIC_API_KEY;
+  // ANTHROPIC_API_KEY is de juiste naam; ANTHROPI_API_KEY is een fallback voor een
+  // typefout in de Vercel-env-naam (mag later hernoemd worden, dan kan deze fallback weg).
+  const key = process.env.ANTHROPIC_API_KEY || process.env.ANTHROPI_API_KEY;
   if (!key) { res.status(503).json({ error: 'AI is nog niet geconfigureerd: zet ANTHROPIC_API_KEY in Vercel.' }); return; }
 
   let body = req.body;
