@@ -1,10 +1,28 @@
 {
   "meta": {
     "beschrijving": "Partnerbestand van APÉRO. Het Studio-dashboard leest en bewerkt dit; het partnerportaal (/partner) toont per partner een gefilterde weergave via /api/partner-data. Inloggegevens staan NIET hier maar in de Vercel env-var PARTNER_AUTH (slug:wachtwoord;...).",
-    "versie": 2,
-    "statussen": ["lead", "in gesprek", "voorstel", "akkoord", "live"],
-    "soorten": ["aperitief", "bier"],
-    "werelden": ["italie", "frankrijk", "spanje", "anijsgordel", "portugal", "marokko", "overig"]
+    "versie": 3,
+    "statussen": [
+      "lead",
+      "in gesprek",
+      "voorstel",
+      "akkoord",
+      "live"
+    ],
+    "soorten": [
+      "aperitief",
+      "bier",
+      "food"
+    ],
+    "werelden": [
+      "italie",
+      "frankrijk",
+      "spanje",
+      "anijsgordel",
+      "portugal",
+      "marokko",
+      "overig"
+    ]
   },
   "partners": [
     {
@@ -13,16 +31,45 @@
       "soort": "aperitief",
       "wereld": "italie",
       "status": "lead",
-      "contact": { "naam": "", "mail": "", "telefoon": "" },
-      "deal": { "format": "bar binnen een wereld", "bijdrage": "", "notities": "Dit is een voorbeeldrecord dat laat zien welke velden er zijn. Maak per echte partner een kopie en verwijder dit item." },
+      "contact": {
+        "naam": "",
+        "mail": "",
+        "telefoon": ""
+      },
+      "deal": {
+        "format": "bar binnen een wereld",
+        "bijdrage": "",
+        "notities": "Dit is een voorbeeldrecord dat laat zien welke velden er zijn. Maak per echte partner een kopie en verwijder dit item."
+      },
       "deliverables": [
-        { "t": "Kennismakingsgesprek", "af": false },
-        { "t": "Voorstel gestuurd", "af": false },
-        { "t": "Handtekening / akkoord", "af": false },
-        { "t": "Logo + merkmateriaal ontvangen", "af": false },
-        { "t": "Productinformatie voor magazine/lexicon", "af": false },
-        { "t": "Barplan + signature serve afgestemd", "af": false },
-        { "t": "Vermelding op partnerpagina live", "af": false }
+        {
+          "t": "Kennismakingsgesprek",
+          "af": false
+        },
+        {
+          "t": "Voorstel gestuurd",
+          "af": false
+        },
+        {
+          "t": "Handtekening / akkoord",
+          "af": false
+        },
+        {
+          "t": "Logo + merkmateriaal ontvangen",
+          "af": false
+        },
+        {
+          "t": "Productinformatie voor magazine/lexicon",
+          "af": false
+        },
+        {
+          "t": "Barplan + signature serve afgestemd",
+          "af": false
+        },
+        {
+          "t": "Vermelding op partnerpagina live",
+          "af": false
+        }
       ],
       "portaal": {
         "welkom": "Welkom bij APÉRO. Hier volg je alles rond onze samenwerking: de planning, wat we van elkaar nodig hebben en het materiaal dat klaarstaat.",
@@ -31,19 +78,123 @@
     }
   ],
   "wereldSlots": [
-    { "wereld": "italie", "bar": "Bar I · Het podium", "serve": "Negroni & Spritz met Select", "partner": null },
-    { "wereld": "frankrijk", "bar": "Bar II · De pauze", "serve": "Pastis, één op vijf", "partner": null },
-    { "wereld": "spanje", "bar": "Bar III · De revival", "serve": "Vermut uit het vat, met sifón", "partner": null },
-    { "wereld": "anijsgordel", "bar": "Bar IV · De vertraging", "serve": "Ouzo & arak, melkwit geslagen", "partner": null },
-    { "wereld": "portugal", "bar": "Bar V · De verrassing", "serve": "Portonico, ijskoud met munt", "partner": null },
-    { "wereld": "marokko", "bar": "Bar VI · De schenkende hand", "serve": "Atay, van dertig centimeter hoog", "partner": null }
+    {
+      "wereld": "italie",
+      "bar": "Bar I · Het podium",
+      "serve": "Negroni & Spritz met Select",
+      "partner": null,
+      "hapje": "Cicchetti, olijven & taralli"
+    },
+    {
+      "wereld": "frankrijk",
+      "bar": "Bar II · De pauze",
+      "serve": "Pastis, één op vijf",
+      "partner": null,
+      "hapje": "De planche: charcuterie & kaas"
+    },
+    {
+      "wereld": "spanje",
+      "bar": "Bar III · De revival",
+      "serve": "Vermut uit het vat, met sifón",
+      "partner": null,
+      "hapje": "Tapas & conservas uit blik"
+    },
+    {
+      "wereld": "anijsgordel",
+      "bar": "Bar IV · De vertraging",
+      "serve": "Ouzo & arak, melkwit geslagen",
+      "partner": null,
+      "hapje": "Meze, schaaltje na schaaltje"
+    },
+    {
+      "wereld": "portugal",
+      "bar": "Bar V · De verrassing",
+      "serve": "Portonico, ijskoud met munt",
+      "partner": null,
+      "hapje": "Tremoços & gegrilde sardines"
+    },
+    {
+      "wereld": "marokko",
+      "bar": "Bar VI · De schenkende hand",
+      "serve": "Atay, van dertig centimeter hoog",
+      "partner": null,
+      "hapje": "Zoete gebakjes, amandelen & dadels"
+    }
   ],
   "bierSlots": [
-    { "wereld": "italie", "bar": "Bier I · Het podium", "bier": "Peroni & Menabrea", "partner": null },
-    { "wereld": "frankrijk", "bar": "Bier II · De pauze", "bier": "Bière de garde (Elzas & het Noorden)", "partner": null },
-    { "wereld": "spanje", "bar": "Bier III · De revival", "bier": "Estrella Damm & Mahou, de caña", "partner": null },
-    { "wereld": "anijsgordel", "bar": "Bier IV · De vertraging", "bier": "Fix, Mythos & Almaza", "partner": null },
-    { "wereld": "portugal", "bar": "Bier V · De verrassing", "bier": "Super Bock & Sagres, fino en imperial", "partner": null },
-    { "wereld": "marokko", "bar": "Bier VI · De schenkende hand", "bier": "Casablanca (Brasseries du Maroc)", "partner": null }
+    {
+      "wereld": "italie",
+      "bar": "Bier I · Het podium",
+      "bier": "Peroni & Menabrea",
+      "partner": null
+    },
+    {
+      "wereld": "frankrijk",
+      "bar": "Bier II · De pauze",
+      "bier": "Bière de garde (Elzas & het Noorden)",
+      "partner": null
+    },
+    {
+      "wereld": "spanje",
+      "bar": "Bier III · De revival",
+      "bier": "Estrella Damm & Mahou, de caña",
+      "partner": null
+    },
+    {
+      "wereld": "anijsgordel",
+      "bar": "Bier IV · De vertraging",
+      "bier": "Fix, Mythos & Almaza",
+      "partner": null
+    },
+    {
+      "wereld": "portugal",
+      "bar": "Bier V · De verrassing",
+      "bier": "Super Bock & Sagres, fino en imperial",
+      "partner": null
+    },
+    {
+      "wereld": "marokko",
+      "bar": "Bier VI · De schenkende hand",
+      "bier": "Casablanca (Brasseries du Maroc)",
+      "partner": null
+    }
+  ],
+  "foodSlots": [
+    {
+      "wereld": "italie",
+      "bar": "Bord I · Het podium",
+      "hapje": "Cicchetti, olijven & taralli",
+      "partner": null
+    },
+    {
+      "wereld": "frankrijk",
+      "bar": "Bord II · De pauze",
+      "hapje": "De planche: charcuterie & kaas",
+      "partner": null
+    },
+    {
+      "wereld": "spanje",
+      "bar": "Bord III · De revival",
+      "hapje": "Tapas & conservas uit blik",
+      "partner": null
+    },
+    {
+      "wereld": "anijsgordel",
+      "bar": "Bord IV · De vertraging",
+      "hapje": "Meze, schaaltje na schaaltje",
+      "partner": null
+    },
+    {
+      "wereld": "portugal",
+      "bar": "Bord V · De verrassing",
+      "hapje": "Tremoços & gegrilde sardines",
+      "partner": null
+    },
+    {
+      "wereld": "marokko",
+      "bar": "Bord VI · De schenkende hand",
+      "hapje": "Zoete gebakjes, amandelen & dadels",
+      "partner": null
+    }
   ]
 }
