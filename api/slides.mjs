@@ -45,7 +45,11 @@ const SYSTEM = [
   '- De slides ertussen: kies per slide het type dat het beste past bij dat stuk van de tekst (verhaal voor feiten, citaat voor een sterke oneliner uit de tekst, lijst voor opsommingen). Wissel af.',
   '- Houd tekst kort en leesbaar op een 1080-canvas: titels kort, body beknopt.',
   '- Verzin geen feiten die niet in de tekst staan; je herschrijft en verdicht, je fabriceert niet.',
-  'Geef exact het gevraagde aantal slides terug.'
+  'Geef exact het gevraagde aantal slides terug.',
+  '',
+  'UITVOER: antwoord met UITSLUITEND een geldig JSON-object, zonder uitleg, zonder markdown-fences. Vorm:',
+  '{ "slides": [ { "type": "cover", "kicker": "...", "titel": "...", "achtergrond": "creme" }, { "type": "verhaal", "kop": "...", "body": "..." }, { "type": "citaat", "quote": "...", "bron": "...", "vlak": "terracotta" }, { "type": "lijst", "kop": "...", "items": ["...","..."] }, { "type": "slot", "payoff": "...", "handle": "apero-culture.nl" } ] }',
+  'Gebruik per slide alleen de velden die bij dat type horen. "achtergrond" is "creme" of "fresco". "vlak" is een van: terracotta, salvia, espresso, fresco.'
 ].join('\n');
 
 const SCHEMA = {
@@ -98,31 +102,47 @@ export default async function handler(req, res) {
   const userMsg = 'Maak hier een carousel van precies ' + count + ' slides van'
     + (thema ? (' (thema/wereld: ' + thema + ')') : '') + '.\n\nTEKST:\n"""\n' + text + '\n"""';
 
+  // harde time-out zodat we een nette JSON-fout geven i.p.v. een 504-pagina
+  const controller = new AbortController();
+  const timer = setTimeout(function () { controller.abort(); }, 45000);
   try {
     const r = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
+      signal: controller.signal,
       headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
       body: JSON.stringify({
         model: MODEL,
-        max_tokens: 4096,
+        max_tokens: 3000,
         system: SYSTEM,
-        messages: [{ role: 'user', content: userMsg }],
-        output_config: { format: { type: 'json_schema', schema: SCHEMA } }
+        // effort 'low' houdt het snel; de taak (tekst -> slides) is helder genoeg.
+        // Geen structured-output-schema: dat heeft een trage first-call compile;
+        // we vragen de JSON in de prompt en parsen 'm zelf (met fence-strip).
+        output_config: { effort: 'low' },
+        messages: [{ role: 'user', content: userMsg }]
       })
     });
+    clearTimeout(timer);
     if (!r.ok) { const t = await r.text(); res.status(502).json({ error: 'Anthropic weigerde het verzoek', detail: t.slice(0, 400) }); return; }
     const data = await r.json();
     if (data.stop_reason === 'refusal') { res.status(422).json({ error: 'De AI weigerde deze tekst.' }); return; }
 
     const textBlock = (data.content || []).find(function (b) { return b.type === 'text'; });
     if (!textBlock) { res.status(502).json({ error: 'Geen bruikbaar antwoord van de AI.' }); return; }
+    let raw = String(textBlock.text || '').trim();
+    // strip eventuele ```json ... ``` fences
+    raw = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '');
+    // pak het buitenste JSON-object voor de zekerheid
+    var a = raw.indexOf('{'), b = raw.lastIndexOf('}');
+    if (a > 0 || b < raw.length - 1) { if (a > -1 && b > a) raw = raw.slice(a, b + 1); }
     let parsed;
-    try { parsed = JSON.parse(textBlock.text); } catch (e) { res.status(502).json({ error: 'AI-antwoord was geen geldige JSON.' }); return; }
+    try { parsed = JSON.parse(raw); } catch (e) { res.status(502).json({ error: 'AI-antwoord was geen geldige JSON.' }); return; }
 
     const slides = Array.isArray(parsed.slides) ? parsed.slides.slice(0, 10) : [];
     if (!slides.length) { res.status(502).json({ error: 'De AI gaf geen slides terug.' }); return; }
     res.status(200).json({ slides: slides, usage: data.usage || null });
   } catch (e) {
+    clearTimeout(timer);
+    if (e && e.name === 'AbortError') { res.status(504).json({ error: 'De AI deed er te lang over. Probeer het nog eens (dan is het meestal sneller).' }); return; }
     res.status(500).json({ error: String(e && e.message || e) });
   }
 }
