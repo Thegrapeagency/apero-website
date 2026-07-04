@@ -120,7 +120,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:12.5px;col
     document.getElementById('pTitel').textContent='Welkom, '+partner.naam;
     document.getElementById('pWelkom').textContent=(partner.portaal&&partner.portaal.welkom)||'';
     document.getElementById('pWereld').textContent=slot?slot.bar:(WERELD[partner.wereld]||partner.wereld);
-    document.getElementById('pServe').textContent=slot?('Signature serve: '+slot.serve):'De invulling van jouw wereld stemmen we samen af.';
+    document.getElementById('pServe').textContent=slot?(slot.serve?('Signature serve: '+slot.serve):(slot.bier?('Jouw bier: '+slot.bier):'')):'De invulling van jouw wereld stemmen we samen af.';
     document.getElementById('pStatus').textContent=partner.status;
     var dl=partner.deliverables||[],af=dl.filter(function(x){return x.af}).length;
     document.getElementById('pBalk').style.width=Math.round(af/Math.max(1,dl.length)*100)+'%';

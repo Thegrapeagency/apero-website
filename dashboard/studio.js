@@ -377,10 +377,11 @@ registreer('partners','Partners',async function(p){
     lijst.appendChild(el('div','leeg','<span class="flower"></span><h4>Nog geen partners in de pipeline</h4><p>Voeg je eerste partner toe. Vanaf status "akkoord" telt hij mee op het overzicht en kan hij een portaal-login krijgen.</p>'));
   } else {
     var tb=el('table','tabel');
-    tb.innerHTML='<tr><th>Partner</th><th>Wereld</th><th>Status</th><th>Checklist</th><th></th></tr>';
+    tb.innerHTML='<tr><th>Partner</th><th>Soort</th><th>Wereld</th><th>Status</th><th>Checklist</th><th></th></tr>';
     echte.forEach(function(pt){
       var af=pt.deliverables.filter(function(x){return x.af}).length;
       var r=el('tr','','<td><b>'+esc(pt.naam)+'</b><br><span style="font-size:11px;color:var(--ink-50)">'+esc(pt.contact&&pt.contact.mail||'')+'</span></td>'+
+        '<td><span class="chip '+(pt.soort==='bier'?'burro':'')+'">'+esc(pt.soort||'aperitief')+'</span></td>'+
         '<td>'+esc(WERELD_NAMEN[pt.wereld]||pt.wereld)+'</td>'+
         '<td><span class="chip '+(pt.status==='live'?'salvia':(pt.status==='akkoord'?'terra':''))+'">'+esc(pt.status)+'</span></td>'+
         '<td style="min-width:120px"><div class="balk"><i style="width:'+Math.round(af/Math.max(1,pt.deliverables.length)*100)+'%"></i></div><span style="font-size:10.5px;color:var(--ink-50)">'+af+'/'+pt.deliverables.length+'</span></td><td></td>');
@@ -402,6 +403,16 @@ registreer('partners','Partners',async function(p){
   slots.appendChild(sg);
   p.appendChild(slots);
 
+  var bslots=el('div','kaart');bslots.style.marginTop='16px';
+  bslots.innerHTML='<span class="klabel kl">De bierlaag</span><h3>Bierslots</h3><p style="font-size:12.5px;color:var(--ink-50);margin-top:4px">Naast de aperitief heeft elke wereld een bierspoor uit de tijdlijn. Eén bierpartner per wereld.</p>';
+  var bg=el('div','grid k3');bg.style.marginTop='10px';
+  (d.bierSlots||[]).forEach(function(s){
+    var pt=(d.partners||[]).find(function(x){return x.slug===s.partner});
+    bg.appendChild(el('div','kaart zacht','<span class="klabel kl">'+esc(s.bar)+'</span><h3 style="font-size:15px">'+esc(WERELD_NAMEN[s.wereld])+'</h3><p>'+esc(s.bier)+'</p><p style="margin-top:8px">'+(pt?'<span class="chip burro">'+esc(pt.naam)+'</span>':'<span class="chip">slot open</span>')+'</p>'));
+  });
+  bslots.appendChild(bg);
+  p.appendChild(bslots);
+
   window._nieuwePartner=function(){bewerkPartner(null)};
 });
 
@@ -409,16 +420,17 @@ function bewerkPartner(slug){
   var d=PARTNERS;
   var pt=(d.partners||[]).find(function(x){return x.slug===slug});
   var nieuw=!pt;
-  if(!pt)pt={slug:'',naam:'',wereld:'italie',status:'lead',contact:{naam:'',mail:'',telefoon:''},
+  if(!pt)pt={slug:'',naam:'',soort:'aperitief',wereld:'italie',status:'lead',contact:{naam:'',mail:'',telefoon:''},
     deal:{format:'bar binnen een wereld',bijdrage:'',notities:''},
     deliverables:[{t:'Kennismakingsgesprek',af:false},{t:'Voorstel gestuurd',af:false},{t:'Handtekening / akkoord',af:false},{t:'Logo + merkmateriaal ontvangen',af:false},{t:'Productinformatie voor magazine/lexicon',af:false},{t:'Barplan + signature serve afgestemd',af:false},{t:'Vermelding op partnerpagina live',af:false}],
     portaal:{welkom:'Welkom bij APÉRO. Hier volg je alles rond onze samenwerking.',documenten:[]}};
   modaal(nieuw?'Nieuwe partner':pt.naam,function(b){
     b.innerHTML='<div class="veld"><label>Naam</label><input id="pNaam" value="'+esc(pt.naam)+'"></div>'+
-      '<div class="grid k2"><div class="veld"><label>Slug (= loginnaam)</label><input id="pSlug" value="'+esc(pt.slug)+'" '+(nieuw?'':'disabled')+' placeholder="bv. barbayanni"></div>'+
+      '<div class="grid k3"><div class="veld"><label>Slug (= loginnaam)</label><input id="pSlug" value="'+esc(pt.slug)+'" '+(nieuw?'':'disabled')+' placeholder="bv. barbayanni"></div>'+
+      '<div class="veld"><label>Soort</label><select id="pSoort">'+(d.meta.soorten||['aperitief','bier']).map(function(s){return '<option'+((pt.soort||'aperitief')===s?' selected':'')+'>'+s+'</option>'}).join('')+'</select></div>'+
       '<div class="veld"><label>Wereld</label><select id="pWereld">'+Object.keys(WERELD_NAMEN).map(function(w){return '<option value="'+w+'"'+(pt.wereld===w?' selected':'')+'>'+WERELD_NAMEN[w]+'</option>'}).join('')+'</select></div></div>'+
       '<div class="grid k2"><div class="veld"><label>Status</label><select id="pStatus">'+(d.meta.statussen||[]).map(function(s){return '<option'+(pt.status===s?' selected':'')+'>'+s+'</option>'}).join('')+'</select></div>'+
-      '<div class="veld"><label>Koppel aan wereldslot</label><select id="pSlot"><option value="">niet gekoppeld</option>'+(d.wereldSlots||[]).map(function(s){return '<option value="'+s.wereld+'"'+(s.partner===pt.slug&&pt.slug?' selected':'')+'>'+esc(s.bar)+'</option>'}).join('')+'</select></div></div>'+
+      '<div class="veld" id="pSlotWrap"></div></div>'+
       '<div class="grid k2"><div class="veld"><label>Contactpersoon</label><input id="pCNaam" value="'+esc(pt.contact.naam)+'"></div>'+
       '<div class="veld"><label>Mail</label><input id="pCMail" value="'+esc(pt.contact.mail)+'"></div></div>'+
       '<div class="veld"><label>Dealformat</label><input id="pFormat" value="'+esc(pt.deal.format)+'"></div>'+
@@ -437,19 +449,29 @@ function bewerkPartner(slug){
       });
     }
     tekenChecks();
+    function tekenSlot(){
+      var soort=$('pSoort').value;
+      var slots=soort==='bier'?(d.bierSlots||[]):(d.wereldSlots||[]);
+      var label=soort==='bier'?'Koppel aan bierslot':'Koppel aan wereldslot';
+      $('pSlotWrap').innerHTML='<label>'+label+'</label><select id="pSlot"><option value="">niet gekoppeld</option>'+slots.map(function(s){return '<option value="'+s.wereld+'"'+(s.partner===pt.slug&&pt.slug?' selected':'')+'>'+esc(s.bar)+'</option>'}).join('')+'</select>';
+    }
+    tekenSlot();
+    $('pSoort').onchange=tekenSlot;
     $('pVoegCheck').onclick=function(){var v=$('pNieuwCheck').value.trim();if(!v)return;pt.deliverables.push({t:v,af:false});$('pNieuwCheck').value='';tekenChecks()};
     var acties=$('pActies');
     acties.appendChild(knop('Bewaar','terra',function(){
       pt.naam=$('pNaam').value.trim();
       if(nieuw){pt.slug=($('pSlug').value.trim()||pt.naam).toLowerCase().replace(/[^a-z0-9]+/g,'-')}
       if(!pt.naam||!pt.slug){toast('Naam en slug zijn verplicht');return}
-      pt.wereld=$('pWereld').value;pt.status=$('pStatus').value;
+      pt.soort=$('pSoort').value;pt.wereld=$('pWereld').value;pt.status=$('pStatus').value;
       pt.contact.naam=$('pCNaam').value;pt.contact.mail=$('pCMail').value;
       pt.deal.format=$('pFormat').value;pt.deal.notities=$('pNotities').value;
       pt.portaal.welkom=$('pWelkom').value;
       if(nieuw)d.partners.push(pt);
       var slotW=$('pSlot').value;
-      (d.wereldSlots||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null;if(slotW&&s.wereld===slotW)s.partner=pt.slug});
+      (d.wereldSlots||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null});
+      (d.bierSlots||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null});
+      if(slotW){var arr=pt.soort==='bier'?(d.bierSlots||[]):(d.wereldSlots||[]);arr.forEach(function(s){if(s.wereld===slotW)s.partner=pt.slug});}
       bewaarPartners();sluitModaal();toast('Partner bewaard (lokaal). Exporteer + commit om definitief te maken.');render();
     }));
     if(!nieuw){
@@ -457,6 +479,7 @@ function bewerkPartner(slug){
       acties.appendChild(knop('Verwijder','geest',function(){if(!confirm('Partner "'+pt.naam+'" verwijderen?'))return;
         d.partners=d.partners.filter(function(x){return x.slug!==pt.slug});
         (d.wereldSlots||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null});
+        (d.bierSlots||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null});
         bewaarPartners();sluitModaal();render()}));
     }
   });

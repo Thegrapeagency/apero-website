@@ -1,14 +1,16 @@
 {
   "meta": {
     "beschrijving": "Partnerbestand van APÉRO. Het Studio-dashboard leest en bewerkt dit; het partnerportaal (/partner) toont per partner een gefilterde weergave via /api/partner-data. Inloggegevens staan NIET hier maar in de Vercel env-var PARTNER_AUTH (slug:wachtwoord;...).",
-    "versie": 1,
+    "versie": 2,
     "statussen": ["lead", "in gesprek", "voorstel", "akkoord", "live"],
+    "soorten": ["aperitief", "bier"],
     "werelden": ["italie", "frankrijk", "spanje", "anijsgordel", "portugal", "marokko", "overig"]
   },
   "partners": [
     {
       "slug": "voorbeeldpartner",
       "naam": "Voorbeeldpartner (verwijder mij)",
+      "soort": "aperitief",
       "wereld": "italie",
       "status": "lead",
       "contact": { "naam": "", "mail": "", "telefoon": "" },
@@ -35,5 +37,13 @@
     { "wereld": "anijsgordel", "bar": "Bar IV · De vertraging", "serve": "Ouzo & arak, melkwit geslagen", "partner": null },
     { "wereld": "portugal", "bar": "Bar V · De verrassing", "serve": "Portonico, ijskoud met munt", "partner": null },
     { "wereld": "marokko", "bar": "Bar VI · De schenkende hand", "serve": "Atay, van dertig centimeter hoog", "partner": null }
+  ],
+  "bierSlots": [
+    { "wereld": "italie", "bar": "Bier I · Het podium", "bier": "Peroni & Menabrea", "partner": null },
+    { "wereld": "frankrijk", "bar": "Bier II · De pauze", "bier": "Bière de garde (Elzas & het Noorden)", "partner": null },
+    { "wereld": "spanje", "bar": "Bier III · De revival", "bier": "Estrella Damm & Mahou, de caña", "partner": null },
+    { "wereld": "anijsgordel", "bar": "Bier IV · De vertraging", "bier": "Fix, Mythos & Almaza", "partner": null },
+    { "wereld": "portugal", "bar": "Bier V · De verrassing", "bier": "Super Bock & Sagres, fino en imperial", "partner": null },
+    { "wereld": "marokko", "bar": "Bier VI · De schenkende hand", "bier": "Casablanca (Brasseries du Maroc)", "partner": null }
   ]
 }
