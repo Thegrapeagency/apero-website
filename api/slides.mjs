@@ -16,7 +16,7 @@
 
 export const config = { maxDuration: 60 };
 
-const MODEL = 'claude-opus-4-8';
+const MODEL = 'claude-sonnet-5';   // snel + goedkoop; ruim voldoende voor tekst -> slides
 
 const SYSTEM = [
   'Je bent de redactionele slide-maker van APÉRO Culture, een mediamerk over de aperitief-cultuur van Europa.',
@@ -114,6 +114,8 @@ export default async function handler(req, res) {
         model: MODEL,
         max_tokens: 3000,
         system: SYSTEM,
+        // Sonnet 5 zet zonder 'thinking'-veld adaptive thinking aan; hier uit voor snelheid.
+        thinking: { type: 'disabled' },
         // effort 'low' houdt het snel; de taak (tekst -> slides) is helder genoeg.
         // Geen structured-output-schema: dat heeft een trage first-call compile;
         // we vragen de JSON in de prompt en parsen 'm zelf (met fence-strip).
