@@ -29,7 +29,7 @@ export default function handler(req, res) {
   // partner: alleen het eigen record (middleware heeft het wachtwoord al gecontroleerd)
   const partner = (data.partners || []).find((p) => p.slug === cred.user);
   if (!partner) { res.status(404).json({ error: 'Partner niet gevonden. Vraag de redactie je login na te kijken.' }); return; }
-  const alleSlots = [].concat(data.wereldSlots || [], data.bierSlots || []);
+  const alleSlots = [].concat(data.wereldSlots || [], data.bierSlots || [], data.foodSlots || []);
   const slot = alleSlots.find((s) => s.partner === partner.slug) || null;
   res.status(200).json({ rol: 'partner', partner, slot });
 }

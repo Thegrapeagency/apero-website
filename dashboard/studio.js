@@ -381,7 +381,7 @@ registreer('partners','Partners',async function(p){
     echte.forEach(function(pt){
       var af=pt.deliverables.filter(function(x){return x.af}).length;
       var r=el('tr','','<td><b>'+esc(pt.naam)+'</b><br><span style="font-size:11px;color:var(--ink-50)">'+esc(pt.contact&&pt.contact.mail||'')+'</span></td>'+
-        '<td><span class="chip '+(pt.soort==='bier'?'burro':'')+'">'+esc(pt.soort||'aperitief')+'</span></td>'+
+        '<td><span class="chip '+(pt.soort==='bier'?'burro':(pt.soort==='food'?'salvia':''))+'">'+esc(pt.soort||'aperitief')+'</span></td>'+
         '<td>'+esc(WERELD_NAMEN[pt.wereld]||pt.wereld)+'</td>'+
         '<td><span class="chip '+(pt.status==='live'?'salvia':(pt.status==='akkoord'?'terra':''))+'">'+esc(pt.status)+'</span></td>'+
         '<td style="min-width:120px"><div class="balk"><i style="width:'+Math.round(af/Math.max(1,pt.deliverables.length)*100)+'%"></i></div><span style="font-size:10.5px;color:var(--ink-50)">'+af+'/'+pt.deliverables.length+'</span></td><td></td>');
@@ -398,10 +398,20 @@ registreer('partners','Partners',async function(p){
   var sg=el('div','grid k3');sg.style.marginTop='10px';
   (d.wereldSlots||[]).forEach(function(s){
     var pt=(d.partners||[]).find(function(x){return x.slug===s.partner});
-    sg.appendChild(el('div','kaart zacht','<span class="klabel kl">'+esc(s.bar)+'</span><h3 style="font-size:15px">'+esc(WERELD_NAMEN[s.wereld])+'</h3><p>'+esc(s.serve)+'</p><p style="margin-top:8px">'+(pt?'<span class="chip terra">'+esc(pt.naam)+'</span>':'<span class="chip">slot open</span>')+'</p>'));
+    sg.appendChild(el('div','kaart zacht','<span class="klabel kl">'+esc(s.bar)+'</span><h3 style="font-size:15px">'+esc(WERELD_NAMEN[s.wereld])+'</h3><p>'+esc(s.serve)+'</p>'+(s.hapje?'<p style="font-size:12px;color:var(--ink-50);margin-top:2px">Bij het glas: '+esc(s.hapje)+'</p>':'')+'<p style="margin-top:8px">'+(pt?'<span class="chip terra">'+esc(pt.naam)+'</span>':'<span class="chip">slot open</span>')+'</p>'));
   });
   slots.appendChild(sg);
   p.appendChild(slots);
+
+  var fslots=el('div','kaart');fslots.style.marginTop='16px';
+  fslots.innerHTML='<span class="klabel kl">Het bord</span><h3>Foodslots</h3><p style="font-size:12.5px;color:var(--ink-50);margin-top:4px">Naast de drank hoort bij elke wereld een hapje. Eén foodpartner per wereld, voor het bord.</p>';
+  var fg=el('div','grid k3');fg.style.marginTop='10px';
+  (d.foodSlots||[]).forEach(function(s){
+    var pt=(d.partners||[]).find(function(x){return x.slug===s.partner});
+    fg.appendChild(el('div','kaart zacht','<span class="klabel kl">'+esc(s.bar)+'</span><h3 style="font-size:15px">'+esc(WERELD_NAMEN[s.wereld])+'</h3><p>'+esc(s.hapje)+'</p><p style="margin-top:8px">'+(pt?'<span class="chip salvia">'+esc(pt.naam)+'</span>':'<span class="chip">slot open</span>')+'</p>'));
+  });
+  fslots.appendChild(fg);
+  p.appendChild(fslots);
 
   var bslots=el('div','kaart');bslots.style.marginTop='16px';
   bslots.innerHTML='<span class="klabel kl">De bierlaag</span><h3>Bierslots</h3><p style="font-size:12.5px;color:var(--ink-50);margin-top:4px">Naast de aperitief heeft elke wereld een bierspoor uit de tijdlijn. Eén bierpartner per wereld.</p>';
@@ -449,11 +459,12 @@ function bewerkPartner(slug){
       });
     }
     tekenChecks();
+    var SLOTKEY={aperitief:'wereldSlots',bier:'bierSlots',food:'foodSlots'};
+    var SLOTLABEL={aperitief:'Koppel aan wereldslot',bier:'Koppel aan bierslot',food:'Koppel aan foodslot'};
     function tekenSlot(){
       var soort=$('pSoort').value;
-      var slots=soort==='bier'?(d.bierSlots||[]):(d.wereldSlots||[]);
-      var label=soort==='bier'?'Koppel aan bierslot':'Koppel aan wereldslot';
-      $('pSlotWrap').innerHTML='<label>'+label+'</label><select id="pSlot"><option value="">niet gekoppeld</option>'+slots.map(function(s){return '<option value="'+s.wereld+'"'+(s.partner===pt.slug&&pt.slug?' selected':'')+'>'+esc(s.bar)+'</option>'}).join('')+'</select>';
+      var slots=d[SLOTKEY[soort]||'wereldSlots']||[];
+      $('pSlotWrap').innerHTML='<label>'+(SLOTLABEL[soort]||'Koppel aan slot')+'</label><select id="pSlot"><option value="">niet gekoppeld</option>'+slots.map(function(s){return '<option value="'+s.wereld+'"'+(s.partner===pt.slug&&pt.slug?' selected':'')+'>'+esc(s.bar)+'</option>'}).join('')+'</select>';
     }
     tekenSlot();
     $('pSoort').onchange=tekenSlot;
@@ -469,17 +480,15 @@ function bewerkPartner(slug){
       pt.portaal.welkom=$('pWelkom').value;
       if(nieuw)d.partners.push(pt);
       var slotW=$('pSlot').value;
-      (d.wereldSlots||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null});
-      (d.bierSlots||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null});
-      if(slotW){var arr=pt.soort==='bier'?(d.bierSlots||[]):(d.wereldSlots||[]);arr.forEach(function(s){if(s.wereld===slotW)s.partner=pt.slug});}
+      ['wereldSlots','bierSlots','foodSlots'].forEach(function(k){(d[k]||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null})});
+      if(slotW){var arr=d[SLOTKEY[pt.soort]||'wereldSlots']||[];arr.forEach(function(s){if(s.wereld===slotW)s.partner=pt.slug});}
       bewaarPartners();sluitModaal();toast('Partner bewaard (lokaal). Exporteer + commit om definitief te maken.');render();
     }));
     if(!nieuw){
       acties.appendChild(knop('Bekijk portaal','geest',function(){window.open('../partner/?preview='+encodeURIComponent(pt.slug),'_blank')}));
       acties.appendChild(knop('Verwijder','geest',function(){if(!confirm('Partner "'+pt.naam+'" verwijderen?'))return;
         d.partners=d.partners.filter(function(x){return x.slug!==pt.slug});
-        (d.wereldSlots||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null});
-        (d.bierSlots||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null});
+        ['wereldSlots','bierSlots','foodSlots'].forEach(function(k){(d[k]||[]).forEach(function(s){if(s.partner===pt.slug)s.partner=null})});
         bewaarPartners();sluitModaal();render()}));
     }
   });
