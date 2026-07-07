@@ -14,7 +14,7 @@
   var KAART_OPMAAK = {
     frankrijk:  { label:[326,170,34], romein:[326,198,20], marker:[330,110], licht:false },
     spanje:     { label:[168,442,36], romein:[168,470,20], marker:[186,393], licht:true },
-    portugal:   { label:[76,442,20],  romein:[76,504,13],  marker:[58,444],  licht:true, rot:-90 },
+    portugal:   { label:[86,452,15.5], romein:[86,472,12], marker:[69,402], licht:true },
     italie:     { label:[524,254,26], romein:[524,280,17], marker:[571,346], licht:false },
     anijsgordel:{ label:[818,610,24], romein:[818,636,15], marker:[839,468], licht:false },
     marokko:    { label:[128,652,28], romein:[128,678,16], marker:[136,548], licht:true }
@@ -144,27 +144,37 @@
     if(e.key==='ArrowLeft'||e.key==='ArrowDown'){ e.preventDefault(); stap(-1); }
   });
 
-  /* ---------- wijzerplaat: minutenrand + romeinse cijfers ---------- */
+  /* ---------- wijzerplaat: muntrand, minutenrand en romeinse cijfers ---------- */
   (function(){
+    /* gegraveerde muntrand: fijne lijntjes rond de kast */
+    var rand = document.getElementById('tr-rand');
+    for(var m=0;m<96;m++){
+      var ha = m*(360/96)*Math.PI/180;
+      el('line', {
+        x1: 170 + 154*Math.sin(ha), y1: 250 - 154*Math.cos(ha),
+        x2: 170 + 163*Math.sin(ha), y2: 250 - 163*Math.cos(ha),
+        stroke: 'rgba(158,67,38,.5)', 'stroke-width': 1
+      }, rand);
+    }
     var g = document.getElementById('tr-ticks');
     for(var i=0;i<60;i++){
       var groot = i%5===0, a = i*6*Math.PI/180;
-      var r1 = groot?125:129, r2 = 135;
+      var r1 = groot?134:138, r2 = 144;
       el('line', {
         x1: 170 + r1*Math.sin(a), y1: 250 - r1*Math.cos(a),
         x2: 170 + r2*Math.sin(a), y2: 250 - r2*Math.cos(a),
-        stroke: groot?'var(--espresso)':'rgba(35,27,19,.3)',
-        'stroke-width': groot?2.6:1.2
+        stroke: groot?'var(--espresso)':'rgba(35,27,19,.28)',
+        'stroke-width': groot?2.2:1
       }, g);
     }
     var cijfers = document.getElementById('tr-cijfers');
     var ROMEINS = ['XII','I','II','III','IIII','V','VI','VII','VIII','IX','X','XI'];
     for(var j=0;j<12;j++){
-      var hoek = j*30*Math.PI/180, r = 106;
+      var hoek = j*30*Math.PI/180, r = 114;
       var t = el('text', {
         x: (170 + r*Math.sin(hoek)).toFixed(1),
-        y: (250 - r*Math.cos(hoek) + 7.5).toFixed(1),
-        'text-anchor':'middle', 'font-size': j===0?22:19,
+        y: (250 - r*Math.cos(hoek) + 6.5).toFixed(1),
+        'text-anchor':'middle', 'font-size': j===0?20:17,
         'class': j===0?'twaalf':''
       }, cijfers);
       t.textContent = ROMEINS[j];
@@ -228,8 +238,9 @@
   document.getElementById('tr-terug').addEventListener('click', sluit);
   document.addEventListener('keydown', function(e){ if(e.key==='Escape' && actueel) sluit(); });
   document.getElementById('tr-afdaal').addEventListener('click', function(){
-    var doel = dive.querySelector('.tr-inner');
-    scroller.scrollTo({ top: doel.offsetTop - 40, behavior: reduced ? 'auto' : 'smooth' });
+    var doel = dive.querySelector('.tr-band');
+    var top = scroller.scrollTop + doel.getBoundingClientRect().top - 120;
+    scroller.scrollTo({ top: top, behavior: reduced ? 'auto' : 'smooth' });
   });
 
   kaart.querySelectorAll('.tr-zone').forEach(function(zone){
