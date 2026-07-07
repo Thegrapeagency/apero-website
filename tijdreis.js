@@ -69,6 +69,12 @@
   })();
 
   /* ---------- de tijdreis: toestand ---------- */
+  var SOORT = {
+    ritueel: { label:'Het ritueel',    kleur:'var(--terracotta)' },
+    sociaal: { label:'De samenleving', kleur:'var(--salvia)' },
+    eten:    { label:'Op tafel',       kleur:'var(--mattone)' },
+    drank:   { label:'In het glas',    kleur:'var(--burro)' }
+  };
   var idx = 0, rotatie = 0, GRAAD_PER_STAP = 60;
   var wijzer = document.getElementById('tr-wijzer');
   var uurwerk = document.getElementById('tr-uurwerk');
@@ -86,7 +92,10 @@
     nieuw = Math.max(0, Math.min(w.tijdlijn.length-1, nieuw));
     var item = w.tijdlijn[nieuw];
     var flits = document.getElementById('tr-flits');
+    var s = SOORT[item.soort] || SOORT.ritueel;
     var vul = function(){
+      document.getElementById('tr-soort-tekst').textContent = s.label;
+      document.getElementById('tr-soort-stip').style.background = s.kleur;
       document.getElementById('tr-jaar').firstChild.textContent = item.jaar;
       document.getElementById('tr-teller').textContent = (nieuw+1)+' van '+w.tijdlijn.length;
       document.getElementById('tr-tekst').textContent = item.tekst;
@@ -211,8 +220,9 @@
     /* tijdreis terug naar het begin */
     idx = 0; rotatie = 0; tekenWijzer();
     var spoor = document.getElementById('tr-spoor'); spoor.innerHTML = '';
-    w.tijdlijn.forEach(function(_,i){
+    w.tijdlijn.forEach(function(it,i){
       var d = document.createElement('span'); d.className = 'tr-dot'+(i===0?' actief':'');
+      d.style.background = (SOORT[it.soort] || SOORT.ritueel).kleur;
       spoor.appendChild(d);
     });
     horloge.setAttribute('aria-valuemax', String(Math.max(0, w.tijdlijn.length-1)));

@@ -34,6 +34,16 @@
 @keyframes trbloei{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
 .tr-hint{text-align:center;margin-top:18px;color:var(--ink-50);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
 .tr-hint .flower{width:.9em;height:.9em;vertical-align:-.12em;margin:0 .35em}
+/* legenda: de vier draden */
+.tr-legenda{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:22px auto 0;max-width:560px}
+.tr-legenda .ll{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-70)}
+.sw{width:10px;height:10px;border-radius:50%;flex:none}
+.sw.ritueel{background:var(--terracotta)}.sw.sociaal{background:var(--salvia)}.sw.eten{background:var(--mattone)}.sw.drank{background:var(--burro)}
+/* categorie-chip in het paneel */
+.tr-soort{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:600;font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-70);border:1px solid var(--line);
+  border-radius:100px;padding:6px 14px;margin-bottom:14px}
+.tr-soort .stip{width:8px;height:8px;border-radius:50%;background:var(--terracotta)}
 /* ============ de wereld: tijdreis + weetjes op het fresco ============ */
 .tr-dive{position:fixed;inset:0;z-index:60;display:none;background:var(--espresso)}
 .tr-dive.open{display:block}
@@ -59,8 +69,8 @@
 .tr-jaar small{display:block;font-size:12px;font-family:var(--body);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-50);margin-top:8px}
 .tr-tekst{font-size:clamp(15px,2vh,18px);line-height:1.55;color:var(--espresso);margin-top:12px;min-height:3.2em}
 .tr-spoor{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:16px}
-.tr-dot{width:6px;height:6px;border-radius:50%;background:var(--ink-30);transition:background .3s,transform .3s}
-.tr-dot.actief{background:var(--terracotta);transform:scale(1.5)}
+.tr-dot{width:6px;height:6px;border-radius:50%;background:var(--ink-30);opacity:.4;transition:opacity .3s,transform .3s}
+.tr-dot.actief{opacity:1;transform:scale(1.6)}
 .tr-onder{display:flex;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap;justify-content:center}
 .tr-horloge-hint{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--espresso);
   background:rgba(244,234,214,.72);border-radius:100px;padding:9px 16px;transition:opacity .6s}
@@ -119,7 +129,13 @@
 <header class="tr-hero"><div class="wrap">
 <span class="kicker">Het onderzoek &middot; interactief</span>
 <h1>De tijdreis</h1>
-<p class="standfirst">Zes werelden, &eacute;&eacute;n vraag: hoe leerde Europa het uur tussen werk en diner te openen? Kies een wereld op de kaart en draai aan de tijd.</p>
+<p class="standfirst">Zes werelden, &eacute;&eacute;n vraag: hoe leerde Europa het uur tussen werk en diner te openen? Niet alleen w&aacute;t er in het glas ging, maar wie het deed, waarom, en wat erbij op tafel kwam. Kies een wereld en draai aan de tijd.</p>
+<div class="tr-legenda">
+  <span class="ll"><span class="sw ritueel"></span>Het ritueel</span>
+  <span class="ll"><span class="sw sociaal"></span>De samenleving</span>
+  <span class="ll"><span class="sw eten"></span>Op tafel</span>
+  <span class="ll"><span class="sw drank"></span>In het glas</span>
+</div>
 </div></header>
 
 <div class="tr-mapwrap">
@@ -168,6 +184,7 @@
       </div>
       <div class="tr-paneel">
         <div class="tr-flits" id="tr-flits">
+          <div class="tr-soort" id="tr-soort"><span class="stip" id="tr-soort-stip"></span><span id="tr-soort-tekst">&nbsp;</span></div>
           <div class="tr-jaar" id="tr-jaar">&nbsp;<small id="tr-teller">&nbsp;</small></div>
           <p class="tr-tekst" id="tr-tekst">&nbsp;</p>
         </div>
@@ -229,9 +246,9 @@
 
 <footer><div class="petals" style="position:absolute;inset:0;--c:120px;opacity:.4"></div><div class="veil"></div><div class="grain"></div><div class="wrap"><div class="fcols"><div style="max-width:280px"><div class="fbrand">AP&Eacute;R<span class="flower"></span></div><p style="font-family:var(--body);font-size:14px;color:var(--ink-70);margin-top:10px">Een onderzoek naar de aperocultuur. aperire, openen. Open de avond.</p></div><div><h4>Ontdek</h4><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De zes werelden</a><a href="lezen.html">Magazine-app</a><a href="podcast.html">Podcast</a><a href="lexicon.html">Lexicon</a></div><div><h4>Festival</h4><a href="festival.html">Het festival</a><a href="app.html">De Aperokiezer</a><a href="partners.html">Partners</a><a href="faq.html">Veelgestelde vragen</a><a href="https://www.instagram.com/apero.festival">Instagram</a></div><div><h4>Contact</h4><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a><a href="partners.html">Word partner</a><a href="festival.html">Blijf op de hoogte</a></div></div><div class="fnote">AP&Eacute;RO Culture &middot; een onderzoek naar de aperocultuur &middot; Utrecht &middot; MMXXVII &middot; een initiatief van The Grape Agency</div></div></footer>
 
-<script src="tijdreis-data.js"></script>
-<script src="tijdreis-kaart.js"></script>
-<script src="tijdreis.js"></script>
+<script src="tijdreis-data.js?v=2"></script>
+<script src="tijdreis-kaart.js?v=2"></script>
+<script src="tijdreis.js?v=2"></script>
 <script src="site.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body></html>
