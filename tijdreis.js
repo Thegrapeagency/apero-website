@@ -14,7 +14,8 @@
   var KAART_OPMAAK = {
     frankrijk:  { label:[326,170,34], romein:[326,198,20], marker:[330,110], licht:false },
     spanje:     { label:[168,442,36], romein:[168,470,20], marker:[186,393], licht:true },
-    portugal:   { label:[86,452,15.5], romein:[86,472,12], marker:[69,402], licht:true },
+    portugal:   { label:[92,556,17], romein:[92,575,13], marker:[64,432], licht:true,
+                  offshore:true, leader:[64,432, 84,540] },
     italie:     { label:[524,254,26], romein:[524,280,17], marker:[571,346], licht:false },
     anijsgordel:{ label:[818,610,24], romein:[818,636,15], marker:[839,468], licht:false },
     marokko:    { label:[128,652,28], romein:[128,678,16], marker:[136,548], licht:true }
@@ -45,7 +46,14 @@
         'aria-label': w.naam + ', ' + w.sub.toLowerCase() }, zones);
       el('path', { 'class':'tr-land', d: d, fill: KAART_VULLING[key] }, g);
       el('path', { d: d, fill:'none', stroke:'transparent', 'stroke-width':14, 'pointer-events':'stroke' }, g);
-      var lucht = o.licht ? ' licht' : '';
+      /* offshore-label (voor smalle landen zoals Portugal): leiderlijn + label in zee, donkere inkt */
+      if(o.offshore){
+        var ld = o.leader;
+        el('line', { x1:ld[0], y1:ld[1], x2:ld[2], y2:ld[3], stroke:'rgba(35,27,19,.4)',
+          'stroke-width':1, 'stroke-dasharray':'2 3', 'pointer-events':'none' }, g);
+        el('circle', { cx:ld[0], cy:ld[1], r:2.4, fill:'rgba(35,27,19,.55)', 'pointer-events':'none' }, g);
+      }
+      var lucht = (o.licht && !o.offshore) ? ' licht' : '';
       var lab = el('text', { 'class':'tr-label'+lucht, x:o.label[0], y:o.label[1],
         'font-size':o.label[2], 'text-anchor':'middle' }, g);
       if(o.rot) lab.setAttribute('transform', 'rotate('+o.rot+' '+o.label[0]+' '+o.label[1]+')');
@@ -53,8 +61,10 @@
       var rom = el('text', { 'class':'tr-romein'+lucht, x:o.romein[0], y:o.romein[1],
         'font-size':o.romein[2], 'text-anchor':'middle' }, g);
       rom.textContent = w.romein;
-      var bloem = el('g', { 'class':'tr-bloem', transform:'translate('+o.marker[0]+','+o.marker[1]+') scale(.85)' }, g);
-      el('use', { href: o.licht ? '#bloemsym-panna' : '#bloemsym' }, bloem);
+      if(!o.offshore){
+        var bloem = el('g', { 'class':'tr-bloem', transform:'translate('+o.marker[0]+','+o.marker[1]+') scale(.85)' }, g);
+        el('use', { href: o.licht ? '#bloemsym-panna' : '#bloemsym' }, bloem);
+      }
     });
   })();
 
