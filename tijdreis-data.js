@@ -1,5 +1,5 @@
-/* APÉRO Tijdreis — data per wereld.
-   Gegenereerd uit ~/apero-identity/onderzoek/*.md (## Tijdlijn + ## Leuke feitjes).
+/* APÉRO Tijdreis · data per wereld.
+   Gegenereerd uit ~/apero-identity/onderzoek/*.md (tijdlijn + leuke feitjes).
    Tijdlijn-items hebben soort: ritueel | sociaal | eten | drank. */
 const TIJDREIS = {
   "spanje": {
@@ -50,14 +50,14 @@ const TIJDREIS = {
         "soort": "ritueel"
       },
       {
-        "jaar": "1902",
-        "tekst": "Café Torino opent in Barcelona, een art-nouveautempel voor vermout waaraan Gaudí meewerkte; de zaak sluit alweer in 1911.",
-        "soort": "sociaal"
-      },
-      {
         "jaar": "eind 19e eeuw",
         "tekst": "In Asturias ontstaat het escanciar, cider van armhoogte uitschenken, dankzij de nieuwe glasindustrie die flessen en glazen betaalbaar maakt.",
         "soort": "ritueel"
+      },
+      {
+        "jaar": "1902",
+        "tekst": "Café Torino opent in Barcelona, een art-nouveautempel voor vermout waaraan Gaudí meewerkte; de zaak sluit alweer in 1911.",
+        "soort": "sociaal"
       },
       {
         "jaar": "jaren 40",
@@ -145,7 +145,7 @@ const TIJDREIS = {
       "Sbagliato betekent verkeerd: de beroemdste vergissing uit de cocktailgeschiedenis ontstond in 1972 in Bar Basso, waar de spumante naast de gin stond.",
       "Barman Fosco Scarselli gaf de eerste Negroni in 1919 een sinaasappelschil in plaats van citroen: zo zag je dat dit geen Americano was.",
       "Het kegelvormige flesje Campari Soda uit 1932 is ontworpen door futurist Fortunato Depero en is nooit wezenlijk veranderd.",
-      "Aperol bevat maar 11 procent alcohol; in Duitsland werd het tot 2021 op 15 procent gebotteld om de statiegeldwet te omzeilen."
+      "Aperol telt met zo'n 11 procent alcohol nog niet de helft van een klassieke bitter; juist die lichtheid maakte de spritz het gezicht van het Italiaanse aperitivo."
     ],
     "tijdlijn": [
       {
@@ -289,7 +289,7 @@ const TIJDREIS = {
       },
       {
         "jaar": "1872",
-        "tekst": "Rond de eeuwwende beginnen versterkte kruidenwijnen als Lillet, Byrrh en Suze als gezondheidsdrank, later hét gezicht van de apéro.",
+        "tekst": "Vanaf 1872 beginnen versterkte kruidenwijnen als Lillet, Byrrh en Suze als gezondheidsdrank, later hét gezicht van de apéro.",
         "soort": "drank"
       },
       {
@@ -442,12 +442,12 @@ const TIJDREIS = {
         "soort": "drank"
       },
       {
-        "jaar": "1930-1950",
+        "jaar": "20e eeuw",
         "tekst": "Aan de Turkse rakı sofrası verstart de etiquette: je nipt, je proost met de onderkant van je glas omdat iedereen aan tafel gelijk is.",
         "soort": "ritueel"
       },
       {
-        "jaar": "1930-1950",
+        "jaar": "20e eeuw",
         "tekst": "Het onwrikbare openingsduo van de rakıtafel wordt beyaz peynir en meloen: het zout van de kaas en het zoet van de meloen vangen de anijs perfect op.",
         "soort": "eten"
       },
@@ -576,7 +576,7 @@ const TIJDREIS = {
         "soort": "drank"
       },
       {
-        "jaar": "1914-1945",
+        "jaar": "rond 1938",
         "tekst": "De conservenindustrie draait op volle toeren voor soldatenrantsoenen, rond 1938 telt Portugal zo'n 150 fabrieken.",
         "soort": "sociaal"
       },
@@ -657,7 +657,7 @@ const TIJDREIS = {
       {
         "jaar": "ca. 25 v.Chr.",
         "tekst": "Romeinen bouwen Volubilis bij Meknès uit tot wijncentrum met stenen persen, Marokko maakte al wijn voordat de islam kwam.",
-        "soort": "sociaal"
+        "soort": "drank"
       },
       {
         "jaar": "7e-8e eeuw",

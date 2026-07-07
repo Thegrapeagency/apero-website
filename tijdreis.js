@@ -1,4 +1,4 @@
-/* APÉRO Tijdreis — kaart → wereldpagina (tijdreis + weetjes op het fresco).
+/* APÉRO Tijdreis · kaart → wereldpagina (tijdreis + weetjes op het fresco).
    Data uit tijdreis-data.js (TIJDREIS), geometrie uit tijdreis-kaart.js (KAARTPADEN). */
 (function(){
   'use strict';
@@ -9,6 +9,19 @@
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var SVGNS = 'http://www.w3.org/2000/svg';
   var actueel = null;
+  var laatsteTrigger = null;
+
+  if(typeof TIJDREIS === 'undefined'){
+    var h0 = document.querySelector('.tr-hint'); if(h0) h0.textContent = 'De tijdreis kon niet laden.';
+    return;
+  }
+  function zetAchtergrondInert(aan){
+    ['nav.top', '.tr-hero', '.tr-mapwrap', 'footer'].forEach(function(sel){
+      var n = document.querySelector(sel); if(!n) return;
+      if(aan){ n.setAttribute('inert',''); n.setAttribute('aria-hidden','true'); }
+      else   { n.removeAttribute('inert'); n.removeAttribute('aria-hidden'); }
+    });
+  }
 
   /* ---------- de kaart: echte geografie ---------- */
   var KAART_OPMAAK = {
@@ -208,15 +221,8 @@
     document.getElementById('tr-dive-foto').style.backgroundImage = 'url("'+w.foto+'")';
     document.getElementById('tr-dive-kicker').textContent = 'Wereld '+w.romein+' · '+w.sub;
     document.getElementById('tr-dive-titel').textContent = w.naam;
-    /* weetjes */
-    var houder = document.getElementById('tr-weetjes');
-    houder.innerHTML = '';
-    (w.weetjes.length ? w.weetjes : ['Het onderzoek naar deze wereld loopt nog.']).forEach(function(tekst){
-      var k = document.createElement('div'); k.className = 'tr-weetje';
-      k.innerHTML = '<span class="flower"></span><p></p>';
-      k.querySelector('p').textContent = tekst;
-      houder.appendChild(k);
-    });
+    /* het verlichte handschrift-vel */
+    vulVel(w);
     /* tijdreis terug naar het begin */
     idx = 0; rotatie = 0; tekenWijzer();
     var spoor = document.getElementById('tr-spoor'); spoor.innerHTML = '';
@@ -228,30 +234,107 @@
     horloge.setAttribute('aria-valuemax', String(Math.max(0, w.tijdlijn.length-1)));
     hintWeg = false; hint.classList.remove('weg');
     toonStap(0, true);
-    dive.classList.add('open'); sluitKnop.hidden = false;
+    dive.classList.add('open');
     document.body.style.overflow = 'hidden';
     scroller.scrollTop = 0;
-    onthulWeetjes();
+    onthulVel();
+    laatsteTrigger = document.activeElement;
+    zetAchtergrondInert(true);
+    sluitKnop.focus();
   }
 
-  function onthulWeetjes(){
-    var kaartjes = dive.querySelectorAll('.tr-weetje');
+  /* ---------- het handschrift-vel bouwen ---------- */
+  function vulVel(w){
+    var feiten = (w.weetjes && w.weetjes.length) ? w.weetjes.slice(0,7)
+               : ['Het onderzoek naar deze wereld loopt nog.'];
+    document.getElementById('vel-naam').textContent  = w.naam;
+    document.getElementById('vel-intro').textContent = w.intro || '';
+    bouwExlibris(w.romein);
+
+    var ROLLEN = ['f-incipit','f-venster','f-hoofd','f-kolom','f-kolom','f-marge','f-explicit'];
+    var grid = document.getElementById('vel-grid');
+    grid.innerHTML = '';
+    var twin = null;
+    feiten.forEach(function(tekst, i){
+      var rol = ROLLEN[i] || 'f-explicit';
+      var blok = document.createElement('div');
+      blok.className = 'f-blok ' + rol;
+      if(rol === 'f-venster'){
+        var o = document.createElement('span'); o.className = 'o-fresco';
+        o.style.setProperty('--o-img', 'url("'+w.foto+'")');
+        var cap = document.createElement('p'); cap.className = 'venster-cap'; cap.textContent = tekst;
+        blok.appendChild(o); blok.appendChild(cap);
+      } else if(rol === 'f-hoofd'){
+        var g = document.createElement('span'); g.className = 'flower ghost';
+        var p = document.createElement('p'); p.textContent = tekst;
+        blok.appendChild(g); blok.appendChild(p);
+      } else {
+        var p2 = document.createElement('p'); p2.textContent = tekst;
+        blok.appendChild(p2);
+      }
+      if(rol === 'f-kolom'){
+        if(!twin){ twin = document.createElement('div'); twin.className = 'f-twin'; grid.appendChild(twin); }
+        twin.appendChild(blok);
+      } else {
+        grid.appendChild(blok);
+      }
+    });
+  }
+
+  function bouwExlibris(romein){
+    var box = document.getElementById('vel-exlibris');
+    box.innerHTML =
+      '<svg viewBox="0 0 64 64" aria-hidden="true">'+
+        '<circle cx="32" cy="32" r="30" fill="none" stroke="var(--terracotta)" stroke-width="1"/>'+
+        '<circle cx="32" cy="32" r="26" fill="none" stroke="rgba(196,95,56,.5)" stroke-width="1"/>'+
+        '<text x="32" y="19" text-anchor="middle" font-size="6" letter-spacing="1.4" '+
+          'style="font-family:var(--body);font-weight:600" fill="var(--terracotta)">APÉRO</text>'+
+        '<text x="32" y="41" text-anchor="middle" font-size="17" '+
+          'style="font-family:var(--disp);font-style:italic;font-weight:600" fill="var(--mattone)">'+romein+'</text>'+
+        '<g fill="var(--terracotta)"><circle cx="32" cy="47" r="2.2"/><circle cx="32" cy="53" r="2.2"/>'+
+          '<circle cx="29" cy="50" r="2.2"/><circle cx="35" cy="50" r="2.2"/></g>'+
+      '</svg>';
+  }
+
+  var velFailsafe = null;
+  function onthulVel(){
+    var vel = document.getElementById('tr-vel');
+    var blokken = vel.querySelectorAll('.vel-kop, .f-blok, .vel-slot');
     if(reduced || !('IntersectionObserver' in window)){
-      kaartjes.forEach(function(k){ k.classList.add('zichtbaar'); }); return;
+      vel.classList.add('ontrold');
+      blokken.forEach(function(b){ b.classList.add('zichtbaar'); });
+      return;
     }
-    var zien = new IntersectionObserver(function(entries){
-      entries.forEach(function(e,i){
-        if(e.isIntersecting){ e.target.classList.add('zichtbaar'); zien.unobserve(e.target); }
+    vel.classList.remove('ontrold');
+    blokken.forEach(function(b){ b.classList.remove('zichtbaar'); b.style.transitionDelay = ''; });
+    var velObs = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('ontrold'); velObs.disconnect(); } });
+    }, { root: scroller, threshold: .12 });
+    velObs.observe(vel);
+    var blokObs = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var i = [].indexOf.call(blokken, e.target);
+        e.target.style.transitionDelay = Math.min(i, 7) * 0.07 + 's';
+        e.target.classList.add('zichtbaar');
+        blokObs.unobserve(e.target);
       });
-    }, { root: scroller, threshold: .15 });
-    kaartjes.forEach(function(k){ zien.observe(k); });
-    /* failsafe: na 2s alles tonen als de observer niets deed */
-    setTimeout(function(){ kaartjes.forEach(function(k){ k.classList.add('zichtbaar'); }); }, 2500);
+    }, { root: scroller, threshold: .16 });
+    blokken.forEach(function(b){ blokObs.observe(b); });
+    clearTimeout(velFailsafe);
+    velFailsafe = setTimeout(function(){
+      vel.classList.add('ontrold');
+      blokken.forEach(function(b){ b.classList.add('zichtbaar'); });
+      velObs.disconnect(); blokObs.disconnect();
+    }, 2600);
   }
 
   function sluit(){
-    dive.classList.remove('open'); sluitKnop.hidden = true;
+    dive.classList.remove('open');
     document.body.style.overflow = '';
+    zetAchtergrondInert(false);
+    if(laatsteTrigger && laatsteTrigger.focus) laatsteTrigger.focus();
+    laatsteTrigger = null;
     actueel = null;
   }
   sluitKnop.addEventListener('click', sluit);

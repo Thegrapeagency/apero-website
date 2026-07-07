@@ -2,7 +2,7 @@
 <title>De tijdreis · APÉRO</title><meta name="description" content="Draai aan de tijd. Reis door zes werelden van aperitiefcultuur, van de Romeinse gustatio tot vanavond.">
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#F4EAD6">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=3">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
 /* ============ de kaart ============ */
@@ -32,7 +32,7 @@
 .tr-bloem{pointer-events:none;transform-box:fill-box;transform-origin:center;animation:trbloei 4.5s ease-in-out infinite}
 .tr-zone:hover .tr-bloem{animation-duration:1.6s}
 @keyframes trbloei{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
-.tr-hint{text-align:center;margin-top:18px;color:var(--ink-50);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.tr-hint{text-align:center;margin-top:18px;color:var(--ink-70);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
 .tr-hint .flower{width:.9em;height:.9em;vertical-align:-.12em;margin:0 .35em}
 /* legenda: de vier draden */
 .tr-legenda{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:22px auto 0;max-width:560px}
@@ -66,7 +66,7 @@
 .tr-flits{opacity:0;transform:translateY(12px);transition:opacity .4s,transform .45s var(--spring)}
 .tr-flits.zichtbaar{opacity:1;transform:none}
 .tr-jaar{font-family:var(--disp);font-weight:900;font-size:clamp(40px,8.5vh,80px);line-height:.9;color:var(--terracotta)}
-.tr-jaar small{display:block;font-size:12px;font-family:var(--body);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-50);margin-top:8px}
+.tr-jaar small{display:block;font-size:12px;font-family:var(--body);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-70);margin-top:8px}
 .tr-tekst{font-size:clamp(15px,2vh,18px);line-height:1.55;color:var(--espresso);margin-top:12px;min-height:3.2em}
 .tr-spoor{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:16px}
 .tr-dot{width:6px;height:6px;border-radius:50%;background:var(--ink-30);opacity:.4;transition:opacity .3s,transform .3s}
@@ -81,30 +81,99 @@
 .tr-afdaal:hover{background:var(--terracotta);transform:translateY(-2px)}
 /* het zakhorloge: medaillon op de naad tussen tijdreis en weetjes */
 .tr-horloge{position:relative;width:min(290px,66vw);margin:clamp(14px,3vh,36px) auto -150px;z-index:4;
-  cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+  cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .tr-horloge:active{cursor:grabbing}
 .tr-horloge svg{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 34px rgba(35,27,19,.32))}
 #tr-cijfers text{font-family:var(--disp);font-weight:700;fill:rgba(35,27,19,.8);pointer-events:none}
 #tr-cijfers text.twaalf{fill:var(--terracotta)}
-/* etage 2: de weetjes op een crème band */
-.tr-band{position:relative;overflow:visible;background:rgba(244,234,214,.58);border-top:1.5px solid rgba(196,95,56,.4)}
+/* etage 2: het verlichte handschrift-vel op het fresco */
+.tr-band{position:relative;overflow:visible;padding:0;background:rgba(244,234,214,.42);border-top:1.5px solid rgba(196,95,56,.4)}
 .tr-inner{position:relative;max-width:900px;margin:0 auto;padding:196px 22px 120px}
-.tr-weetkop{text-align:center;margin-bottom:30px}
-.tr-weetkop .lijn{display:inline-flex;align-items:center;gap:14px;color:var(--terracotta)}
-.tr-weetkop .lijn::before,.tr-weetkop .lijn::after{content:"";width:52px;height:1px;background:rgba(196,95,56,.5)}
-.tr-weetjes{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
-.tr-weetje{background:var(--panna);border:1px solid rgba(35,27,19,.2);padding:22px 22px 20px;position:relative;
-  box-shadow:0 18px 40px -30px rgba(35,27,19,.6);opacity:0;transform:translateY(26px) rotate(var(--rot,0deg));
-  transition:opacity .6s ease, transform .7s var(--spring)}
-.tr-weetje.zichtbaar{opacity:1;transform:translateY(0) rotate(var(--rot,0deg))}
-.tr-weetje:nth-child(3n+1){--rot:-1.1deg}.tr-weetje:nth-child(3n+2){--rot:.9deg}.tr-weetje:nth-child(3n){--rot:-.4deg}
-.tr-weetje .flower{width:16px;height:16px;display:block;margin-bottom:12px}
-.tr-weetje p{font-size:15px;line-height:1.55;color:var(--espresso);margin:0}
+.tr-vel{position:relative;background:var(--panna);padding:clamp(30px,5vw,64px);
+  box-shadow:0 44px 90px -52px rgba(35,27,19,.6), 0 0 0 1.5px var(--terracotta);
+  clip-path:inset(0 0 100% 0);transform:translateY(16px);
+  transition:clip-path 1.05s var(--spring), transform 1.05s var(--spring)}
+.tr-vel.ontrold{clip-path:inset(0 0 0 0);transform:none}
+.tr-vel::before{content:"";position:absolute;inset:11px;border:1px solid rgba(196,95,56,.42);pointer-events:none;z-index:2}
+.tr-vel .grain{opacity:.4;z-index:0}
+.tr-vel>*{position:relative;z-index:1}
+/* hoek-O's + naad-zegel */
+.vel-hoek{position:absolute;width:16px;height:16px;z-index:3}
+.vel-hoek.lt{left:6px;top:6px}.vel-hoek.rt{right:6px;top:6px}
+.vel-hoek.lo{left:6px;bottom:6px}.vel-hoek.ro{right:6px;bottom:6px}
+.vel-zegel{position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:18px;height:18px;z-index:3}
+/* kop + spiegelende bloei-O-regels */
+.vel-kop{text-align:center}
+.vel-kop h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,5vw,48px);line-height:1.02;color:var(--espresso);margin:6px 0 0}
+.vel-intro{font-family:var(--disp);font-style:italic;font-weight:500;font-size:clamp(16px,2.4vw,20px);color:var(--mattone);max-width:52ch;margin:10px auto 0}
+.vel-regel{display:flex;align-items:center;justify-content:center;gap:16px;color:var(--terracotta);margin:18px auto 0}
+.vel-regel::before,.vel-regel::after{content:"";height:1px;width:min(140px,26vw);background:rgba(196,95,56,.5)}
+.vel-regel .flower{width:18px;height:18px}
+.vel-slot{margin-top:clamp(26px,4vw,44px)}
+/* het grid: tekstblok + kantlijn */
+.vel-grid{display:grid;grid-template-columns:1fr clamp(220px,34%,320px);
+  grid-template-areas:"incipit venster" "hoofd venster" "twin marge" "explicit explicit";
+  column-gap:clamp(28px,4vw,56px);row-gap:clamp(24px,3.4vw,44px);align-items:start;margin-top:clamp(24px,4vw,40px)}
+.f-incipit{grid-area:incipit}.f-venster{grid-area:venster}.f-hoofd{grid-area:hoofd}
+.f-twin{grid-area:twin}.f-marge{grid-area:marge}.f-explicit{grid-area:explicit}
+/* 0 · incipit met initiaal */
+.f-incipit p{font-family:var(--body);font-weight:400;font-size:18.5px;line-height:1.72;color:var(--espresso);margin:0}
+.f-incipit p::first-letter{font-family:var(--disp);font-weight:800;font-size:4.4em;line-height:.78;float:left;padding:.06em .1em 0 0;color:var(--terracotta);text-shadow:0 1px 0 rgba(244,234,214,.6)}
+/* 1 · fresco-venster + onderschrift */
+.f-venster{display:flex;flex-direction:column}
+.o-fresco{position:relative;display:inline-block;aspect-ratio:1/1;flex:none;
+  background-image:var(--o-img);background-size:cover;background-position:center;
+  -webkit-mask:
+    radial-gradient(circle closest-side at 50% 26%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 50% 74%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 26% 50%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 74% 50%, #000 99%,transparent 100%);
+  mask:
+    radial-gradient(circle closest-side at 50% 26%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 50% 74%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 26% 50%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 74% 50%, #000 99%,transparent 100%);
+  -webkit-mask-composite:source-over;mask-composite:add}
+.o-fresco::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--panna);box-shadow:0 0 0 1px rgba(35,27,19,.10) inset}
+.f-venster .o-fresco{width:clamp(120px,60%,180px)}
+.venster-cap{font-family:var(--disp);font-style:italic;font-weight:400;font-size:14px;line-height:1.5;color:var(--mattone);margin:14px 0 0;max-width:34ch}
+/* 2 · pull-quote met spookbloem */
+.f-hoofd{position:relative;overflow:hidden}
+.f-hoofd .flower.ghost{position:absolute;left:-46px;top:-34px;width:210px;height:210px;opacity:.14;--p1:var(--burro);--p2:var(--terracotta);--hole:var(--panna);z-index:0;pointer-events:none}
+.f-hoofd p{position:relative;z-index:1;font-family:var(--disp);font-style:italic;font-weight:600;font-size:clamp(20px,2.9vw,30px);line-height:1.3;color:var(--terracotta);max-width:26ch;margin:0;text-wrap:balance}
+/* 3+4 · tweelingkolom */
+.f-twin{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(22px,3vw,40px)}
+.f-kolom p{font-family:var(--body);font-weight:400;font-size:15px;line-height:1.62;color:var(--ink-70);margin:0}
+.f-kolom p::first-letter{font-family:var(--disp);font-weight:800;font-size:2.2em;line-height:.72;float:left;padding:.02em .1em 0 0;color:var(--mattone)}
+.f-kolom+.f-kolom{border-left:1px solid var(--line);padding-left:clamp(22px,3vw,40px)}
+/* 5 · marginalia met brace */
+.f-marge{position:relative;padding-left:18px}
+.f-marge p{font-family:var(--disp);font-style:italic;font-size:14px;line-height:1.5;color:var(--mattone);margin:0}
+.f-marge::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:2px;background:rgba(158,67,38,.42)}
+/* 6 · explicit */
+.f-explicit p{font-family:var(--disp);font-style:italic;font-weight:500;font-size:clamp(16px,2.2vw,20px);line-height:1.4;color:var(--espresso);text-align:center;max-width:48ch;margin:0 auto}
+/* ex-libris stempel */
+.vel-exlibris{position:absolute;right:clamp(14px,3vw,34px);bottom:clamp(14px,3vw,30px);width:64px;height:64px;opacity:.5;z-index:1;pointer-events:none}
+.vel-exlibris svg{width:100%;height:100%;display:block}
+/* reveal-basis */
+.vel-kop,.f-blok,.vel-slot{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .7s var(--spring)}
+.vel-kop.zichtbaar,.f-blok.zichtbaar,.vel-slot.zichtbaar{opacity:1;transform:none}
 .tr-terugrij{margin-top:46px;text-align:center}
 .tr-sluit{position:fixed;top:18px;right:18px;z-index:66;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
   background:var(--panna);color:var(--espresso);font-size:20px;line-height:1;cursor:pointer;font-family:var(--body);
   box-shadow:0 10px 24px -14px rgba(35,27,19,.6);transition:transform .3s var(--spring),background .25s}
 .tr-sluit:hover{background:var(--terracotta);color:var(--panna);transform:rotate(90deg)}
+@media(max-width:720px){
+  .vel-grid{grid-template-columns:1fr;grid-template-areas:"incipit" "venster" "hoofd" "twin" "marge" "explicit"}
+  .f-twin{grid-template-columns:1fr;row-gap:22px}
+  .f-kolom+.f-kolom{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:22px}
+  .f-venster{flex-direction:row;gap:16px;align-items:center}
+  .f-venster .o-fresco{width:96px;flex:none}
+  .f-hoofd .flower.ghost{width:150px;opacity:.12}
+  .f-marge{padding-left:14px}
+  .vel-exlibris{position:static;display:block;margin:20px auto 0}
+  .tr-vel{padding:clamp(22px,7vw,34px)}
+}
 @media(max-width:640px){
   .tr-etage{padding:78px 16px 0}
   .tr-paneel{padding:16px 20px 14px}
@@ -121,7 +190,9 @@
 @media(prefers-reduced-motion:reduce){
   .tr-bloem{animation:none}
   .tr-dive .fresco{transition:none}
-  .tr-weetje,.tr-flits{transition:opacity .2s}
+  .tr-flits{transition:opacity .2s}
+  .tr-vel{clip-path:none;transform:none;transition:none}
+  .vel-kop,.f-blok,.vel-slot{opacity:1;transform:none;transition:none}
 }
 </style></head><body>
 <nav class="top"><div class="in"><a class="lk" href="index.html">AP&Eacute;R<span class="flower"></span><span class="cul">CULTURE</span></a><div class="links"><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De werelden</a><a href="lezen.html">Magazine</a><a href="lexicon.html">Lexicon</a><a href="festival.html">Festival</a></div></div></nav>
@@ -175,6 +246,7 @@
 
 <!-- de wereld: tijdreis en weetjes op het fresco -->
 <div class="tr-dive" id="tr-dive" role="dialog" aria-modal="true" aria-label="Wereld">
+  <button class="tr-sluit" id="tr-sluit" aria-label="Sluiten">&times;</button>
   <div class="fresco" id="tr-dive-foto"></div><div class="wash"></div><div class="grain"></div>
   <div class="tr-scroll" id="tr-scroll">
     <section class="tr-etage">
@@ -235,20 +307,31 @@
       </div>
     </section>
     <section class="tr-band"><div class="tr-inner">
-      <div class="tr-weetkop"><span class="lijn"><span class="eyebrow">Uit het onderzoek</span></span></div>
-      <div class="tr-weetjes" id="tr-weetjes"></div>
+      <article class="tr-vel" id="tr-vel">
+        <div class="grain"></div>
+        <span class="vel-zegel flower" aria-hidden="true"></span>
+        <span class="vel-hoek lt flower" aria-hidden="true"></span><span class="vel-hoek rt flower" aria-hidden="true"></span>
+        <span class="vel-hoek lo flower" aria-hidden="true"></span><span class="vel-hoek ro flower" aria-hidden="true"></span>
+        <header class="vel-kop">
+          <span class="eyebrow">Uit het onderzoek</span>
+          <h2 id="vel-naam">&nbsp;</h2>
+          <p class="vel-intro" id="vel-intro">&nbsp;</p>
+          <span class="vel-regel"><span class="flower"></span></span>
+        </header>
+        <div class="vel-grid" id="vel-grid"></div>
+        <div class="vel-slot"><span class="vel-regel"><span class="flower"></span></span></div>
+        <span class="vel-exlibris" id="vel-exlibris" aria-hidden="true"></span>
+      </article>
       <div class="tr-terugrij"><button class="btn" id="tr-terug">&larr; Terug naar de kaart</button></div>
     </div></section>
   </div>
 </div>
 
-<button class="tr-sluit" id="tr-sluit" aria-label="Sluiten" hidden>&times;</button>
-
 <footer><div class="petals" style="position:absolute;inset:0;--c:120px;opacity:.4"></div><div class="veil"></div><div class="grain"></div><div class="wrap"><div class="fcols"><div style="max-width:280px"><div class="fbrand">AP&Eacute;R<span class="flower"></span></div><p style="font-family:var(--body);font-size:14px;color:var(--ink-70);margin-top:10px">Een onderzoek naar de aperocultuur. aperire, openen. Open de avond.</p></div><div><h4>Ontdek</h4><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De zes werelden</a><a href="lezen.html">Magazine-app</a><a href="podcast.html">Podcast</a><a href="lexicon.html">Lexicon</a></div><div><h4>Festival</h4><a href="festival.html">Het festival</a><a href="app.html">De Aperokiezer</a><a href="partners.html">Partners</a><a href="faq.html">Veelgestelde vragen</a><a href="https://www.instagram.com/apero.festival">Instagram</a></div><div><h4>Contact</h4><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a><a href="partners.html">Word partner</a><a href="festival.html">Blijf op de hoogte</a></div></div><div class="fnote">AP&Eacute;RO Culture &middot; een onderzoek naar de aperocultuur &middot; Utrecht &middot; MMXXVII &middot; een initiatief van The Grape Agency</div></div></footer>
 
-<script src="tijdreis-data.js?v=2"></script>
-<script src="tijdreis-kaart.js?v=2"></script>
-<script src="tijdreis.js?v=2"></script>
-<script src="site.js"></script>
+<script src="tijdreis-data.js?v=3"></script>
+<script src="tijdreis-kaart.js?v=3"></script>
+<script src="tijdreis.js?v=3"></script>
+<script src="site.js?v=3"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body></html>
