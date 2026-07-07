@@ -34,23 +34,52 @@
 @keyframes trbloei{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
 .tr-hint{text-align:center;margin-top:18px;color:var(--ink-50);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
 .tr-hint .flower{width:.9em;height:.9em;vertical-align:-.12em;margin:0 .35em}
-/* ============ de duik ============ */
-.tr-dive{position:fixed;inset:0;z-index:60;display:none;overflow:hidden;background:var(--espresso)}
+/* ============ de wereld: tijdreis + weetjes op het fresco ============ */
+.tr-dive{position:fixed;inset:0;z-index:60;display:none;background:var(--espresso)}
 .tr-dive.open{display:block}
 .tr-dive .fresco{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.12);transition:transform 6s ease-out}
 .tr-dive.open .fresco{transform:scale(1)}
 .tr-dive .wash{position:absolute;inset:0;background:rgba(244,234,214,.36)}
 .tr-dive .grain{opacity:.4}
 .tr-scroll{position:relative;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.tr-inner{max-width:900px;margin:0 auto;padding:96px 22px 140px}
-.tr-cartouche{background:var(--panna);border:1.5px solid var(--terracotta);padding:26px 32px;position:relative;
-  box-shadow:0 24px 50px -34px rgba(35,27,19,.55);max-width:620px}
-.tr-cartouche::after{content:"";position:absolute;inset:5px;border:1px solid rgba(196,95,56,.42);pointer-events:none}
-.tr-cartouche .ct-k{display:block;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px}
-.tr-cartouche h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,5vw,52px);line-height:1;margin:0}
-.tr-cartouche .ct-s{font-family:var(--disp);font-style:italic;color:var(--mattone);margin-top:8px;font-size:17px}
-/* weetjes-kaartjes */
-.tr-weetjes{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+/* etage 1: de tijdreis */
+.tr-etage{position:relative;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 20px 290px}
+.tr-wkop{position:relative;background:var(--panna);border:1.5px solid var(--terracotta);padding:13px 30px 15px;text-align:center;
+  box-shadow:0 24px 50px -34px rgba(35,27,19,.55);margin-bottom:clamp(16px,3.5vh,36px)}
+.tr-wkop::after{content:"";position:absolute;inset:4px;border:1px solid rgba(196,95,56,.42);pointer-events:none}
+.tr-wkop .ct-k{display:block;font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:4px}
+.tr-wkop h2{font-family:var(--disp);font-weight:800;font-size:clamp(22px,4vh,32px);line-height:1;margin:0}
+.tr-paneel{position:relative;background:var(--panna);border:1.5px solid var(--terracotta);width:min(620px,94vw);
+  padding:clamp(18px,4vh,32px) 34px 18px;text-align:center;box-shadow:0 24px 50px -34px rgba(35,27,19,.55)}
+.tr-paneel::after{content:"";position:absolute;inset:5px;border:1px solid rgba(196,95,56,.42);pointer-events:none}
+.tr-paneel>*{position:relative;z-index:1}
+.tr-flits{opacity:0;transform:translateY(12px);transition:opacity .4s,transform .45s var(--spring)}
+.tr-flits.zichtbaar{opacity:1;transform:none}
+.tr-jaar{font-family:var(--disp);font-weight:900;font-size:clamp(40px,9vh,84px);line-height:.9;color:var(--terracotta)}
+.tr-jaar small{display:block;font-size:12px;font-family:var(--body);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-50);margin-top:8px}
+.tr-tekst{font-size:clamp(15px,2vh,18px);line-height:1.55;color:var(--espresso);margin-top:12px;min-height:3.2em}
+.tr-spoor{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:16px}
+.tr-dot{width:6px;height:6px;border-radius:50%;background:var(--ink-30);transition:background .3s,transform .3s}
+.tr-dot.actief{background:var(--terracotta);transform:scale(1.5)}
+.tr-horloge-hint{margin-top:18px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--espresso);
+  background:rgba(244,234,214,.72);border-radius:100px;padding:8px 16px;transition:opacity .6s}
+.tr-horloge-hint.weg{opacity:0}
+/* het zakhorloge */
+.tr-horloge{position:absolute;left:50%;bottom:-64px;transform:translateX(-50%);width:min(340px,72vw);z-index:4;
+  cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.tr-horloge:active{cursor:grabbing}
+.tr-horloge svg{display:block;width:100%;height:auto;filter:drop-shadow(0 -16px 36px rgba(35,27,19,.35))}
+#tr-cijfers text{font-family:var(--disp);font-weight:700;fill:rgba(35,27,19,.85);pointer-events:none}
+#tr-cijfers text.twaalf{fill:var(--terracotta)}
+.tr-afdaal{position:absolute;right:22px;bottom:20px;z-index:5;font-family:var(--body);font-weight:600;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--espresso);background:var(--panna);border:1px solid var(--line);
+  border-radius:100px;padding:11px 18px;cursor:pointer;transition:background .25s,color .25s}
+.tr-afdaal:hover{background:var(--espresso);color:var(--panna)}
+/* etage 2: de weetjes */
+.tr-inner{position:relative;max-width:900px;margin:0 auto;padding:150px 22px 140px}
+.tr-weetkop{text-align:center;margin-bottom:28px}
+.tr-weetkop .eyebrow{background:var(--panna);border:1px solid var(--line);border-radius:100px;padding:9px 18px;display:inline-block}
+.tr-weetjes{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
 .tr-weetje{background:var(--panna);border:1px solid var(--line);padding:22px 22px 20px;position:relative;
   box-shadow:0 18px 40px -30px rgba(35,27,19,.6);opacity:0;transform:translateY(26px) rotate(var(--rot,0deg));
   transition:opacity .6s ease, transform .7s var(--spring)}
@@ -58,57 +87,28 @@
 .tr-weetje:nth-child(3n+1){--rot:-1.1deg}.tr-weetje:nth-child(3n+2){--rot:.9deg}.tr-weetje:nth-child(3n){--rot:-.4deg}
 .tr-weetje .flower{width:16px;height:16px;display:block;margin-bottom:12px}
 .tr-weetje p{font-size:15px;line-height:1.55;color:var(--espresso);margin:0}
-/* knoppen in de duik */
+.tr-terugrij{margin-top:46px;text-align:center}
 .tr-sluit{position:fixed;top:18px;right:18px;z-index:66;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
   background:var(--panna);color:var(--espresso);font-size:20px;line-height:1;cursor:pointer;font-family:var(--body);
   box-shadow:0 10px 24px -14px rgba(35,27,19,.6);transition:transform .3s var(--spring),background .25s}
 .tr-sluit:hover{background:var(--terracotta);color:var(--panna);transform:rotate(90deg)}
-.tr-naar-tijd{margin-top:46px;text-align:center}
-/* ============ de tijdreis ============ */
-.tr-tijd{position:fixed;inset:0;z-index:62;display:none;background:var(--panna);overflow:hidden}
-.tr-tijd.open{display:block}
-.tr-tijd .petals{position:absolute;inset:0;opacity:.1;--c:90px}
-.tr-tijd-kop{position:absolute;top:26px;left:0;right:0;text-align:center;z-index:2}
-.tr-tijd-kop .eyebrow{display:block}
-.tr-tijd-kop .naam{font-family:var(--disp);font-weight:800;font-size:22px;margin-top:6px}
-/* het gebeurtenis-toneel */
-.tr-toneel{position:absolute;inset:110px 0 300px;display:flex;align-items:center;justify-content:center;z-index:2;padding:0 22px}
-.tr-kaartje{max-width:560px;text-align:center;opacity:0;transform:translateY(18px);transition:opacity .45s,transform .5s var(--spring)}
-.tr-kaartje.zichtbaar{opacity:1;transform:none}
-.tr-jaar{font-family:var(--disp);font-weight:900;font-size:clamp(56px,11vw,120px);line-height:.9;color:var(--terracotta)}
-.tr-jaar small{display:block;font-size:14px;font-family:var(--body);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-50);margin-top:10px}
-.tr-tekst{font-size:clamp(16px,2.2vw,20px);line-height:1.55;color:var(--espresso);margin-top:18px}
-/* voortgang */
-.tr-spoor{display:flex;justify-content:center;gap:8px;margin-top:26px}
-.tr-dot{width:7px;height:7px;border-radius:50%;background:var(--ink-30);transition:background .3s,transform .3s}
-.tr-dot.actief{background:var(--terracotta);transform:scale(1.5)}
-/* het zakhorloge */
-.tr-horloge{position:absolute;left:50%;bottom:-80px;transform:translateX(-50%);width:min(360px,76vw);z-index:3;
-  cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
-.tr-horloge:active{cursor:grabbing}
-.tr-horloge svg{display:block;width:100%;height:auto;filter:drop-shadow(0 -14px 34px rgba(35,27,19,.28))}
-#tr-cijfers text{font-family:var(--disp);font-weight:700;fill:rgba(35,27,19,.85);pointer-events:none}
-#tr-cijfers text.twaalf{fill:var(--terracotta)}
-.tr-horloge-hint{margin-top:14px;color:var(--ink-50);
-  font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;transition:opacity .6s}
-.tr-horloge-hint.weg{opacity:0}
 @media(max-width:640px){
-  .tr-toneel{inset:96px 0 250px}
-  .tr-horloge{bottom:-46px;width:min(280px,80vw)}
-  .tr-inner{padding:80px 18px 120px}
+  .tr-etage{padding:74px 16px 250px}
+  .tr-paneel{padding:16px 20px 14px}
+  .tr-horloge{width:min(268px,76vw);bottom:-46px}
+  .tr-inner{padding:130px 18px 120px}
+  .tr-afdaal{right:14px;bottom:14px;padding:9px 14px}
 }
 @media(max-height:620px){
-  .tr-tijd-kop{top:10px}
-  .tr-toneel{inset:60px 0 150px;overflow:auto}
-  .tr-jaar{font-size:clamp(34px,10vh,72px)}
-  .tr-tekst{font-size:14px;margin-top:10px}
+  .tr-etage{padding:64px 16px 190px}
+  .tr-wkop{padding:9px 20px 11px}
   .tr-spoor,.tr-horloge-hint{display:none}
-  .tr-horloge{width:min(210px,56vw);bottom:-110px}
+  .tr-horloge{width:min(200px,50vw);bottom:-96px}
 }
 @media(prefers-reduced-motion:reduce){
   .tr-bloem{animation:none}
   .tr-dive .fresco{transition:none}
-  .tr-weetje,.tr-kaartje{transition:opacity .2s}
+  .tr-weetje,.tr-flits{transition:opacity .2s}
 }
 </style></head><body>
 <nav class="top"><div class="in"><a class="lk" href="index.html">AP&Eacute;R<span class="flower"></span><span class="cul">CULTURE</span></a><div class="links"><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De werelden</a><a href="lezen.html">Magazine</a><a href="lexicon.html">Lexicon</a><a href="festival.html">Festival</a></div></div></nav>
@@ -154,78 +154,69 @@
   <p class="tr-hint">Kies een wereld<span class="flower"></span>en duik erin</p>
 </div>
 
-<!-- de duik: weetjes per wereld -->
+<!-- de wereld: tijdreis en weetjes op het fresco -->
 <div class="tr-dive" id="tr-dive" role="dialog" aria-modal="true" aria-label="Wereld">
   <div class="fresco" id="tr-dive-foto"></div><div class="wash"></div><div class="grain"></div>
-  <div class="tr-scroll"><div class="tr-inner">
-    <div class="tr-cartouche">
-      <span class="ct-k" id="tr-dive-kicker">Wereld</span>
-      <h2 id="tr-dive-titel">&nbsp;</h2>
-      <div class="ct-s" id="tr-dive-sub">&nbsp;</div>
-    </div>
-    <div class="tr-weetjes" id="tr-weetjes"></div>
-    <div class="tr-naar-tijd"><button class="btn" id="tr-open-tijd">Draai aan de tijd &rarr;</button></div>
-  </div></div>
-</div>
-
-<!-- de tijdreis: het zakhorloge -->
-<div class="tr-tijd" id="tr-tijd" role="dialog" aria-modal="true" aria-label="Tijdreis">
-  <div class="petals"></div><div class="grain"></div>
-  <div class="tr-tijd-kop"><span class="eyebrow">De tijdreis</span><div class="naam" id="tr-tijd-naam">&nbsp;</div></div>
-  <div class="tr-toneel"><div class="tr-kaartje" id="tr-kaartje">
-    <div class="tr-jaar" id="tr-jaar">&nbsp;<small id="tr-teller">&nbsp;</small></div>
-    <p class="tr-tekst" id="tr-tekst">&nbsp;</p>
-    <div class="tr-spoor" id="tr-spoor"></div>
-    <div class="tr-horloge-hint" id="tr-horloge-hint">Draai aan het horloge, of gebruik de pijltjestoetsen</div>
-  </div></div>
-  <div class="tr-horloge" id="tr-horloge" aria-label="Zakhorloge: draai om door de tijd te reizen" role="slider" aria-valuemin="0" tabindex="0">
-    <svg viewBox="0 0 340 430" aria-hidden="true">
-      <!-- ketting -->
-      <path d="M150,42 C100,14 46,18 8,46" fill="none" stroke="var(--mattone)" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 11"/>
-      <!-- beugel -->
-      <circle cx="170" cy="34" r="15" fill="none" stroke="var(--mattone)" stroke-width="7"/>
-      <!-- kroon met ribbels -->
-      <rect x="154" y="50" width="32" height="19" rx="7" fill="var(--terracotta)"/>
-      <g stroke="var(--mattone)" stroke-width="2.2">
-        <line x1="160" y1="52" x2="160" y2="67"/><line x1="165" y1="51" x2="165" y2="68"/>
-        <line x1="170" y1="51" x2="170" y2="68"/><line x1="175" y1="51" x2="175" y2="68"/>
-        <line x1="180" y1="52" x2="180" y2="67"/>
-      </g>
-      <rect x="161" y="68" width="18" height="14" rx="3" fill="var(--mattone)"/>
-      <!-- kast: rand, geribbelde bezel, binnenrand, wijzerplaat -->
-      <circle cx="170" cy="250" r="165" fill="var(--mattone)"/>
-      <circle cx="170" cy="250" r="157" fill="var(--terracotta)"/>
-      <circle cx="170" cy="250" r="151" fill="none" stroke="rgba(35,27,19,.2)" stroke-width="9" stroke-dasharray="2.2 5.6"/>
-      <circle cx="170" cy="250" r="145" fill="var(--mattone)"/>
-      <circle cx="170" cy="250" r="139" fill="var(--panna)"/>
-      <circle cx="170" cy="250" r="139" fill="none" stroke="rgba(35,27,19,.25)" stroke-width="1"/>
-      <!-- wijzerplaat-ornament -->
-      <circle cx="170" cy="250" r="121" fill="none" stroke="rgba(35,27,19,.13)" stroke-width="1"/>
-      <circle cx="170" cy="250" r="88" fill="none" stroke="rgba(35,27,19,.1)" stroke-width="1"/>
-      <text x="170" y="200" text-anchor="middle" font-size="11" fill="var(--ink-50)" style="font-family:var(--body);font-weight:600;letter-spacing:.28em">AP&Eacute;RO</text>
-      <text x="170" y="312" text-anchor="middle" font-size="11" fill="var(--ink-30)" style="font-family:var(--disp);font-style:italic">aperire &middot; openen</text>
-      <!-- minutenrand (vast) -->
-      <g id="tr-ticks"></g>
-      <!-- uurwerk: bloemetje dat meewandelt met de tijd -->
-      <g class="tr-uurwerk" id="tr-uurwerk">
-        <circle cx="170" cy="250" r="94" fill="none" stroke="rgba(35,27,19,.13)" stroke-width="1.3" stroke-dasharray="1 7"/>
-        <g transform="translate(170,156) scale(.55)"><use href="#bloemsym"/></g>
-      </g>
-      <!-- romeinse cijfers (vast) -->
-      <g id="tr-cijfers"></g>
-      <!-- wijzer (breguet-stijl) -->
-      <g class="tr-wijzer" id="tr-wijzer">
-        <path d="M166.5,250 L166.5,283 Q170,289 173.5,283 L173.5,250 Z" fill="var(--espresso)"/>
-        <path d="M167.5,250 C166.5,215 167.2,187 169,168 L171,168 C172.8,187 173.5,215 172.5,250 Z" fill="var(--espresso)"/>
-        <circle cx="170" cy="155" r="9" fill="none" stroke="var(--espresso)" stroke-width="5"/>
-        <path d="M170,128 L176,144 L170,141 L164,144 Z" fill="var(--espresso)"/>
-        <circle cx="170" cy="250" r="8" fill="var(--espresso)"/>
-      </g>
-      <!-- bloem-hart op de as -->
-      <g transform="translate(170,250) scale(.85)"><use href="#bloemsym"/></g>
-      <!-- glans op het glas -->
-      <path d="M86,192 A122,122 0 0 1 138,136" fill="none" stroke="rgba(244,234,214,.55)" stroke-width="9" stroke-linecap="round"/>
-    </svg>
+  <div class="tr-scroll" id="tr-scroll">
+    <section class="tr-etage">
+      <div class="tr-wkop">
+        <span class="ct-k" id="tr-dive-kicker">Wereld</span>
+        <h2 id="tr-dive-titel">&nbsp;</h2>
+      </div>
+      <div class="tr-paneel">
+        <div class="tr-flits" id="tr-flits">
+          <div class="tr-jaar" id="tr-jaar">&nbsp;<small id="tr-teller">&nbsp;</small></div>
+          <p class="tr-tekst" id="tr-tekst">&nbsp;</p>
+        </div>
+        <div class="tr-spoor" id="tr-spoor"></div>
+      </div>
+      <div class="tr-horloge-hint" id="tr-horloge-hint">Draai aan het horloge, of gebruik de pijltjestoetsen</div>
+      <div class="tr-horloge" id="tr-horloge" aria-label="Zakhorloge: draai om door de tijd te reizen" role="slider" aria-valuemin="0" tabindex="0">
+        <svg viewBox="0 0 340 430" aria-hidden="true">
+          <path d="M150,42 C100,14 46,18 8,46" fill="none" stroke="var(--mattone)" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 11"/>
+          <circle cx="170" cy="34" r="15" fill="none" stroke="var(--burro)" stroke-width="7"/>
+          <circle cx="170" cy="34" r="15" fill="none" stroke="rgba(158,67,38,.55)" stroke-width="1.6"/>
+          <rect x="154" y="50" width="32" height="19" rx="7" fill="var(--burro)"/>
+          <g stroke="var(--mattone)" stroke-width="2.2">
+            <line x1="160" y1="52" x2="160" y2="67"/><line x1="165" y1="51" x2="165" y2="68"/>
+            <line x1="170" y1="51" x2="170" y2="68"/><line x1="175" y1="51" x2="175" y2="68"/>
+            <line x1="180" y1="52" x2="180" y2="67"/>
+          </g>
+          <rect x="161" y="68" width="18" height="14" rx="3" fill="var(--mattone)"/>
+          <circle cx="170" cy="250" r="165" fill="var(--mattone)"/>
+          <circle cx="170" cy="250" r="159" fill="var(--burro)"/>
+          <circle cx="170" cy="250" r="152" fill="none" stroke="rgba(158,67,38,.5)" stroke-width="9" stroke-dasharray="2.2 5.6"/>
+          <circle cx="170" cy="250" r="145" fill="var(--burro)"/>
+          <circle cx="170" cy="250" r="140" fill="none" stroke="var(--mattone)" stroke-width="1.6"/>
+          <circle cx="170" cy="250" r="139" fill="var(--panna)"/>
+          <circle cx="170" cy="250" r="121" fill="none" stroke="rgba(35,27,19,.13)" stroke-width="1"/>
+          <circle cx="170" cy="250" r="88" fill="none" stroke="rgba(35,27,19,.1)" stroke-width="1"/>
+          <text x="170" y="200" text-anchor="middle" font-size="11" fill="var(--ink-50)" style="font-family:var(--body);font-weight:600;letter-spacing:.28em">AP&Eacute;RO</text>
+          <text x="170" y="312" text-anchor="middle" font-size="11" fill="var(--ink-30)" style="font-family:var(--disp);font-style:italic">aperire &middot; openen</text>
+          <g id="tr-ticks"></g>
+          <g class="tr-uurwerk" id="tr-uurwerk">
+            <circle cx="170" cy="250" r="94" fill="none" stroke="rgba(35,27,19,.13)" stroke-width="1.3" stroke-dasharray="1 7"/>
+            <g transform="translate(170,156) scale(.55)"><use href="#bloemsym"/></g>
+          </g>
+          <g id="tr-cijfers"></g>
+          <g class="tr-wijzer" id="tr-wijzer">
+            <path d="M166.5,250 L166.5,283 Q170,289 173.5,283 L173.5,250 Z" fill="var(--espresso)"/>
+            <path d="M167.5,250 C166.5,215 167.2,187 169,168 L171,168 C172.8,187 173.5,215 172.5,250 Z" fill="var(--espresso)"/>
+            <circle cx="170" cy="155" r="9" fill="none" stroke="var(--espresso)" stroke-width="5"/>
+            <path d="M170,128 L176,144 L170,141 L164,144 Z" fill="var(--espresso)"/>
+            <circle cx="170" cy="250" r="8" fill="var(--espresso)"/>
+          </g>
+          <g transform="translate(170,250) scale(.85)"><use href="#bloemsym"/></g>
+          <path d="M86,192 A122,122 0 0 1 138,136" fill="none" stroke="rgba(244,234,214,.55)" stroke-width="9" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <button class="tr-afdaal" id="tr-afdaal">De weetjes &darr;</button>
+    </section>
+    <section class="tr-inner">
+      <div class="tr-weetkop"><span class="eyebrow">Uit het onderzoek</span></div>
+      <div class="tr-weetjes" id="tr-weetjes"></div>
+      <div class="tr-terugrij"><button class="btn" id="tr-terug">&larr; Terug naar de kaart</button></div>
+    </section>
   </div>
 </div>
 
