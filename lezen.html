@@ -1,25 +1,21 @@
 <!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Magazine · APÉRO</title><meta name="description" content="Het APÉRO Magazine: dertien artikelen in drie edities. Zeg hoeveel tijd je hebt, een paar minuten, vijf, of een kwartier, en lees elk artikel in die maat.">
+<title>De verhalen · APÉRO Culture</title><meta name="description" content="De verhalen van APÉRO Culture: dertien artikelen over het glas, het bord en iedereen die aanschuift. Zeg hoeveel tijd je hebt en lees elk artikel in die maat.">
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#F4EAD6">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="manifest" href="manifest-magazine.json"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="APÉRO Mag"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head><body>
-<nav class="top"><div class="in"><a class="lk" href="index.html">AP&Eacute;R<span class="flower"></span><span class="cul">CULTURE</span></a><div class="links"><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De werelden</a><a href="lezen.html" aria-current="page">Magazine</a><a href="lexicon.html">Lexicon</a><a href="festival.html">Festival</a></div></div></nav>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="manifest" href="manifest-magazine.json"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="APÉRO"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head><body>
+<nav class="top"><div class="in"><a class="lk" href="index.html">AP&Eacute;R<span class="flower"></span><span class="cul">CULTURE</span></a><div class="links"><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De werelden</a><a href="lezen.html" aria-current="page">Verhalen</a><a href="lexicon.html">Lexicon</a><a href="festival.html">Festival</a></div></div></nav>
 <style>
 /* ---------- voorpagina ---------- */
 .maghero{padding:56px 0 8px;position:relative}
 .maghero .kicker{margin-bottom:14px}
 .maghero h1{font-family:var(--disp);font-weight:800;font-size:clamp(40px,6.4vw,74px);line-height:.96;letter-spacing:-.01em;margin:0 0 18px}
 .maghero .standfirst{font-family:var(--disp);font-style:italic;font-size:clamp(17px,2vw,21px);color:var(--ink-70);max-width:56ch;line-height:1.5}
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:30px 0 0}
-@media(max-width:700px){.tiers{grid-template-columns:1fr}}
-.tier{position:relative;text-align:left;background:var(--panna);border:1.5px solid var(--line);border-radius:14px;padding:18px 20px;cursor:pointer;font-family:var(--body);transition:border-color .2s,transform .25s var(--spring),box-shadow .25s}
-.tier:hover{transform:translateY(-2px);box-shadow:0 12px 28px -18px rgba(35,27,19,.4)}
-.tier .tk{display:block;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta);margin-bottom:6px}
-.tier .tt{display:block;font-family:var(--disp);font-weight:700;font-size:21px;color:var(--espresso);line-height:1.05}
-.tier .ts{display:block;font-size:13px;color:var(--ink-70);margin-top:6px;line-height:1.45}
-.tier.on{border-color:var(--terracotta);box-shadow:inset 0 0 0 1.5px var(--terracotta)}
-.tier.on::after{content:"";position:absolute;top:14px;right:14px;width:.9em;height:.9em;aspect-ratio:1;
- background:radial-gradient(circle closest-side at 50% 26%,var(--terracotta) 99%,transparent 100%),radial-gradient(circle closest-side at 50% 74%,var(--terracotta) 99%,transparent 100%),radial-gradient(circle closest-side at 26% 50%,var(--terracotta) 99%,transparent 100%),radial-gradient(circle closest-side at 74% 50%,var(--terracotta) 99%,transparent 100%)}
+.tierrow{display:flex;align-items:center;gap:14px;margin:28px 0 0;flex-wrap:wrap}
+.tlabel{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-50)}
+.tiers{display:flex;gap:8px;flex-wrap:wrap}
+.tier{font-family:var(--body);font-weight:600;font-size:13px;background:none;border:1px solid var(--line);border-radius:100px;padding:9px 18px;cursor:pointer;color:var(--espresso);transition:all .2s}
+.tier:hover{border-color:var(--terracotta);color:var(--terracotta)}
+.tier.on{background:var(--terracotta);border-color:var(--terracotta);color:var(--panna)}
 .front{padding:34px 0 90px}
 .resume{border:1px solid var(--line);background:var(--panna-2);border-radius:12px;padding:16px 20px;display:none;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:0 0 30px}
 .resume.show{display:flex}
@@ -94,14 +90,15 @@
 .rbottom .rdots i.on{background:var(--terracotta);transform:scale(1.3)}
 </style>
 <header class="maghero"><div class="wrap">
-<div class="kicker">AP&Eacute;RO Magazine</div>
-<h1>Dertien artikelen,<br>drie maten.</h1>
-<p class="standfirst">Zeg eerst hoeveel tijd je hebt; de reader schenkt elk artikel in die maat in. En op je telefoon? Kies "Zet op beginscherm" en hij installeert zich als app.</p>
+<div class="kicker">AP&Eacute;RO Culture</div>
+<h1>De verhalen</h1>
+<p class="standfirst">Dertien artikelen over het glas, het bord en iedereen die aanschuift. Op je telefoon? Kies "Zet op beginscherm" en APÉRO Culture installeert zich als app.</p>
+<div class="tierrow"><span class="tlabel">Hoeveel tijd heb je?</span>
 <div class="tiers" id="tiers" role="group" aria-label="Kies je leestijd">
-<button class="tier" data-t="k"><span class="tk">Kort</span><span class="tt">Een paar minuten</span><span class="ts">De essentie, voor tussendoor.</span></button>
-<button class="tier" data-t="m"><span class="tk">Gemiddeld</span><span class="tt">Een minuut of vijf</span><span class="ts">Het artikel zoals het bedoeld is.</span></button>
-<button class="tier" data-t="l"><span class="tk">Lang</span><span class="tt">Een kwartier</span><span class="ts">Met de longread erbij, waar die er is.</span></button>
-</div>
+<button class="tier" data-t="k" title="Een paar minuten: de essentie">Kort</button>
+<button class="tier" data-t="m" title="Een minuut of vijf: het artikel">Gemiddeld</button>
+<button class="tier" data-t="l" title="Een kwartier: met de longread erbij, waar die er is">Lang</button>
+</div></div>
 </div></header>
 <section class="front" id="kiosk-web"><div class="wrap">
 <div class="resume" id="resume"><div><div class="kicker" style="margin-bottom:4px">Lees verder</div><div class="rt" id="resumeT"></div></div><button class="btn" id="resumeBtn" style="padding:12px 22px">Verder lezen &rarr;</button></div>
@@ -114,7 +111,7 @@
 
 <div id="reader">
 <div class="rtop">
-<button class="rt-btn" onclick="closeReader()">&larr; Magazine</button>
+<button class="rt-btn" onclick="closeReader()">&larr; Verhalen</button>
 <div style="min-width:0;text-align:center"><div class="rtitel" id="rtitel"></div><div class="rmeta" id="rmeta"></div></div>
 <div style="display:flex;gap:8px">
 <button class="rt-btn bm" id="rbm" onclick="toggleBM()" title="Bladwijzer">&#9670;</button>
@@ -160,7 +157,7 @@ function toggleBM(){let b=LS.get('bm')||{};const k=bmKey();
  LS.set('bm',b);render();}
 function render(){
  const E=DATA.edities[ed],A=E.arts[art];const v=versie(A,tier);
- document.getElementById('rtitel').textContent='APÉRO Magazine · '+E.titel;
+ document.getElementById('rtitel').textContent='APÉRO Culture · '+E.titel;
  document.getElementById('rmeta').textContent=(art+1)+' / '+E.arts.length;
  document.querySelectorAll('#rtiers .rtier').forEach(b=>{const t=b.dataset.t;
   b.disabled=!A[t];b.classList.toggle('on',t===v);
@@ -210,7 +207,7 @@ document.addEventListener('DOMContentLoaded',function(){
  if(p.has('ed')){openArt(parseInt(p.get('ed'))||0,parseInt(p.get('art'))||0);}
 });
 </script>
-<footer><div class="petals" style="position:absolute;inset:0;--c:120px;opacity:.4"></div><div class="veil"></div><div class="grain"></div><div class="wrap"><div class="fcols"><div style="max-width:280px"><div class="fbrand">AP&Eacute;R<span class="flower"></span></div><p style="font-family:var(--body);font-size:14px;color:var(--ink-70);margin-top:10px">Een onderzoek naar de aperocultuur. aperire, openen. Open de avond.</p></div><div><h4>Ontdek</h4><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De zes werelden</a><a href="lezen.html">Magazine-app</a><a href="lexicon.html">Lexicon</a></div><div><h4>Festival</h4><a href="festival.html">Het festival</a><a href="app.html">De Aperokiezer</a><a href="partners.html">Partners</a><a href="faq.html">Veelgestelde vragen</a><a href="https://www.instagram.com/apero.festival">Instagram</a></div><div><h4>Contact</h4><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a><a href="partners.html">Word partner</a><a href="festival.html">Blijf op de hoogte</a></div></div><div class="fnote">AP&Eacute;RO Culture &middot; een onderzoek naar de aperocultuur &middot; Utrecht &middot; MMXXVII &middot; een initiatief van The Grape Agency</div></div></footer>
+<footer><div class="petals" style="position:absolute;inset:0;--c:120px;opacity:.4"></div><div class="veil"></div><div class="grain"></div><div class="wrap"><div class="fcols"><div style="max-width:280px"><div class="fbrand">AP&Eacute;R<span class="flower"></span></div><p style="font-family:var(--body);font-size:14px;color:var(--ink-70);margin-top:10px">Een onderzoek naar de aperocultuur. aperire, openen. Open de avond.</p></div><div><h4>Ontdek</h4><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De zes werelden</a><a href="lezen.html">De verhalen</a><a href="lexicon.html">Lexicon</a></div><div><h4>Festival</h4><a href="festival.html">Het festival</a><a href="app.html">De Aperokiezer</a><a href="partners.html">Partners</a><a href="faq.html">Veelgestelde vragen</a><a href="https://www.instagram.com/apero.festival">Instagram</a></div><div><h4>Contact</h4><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a><a href="partners.html">Word partner</a><a href="festival.html">Blijf op de hoogte</a></div></div><div class="fnote">AP&Eacute;RO Culture &middot; een onderzoek naar de aperocultuur &middot; Utrecht &middot; MMXXVII &middot; een initiatief van The Grape Agency</div></div></footer>
 <script src="site.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body></html>
