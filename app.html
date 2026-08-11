@@ -1,75 +1,166 @@
-<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>De Aperokiezer · APÉRO</title><meta name="description" content="De Aperokiezer: vijf vragen die je vertellen welke van de zes aperowerelden bij jou past, met de longread erbij.">
-<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#F4EAD6">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><style>:root{--accent:var(--burro)}</style><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head><body>
-<nav class="top"><div class="in"><a class="lk" href="index.html">AP&Eacute;R<span class="flower"></span><span class="cul">CULTURE</span></a><div class="links"><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De werelden</a><a href="lezen.html">Verhalen</a><a href="lexicon.html">Lexicon</a><a href="festival.html">Festival</a></div></div></nav>
-<style>
-.qt{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4vw,44px);line-height:1.1;margin:10px 0 30px}
-.opt{display:block;width:100%;text-align:left;font-family:var(--body);font-size:17px;color:var(--espresso);background:var(--panna);border:1px solid var(--line);padding:18px 22px;margin-bottom:12px;cursor:pointer;transition:all .2s;border-radius:2px}
-.opt:hover{border-color:var(--accent,var(--terracotta));background:var(--panna-2);transform:translateX(6px)}
-.res{font-size:18px;line-height:1.7;color:var(--ink-70);max-width:50ch;margin-bottom:26px}
-#quiz{min-height:420px}
-.qbar{height:3px;background:var(--line);margin-top:26px}
-.qbar i{display:block;height:100%;background:var(--accent,var(--terracotta));transition:width .4s}
-</style>
-<header class="article-hero"><div class="petals" style="--c:22vmin;--a:var(--burro);--b:var(--terracotta)"></div><div class="grain"></div><div class="veil"></div>
-<div class="wrap inner"><div class="kicker">App</div><h1>De Aperokiezer</h1>
-<p class="standfirst">Vijf vragen, zes werelden. Ontdek welke aperocultuur bij je past, met directe links naar jouw longread en artikelen.</p></div></header>
-<section style="padding-top:10px"><div class="narrow"><div id="quiz"></div></div></section>
-<div class="marquee"><div class="track"><span>aperire</span><span class="flower fl"></span><span>open de avond</span><span class="flower fl"></span><span>het sociale moment tussen middag en avond</span><span class="flower fl"></span><span>ap&eacute;ro &middot; aperitivo &middot; vermut &middot; atay</span><span class="flower fl"></span><span>aperire</span><span class="flower fl"></span><span>open de avond</span><span class="flower fl"></span><span>het sociale moment tussen middag en avond</span><span class="flower fl"></span><span>ap&eacute;ro &middot; aperitivo &middot; vermut &middot; atay</span><span class="flower fl"></span></div></div>
-<script>
-const W = {
- italie:{n:'Italië, het podium',d:'Jij drinkt om erbij te zijn. Jouw glas: een Negroni of een Spritz met Select, met olijven die je niet besteld hebt.',u:'werelden/italie.html',m:[0,1],mt:'Italië, het podium (Editie 1)'},
- frankrijk:{n:'Frankrijk, de pauze',d:'Jij wil dat de tijd ophoudt. Jouw glas: een pastis, één deel drank, vijf delen water, nul haast.',u:'werelden/frankrijk.html',m:[0,0],mt:'Achttien uur, overal (Editie 1)'},
- spanje:{n:'Spanje, de revival',d:'Jij gelooft in zondag. Jouw glas: vermut uit het vat, sinaasappel, olijf, en een sifón waar je zelf de baas over bent.',u:'werelden/spanje.html',m:[0,4],mt:'Het kleine woordenboek (Editie 1)'},
- anijsgordel:{n:'De anijsgordel',d:'Jij blijft het langst aan tafel. Jouw glas: ouzo of arak, melkwit geslagen, met een tafel vol mezze.',u:'werelden/anijsgordel.html',m:[1,0],mt:'De anijsgordel (Editie 2)'},
- portugal:{n:'Portugal, de verrassing',d:'Jij houdt van ontdekkingen zonder drukte. Jouw glas: een portonico, ijskoud, met munt, op een granieten stoepje.',u:'werelden/portugal.html',m:[1,3],mt:'Wat er op tafel staat (Editie 2)'},
- marokko:{n:'Marokko, de schenkende hand',d:'Jij weet dat het om de aandacht gaat. Jouw glas: atay, geschonken van dertig centimeter hoog, drie keer.',u:'werelden/marokko.html',m:[1,4],mt:'De opening zonder alcohol (Editie 2)'}};
-const Q = [
- {q:'De middag loopt af. Waar zit je het liefst?',a:[
-  ['Aan een marmeren bar, goed gekleed','italie'],['Op een terras waar niemand op de klok kijkt','frankrijk'],
-  ['Met familie aan een tafeltje op zondag','spanje'],['Aan een tafel die steeds voller raakt met schaaltjes','anijsgordel'],
-  ['Op een stoepje aan het water','portugal'],['Binnen, waar iemand voor je inschenkt','marokko']]},
- {q:'Wat zegt jouw glas over je?',a:[
-  ['Bitter. Ik hou van een drank met een rem','italie'],['Anijs en water. Haast en ik verdragen elkaar niet','frankrijk'],
-  ['Iets van het vat, niks uit een fles met een verhaaltje','spanje'],['Het verandert van kleur als ik er aandacht aan geef','anijsgordel'],
-  ['Licht. Ik wil er meer dan één kunnen nemen','portugal'],['Geen alcohol nodig. Wel een ceremonie','marokko']]},
- {q:'Het beste deel van de apero is…',a:[
-  ['Gezien worden terwijl je tijd hebt','italie'],['Dat de agenda ophoudt te bestaan','frankrijk'],
-  ['Dat het elke week terugkomt, zelfde plek, zelfde mensen','spanje'],['Dat het naadloos overgaat in het diner','anijsgordel'],
-  ['Iets ontdekken wat iedereen over het hoofd zag','portugal'],['De schenkende hand','marokko']]},
- {q:'Wat staat er naast je glas?',a:[
-  ['Olijven die ik niet besteld heb','italie'],['Een zak chips en een saucisson, meer hoeft niet','frankrijk'],
-  ['Een blikje ansjovis dat opengaat als een startschot','spanje'],['Schaaltjes. Heel veel schaaltjes','anijsgordel'],
-  ['Een paar lupinebonen, de zee doet de rest','portugal'],['Amandelen, dadels en iets zoets','marokko']]},
- {q:'Je neemt één ritueel mee naar huis. Welk?',a:[
-  ['De bar als podium: even iedereen zien en gezien worden','italie'],['De heilige pauze: niemand mag nog ergens heen','frankrijk'],
-  ['De vaste zondag met de hele familie','spanje'],['Water bij de drank, tijd bij het gesprek','anijsgordel'],
-  ['Het geheime drankje dat alleen wij kennen','portugal'],['Drie glazen: zacht, sterk, bitter','marokko']]}];
-let scores={}, step=0;
-function start(){scores={};step=0;render()}
-function pick(w){scores[w]=(scores[w]||0)+1;step++;render()}
-function render(){
- const el=document.getElementById('quiz');
- if(step<Q.length){
-  const q=Q[step];
-  el.innerHTML='<div class="kicker">Vraag '+(step+1)+' van '+Q.length+'</div><h2 class="qt">'+q.q+'</h2>'+
-   q.a.map(([t,w])=>'<button class="opt" onclick="pick(\''+w+'\')">'+t+'</button>').join('')+
-   '<div class="qbar"><i style="width:'+(step/Q.length*100)+'%"></i></div>';
- } else {
-  let best=Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0];
-  const w=W[best];
-  el.innerHTML='<div class="kicker">Jouw wereld</div><h2 class="qt">'+w.n+'</h2><p class="res">'+w.d+'</p>'+
-   '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px">'+
-   '<a class="btn" href="'+w.u+'">Lees jouw longread</a>'+
-   '<a class="btn ghost" href="lezen.html?ed='+w.m[0]+'&art='+w.m[1]+'">Lees ook: '+w.mt+'</a>'+
-   '</div><button class="btn ghost" onclick="start()">Opnieuw</button>';
- }
-}
-document.addEventListener('DOMContentLoaded', start);
-</script>
-<footer><div class="petals" style="position:absolute;inset:0;--c:120px;opacity:.4"></div><div class="veil"></div><div class="grain"></div><div class="wrap"><div class="fcols"><div style="max-width:280px"><div class="fbrand">AP&Eacute;R<span class="flower"></span></div><p style="font-family:var(--body);font-size:14px;color:var(--ink-70);margin-top:10px">Een onderzoek naar de aperocultuur. aperire, openen. Open de avond.</p></div><div><h4>Ontdek</h4><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De zes werelden</a><a href="lezen.html">De verhalen</a><a href="lexicon.html">Lexicon</a></div><div><h4>Festival</h4><a href="festival.html">Het festival</a><a href="app.html">De Aperokiezer</a><a href="partners.html">Partners</a><a href="faq.html">Veelgestelde vragen</a><a href="https://www.instagram.com/apero.festival">Instagram</a></div><div><h4>Contact</h4><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a><a href="partners.html">Word partner</a><a href="festival.html">Blijf op de hoogte</a></div></div><div class="fnote">AP&Eacute;RO Culture &middot; een onderzoek naar de aperocultuur &middot; Utrecht &middot; MMXXVII &middot; een initiatief van The Grape Agency</div></div></footer>
-<script src="site.js"></script>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Aperokiezer · ontdek hoe jij de avond opent</title>
+<meta name="description" content="De APÉRO Aperokiezer over smaak, gezelschap, tempo, ritueel en de manier waarop jouw avond begint.">
+<meta name="theme-color" content="#F4EAD6">
+<link rel="canonical" href="https://www.apero-culture.com/app.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="APÉRO Culture">
+<meta property="og:title" content="De APÉRO Aperokiezer">
+<meta property="og:description" content="Een uitgebreide keuzehulp over smaak, ritueel, gezelschap en het uur tussen werk en diner.">
+<meta property="og:image" content="https://www.apero-culture.com/assets/motion/hero-poster.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="apero-tokens.css">
+<link rel="stylesheet" href="css/apero-atlas.css">
+</head>
+<body class="apero-body atlas-body">
+<nav class="atlas-nav" aria-label="Hoofdnavigatie">
+  <a class="atlas-brand" href="index.html" aria-label="APÉRO Culture home">
+    <span>APÉR</span><span class="flower"></span><em>Culture</em>
+  </a>
+  <div class="atlas-nav-actions">
+    <a href="verhaal.html">Het verhaal</a>
+    <a href="atlas.html">De Atlas</a>
+    <a href="festival.html">Festival</a>
+    <button class="nav-reset" type="button" data-reset>Begin opnieuw</button>
+  </div>
+</nav>
+
+<main id="atlasApp" class="atlas-shell">
+  <section class="atlas-hero" data-screen="intro">
+    <div class="atlas-backdrop petals" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="atlas-hero-grid">
+      <div class="atlas-copy">
+        <span class="eyebrow">De APÉRO Aperokiezer</span>
+        <h1>Hoe opent jouw avond?</h1>
+        <p>Een aandachtige keuzehulp voor je uur tussen werk en diner: smaak, gezelschap, tempo, ritueel en de manier waarop een tafel begint.</p>
+        <div class="hero-actions">
+          <button class="btn" type="button" data-start>Start de kieser</button>
+          <button class="btn ghost" type="button" data-jump-result>Geef me een proefuitslag</button>
+        </div>
+        <div class="atlas-stats" aria-label="Atlas onderdelen">
+          <span>32 vragen</span>
+          <span>6 profielen</span>
+          <span>1 avondritme</span>
+        </div>
+      </div>
+      <div class="atlas-visual quiz-visual" aria-hidden="true">
+        <div class="arch hero-arch">
+          <video class="fresco-video" autoplay muted loop playsinline poster="assets/motion/hero-poster.jpg">
+            <source src="assets/motion/hero.mp4" type="video/mp4">
+          </video>
+          <div class="wash soft"></div>
+          <div class="cartouche hero-card">
+          <span class="ct-k">Jouw ritme</span>
+          <div class="ct-t">Smaak ontmoet tafel</div>
+          <div class="ct-s">32 vragen, één richting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="atlas-test" data-screen="quiz" hidden>
+    <div class="test-rail" aria-hidden="true">
+      <div class="rail-line"><span data-progress-bar></span></div>
+      <div class="rail-meta">
+        <span data-chapter-label>Het moment</span>
+        <span><b data-current>1</b>/<b data-total>32</b></span>
+      </div>
+    </div>
+
+    <div class="quiz-layout">
+      <aside class="quiz-aside">
+        <div class="arch aside-arch">
+          <div class="fresco" data-question-art></div>
+          <div class="wash"></div>
+        </div>
+        <div class="live-card">
+          <span class="eyebrow">Live kompas</span>
+          <div class="compass" data-compass>
+            <i data-axis="bitter"></i>
+            <i data-axis="fresh"></i>
+            <i data-axis="spice"></i>
+            <i data-axis="social"></i>
+            <i data-axis="slow"></i>
+            <i data-axis="host"></i>
+          </div>
+          <div class="score-pills" data-score-pills></div>
+        </div>
+      </aside>
+
+      <article class="question-panel" data-question-panel>
+        <div class="question-top">
+          <span class="eyebrow" data-question-kicker>Het moment</span>
+          <span class="question-count"><b data-current-inline>1</b> van <b data-total-inline>32</b></span>
+        </div>
+        <h2 data-question-title></h2>
+        <p data-question-note></p>
+        <div class="answers" data-answers></div>
+        <div class="quiz-actions">
+          <button class="btn ghost" type="button" data-prev>Terug</button>
+          <button class="btn" type="button" data-next disabled>Volgende</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="atlas-result" data-screen="result" hidden>
+    <div class="result-hero">
+      <div class="result-copy">
+        <span class="eyebrow">Jouw APÉRO-profiel</span>
+        <h1 data-result-title></h1>
+        <p data-result-summary></p>
+        <div class="result-actions">
+          <button class="btn" type="button" data-copy-result>Kopieer profiel</button>
+          <button class="btn ghost" type="button" data-reset>Opnieuw doen</button>
+        </div>
+      </div>
+      <div class="result-card" id="shareCard">
+        <div class="arch result-arch">
+          <div class="fresco" data-result-art></div>
+          <div class="wash soft"></div>
+        </div>
+        <div class="cartouche result-cartouche">
+          <span class="ct-k" data-result-kicker></span>
+          <div class="ct-t" data-result-name></div>
+          <div class="ct-s" data-result-line></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-grid">
+      <section class="result-block">
+        <span class="eyebrow">Smaakkompas</span>
+        <div class="bars" data-bars></div>
+      </section>
+      <section class="result-block">
+        <span class="eyebrow">Jouw moment</span>
+        <dl data-serve-list></dl>
+      </section>
+      <section class="result-block wide">
+        <span class="eyebrow">Waarom dit klopt</span>
+        <p data-result-why></p>
+      </section>
+      <section class="result-block">
+        <span class="eyebrow">Tweede neiging</span>
+        <h3 data-secondary-title></h3>
+        <p data-secondary-copy></p>
+      </section>
+      <section class="result-block">
+        <span class="eyebrow">Leesroute</span>
+        <ol data-reading-route></ol>
+      </section>
+    </div>
+  </section>
+</main>
+
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+<script src="js/apero-atlas.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
-</body></html>
+</body>
+</html>

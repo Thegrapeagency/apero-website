@@ -1,5 +1,5 @@
 /* APÉRO Magazine app — offline cache */
-var VERSIE='apero-app-v6';
+var VERSIE='apero-app-v7';
 var SHELL=[
   './','index.html','app.css','app.js','content.js','manifest.webmanifest',
   '../icon.svg',

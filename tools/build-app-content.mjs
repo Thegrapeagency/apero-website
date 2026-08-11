@@ -2,7 +2,8 @@
 /**
  * Genereert app/content.js uit de canonieke sitepagina's.
  * Bron blijft de site zelf: lezen.html (magazine), werelden/*.html (longreads),
- * lexicon.html (termen), app.html (Aperokiezer-quiz).
+ * lexicon.html (termen), tools/aperokiezer-kort.js (compacte Aperokiezer-quiz;
+ * de sitepagina app.html is sinds aug 2026 de uitgebreide 32-vragen kieser).
  * Draaien na elke contentwijziging:  node tools/build-app-content.mjs
  */
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -73,10 +74,10 @@ while ((g = groepRe.exec(lex))) {
 if (!groepen.length) throw new Error('geen lexgroepen gevonden in lexicon.html');
 
 /* ---------- quiz: Aperokiezer uit app.html ---------- */
-const kiezer = lees('app.html');
+const kiezer = lees('tools/aperokiezer-kort.js');
 const wSrc = (kiezer.match(/const W = (\{[\s\S]*?\});\nconst Q/) || [])[1];
 const qSrc = (kiezer.match(/const Q = (\[[\s\S]*?\]);\nlet scores/) || [])[1];
-if (!wSrc || !qSrc) throw new Error('quizdata niet gevonden in app.html');
+if (!wSrc || !qSrc) throw new Error('quizdata niet gevonden in tools/aperokiezer-kort.js');
 const W = new Function(`return ${wSrc}`)();
 const Q = new Function(`return ${qSrc}`)();
 const quiz = {
@@ -86,7 +87,7 @@ const quiz = {
 
 /* ---------- schrijven ---------- */
 const uit = `// GEGENEREERD BESTAND, niet met de hand bewerken.
-// Bron: lezen.html + werelden/*.html + lexicon.html + app.html
+// Bron: lezen.html + werelden/*.html + lexicon.html + tools/aperokiezer-kort.js
 // Opnieuw genereren: node tools/build-app-content.mjs
 const DATA = ${JSON.stringify({ edities })};
 const WERELDEN = ${JSON.stringify(werelden)};
