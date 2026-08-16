@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De tijdreis · APÉRO</title><meta name="description" content="Draai aan de tijd. Reis door zes werelden van aperitiefcultuur, van de Romeinse gustatio tot vanavond.">
+<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#F4EAD6">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=3">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+/* ============ de kaart ============ */
+.tr-hero{position:relative;padding:120px 0 24px;text-align:center}
+.tr-hero .kicker{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--terracotta)}
+.tr-hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(38px,6vw,72px);line-height:.95;margin:14px 0 12px}
+.tr-hero .standfirst{max-width:560px;margin:0 auto;color:var(--ink-70);font-size:17px}
+.tr-mapwrap{position:relative;max-width:1060px;margin:28px auto 90px;padding:0 20px}
+.tr-arch{position:relative;overflow:hidden;border-radius:var(--arch-radius);background:var(--panna-2);
+  box-shadow:0 0 0 1px var(--line), inset 0 0 0 1px rgba(244,234,214,.5), 0 30px 60px -42px rgba(35,27,19,.5)}
+.tr-arch svg{display:block;width:100%;height:auto}
+.tr-zee{fill:none;stroke:rgba(35,27,19,.12);stroke-width:2;stroke-linecap:round}
+.tr-zeenaam{font-family:var(--disp);font-style:italic;font-weight:500;font-size:16px;fill:rgba(35,27,19,.35);letter-spacing:.14em;pointer-events:none}
+#tr-context path{fill:var(--panna);stroke:rgba(35,27,19,.2);stroke-width:.8;stroke-linejoin:round}
+#tr-schaduwen path{fill:rgba(35,27,19,.18)}
+.tr-zone{cursor:pointer;transition:filter .35s, transform .45s var(--spring)}
+.tr-zone:hover,.tr-zone:focus-visible{transform:translateY(-5px)}
+.tr-zone:hover .tr-land,.tr-zone:focus-visible .tr-land{filter:brightness(1.07) saturate(1.05)}
+.tr-zone:focus-visible{outline:none}
+.tr-zone:focus-visible .tr-land{stroke:var(--espresso);stroke-width:2.5}
+.tr-land{stroke:rgba(35,27,19,.42);stroke-width:1;stroke-linejoin:round}
+.tr-label{font-family:var(--disp);font-weight:800;letter-spacing:.02em;fill:var(--espresso);pointer-events:none}
+.tr-label.licht{fill:var(--panna)}
+.tr-romein{font-family:var(--disp);font-weight:600;font-style:italic;fill:var(--espresso);opacity:.55;pointer-events:none}
+.tr-romein.licht{fill:var(--panna)}
+/* bloem-marker op de kaart */
+.tr-bloem{pointer-events:none;transform-box:fill-box;transform-origin:center;animation:trbloei 4.5s ease-in-out infinite}
+.tr-zone:hover .tr-bloem{animation-duration:1.6s}
+@keyframes trbloei{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.tr-hint{text-align:center;margin-top:18px;color:var(--ink-70);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.tr-hint .flower{width:.9em;height:.9em;vertical-align:-.12em;margin:0 .35em}
+/* legenda: de vier draden */
+.tr-legenda{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:22px auto 0;max-width:560px}
+.tr-legenda .ll{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-70)}
+.sw{width:10px;height:10px;border-radius:50%;flex:none}
+.sw.ritueel{background:var(--terracotta)}.sw.sociaal{background:var(--salvia)}.sw.eten{background:var(--mattone)}.sw.drank{background:var(--burro)}
+/* categorie-chip in het paneel */
+.tr-soort{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:600;font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-70);border:1px solid var(--line);
+  border-radius:100px;padding:6px 14px;margin-bottom:14px}
+.tr-soort .stip{width:8px;height:8px;border-radius:50%;background:var(--terracotta)}
+/* ============ de wereld: tijdreis + weetjes op het fresco ============ */
+.tr-dive{position:fixed;inset:0;z-index:60;display:none;background:var(--espresso)}
+.tr-dive.open{display:block}
+.tr-dive .fresco{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.12);transition:transform 6s ease-out}
+.tr-dive.open .fresco{transform:scale(1)}
+.tr-dive .wash{position:absolute;inset:0;background:rgba(244,234,214,.36)}
+.tr-dive .grain{opacity:.4}
+.tr-scroll{position:relative;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}
+/* etage 1: de tijdreis */
+.tr-etage{position:relative;overflow:visible;display:flex;flex-direction:column;align-items:center;padding:96px 20px 0}
+.tr-wkop{position:relative;background:var(--panna);border:1.5px solid var(--terracotta);padding:13px 30px 15px;text-align:center;
+  box-shadow:0 24px 50px -34px rgba(35,27,19,.55);margin-bottom:clamp(16px,3vh,30px)}
+.tr-wkop::after{content:"";position:absolute;inset:4px;border:1px solid rgba(196,95,56,.42);pointer-events:none}
+.tr-wkop .ct-k{display:block;font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:4px}
+.tr-wkop h2{font-family:var(--disp);font-weight:800;font-size:clamp(22px,4vh,32px);line-height:1;margin:0}
+.tr-paneel{position:relative;background:var(--panna);border:1.5px solid var(--terracotta);width:min(620px,94vw);
+  padding:clamp(18px,3.6vh,30px) 34px 18px;text-align:center;box-shadow:0 24px 50px -34px rgba(35,27,19,.55)}
+.tr-paneel::after{content:"";position:absolute;inset:5px;border:1px solid rgba(196,95,56,.42);pointer-events:none}
+.tr-paneel>*{position:relative;z-index:1}
+.tr-flits{opacity:0;transform:translateY(12px);transition:opacity .4s,transform .45s var(--spring)}
+.tr-flits.zichtbaar{opacity:1;transform:none}
+.tr-jaar{font-family:var(--disp);font-weight:900;font-size:clamp(40px,8.5vh,80px);line-height:.9;color:var(--terracotta)}
+.tr-jaar small{display:block;font-size:12px;font-family:var(--body);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-70);margin-top:8px}
+.tr-tekst{font-size:clamp(15px,2vh,18px);line-height:1.55;color:var(--espresso);margin-top:12px;min-height:3.2em}
+.tr-spoor{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:16px}
+.tr-dot{width:6px;height:6px;border-radius:50%;background:var(--ink-30);opacity:.4;transition:opacity .3s,transform .3s}
+.tr-dot.actief{opacity:1;transform:scale(1.6)}
+.tr-onder{display:flex;align-items:center;gap:10px;margin-top:18px;flex-wrap:wrap;justify-content:center}
+.tr-horloge-hint{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--espresso);
+  background:rgba(244,234,214,.72);border-radius:100px;padding:9px 16px;transition:opacity .6s}
+.tr-horloge-hint.weg{opacity:0}
+.tr-afdaal{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--panna);background:var(--espresso);border:0;border-radius:100px;padding:10px 17px;cursor:pointer;
+  transition:background .25s,transform .3s var(--spring)}
+.tr-afdaal:hover{background:var(--terracotta);transform:translateY(-2px)}
+/* het zakhorloge: medaillon op de naad tussen tijdreis en weetjes */
+.tr-horloge{position:relative;width:min(290px,66vw);margin:clamp(14px,3vh,36px) auto -150px;z-index:4;
+  cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.tr-horloge:active{cursor:grabbing}
+.tr-horloge svg{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 34px rgba(35,27,19,.32))}
+#tr-cijfers text{font-family:var(--disp);font-weight:700;fill:rgba(35,27,19,.8);pointer-events:none}
+#tr-cijfers text.twaalf{fill:var(--terracotta)}
+/* etage 2: het verlichte handschrift-vel op het fresco */
+.tr-band{position:relative;overflow:visible;padding:0;background:rgba(244,234,214,.42);border-top:1.5px solid rgba(196,95,56,.4)}
+.tr-inner{position:relative;max-width:900px;margin:0 auto;padding:196px 22px 120px}
+.tr-vel{position:relative;background:var(--panna);padding:clamp(30px,5vw,64px);
+  box-shadow:0 44px 90px -52px rgba(35,27,19,.6), 0 0 0 1.5px var(--terracotta);
+  clip-path:inset(0 0 100% 0);transform:translateY(16px);
+  transition:clip-path 1.05s var(--spring), transform 1.05s var(--spring)}
+.tr-vel.ontrold{clip-path:inset(0 0 0 0);transform:none}
+.tr-vel::before{content:"";position:absolute;inset:11px;border:1px solid rgba(196,95,56,.42);pointer-events:none;z-index:2}
+.tr-vel .grain{opacity:.4;z-index:0}
+.tr-vel>*{position:relative;z-index:1}
+/* hoek-O's + naad-zegel */
+.vel-hoek{position:absolute;width:16px;height:16px;z-index:3}
+.vel-hoek.lt{left:6px;top:6px}.vel-hoek.rt{right:6px;top:6px}
+.vel-hoek.lo{left:6px;bottom:6px}.vel-hoek.ro{right:6px;bottom:6px}
+.vel-zegel{position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:18px;height:18px;z-index:3}
+/* kop + spiegelende bloei-O-regels */
+.vel-kop{text-align:center}
+.vel-kop h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,5vw,48px);line-height:1.02;color:var(--espresso);margin:6px 0 0}
+.vel-intro{font-family:var(--disp);font-style:italic;font-weight:500;font-size:clamp(16px,2.4vw,20px);color:var(--mattone);max-width:52ch;margin:10px auto 0}
+.vel-regel{display:flex;align-items:center;justify-content:center;gap:16px;color:var(--terracotta);margin:18px auto 0}
+.vel-regel::before,.vel-regel::after{content:"";height:1px;width:min(140px,26vw);background:rgba(196,95,56,.5)}
+.vel-regel .flower{width:18px;height:18px}
+.vel-slot{margin-top:clamp(26px,4vw,44px)}
+/* het grid: tekstblok + kantlijn */
+.vel-grid{display:grid;grid-template-columns:1fr clamp(220px,34%,320px);
+  grid-template-areas:"incipit venster" "hoofd venster" "twin marge" "explicit explicit";
+  column-gap:clamp(28px,4vw,56px);row-gap:clamp(24px,3.4vw,44px);align-items:start;margin-top:clamp(24px,4vw,40px)}
+.f-incipit{grid-area:incipit}.f-venster{grid-area:venster}.f-hoofd{grid-area:hoofd}
+.f-twin{grid-area:twin}.f-marge{grid-area:marge}.f-explicit{grid-area:explicit}
+/* 0 · incipit met initiaal */
+.f-incipit p{font-family:var(--body);font-weight:400;font-size:18.5px;line-height:1.72;color:var(--espresso);margin:0}
+.f-incipit p::first-letter{font-family:var(--disp);font-weight:800;font-size:4.4em;line-height:.78;float:left;padding:.06em .1em 0 0;color:var(--terracotta);text-shadow:0 1px 0 rgba(244,234,214,.6)}
+/* 1 · fresco-venster + onderschrift */
+.f-venster{display:flex;flex-direction:column}
+.o-fresco{position:relative;display:inline-block;aspect-ratio:1/1;flex:none;
+  background-image:var(--o-img);background-size:cover;background-position:center;
+  -webkit-mask:
+    radial-gradient(circle closest-side at 50% 26%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 50% 74%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 26% 50%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 74% 50%, #000 99%,transparent 100%);
+  mask:
+    radial-gradient(circle closest-side at 50% 26%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 50% 74%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 26% 50%, #000 99%,transparent 100%),
+    radial-gradient(circle closest-side at 74% 50%, #000 99%,transparent 100%);
+  -webkit-mask-composite:source-over;mask-composite:add}
+.o-fresco::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--panna);box-shadow:0 0 0 1px rgba(35,27,19,.10) inset}
+.f-venster .o-fresco{width:clamp(120px,60%,180px)}
+.venster-cap{font-family:var(--disp);font-style:italic;font-weight:400;font-size:14px;line-height:1.5;color:var(--mattone);margin:14px 0 0;max-width:34ch}
+/* 2 · pull-quote met spookbloem */
+.f-hoofd{position:relative;overflow:hidden}
+.f-hoofd .flower.ghost{position:absolute;left:-46px;top:-34px;width:210px;height:210px;opacity:.14;--p1:var(--burro);--p2:var(--terracotta);--hole:var(--panna);z-index:0;pointer-events:none}
+.f-hoofd p{position:relative;z-index:1;font-family:var(--disp);font-style:italic;font-weight:600;font-size:clamp(20px,2.9vw,30px);line-height:1.3;color:var(--terracotta);max-width:26ch;margin:0;text-wrap:balance}
+/* 3+4 · tweelingkolom */
+.f-twin{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(22px,3vw,40px)}
+.f-kolom p{font-family:var(--body);font-weight:400;font-size:15px;line-height:1.62;color:var(--ink-70);margin:0}
+.f-kolom p::first-letter{font-family:var(--disp);font-weight:800;font-size:2.2em;line-height:.72;float:left;padding:.02em .1em 0 0;color:var(--mattone)}
+.f-kolom+.f-kolom{border-left:1px solid var(--line);padding-left:clamp(22px,3vw,40px)}
+/* 5 · marginalia met brace */
+.f-marge{position:relative;padding-left:18px}
+.f-marge p{font-family:var(--disp);font-style:italic;font-size:14px;line-height:1.5;color:var(--mattone);margin:0}
+.f-marge::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:2px;background:rgba(158,67,38,.42)}
+/* 6 · explicit */
+.f-explicit p{font-family:var(--disp);font-style:italic;font-weight:500;font-size:clamp(16px,2.2vw,20px);line-height:1.4;color:var(--espresso);text-align:center;max-width:48ch;margin:0 auto}
+/* ex-libris stempel */
+.vel-exlibris{position:absolute;right:clamp(14px,3vw,34px);bottom:clamp(14px,3vw,30px);width:64px;height:64px;opacity:.5;z-index:1;pointer-events:none}
+.vel-exlibris svg{width:100%;height:100%;display:block}
+/* reveal-basis */
+.vel-kop,.f-blok,.vel-slot{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .7s var(--spring)}
+.vel-kop.zichtbaar,.f-blok.zichtbaar,.vel-slot.zichtbaar{opacity:1;transform:none}
+.tr-terugrij{margin-top:46px;text-align:center}
+.tr-sluit{position:fixed;top:18px;right:18px;z-index:66;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
+  background:var(--panna);color:var(--espresso);font-size:20px;line-height:1;cursor:pointer;font-family:var(--body);
+  box-shadow:0 10px 24px -14px rgba(35,27,19,.6);transition:transform .3s var(--spring),background .25s}
+.tr-sluit:hover{background:var(--terracotta);color:var(--panna);transform:rotate(90deg)}
+@media(max-width:720px){
+  .vel-grid{grid-template-columns:1fr;grid-template-areas:"incipit" "venster" "hoofd" "twin" "marge" "explicit"}
+  .f-twin{grid-template-columns:1fr;row-gap:22px}
+  .f-kolom+.f-kolom{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:22px}
+  .f-venster{flex-direction:row;gap:16px;align-items:center}
+  .f-venster .o-fresco{width:96px;flex:none}
+  .f-hoofd .flower.ghost{width:150px;opacity:.12}
+  .f-marge{padding-left:14px}
+  .vel-exlibris{position:static;display:block;margin:20px auto 0}
+  .tr-vel{padding:clamp(22px,7vw,34px)}
+}
+@media(max-width:640px){
+  .tr-etage{padding:78px 16px 0}
+  .tr-paneel{padding:16px 20px 14px}
+  .tr-horloge{width:min(240px,64vw);margin-bottom:-124px}
+  .tr-inner{padding:164px 18px 110px}
+}
+@media(max-height:620px){
+  .tr-etage{padding:66px 16px 0}
+  .tr-wkop{padding:9px 20px 11px}
+  .tr-spoor{display:none}
+  .tr-horloge{width:min(210px,52vw);margin-bottom:-108px}
+  .tr-inner{padding-top:150px}
+}
+@media(prefers-reduced-motion:reduce){
+  .tr-bloem{animation:none}
+  .tr-dive .fresco{transition:none}
+  .tr-flits{transition:opacity .2s}
+  .tr-vel{clip-path:none;transform:none;transition:none}
+  .vel-kop,.f-blok,.vel-slot{opacity:1;transform:none;transition:none}
+}
+</style></head><body>
+<nav class="top"><div class="in"><a class="lk" href="index.html">AP&Eacute;R<span class="flower"></span><span class="cul">CULTURE</span></a><div class="links"><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De werelden</a><a href="lezen.html">Magazine</a><a href="lexicon.html">Lexicon</a><a href="festival.html">Festival</a></div></div></nav>
+
+<header class="tr-hero"><div class="wrap">
+<span class="kicker">Het onderzoek &middot; interactief</span>
+<h1>De tijdreis</h1>
+<p class="standfirst">Zes werelden, &eacute;&eacute;n vraag: hoe leerde Europa het uur tussen werk en diner te openen? Niet alleen w&aacute;t er in het glas ging, maar wie het deed, waarom, en wat erbij op tafel kwam. Kies een wereld en draai aan de tijd.</p>
+<div class="tr-legenda">
+  <span class="ll"><span class="sw ritueel"></span>Het ritueel</span>
+  <span class="ll"><span class="sw sociaal"></span>De samenleving</span>
+  <span class="ll"><span class="sw eten"></span>Op tafel</span>
+  <span class="ll"><span class="sw drank"></span>In het glas</span>
+</div>
+</div></header>
+
+<div class="tr-mapwrap">
+  <div class="tr-arch">
+    <svg id="tr-kaart" viewBox="0 0 1000 711" role="group" aria-label="Kaart van zes aperowerelden">
+      <g class="tr-zee" aria-hidden="true">
+        <path d="M120,88 q24,-10 48,0 t48,0"/><path d="M60,180 q24,-10 48,0 t48,0"/>
+        <path d="M440,545 q24,-10 48,0 t48,0"/><path d="M370,475 q20,-8 40,0 t40,0"/>
+        <path d="M600,605 q24,-10 48,0 t48,0"/><path d="M700,485 q20,-8 40,0"/>
+        <path d="M180,545 q20,-8 40,0"/><path d="M520,345 q18,-8 36,0"/>
+      </g>
+      <text class="tr-zeenaam" x="405" y="475" transform="rotate(-4 405 475)">Middellandse Zee</text>
+      <text class="tr-zeenaam" x="42" y="250" transform="rotate(-90 42 250)">Atlantische Oceaan</text>
+      <g id="tr-context" aria-hidden="true"></g>
+      <g id="tr-schaduwen" aria-hidden="true"></g>
+      <g id="tr-zones"></g>
+      <g class="tr-kompas" transform="translate(936,84)" aria-hidden="true">
+        <circle r="26" fill="var(--panna-2)" stroke="rgba(35,27,19,.3)" stroke-width="1"/>
+        <path d="M0,-24 L5,-6 L0,-10 L-5,-6 Z" fill="var(--terracotta)"/>
+        <g transform="scale(.9)"><use href="#bloemsym"/></g>
+        <text y="-32" text-anchor="middle" font-size="13" style="font-family:var(--disp);font-weight:700" fill="var(--espresso)">N</text>
+      </g>
+      <defs>
+        <pattern id="anijspatroon" width="22" height="22" patternUnits="userSpaceOnUse">
+          <rect width="22" height="22" fill="var(--panna)"/>
+          <circle cx="6" cy="6" r="3.6" fill="var(--terracotta)" opacity=".8"/>
+          <circle cx="17" cy="17" r="3.6" fill="var(--burro)" opacity=".8"/>
+        </pattern>
+        <g id="bloemsym"><circle cx="0" cy="-7" r="6" fill="var(--espresso)"/><circle cx="0" cy="7" r="6" fill="var(--espresso)"/><circle cx="-7" cy="0" r="6" fill="var(--espresso)"/><circle cx="7" cy="0" r="6" fill="var(--espresso)"/><circle cx="0" cy="0" r="4" fill="var(--panna)"/></g>
+        <g id="bloemsym-panna"><circle cx="0" cy="-7" r="6" fill="var(--panna)"/><circle cx="0" cy="7" r="6" fill="var(--panna)"/><circle cx="-7" cy="0" r="6" fill="var(--panna)"/><circle cx="7" cy="0" r="6" fill="var(--panna)"/><circle cx="0" cy="0" r="4" fill="var(--espresso)"/></g>
+      </defs>
+    </svg>
+    <div class="grain"></div>
+  </div>
+  <p class="tr-hint">Kies een wereld<span class="flower"></span>en duik erin</p>
+</div>
+
+<!-- de wereld: tijdreis en weetjes op het fresco -->
+<div class="tr-dive" id="tr-dive" role="dialog" aria-modal="true" aria-label="Wereld">
+  <button class="tr-sluit" id="tr-sluit" aria-label="Sluiten">&times;</button>
+  <div class="fresco" id="tr-dive-foto"></div><div class="wash"></div><div class="grain"></div>
+  <div class="tr-scroll" id="tr-scroll">
+    <section class="tr-etage">
+      <div class="tr-wkop">
+        <span class="ct-k" id="tr-dive-kicker">Wereld</span>
+        <h2 id="tr-dive-titel">&nbsp;</h2>
+      </div>
+      <div class="tr-paneel">
+        <div class="tr-flits" id="tr-flits">
+          <div class="tr-soort" id="tr-soort"><span class="stip" id="tr-soort-stip"></span><span id="tr-soort-tekst">&nbsp;</span></div>
+          <div class="tr-jaar" id="tr-jaar">&nbsp;<small id="tr-teller">&nbsp;</small></div>
+          <p class="tr-tekst" id="tr-tekst">&nbsp;</p>
+        </div>
+        <div class="tr-spoor" id="tr-spoor"></div>
+      </div>
+      <div class="tr-onder">
+        <div class="tr-horloge-hint" id="tr-horloge-hint">Draai aan het horloge</div>
+        <button class="tr-afdaal" id="tr-afdaal">De weetjes &darr;</button>
+      </div>
+      <div class="tr-horloge" id="tr-horloge" aria-label="Zakhorloge: draai om door de tijd te reizen" role="slider" aria-valuemin="0" tabindex="0">
+        <svg viewBox="0 0 340 428" aria-hidden="true">
+          <path d="M152,46 C102,18 48,22 10,50" fill="none" stroke="var(--mattone)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="1 10"/>
+          <circle cx="170" cy="40" r="13" fill="none" stroke="var(--burro)" stroke-width="5.5"/>
+          <circle cx="170" cy="40" r="13" fill="none" stroke="rgba(158,67,38,.5)" stroke-width="1.4"/>
+          <rect x="156" y="56" width="28" height="17" rx="6" fill="var(--burro)"/>
+          <g stroke="var(--mattone)" stroke-width="1.8">
+            <line x1="161" y1="58" x2="161" y2="71"/><line x1="166" y1="57" x2="166" y2="72"/>
+            <line x1="170" y1="57" x2="170" y2="72"/><line x1="174" y1="57" x2="174" y2="72"/>
+            <line x1="179" y1="58" x2="179" y2="71"/>
+          </g>
+          <rect x="162" y="72" width="16" height="16" rx="3" fill="var(--mattone)"/>
+          <circle cx="170" cy="250" r="164" fill="var(--burro)"/>
+          <circle cx="170" cy="250" r="164" fill="none" stroke="rgba(158,67,38,.75)" stroke-width="2"/>
+          <g id="tr-rand"></g>
+          <circle cx="170" cy="250" r="152" fill="none" stroke="var(--mattone)" stroke-width="1.8"/>
+          <circle cx="170" cy="250" r="148" fill="var(--panna)"/>
+          <circle cx="170" cy="250" r="148" fill="none" stroke="rgba(35,27,19,.22)" stroke-width="1"/>
+          <circle cx="170" cy="250" r="127" fill="none" stroke="rgba(35,27,19,.12)" stroke-width="1"/>
+          <circle cx="170" cy="250" r="90" fill="none" stroke="rgba(35,27,19,.09)" stroke-width="1"/>
+          <text x="170" y="204" text-anchor="middle" font-size="10.5" fill="var(--ink-50)" style="font-family:var(--body);font-weight:600;letter-spacing:.28em">AP&Eacute;RO</text>
+          <text x="170" y="306" text-anchor="middle" font-size="10.5" fill="var(--ink-30)" style="font-family:var(--disp);font-style:italic">aperire &middot; openen</text>
+          <g id="tr-ticks"></g>
+          <g class="tr-uurwerk" id="tr-uurwerk">
+            <circle cx="170" cy="250" r="100" fill="none" stroke="rgba(35,27,19,.12)" stroke-width="1.2" stroke-dasharray="1 7"/>
+            <g transform="translate(170,150) scale(.5)"><use href="#bloemsym"/></g>
+          </g>
+          <g id="tr-cijfers"></g>
+          <g class="tr-wijzer" id="tr-wijzer">
+            <path d="M167,250 L167,284 Q170,289 173,284 L173,250 Z" fill="var(--espresso)"/>
+            <path d="M167.5,250 C166.8,216 167.3,190 169.2,170 L170.8,170 C172.7,190 173.2,216 172.5,250 Z" fill="var(--espresso)"/>
+            <circle cx="170" cy="157" r="8.5" fill="none" stroke="var(--espresso)" stroke-width="4.6"/>
+            <path d="M170,131 L175.6,146 L170,143.2 L164.4,146 Z" fill="var(--espresso)"/>
+            <circle cx="170" cy="250" r="7.5" fill="var(--espresso)"/>
+          </g>
+          <g transform="translate(170,250) scale(.8)"><use href="#bloemsym"/></g>
+          <path d="M82,198 A130,130 0 0 1 136,134" fill="none" stroke="rgba(244,234,214,.5)" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </section>
+    <section class="tr-band"><div class="tr-inner">
+      <article class="tr-vel" id="tr-vel">
+        <div class="grain"></div>
+        <span class="vel-zegel flower" aria-hidden="true"></span>
+        <span class="vel-hoek lt flower" aria-hidden="true"></span><span class="vel-hoek rt flower" aria-hidden="true"></span>
+        <span class="vel-hoek lo flower" aria-hidden="true"></span><span class="vel-hoek ro flower" aria-hidden="true"></span>
+        <header class="vel-kop">
+          <span class="eyebrow">Uit het onderzoek</span>
+          <h2 id="vel-naam">&nbsp;</h2>
+          <p class="vel-intro" id="vel-intro">&nbsp;</p>
+          <span class="vel-regel"><span class="flower"></span></span>
+        </header>
+        <div class="vel-grid" id="vel-grid"></div>
+        <div class="vel-slot"><span class="vel-regel"><span class="flower"></span></span></div>
+        <span class="vel-exlibris" id="vel-exlibris" aria-hidden="true"></span>
+      </article>
+      <div class="tr-terugrij"><button class="btn" id="tr-terug">&larr; Terug naar de kaart</button></div>
+    </div></section>
+  </div>
+</div>
+
+<footer><div class="petals" style="position:absolute;inset:0;--c:120px;opacity:.4"></div><div class="veil"></div><div class="grain"></div><div class="wrap"><div class="fcols"><div style="max-width:280px"><div class="fbrand">AP&Eacute;R<span class="flower"></span></div><p style="font-family:var(--body);font-size:14px;color:var(--ink-70);margin-top:10px">Een onderzoek naar de aperocultuur. aperire, openen. Open de avond.</p></div><div><h4>Ontdek</h4><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De zes werelden</a><a href="lezen.html">Magazine-app</a><a href="podcast.html">Podcast</a><a href="lexicon.html">Lexicon</a></div><div><h4>Festival</h4><a href="festival.html">Het festival</a><a href="app.html">De Aperokiezer</a><a href="partners.html">Partners</a><a href="faq.html">Veelgestelde vragen</a><a href="https://www.instagram.com/apero.festival">Instagram</a></div><div><h4>Contact</h4><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a><a href="partners.html">Word partner</a><a href="festival.html">Blijf op de hoogte</a></div></div><div class="fnote">AP&Eacute;RO Culture &middot; een onderzoek naar de aperocultuur &middot; Utrecht &middot; MMXXVII &middot; een initiatief van The Grape Agency</div></div></footer>
+
+<script src="tijdreis-data.js?v=3"></script>
+<script src="tijdreis-kaart.js?v=3"></script>
+<script src="tijdreis.js?v=3"></script>
+<script src="site.js?v=3"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body></html>
