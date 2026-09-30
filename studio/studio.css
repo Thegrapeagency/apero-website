@@ -1,0 +1,185 @@
+/* APÉRO Studio 2.0 · een rustige redactietafel.
+   Merk-tokens gespiegeld aan apero-tokens.css (Studio wordt los gedeployed). */
+:root{
+  --panna:#F4EAD6;--panna-2:#EBDCBE;--panna-3:#F8F1E4;--burro:#EEB24A;--terracotta:#C45F38;--mattone:#9E4326;--salvia:#8C9A6A;--espresso:#231B13;
+  --ink-70:rgba(35,27,19,.72);--ink-50:rgba(35,27,19,.52);--ink-30:rgba(35,27,19,.3);--line:rgba(35,27,19,.14);
+  --disp:'Bodoni Moda',Georgia,serif;--body:'Hanken Grotesk',system-ui,sans-serif;
+  --t-verhaal:var(--terracotta);--t-social:var(--salvia);--t-nieuwsbrief:var(--burro);--t-festival:var(--espresso);--t-taak:var(--ink-30);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--panna);color:var(--espresso);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--terracotta);outline-offset:2px;border-radius:3px}
+.flower{position:relative;display:inline-block;width:.72em;height:.72em;flex:none;
+  background:radial-gradient(circle closest-side at 50% 26%,var(--terracotta) 99%,transparent 100%),radial-gradient(circle closest-side at 50% 74%,var(--terracotta) 99%,transparent 100%),radial-gradient(circle closest-side at 26% 50%,var(--terracotta) 99%,transparent 100%),radial-gradient(circle closest-side at 74% 50%,var(--terracotta) 99%,transparent 100%)}
+.flower::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--panna)}
+
+.testdata{background:var(--burro);font-size:13px;padding:7px 16px;text-align:center}
+.testdata button{background:none;border:0;text-decoration:underline;cursor:pointer;font-weight:600;padding:0 4px}
+
+.balk{position:sticky;top:0;z-index:30;background:rgba(244,234,214,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.balk .in{max-width:1240px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.merk{font-family:var(--disp);font-weight:800;font-size:20px;display:inline-flex;align-items:center;text-decoration:none;gap:1px}
+.merk .sub{font:600 9.5px var(--body);letter-spacing:.3em;color:var(--terracotta);margin-left:9px}
+.tabs{display:flex;gap:2px;order:3;width:100%;overflow-x:auto;scrollbar-width:none}
+.tabs a{flex:1;text-align:center;text-decoration:none;padding:10px 12px;border-radius:10px;font-weight:600;font-size:14px;color:var(--ink-70);white-space:nowrap}
+.tabs a[aria-current="page"]{background:var(--espresso);color:var(--panna)}
+.nieuw{margin-left:auto;background:var(--terracotta);color:var(--panna);border:0;border-radius:100px;padding:9px 16px;font-weight:600;cursor:pointer;min-height:40px}
+@media(min-width:820px){.tabs{order:0;width:auto;margin-left:24px}.tabs a{flex:none}}
+
+.paneel{max-width:1240px;margin:0 auto;padding:22px 16px 80px;outline:none}
+@media(min-width:820px){.paneel{padding:34px 24px 80px}}
+.laden{color:var(--ink-50)}
+h1.dag{font-family:var(--disp);font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1.02;margin:0}
+.samenvatting{font-size:17px;color:var(--ink-70);margin:8px 0 26px;max-width:62ch}
+h2.kop{font-family:var(--disp);font-weight:700;font-size:22px;margin:0 0 10px;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+h2.kop small{font:500 13px var(--body);color:var(--ink-50)}
+.lbl{font-weight:600;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta)}
+.stil{color:var(--ink-50)}
+
+/* Vandaag */
+.vgrid{display:grid;gap:22px}
+@media(min-width:980px){.vgrid{grid-template-columns:1.25fr 1fr;align-items:start}}
+.kaartje{background:var(--panna-3);border:1px solid var(--line);border-radius:16px;padding:18px}
+.kaartje+.kaartje{margin-top:22px}
+.lijst{list-style:none;margin:0;padding:0}
+.lijst li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;padding:11px 0;border-top:1px solid var(--line)}
+.lijst li:first-child{border-top:0}
+.lijst .dt{font-size:12px;color:var(--ink-50);white-space:nowrap;min-width:64px;padding-top:2px}
+.lijst .wat{min-width:0}
+.lijst .wat b{font-weight:600;display:block;line-height:1.35}
+.lijst .wat span{font-size:13px;color:var(--ink-50)}
+.lijst .wat button.link{all:unset;cursor:pointer;font-weight:600;line-height:1.35;display:block}
+.lijst .wat button.link:hover{color:var(--terracotta)}
+.vink{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:1.5px solid var(--ink-30);border-radius:7px;cursor:pointer;margin:0;display:grid;place-items:center;background:var(--panna)}
+.vink:checked{background:var(--salvia);border-color:var(--salvia)}
+.vink:checked::after{content:"";width:6px;height:11px;border:solid var(--panna);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+li.gedaan .wat b,li.gedaan .wat button.link{text-decoration:line-through;color:var(--ink-50)}
+.type{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-50)}
+.type i{width:9px;height:9px;border-radius:50%;background:var(--ink-30);flex:none}
+.type[data-t="verhaal"] i{background:var(--t-verhaal)}.type[data-t="social"] i{background:var(--t-social)}.type[data-t="nieuwsbrief"] i{background:var(--t-nieuwsbrief)}.type[data-t="festival"] i{background:var(--t-festival)}.type[data-t="taak"] i{background:transparent;box-shadow:inset 0 0 0 1.5px var(--ink-50)}
+.achter{border-color:rgba(196,95,56,.5);background:#fbeee4}
+.achter h2.kop{color:var(--mattone)}
+.keten{display:grid;gap:0;margin-top:6px}
+.keten .stap{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:8px 0;position:relative}
+.keten .stap::before{content:"";position:absolute;left:10px;top:24px;bottom:-8px;width:1px;background:var(--line)}
+.keten .stap:last-child::before{display:none}
+.keten .stip{width:14px;height:14px;border-radius:50%;margin:3px 0 0 4px;background:var(--ink-30)}
+.keten .stip[data-t="verhaal"]{background:var(--t-verhaal)}.keten .stip[data-t="social"]{background:var(--t-social)}.keten .stip[data-t="nieuwsbrief"]{background:var(--t-nieuwsbrief)}.keten .stip[data-t="festival"]{background:var(--t-festival)}
+.keten b{font-weight:600}
+.keten span{display:block;font-size:13px;color:var(--ink-50)}
+.aftel{display:flex;align-items:baseline;gap:10px;margin:2px 0 12px}
+.aftel b{font-family:var(--disp);font-weight:800;font-size:44px;line-height:1}
+.leeg{color:var(--ink-50);font-size:14px;margin:4px 0}
+
+/* Verhalen */
+.werkbalk{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 18px}
+.werkbalk input[type=search],.werkbalk select{min-height:40px;border:1px solid var(--line);border-radius:100px;background:var(--panna-3);padding:0 14px}
+.werkbalk input[type=search]{flex:1;min-width:180px}
+.schakel{display:inline-flex;border:1px solid var(--line);border-radius:100px;overflow:hidden}
+.schakel button{background:none;border:0;padding:9px 14px;cursor:pointer;font-weight:600;font-size:13px}
+.schakel button[aria-pressed="true"]{background:var(--espresso);color:var(--panna)}
+.werkbalk label.check{display:inline-flex;gap:6px;align-items:center;font-size:14px;padding:0 6px}
+.bord{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);gap:12px;overflow-x:auto;padding-bottom:12px;align-items:start}
+.kolom{background:var(--panna-2);border-radius:14px;padding:10px;min-height:120px}
+.kolom h3{margin:2px 4px 10px;font:600 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-70);display:flex;justify-content:space-between}
+.kolom.over{outline:2px dashed var(--terracotta);outline-offset:-4px}
+.item{display:block;width:100%;text-align:left;background:var(--panna-3);border:1px solid var(--line);border-radius:12px;padding:11px 12px;margin-bottom:8px;cursor:grab}
+.item:hover{border-color:var(--terracotta)}
+.item .t{font-family:var(--disp);font-weight:700;font-size:16px;line-height:1.2;display:block}
+.item .m{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:6px;font-size:12px;color:var(--ink-50)}
+.prio{display:inline-flex;gap:2px}.prio i{width:6px;height:6px;border-radius:50%;background:var(--ink-30)}.prio i.aan{background:var(--terracotta)}
+.fest{color:var(--mattone);font-weight:600}
+.tabel{width:100%;border-collapse:collapse;font-size:14px}
+.tabel th{text-align:left;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-50);padding:8px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer}
+.tabel td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.tabel tr:hover td{background:var(--panna-3)}
+.tabel td.titel{font-weight:600;cursor:pointer}
+.tabel-wrap{overflow-x:auto}
+.statuspil{display:inline-block;padding:3px 9px;border-radius:100px;font-size:12px;font-weight:600;background:var(--panna-2)}
+.statuspil[data-s="gepubliceerd"]{background:var(--salvia);color:var(--panna)}
+.statuspil[data-s="klaar"]{background:#dfe4cf}
+.statuspil[data-s="redactie"],.statuspil[data-s="schrijven"]{background:#f4dcc9}
+
+/* Kalender */
+.fasen{display:grid;grid-template-columns:repeat(9,minmax(90px,1fr));gap:4px;overflow-x:auto;margin:0 0 22px;padding-bottom:6px}
+.fase{background:var(--panna-2);border-radius:10px;padding:8px 10px;font-size:12px;min-height:66px}
+.fase b{display:block;font-family:var(--disp);font-size:15px}
+.fase.nu{background:var(--espresso);color:var(--panna)}
+.maandnav{display:flex;align-items:center;gap:10px;margin:0 0 14px;flex-wrap:wrap}
+.maandnav h2{font-family:var(--disp);font-weight:700;font-size:26px;margin:0;min-width:170px}
+.maandnav button{background:var(--panna-3);border:1px solid var(--line);border-radius:100px;min-width:40px;min-height:40px;cursor:pointer;font-weight:600}
+.typefilter{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.typefilter button{background:var(--panna-3);border:1px solid var(--line);border-radius:100px;padding:6px 12px;cursor:pointer;font-size:13px;display:inline-flex;gap:6px;align-items:center}
+.typefilter button[aria-pressed="false"]{opacity:.45}
+.week{margin:0 0 18px}
+.week h3{font:600 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-50);margin:0 0 6px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.week.deze h3{color:var(--terracotta)}
+.dagrij{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:6px 0}
+.dagrij .dd{font-size:13px;color:var(--ink-50);padding-top:9px}
+.dagrij .dd b{display:block;font-family:var(--disp);font-size:20px;color:var(--espresso);line-height:1}
+.dagrij.vandaag .dd b{color:var(--terracotta)}
+.gebeurtenis{display:flex;gap:10px;align-items:flex-start;background:var(--panna-3);border:1px solid var(--line);border-left:4px solid var(--ink-30);border-radius:10px;padding:9px 12px;margin-bottom:6px;cursor:pointer;text-align:left;width:100%}
+.gebeurtenis:hover{border-color:var(--terracotta)}
+.gebeurtenis[data-t="verhaal"]{border-left-color:var(--t-verhaal)}.gebeurtenis[data-t="social"]{border-left-color:var(--t-social)}.gebeurtenis[data-t="nieuwsbrief"]{border-left-color:var(--t-nieuwsbrief)}.gebeurtenis[data-t="festival"]{border-left-color:var(--t-festival)}
+.gebeurtenis .gt{font-weight:600;line-height:1.3}
+.gebeurtenis .gm{font-size:12.5px;color:var(--ink-50)}
+.gebeurtenis.voorstel{border-style:dashed;border-left-style:solid}
+.gebeurtenis.gedaan .gt{text-decoration:line-through;color:var(--ink-50)}
+
+/* Bibliotheek */
+.subtabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px}
+.subtabs button{background:var(--panna-3);border:1px solid var(--line);border-radius:100px;padding:8px 14px;cursor:pointer;font-weight:600;font-size:13px}
+.subtabs button[aria-pressed="true"]{background:var(--espresso);color:var(--panna)}
+.docs{display:grid;gap:18px}
+@media(min-width:900px){.docs{grid-template-columns:280px 1fr}}
+.doclijst{list-style:none;margin:0;padding:0}
+.doclijst button{all:unset;display:block;cursor:pointer;padding:9px 12px;border-radius:10px;font-weight:600;font-size:14px;width:100%;box-sizing:border-box}
+.doclijst button[aria-current="true"]{background:var(--panna-2)}
+.doc{background:var(--panna-3);border:1px solid var(--line);border-radius:16px;padding:22px;max-width:820px;overflow-wrap:anywhere}
+.doc h1{font-family:var(--disp);font-size:30px;line-height:1.1;margin:0 0 12px}
+.doc h2{font-family:var(--disp);font-size:22px;margin:1.6em 0 .4em}
+.doc h3{font-size:16px;margin:1.3em 0 .3em}
+.doc p,.doc li{line-height:1.65}
+.doc table{border-collapse:collapse;width:100%;font-size:13.5px;margin:12px 0;display:block;overflow-x:auto}
+.doc th,.doc td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.doc blockquote{margin:1em 0;padding-left:14px;border-left:3px solid var(--terracotta);color:var(--ink-70)}
+.doc code{background:var(--panna-2);padding:1px 5px;border-radius:5px;font-size:.92em}
+.doc hr{border:0;border-top:1px solid var(--line);margin:1.6em 0}
+.bronitem{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.bronitem b{font:600 10.5px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta);margin-right:6px}
+.bronitem .bv{display:block;font-size:12.5px;color:var(--ink-50);margin-top:2px}
+.beelden{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.beelden figure{margin:0;font-size:12px;color:var(--ink-50)}
+.beelden img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:var(--panna-2)}
+
+/* lade (detail) */
+.scrim{position:fixed;inset:0;background:rgba(35,27,19,.3);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+.scrim.open{opacity:1;pointer-events:auto}
+.lade{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--panna);z-index:50;transform:translateX(100%);transition:transform .25s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 40px -30px rgba(35,27,19,.5)}
+.lade.open{transform:none}
+.lade-kop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.lade-kop h2{font-family:var(--disp);font-size:24px;line-height:1.1;margin:0}
+.sluit{background:none;border:1px solid var(--line);border-radius:100px;width:40px;height:40px;font-size:22px;cursor:pointer;flex:none}
+.lade-body{padding:16px 18px 40px;overflow-y:auto;flex:1}
+.veld{display:block;margin:0 0 14px}
+.veld>span{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-50);margin-bottom:5px}
+.veld input,.veld select,.veld textarea{width:100%;border:1px solid var(--line);background:var(--panna-3);border-radius:10px;padding:9px 11px;min-height:40px}
+.veld textarea{min-height:76px;resize:vertical;line-height:1.5}
+.rij2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rij3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+details.meer{border-top:1px solid var(--line);padding-top:10px;margin-top:6px}
+details.meer summary{cursor:pointer;font-weight:600;margin-bottom:10px}
+.knop{display:inline-flex;align-items:center;gap:8px;background:var(--espresso);color:var(--panna);border:0;border-radius:100px;padding:10px 16px;font-weight:600;cursor:pointer;text-decoration:none;min-height:40px;font-size:14px}
+.knop.licht{background:var(--panna-3);color:var(--espresso);border:1px solid var(--line)}
+.knop.rood{background:none;color:var(--mattone);border:1px solid rgba(158,67,38,.35)}
+.knoppen{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.uitleg{font-size:13px;color:var(--ink-50);line-height:1.5}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,16px);background:var(--espresso);color:var(--panna);padding:11px 18px;border-radius:100px;opacity:0;pointer-events:none;transition:all .2s;z-index:60;font-size:14px}
+.toast.toon{opacity:1;transform:translate(-50%,0)}
+@media(min-width:1200px){.bord{grid-auto-flow:row;grid-template-columns:repeat(6,1fr);overflow:visible}}
+.meerknop{width:100%;background:none;border:1px dashed var(--ink-30);border-radius:10px;padding:8px;cursor:pointer;font-weight:600;font-size:13px;color:var(--ink-70)}
+.maandnav .typefilter{width:100%;margin-left:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+@media(min-width:820px){.maandnav .typefilter{width:auto;margin-left:auto}}

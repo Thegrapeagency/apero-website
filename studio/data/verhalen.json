@@ -1,0 +1,1147 @@
+{
+ "gegenereerd": "2026-09-30T18:45:27.597Z",
+ "reeksen": [
+  {
+   "id": "om-zes-uur",
+   "naam": "Om zes uur in…",
+   "kort": "Eén stad op het moment dat de dag omslaat. Wie zit er, wat staat er, hoe klinkt het.",
+   "waarom": "De lezer aan tafel zetten. Het sterkste format om een plek te laten zien in plaats van uit te leggen."
+  },
+  {
+   "id": "toen-nu",
+   "naam": "Toen / nu",
+   "kort": "Dezelfde plek, vijftig jaar uit elkaar. Wat veranderde er, en wat bleef.",
+   "waarom": "Geschiedenis die het heden interessanter maakt. Werkt als verhaal, als carrousel en als poll."
+  },
+  {
+   "id": "wie-zat-waar",
+   "naam": "Wie zat waar",
+   "kort": "De tafel als maatschappij: klasse, werk, gender en leeftijd aan de toog.",
+   "waarom": "Sociale geschiedenis. Hier is APÉRO het meest onderscheidend ten opzichte van drank- en lifestylemedia."
+  },
+  {
+   "id": "ongeschreven",
+   "naam": "De ongeschreven regels",
+   "kort": "Wie betaalt, wie schenkt, wanneer ga je zitten. De etiquette die niemand opschrijft.",
+   "waarom": "Het meest deelbare format: iedereen heeft er een mening over en een anekdote bij."
+  },
+  {
+   "id": "een-glas",
+   "naam": "Eén glas, één stad",
+   "kort": "Een drankje dat een hele stad uitlegt.",
+   "waarom": "Kort, concreet, goed te onthouden. Voedt later de festivalbars zonder ze aan te kondigen."
+  },
+  {
+   "id": "waarom",
+   "naam": "Waarom we dit drinken",
+   "kort": "De geschiedenis, scheikunde en toevalligheden achter wat er in het glas zit.",
+   "waarom": "Nieuwsgierigheid die op zoekgedrag aansluit (waarom wordt ouzo wit?) zonder een contentfarm te worden."
+  },
+  {
+   "id": "op-tafel",
+   "naam": "Op tafel",
+   "kort": "Het bord naast het glas. Wat er gegeten wordt, en waarom juist dat.",
+   "waarom": "Eten krijgt dezelfde rol als drinken. Sterk beeldmateriaal en seizoenswaarde."
+  },
+  {
+   "id": "werelden",
+   "naam": "De zes werelden",
+   "kort": "De lange verhalen over Italië, Frankrijk, Spanje, de anijsgordel, Portugal en Marokko.",
+   "waarom": "Het fundament van APÉRO: de eerste zes longreads."
+  },
+  {
+   "id": "essay",
+   "naam": "Essay",
+   "kort": "Een mening, een observatie, een vraag die blijft liggen.",
+   "waarom": "De eigen stem van de redactie."
+  }
+ ],
+ "verhalen": [
+  {
+   "id": "v-ombra",
+   "slug": "ombra",
+   "titel": "Een schaduw, graag",
+   "reeks": "een-glas",
+   "status": "klaar",
+   "datum": "2026-12-01",
+   "plekken": [
+    "Venetië"
+   ],
+   "dranken": [
+    "ombra",
+    "wijn",
+    "spritz"
+   ],
+   "tijd": [
+    "nu",
+    "overlevering"
+   ],
+   "themas": [
+    "taal",
+    "staan",
+    "cicchetti",
+    "toerisme"
+   ],
+   "intro": "In Venetië vraag je aan de toog niet om een glas wijn, maar om een schaduw. Het woord is ouder dan de bar waarin je staat, en het verhaal erachter is mooier dan bewijsbaar.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 3
+   },
+   "beeld": "assets/fresco/fresco-16.jpg",
+   "bronnen": [
+    {
+     "soort": "Overlevering",
+     "tekst": "De wijnverkopers op het San Marcoplein en de schaduw van de campanile: vaak verteld, niet gedocumenteerd. Cantina Do Spade, *The bacaro and the ombra di vino* (https://cantinadospade.com/en/2016/06/17/the-bacaro-and-the-ombra-di-vino/); Tour Leader Venice, *What is a bacaro?* (https://tourleadervenice.com/what-is-a-bacaro-and-why-you-should-visit-one-in-venice/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Bacari als eenvoudige tavernes voor vissers en werklieden; de giro d'ombre: Tour Leader Venice (https://tourleadervenice.com/what-is-a-bacaro-and-why-you-should-visit-one-in-venice/); Her Grand Tour, *The Venetian bar crawl* (https://hergrandtour.com/cicchetti/)"
+    },
+    {
+     "soort": "Feit / meerdere verklaringen",
+     "tekst": "Herkomst van *bacaro* (Bacchus/*far bàcara*; Boerio: klein luidruchtig groepje; anekdote over Apulische wijn; woord vermoedelijk van na 1866): Tour Leader Venice, *The secret history of Venice's oldest taverns* (https://tourleadervenice.com/the-secret-history-of-venices-oldest-taverns-from-medieval-wine-shops-to-todays-bacari/); Cantina Do Spade, *What's a bacaro?* (https://cantinadospade.com/en/2020/07/16/whats-a-bacaro/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Cicchetti, met de vingers of een prikker, staand aan de toog: Wikipedia, *Cicchetti* (https://en.wikipedia.org/wiki/Cicchetti); Wikipedia, *Baccalà mantecato* (https://en.wikipedia.org/wiki/Baccal%C3%A0_mantecato)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Inwonertal historisch centrum 49.997 op 10 augustus 2022; 64.000 in 2002: ANSA (https://www.ansa.it/english/news/general_news/2022/08/11/venice-population-falls-below-50000-for-first-time_faccce8c-6ea9-4da9-9b9a-9722d6551576.html)"
+    },
+    {
+     "soort": "Observatie",
+     "tekst": "Rondleidingen langs bacari, verhouding bewoners en bezoekers aan de toog: waarneming, niet gemeten."
+    }
+   ],
+   "festival": "Een ombra aan de toog: klein glas, huiswijn, staand.",
+   "verder": [
+    "italie-het-podium",
+    "wie-betaalt",
+    "wat-er-op-tafel-staat",
+    "athene-1814"
+   ],
+   "url": "/verhalen/ombra.html",
+   "bestand": "content/verhalen/ombra.md"
+  },
+  {
+   "id": "v-jenever-en-het-loon",
+   "slug": "jenever-en-het-loon",
+   "titel": "Het loon werd in de kroeg betaald",
+   "reeks": "wie-zat-waar",
+   "status": "klaar",
+   "datum": "2026-11-17",
+   "plekken": [
+    "Amsterdam",
+    "Drenthe",
+    "Groningen",
+    "Utrecht"
+   ],
+   "dranken": [
+    "jenever",
+    "bitter"
+   ],
+   "tijd": [
+    "19e eeuw",
+    "1881"
+   ],
+   "themas": [
+    "klasse",
+    "arbeid",
+    "wetgeving",
+    "borrel"
+   ],
+   "intro": "Op zaterdagavond, in de negentiende eeuw, kreeg een Nederlandse arbeider zijn loon vaak uitbetaald in de kroeg. Soms van dezelfde man die de kroeg dreef. Wat er van het loon overbleef als hij thuiskwam, hing af van hoe lang hij had moeten wachten.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": true
+   },
+   "minuten": {
+    "k": 1,
+    "m": 3,
+    "l": 5
+   },
+   "beeld": "petals",
+   "bronnen": [
+    {
+     "soort": "Feit",
+     "tekst": "Loonuitbetaling en werving in de kroeg; veenbaas annex kroeghouder; ploegbazen die mannen lieten wachten; jenever tijdens het werk en de romer als toegift: isgeschiedenis.nl, *Alcoholgebruik in Nederland vanaf de 19e eeuw* (https://isgeschiedenis.nl/nieuws/alcoholgebruik-in-nederland-vanaf-de-19e-eeuw); Groningen Toen, *Alcoholisme in Nederland vanaf 1800* (https://www.groningentoen.nl/alcoholisme/alcoholisme-en-drankmisbruik-in-nederland-vanaf-1800/); Drents Archief, *Turf, jenever en achterdocht* (https://www.drentsarchief.nl/ervaren/blog/turf-jenever-en-achterdocht); I.J. Brugmans, *De arbeidende klasse in Nederland in de 19e eeuw*, hfst. 3 (DBNL) (https://www.dbnl.org/tekst/brug035arbe01_01/brug035arbe01_01_0005.php)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Drankgebruik ca. 5 liter (1847) naar 9 liter (1874) per inwoner; Drankwet 1881, vergunningsplicht, één vergunning per 250–500 inwoners, ca. 45.000 verkopers, ca. 33.000 vergunningen, ca. 12.000 sluitingen; verbod op loonuitbetaling in kroegen: Trimbos-instituut, *De geschiedenis van de Alcoholwet* (https://www.trimbos.nl/kennis/alcohol/alcoholbeleid-en-wetgeving/de-geschiedenis-van-de-alcoholwet/); Gemeentearchief Alphen aan den Rijn, *De invoering van de Drankwet in 1881* (https://gemeentearchief.alphenaandenrijn.nl/over-ons/weblog/111-erfgoed-van-de-week-de-invoering-van-de-drankwet-in-1881)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "De Blauwe Knoop (1842): Nederlandse Biercultuur, *Bier en de blauwe knoop* (https://www.nederlandsebiercultuur.nl/historie/meer-verhalen/bier-en-de-blauwe-knoop)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Wynand Fockink (ca. 1679), het proeflokaal naast de stokerij, buigen voor de eerste slok: Stadsherstel Amsterdam (https://stadsherstel.nl/nieuws/slurp-op-traditionele-manier-jenever-bij-wynand-fockink/); Amsterdam Oude Stad (https://www.amsterdamoudestad.nl/tips/cafes/wynand-fockink)"
+    },
+    {
+     "soort": "Feit / onzeker",
+     "tekst": "Herkomst van het woord *borrel* (twee verklaringen, geen uitsluitsel); bitter en bitteruur: Wikipedia, *Jenever* (https://en.wikipedia.org/wiki/Jenever); Stuff Dutch People Like, *Borrels* (https://stuffdutchpeoplelike.com/2012/12/08/borrels/)"
+    },
+    {
+     "soort": "Interpretatie",
+     "tekst": "Jenever als volksdrank tegenover wijn bij de burgerij; bruin café tegenover sociëteit. Algemeen beeld uit de sociale geschiedenis (zie Brugmans), hier vereenvoudigd."
+    },
+    {
+     "soort": "Interpretatie",
+     "tekst": "\"Van kroeg naar kantoor\": redactionele observatie over de vrijdagmiddagborrel."
+    }
+   ],
+   "festival": "De eerste slok buigend. Het proeflokaal.",
+   "verder": [
+    "nederland-borrel",
+    "wie-betaalt",
+    "spanje-1974-en-nu",
+    "dranken-uit-een-verbod"
+   ],
+   "url": "/verhalen/jenever-en-het-loon.html",
+   "bestand": "content/verhalen/jenever-en-het-loon.md"
+  },
+  {
+   "id": "v-wie-betaalt",
+   "slug": "wie-betaalt",
+   "titel": "Wie betaalt?",
+   "reeks": "ongeschreven",
+   "status": "klaar",
+   "datum": "2026-11-03",
+   "plekken": [
+    "Athene",
+    "Madrid",
+    "Bilbao",
+    "Amsterdam",
+    "Marrakech"
+   ],
+   "dranken": [],
+   "tijd": [
+    "nu"
+   ],
+   "themas": [
+    "wie betaalt",
+    "gastvrijheid",
+    "vriendschap",
+    "etiquette"
+   ],
+   "intro": "Er is één moment waarop elke tafel even ongemakkelijk wordt, en dat is wanneer de rekening komt. Hoe dat moment wordt opgelost, zegt veel over hoe een land over vriendschap denkt.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 2
+   },
+   "beeld": "assets/fresco/fresco-12.jpg",
+   "bronnen": [
+    {
+     "soort": "Feit",
+     "tekst": "Refené, betekenis en Turkse herkomst: Βικιλεξικό, ρεφενές (https://el.wiktionary.org/wiki/%CF%81%CE%B5%CF%86%CE%B5%CE%BD%CE%AD%CF%82); Alfavita (https://www.alfavita.gr/koinonia/503287_ti-simainei-refene-kai-apo-poy-krata-i-lexi)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Kerasma, en niet meteen terugtrakteren: Twelve Languages (https://twelvelanguages.com/2018/09/27/the-greek-kerasma-%CE%BA%CE%AD%CF%81%CE%B1%CF%83%CE%BC%CE%B1/); Nick Athanassiadis, *Na keraso?* (https://mybigfatfunnylife.substack.com/p/na-keraso)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Naamdag: de jarige betaalt: Keep It Greece (https://keepitgreece.com/article/the-name-day-guest-guide-how-to-celebrate-like-a-local-in-greece/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Rondas, *a escote*, *bote* bij meerdere bars: WordReference-forum (https://forum.wordreference.com/threads/pagar-a-pachas-bote-a-medias-a-escote.2105826/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Cuadrilla en de txikitera-spaarpot in Bilbao: La Troupe (https://www.latroupe.com/en/city-stories/txikiteros-wine-legend/); Buber's Basque Page (https://www.buber.net/Basque/Food/Recipes/jaz.tapas.php)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "*Going Dutch*, *Dutch treat*, *Dutch courage* en de Engels-Nederlandse rivaliteit: Wikipedia, *Going Dutch* (https://en.wikipedia.org/wiki/Going_Dutch)"
+    },
+    {
+     "soort": "Observatie",
+     "tekst": "Het rondje in het Nederlandse café, en wie te vaak overslaat of te vaak opstaat. Eigen waarneming, geen onderzoek."
+    },
+    {
+     "soort": "Observatie",
+     "tekst": "Gastvrijheid aan de Marokkaanse theetafel: zie ook de APÉRO-longread *De schenkende hand* en haar bronnen."
+    },
+    {
+     "soort": "Interpretatie",
+     "tekst": "\"Het doel is overal dat er niet gerekend hoeft te worden\" is een redactionele lezing, geen onderzoeksuitkomst."
+    }
+   ],
+   "festival": "Hoe wordt er op het festival betaald? Een vraag die we onszelf ook stellen.",
+   "verder": [
+    "athene-1814",
+    "spanje-1974-en-nu",
+    "jenever-en-het-loon",
+    "opening-zonder-alcohol"
+   ],
+   "url": "/verhalen/wie-betaalt.html",
+   "bestand": "content/verhalen/wie-betaalt.md"
+  },
+  {
+   "id": "v-spanje-1974-en-nu",
+   "slug": "spanje-1974-en-nu",
+   "titel": "Spanje, 1974. En nu.",
+   "reeks": "toen-nu",
+   "status": "klaar",
+   "datum": "2026-10-20",
+   "plekken": [
+    "Madrid",
+    "Bilbao",
+    "Barcelona",
+    "Santander"
+   ],
+   "dranken": [
+    "vermut",
+    "txakoli",
+    "wijn"
+   ],
+   "tijd": [
+    "1974",
+    "nu"
+   ],
+   "themas": [
+    "klasse",
+    "gender",
+    "zondag",
+    "wie betaalt"
+   ],
+   "intro": "In 1974 leefde Franco nog, stond de televisie boven de toog en had een getrouwde vrouw toestemming van haar man nodig voor een baan. Wie er toen aan de bar stond, en wie er nu staat, zegt meer over Spanje dan de vermut in het glas.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": true
+   },
+   "minuten": {
+    "k": 1,
+    "m": 4,
+    "l": 6
+   },
+   "beeld": "assets/landen/spanje-alt.jpg",
+   "bronnen": [
+    {
+     "soort": "Feit",
+     "tekst": "Aantal bars per inwoner (circa één per 175–207 inwoners, afhankelijk van de bron): Spain Guru, *Bars per capita in Spain* (https://spainguru.es/2025/12/11/bars-per-capita-in-spain-bar-density-by-city/); thinkSPAIN (https://www.thinkspain.com/news-spain/29313/spain-has-more-bars-per-inhabitant-than-any-other-eu-country-study-shows)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Bars in de naoorlogse jaren en onder de dictatuur zelden door vrouwen bezocht; indeling in categorieën; verandering in de jaren tachtig: Lanza Digital, *Cuando los bares eran la mejor red social* (https://www.lanzadigital.com/provincia/cuando-los-bares-eran-la-mejor-red-social/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Afschaffing van de *licencia marital* (1975): Wikipedia (es), *Licencia marital* (https://es.wikipedia.org/wiki/Licencia_marital)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Oorsprong van de quiniela in La Callealtera, Santander (1929); staatsloterij vanaf 1946: elDiario.es (https://www.eldiario.es/cantabria/bar-santander-invento-quiniela-primera-liga-futbol-1929_1_11642852.html); Maxiloto, *80 años de 1X2* (https://www.maxiloto.es/blog/el-origen-de-la-quiniela.htm)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Dominó in de buurtbar: El Debate, *Las historias de la taberna Los Portalillos* (https://www.eldebate.com/espana/la-voz-de-cordoba/cultura/20260929/historias-taberna-portalillos_463439.html)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Neergang van de vermut in de jaren tachtig, revival rond 2010, La Hora del Vermut (Madrid, 2009), Morro Fi (Barcelona), vermut *de grifo*: Decanter (https://www.decanter.com/spirits/la-hora-del-vermut-six-spanish-vermouths-to-try-544033/); The Infatuation, *New-wave vermouth bars* (https://www.theinfatuation.com/barcelona/guides/new-wave-vermouth-bars-spain); PM Spirits (https://www.pmspirits.com/press-1/2023/11/9/in-praise-of-la-hora-del-vermut-spains-cherished-vermouth-hour-tradition)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Rookverbod binnen vanaf 2 januari 2011 (Ley 42/2010), terrassen uitgezonderd: Wikipedia, *List of smoking bans* (https://en.wikipedia.org/wiki/List_of_smoking_bans); The Local (https://www.thelocal.es/20260721/spain-moves-to-ban-smoking-in-terraces-parks-and-beaches/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Rondas, *a escote* en de *bote*: WordReference-forum, *pagar a pachas/bote/a escote* (https://forum.wordreference.com/threads/pagar-a-pachas-bote-a-medias-a-escote.2105826/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Cuadrilla, txikiteo, historisch vooral mannen; de spaarpot in de Casco Viejo en 11 oktober: La Troupe, *Txikiteros, wine and legend* (https://www.latroupe.com/en/city-stories/txikiteros-wine-legend/); Radio Nervión (https://www.radionervion.com/2025/03/05/el-vaso-de-txikito-tradicion-y-cultura-en-bilbao/); La guía del txakoli (https://laguiadeltxakoli.com/la-historia-del-vaso-de-txikito-de-bilbao); Buber's Basque Page (https://www.buber.net/Basque/Food/Recipes/jaz.tapas.php)"
+    },
+    {
+     "soort": "Overlevering",
+     "tekst": "Servetjes op de vloer als teken van een goede bar: veelgehoorde vuistregel, geen onderzoek."
+    },
+    {
+     "soort": "Interpretatie",
+     "tekst": "\"Waarom de vermut terugkwam\": twee gangbare verklaringen (crisis, vintage), beide genoemd in de bronnen; welke zwaarder woog, is niet vastgesteld."
+    },
+    {
+     "soort": "Scène",
+     "tekst": "Beide zondagen zijn samengesteld uit de bronnen hierboven. Ze beschrijven geen specifieke bar."
+    }
+   ],
+   "festival": "Vermut van de tap. De bote.",
+   "verder": [
+    "wie-betaalt",
+    "athene-1814",
+    "generatie-die-minder-drinkt",
+    "jenever-en-het-loon"
+   ],
+   "url": "/verhalen/spanje-1974-en-nu.html",
+   "bestand": "content/verhalen/spanje-1974-en-nu.md"
+  },
+  {
+   "id": "v-athene-1814",
+   "slug": "athene-1814",
+   "titel": "Athene, 18:14",
+   "reeks": "om-zes-uur",
+   "status": "klaar",
+   "datum": "2026-10-06",
+   "plekken": [
+    "Athene",
+    "Volos",
+    "Thessaloniki",
+    "Lesbos"
+   ],
+   "dranken": [
+    "ouzo",
+    "tsipouro"
+   ],
+   "tijd": [
+    "nu"
+   ],
+   "themas": [
+    "kerasma",
+    "parea",
+    "wie betaalt",
+    "eten"
+   ],
+   "intro": "Om zes uur heeft in Athene niemand honger. De lunch was om drie uur en het diner komt pas na tienen. Wat er tussendoor op tafel komt, is geen maaltijd, al komt het er soms verdacht dicht bij.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": true
+   },
+   "minuten": {
+    "k": 1,
+    "m": 4,
+    "l": 7
+   },
+   "beeld": "assets/landen/anijsgordel-alt.jpg",
+   "bronnen": [
+    {
+     "soort": "Feit",
+     "tekst": "Maaltijdtijden in Griekenland (lunch 14–16 uur, diner rond 21–22 uur): Olive Tomato, *When Greeks Eat* (https://www.olivetomato.com/when-greeks-eat/); Food Around Athens, *Why Greeks don't eat dinner at 6pm* (https://foodaroundathens.com/2025/07/01/why-greeks-dont-eat-dinner-at-6pm/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Kerasma en de etiquette van het aannemen: Twelve Languages, *The Greek Kerasma* (https://twelvelanguages.com/2018/09/27/the-greek-kerasma-%CE%BA%CE%AD%CF%81%CE%B1%CF%83%CE%BC%CE%B1/); The Greek Vibe, *What's Greek Kerasma all about?* (https://www.thegreekvibe.com/whats-greek-kerasma-all-about/); Nick Athanassiadis, *Na keraso?* (https://mybigfatfunnylife.substack.com/p/na-keraso)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Xerosfyri (drinken zonder te eten) en ouzo met meze: Greek City Times, *Do's and don'ts of drinking ouzo* (https://greekcitytimes.com/2018/06/08/dos-and-donts-of-drinking-ouzo/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Het kafeneio als mannenplek en de verschuiving in de late 20e eeuw: Greek City Times, *Traditional kafeneio* (https://greekcitytimes.com/2021/05/19/traditional-kafeneio-a-part-of-greek-history-culture-2-greek/); Dave's Travel Pages, *Greek coffee culture* (https://www.davestravelpages.com/greek-coffee-culture/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Mezedopoleia in de crisisjaren, Mavro Provato (2010, Pangrati): Culinary Backstreets, *An atmospheric mezedopoleio in Pagrati* (https://culinarybackstreets.com/cities-category/athens/2014/mavro-provato/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Refené, betekenis en Turkse herkomst: Βικιλεξικό, ρεφενές (https://el.wiktionary.org/wiki/%CF%81%CE%B5%CF%86%CE%B5%CE%BD%CE%AD%CF%82); Alfavita, *Τι σημαίνει ρεφενέ* (https://www.alfavita.gr/koinonia/503287_ti-simainei-refene-kai-apo-poy-krata-i-lexi)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Naamdag: de jarige trakteert: Keep It Greece, *Name day guest guide* (https://keepitgreece.com/article/the-name-day-guest-guide-how-to-celebrate-like-a-local-in-greece/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Tsipouradika in Volos, bordje per flesje, oorsprong bij vluchtelingen uit Klein-Azië na 1922: Travel.gr, *Volos' renowned tsipouradika* (https://www.travel.gr/en/food-and-drink-en/restaurants-en/volos-renowned-tsipouradika-8-great-choices-for-tsipouro-spirit-and-meze/); Visit Thessaly, *The ritual of the tsipouradiko* (https://visitthessaly.gr/en/suggestions/ritual-tsipouradiko); Taverna Magazine (https://www.tavernamag.com/food-and-wine/in-the-city-of-volos-meze-and-tsipouro-are-kings/)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "Thessaloniki, Ladadika, vluchtelingenkeuken jaren 1920: Wikipedia, Ladadika (https://en.wikipedia.org/wiki/Ladadika); National Geographic, *Thessaloniki, city of gastronomy* (https://www.nationalgeographic.com/travel/article/why-you-should-visit-thessaloniki-greeces-city-of-gastronomy)"
+    },
+    {
+     "soort": "Feit",
+     "tekst": "De volta, herkomst van het woord: Languagehat, *Volta* (https://languagehat.com/volta/)"
+    },
+    {
+     "soort": "Observatie",
+     "tekst": "Zondagse lunches die doorlopen tot de avond; het verschil augustus/oktober op de eilanden. Algemene waarneming, niet gemeten."
+    },
+    {
+     "soort": "Scène",
+     "tekst": "De tafel in Pangrati is samengesteld: gebaseerd op de bronnen hierboven, niet het verslag van één avond. Tijden, aantallen en personen zijn illustratief."
+    }
+   ],
+   "festival": "De kerasma als gebaar. Een bord dat je niet bestelt.",
+   "verder": [
+    "wie-betaalt",
+    "anijsgordel-lesbos-bekavallei",
+    "louche-effect",
+    "spanje-1974-en-nu"
+   ],
+   "url": "/verhalen/athene-1814.html",
+   "bestand": "content/verhalen/athene-1814.md"
+  },
+  {
+   "id": "v-dranken-uit-een-verbod",
+   "slug": "dranken-uit-een-verbod",
+   "titel": "Dranken die geboren werden uit een verbod",
+   "reeks": "waarom",
+   "status": "gepubliceerd",
+   "datum": "2026-09-22",
+   "plekken": [
+    "Marseille",
+    "Frankrijk"
+   ],
+   "dranken": [
+    "pastis",
+    "absint"
+   ],
+   "tijd": [
+    "1915",
+    "1932"
+   ],
+   "themas": [
+    "wetgeving",
+    "oorsprong"
+   ],
+   "intro": "Sommige dranken zijn uitgevonden.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 1
+   },
+   "beeld": "petals",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 3 · Najaar · Het uur terug. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "louche-effect",
+    "jenever-en-het-loon",
+    "de-graaf-en-de-soda"
+   ],
+   "url": "/verhalen/dranken-uit-een-verbod.html",
+   "bestand": "content/verhalen/dranken-uit-een-verbod.md"
+  },
+  {
+   "id": "v-generatie-die-minder-drinkt",
+   "slug": "generatie-die-minder-drinkt",
+   "titel": "Het aperitief van de generatie die minder drinkt",
+   "reeks": "essay",
+   "status": "gepubliceerd",
+   "datum": "2026-09-22",
+   "plekken": [
+    "Madrid",
+    "Barcelona",
+    "Frankrijk",
+    "Beiroet"
+   ],
+   "dranken": [
+    "vermut",
+    "alcoholvrij"
+   ],
+   "tijd": [
+    "nu"
+   ],
+   "themas": [
+    "alcoholvrij",
+    "generaties"
+   ],
+   "intro": "Elke nieuwe generatie drinkt minder dan de vorige, en de drankindustrie wordt er nerveus van.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 1
+   },
+   "beeld": "assets/fresco/fresco-02.jpg",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 3 · Najaar · Het uur terug. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "spanje-1974-en-nu",
+    "waarom-bitter",
+    "opening-zonder-alcohol"
+   ],
+   "url": "/verhalen/generatie-die-minder-drinkt.html",
+   "bestand": "content/verhalen/generatie-die-minder-drinkt.md"
+  },
+  {
+   "id": "v-nederland-borrel",
+   "slug": "nederland-borrel",
+   "titel": "Nederland heeft een borrel, maar geen aperitief. Of toch wel?",
+   "reeks": "essay",
+   "status": "gepubliceerd",
+   "datum": "2026-09-22",
+   "plekken": [
+    "Nederland",
+    "Amsterdam"
+   ],
+   "dranken": [
+    "jenever",
+    "spritz"
+   ],
+   "tijd": [
+    "nu"
+   ],
+   "themas": [
+    "borrel",
+    "Nederland"
+   ],
+   "intro": "Op papier lijkt de borrel op een aperitief: einde werkdag, een drankje, iets hartigs erbij.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 1
+   },
+   "beeld": "assets/fresco/fresco-04.jpg",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 3 · Najaar · Het uur terug. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "jenever-en-het-loon",
+    "wie-betaalt",
+    "achttien-uur-overal"
+   ],
+   "url": "/verhalen/nederland-borrel.html",
+   "bestand": "content/verhalen/nederland-borrel.md"
+  },
+  {
+   "id": "v-anijsgordel-lesbos-bekavallei",
+   "slug": "anijsgordel-lesbos-bekavallei",
+   "titel": "De anijsgordel: van Lesbos tot de Bekavallei",
+   "reeks": "werelden",
+   "status": "gepubliceerd",
+   "datum": "2026-06-21",
+   "plekken": [
+    "Lesbos",
+    "Plomari",
+    "Bekavallei",
+    "Zahle"
+   ],
+   "dranken": [
+    "ouzo",
+    "arak"
+   ],
+   "tijd": [
+    "14e eeuw",
+    "1856",
+    "nu"
+   ],
+   "themas": [
+    "water",
+    "vertraging",
+    "meze"
+   ],
+   "intro": "Van Lesbos tot de Bekavallei loopt een gordel van anijs, en overal gelden dezelfde drie wetten: nooit alleen, nooit snel, nooit zonder eten.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": true
+   },
+   "minuten": {
+    "k": 1,
+    "m": 3,
+    "l": 7
+   },
+   "beeld": "assets/landen/anijsgordel.jpg",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 2 · Zomer · Water bij de wijn. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "athene-1814",
+    "louche-effect",
+    "opening-zonder-alcohol"
+   ],
+   "url": "/verhalen/anijsgordel-lesbos-bekavallei.html",
+   "bestand": "content/verhalen/anijsgordel-lesbos-bekavallei.md"
+  },
+  {
+   "id": "v-de-graaf-en-de-soda",
+   "slug": "de-graaf-en-de-soda",
+   "titel": "De graaf, de barman en de soda die sneuvelde",
+   "reeks": "waarom",
+   "status": "gepubliceerd",
+   "datum": "2026-06-21",
+   "plekken": [
+    "Florence"
+   ],
+   "dranken": [
+    "Negroni",
+    "Americano"
+   ],
+   "tijd": [
+    "1919"
+   ],
+   "themas": [
+    "oorsprong",
+    "bestellen"
+   ],
+   "intro": "Florence, 1919.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 1
+   },
+   "beeld": "assets/landen/italie-alt.jpg",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 2 · Zomer · Water bij de wijn. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "italie-het-podium",
+    "waarom-bitter",
+    "ombra"
+   ],
+   "url": "/verhalen/de-graaf-en-de-soda.html",
+   "bestand": "content/verhalen/de-graaf-en-de-soda.md"
+  },
+  {
+   "id": "v-opening-zonder-alcohol",
+   "slug": "opening-zonder-alcohol",
+   "titel": "De opening zonder alcohol",
+   "reeks": "werelden",
+   "status": "gepubliceerd",
+   "datum": "2026-06-21",
+   "plekken": [
+    "Marrakech",
+    "Marokko"
+   ],
+   "dranken": [
+    "atay"
+   ],
+   "tijd": [
+    "ca. 1860",
+    "nu"
+   ],
+   "themas": [
+    "alcoholvrij",
+    "gastvrijheid"
+   ],
+   "intro": "In Marokko wordt het glas drie keer gevuld en elke vulling smaakt anders: zacht als het leven, sterk als de liefde, bitter als de dood.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": true
+   },
+   "minuten": {
+    "k": 1,
+    "m": 3,
+    "l": 6
+   },
+   "beeld": "assets/landen/marokko-alt.jpg",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 2 · Zomer · Water bij de wijn. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "wie-betaalt",
+    "generatie-die-minder-drinkt",
+    "waarom-bitter"
+   ],
+   "url": "/verhalen/opening-zonder-alcohol.html",
+   "bestand": "content/verhalen/opening-zonder-alcohol.md"
+  },
+  {
+   "id": "v-louche-effect",
+   "slug": "louche-effect",
+   "titel": "Het louche-effect, of waarom je naar een glas blijft kijken",
+   "reeks": "waarom",
+   "status": "gepubliceerd",
+   "datum": "2026-06-21",
+   "plekken": [
+    "Libanon",
+    "Griekenland",
+    "Marseille"
+   ],
+   "dranken": [
+    "ouzo",
+    "arak",
+    "pastis"
+   ],
+   "tijd": [
+    "nu"
+   ],
+   "themas": [
+    "wetenschap",
+    "water"
+   ],
+   "intro": "Schenk water bij een ouzo en de heldere drank slaat traag melkwit uit, in wolken, alsof er weer in het glas trekt.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 1
+   },
+   "beeld": "petals",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 2 · Zomer · Water bij de wijn. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "anijsgordel-lesbos-bekavallei",
+    "athene-1814",
+    "dranken-uit-een-verbod"
+   ],
+   "url": "/verhalen/louche-effect.html",
+   "bestand": "content/verhalen/louche-effect.md"
+  },
+  {
+   "id": "v-wat-er-op-tafel-staat",
+   "slug": "wat-er-op-tafel-staat",
+   "titel": "Wat er op tafel staat",
+   "reeks": "op-tafel",
+   "status": "gepubliceerd",
+   "datum": "2026-06-21",
+   "plekken": [
+    "Italië",
+    "Spanje",
+    "Griekenland",
+    "Frankrijk"
+   ],
+   "dranken": [],
+   "tijd": [
+    "nu"
+   ],
+   "themas": [
+    "eten",
+    "hapje"
+   ],
+   "intro": "Niemand heeft ooit een standbeeld opgericht voor het schaaltje olijven, en dat is een fout.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 1
+   },
+   "beeld": "assets/landen/frankrijk.jpg",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 2 · Zomer · Water bij de wijn. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "athene-1814",
+    "ombra",
+    "spanje-1974-en-nu"
+   ],
+   "url": "/verhalen/wat-er-op-tafel-staat.html",
+   "bestand": "content/verhalen/wat-er-op-tafel-staat.md"
+  },
+  {
+   "id": "v-achttien-uur-overal",
+   "slug": "achttien-uur-overal",
+   "titel": "Achttien uur, overal",
+   "reeks": "om-zes-uur",
+   "status": "gepubliceerd",
+   "datum": "2026-03-20",
+   "plekken": [
+    "Milaan",
+    "Marseille",
+    "Barcelona",
+    "Lesbos",
+    "Bekavallei",
+    "Porto",
+    "Marrakech",
+    "Utrecht"
+   ],
+   "dranken": [
+    "aperitivo",
+    "pastis",
+    "vermut",
+    "ouzo",
+    "arak",
+    "port",
+    "atay"
+   ],
+   "tijd": [
+    "nu"
+   ],
+   "themas": [
+    "het uur"
+   ],
+   "intro": "Het is zes uur.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 1
+   },
+   "beeld": "assets/motion/fresco-terras-poster.jpg",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 1 · Lente · De Opening. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "athene-1814",
+    "ombra",
+    "spanje-1974-en-nu",
+    "nederland-borrel"
+   ],
+   "url": "/verhalen/achttien-uur-overal.html",
+   "bestand": "content/verhalen/achttien-uur-overal.md"
+  },
+  {
+   "id": "v-klein-woordenboek",
+   "slug": "klein-woordenboek",
+   "titel": "Het kleine woordenboek van het aperitief",
+   "reeks": "waarom",
+   "status": "gepubliceerd",
+   "datum": "2026-03-20",
+   "plekken": [
+    "Barcelona",
+    "Venetië"
+   ],
+   "dranken": [
+    "vermut",
+    "ombra"
+   ],
+   "tijd": [
+    "nu"
+   ],
+   "themas": [
+    "taal"
+   ],
+   "intro": "Vijf woorden om mee te beginnen.Fer el vermut.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 1
+   },
+   "beeld": "petals",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 1 · Lente · De Opening. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "ombra",
+    "mulsum",
+    "wie-betaalt"
+   ],
+   "url": "/verhalen/klein-woordenboek.html",
+   "bestand": "content/verhalen/klein-woordenboek.md"
+  },
+  {
+   "id": "v-italie-het-podium",
+   "slug": "italie-het-podium",
+   "titel": "Italië, het podium",
+   "reeks": "werelden",
+   "status": "gepubliceerd",
+   "datum": "2026-03-20",
+   "plekken": [
+    "Milaan",
+    "Turijn",
+    "Venetië",
+    "Florence"
+   ],
+   "dranken": [
+    "vermout",
+    "Campari",
+    "Negroni",
+    "Spritz"
+   ],
+   "tijd": [
+    "1786",
+    "1867",
+    "1919",
+    "nu"
+   ],
+   "themas": [
+    "bitter",
+    "bella figura"
+   ],
+   "intro": "Om zes uur verandert elke Italiaanse stad in een toneel.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": true
+   },
+   "minuten": {
+    "k": 1,
+    "m": 3,
+    "l": 9
+   },
+   "beeld": "assets/landen/italie.jpg",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 1 · Lente · De Opening. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "de-graaf-en-de-soda",
+    "waarom-bitter",
+    "ombra",
+    "wat-er-op-tafel-staat"
+   ],
+   "url": "/verhalen/italie-het-podium.html",
+   "bestand": "content/verhalen/italie-het-podium.md"
+  },
+  {
+   "id": "v-mulsum",
+   "slug": "mulsum",
+   "titel": "Mulsum, of waarom dit ritueel ouder is dan Europa",
+   "reeks": "waarom",
+   "status": "gepubliceerd",
+   "datum": "2026-03-20",
+   "plekken": [
+    "Rome"
+   ],
+   "dranken": [
+    "mulsum"
+   ],
+   "tijd": [
+    "oudheid"
+   ],
+   "themas": [
+    "oorsprong",
+    "gustatio"
+   ],
+   "intro": "Voordat het Romeinse banket begon, kwam de gustatio: eieren, olijven, schelpdieren, en een beker mulsum, wijn met honing en specerijen.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 1
+   },
+   "beeld": "assets/landen/anijsgordel.jpg",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 1 · Lente · De Opening. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "achttien-uur-overal",
+    "klein-woordenboek",
+    "italie-het-podium"
+   ],
+   "url": "/verhalen/mulsum.html",
+   "bestand": "content/verhalen/mulsum.md"
+  },
+  {
+   "id": "v-waarom-bitter",
+   "slug": "waarom-bitter",
+   "titel": "Waarom bitter het nieuwe zoet is",
+   "reeks": "waarom",
+   "status": "gepubliceerd",
+   "datum": "2026-03-20",
+   "plekken": [
+    "Turijn",
+    "Milaan"
+   ],
+   "dranken": [
+    "Campari",
+    "vermout",
+    "gentiaan",
+    "kina"
+   ],
+   "tijd": [
+    "nu"
+   ],
+   "themas": [
+    "smaak",
+    "lichaam",
+    "alcoholvrij"
+   ],
+   "intro": "Bitter is evolutionair een alarmsignaal: gif, bederf, niet eten.",
+   "versies": {
+    "k": true,
+    "m": true,
+    "l": false
+   },
+   "minuten": {
+    "k": 1,
+    "m": 2
+   },
+   "beeld": "petals",
+   "bronnen": [
+    {
+     "soort": "Bron",
+     "tekst": "Oorspronkelijk verschenen in Editie 1 · Lente · De Opening. Bronnen van de bijbehorende wereld staan op de wereldpagina."
+    }
+   ],
+   "festival": "",
+   "verder": [
+    "generatie-die-minder-drinkt",
+    "italie-het-podium",
+    "louche-effect"
+   ],
+   "url": "/verhalen/waarom-bitter.html",
+   "bestand": "content/verhalen/waarom-bitter.md"
+  }
+ ]
+}

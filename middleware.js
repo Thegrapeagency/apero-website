@@ -45,6 +45,9 @@ export default function middleware(request) {
   const url = new URL(request.url);
   const pad = url.pathname;
 
+  // de nieuwsbrief-aanmelding is publiek
+  if (pad === '/api/aanmelden') return;
+
   const isPartnerZone = pad.startsWith('/partner') || pad.startsWith('/api/partner-data');
 
   if (!USER || !PASS) {
