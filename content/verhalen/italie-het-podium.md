@@ -91,12 +91,19 @@ bijschrift:
 <div class="tl-item"><div class="y">De jaren 2010</div><h3>De Spritz verovert de wereld</h3><p>Wat een Venetiaanse gewoonte was, wordt het oranje symbool van de zomer. Van Milaan tot Amsterdam bestelt iedereen ineens een Aperol Spritz, en de aperitivo wordt een wereldtaal. Je hebt het van dichtbij zien gebeuren.</p>
 <div class="tl-item"><div class="y">Vandaag</div><h3>Drie glazen, één uur</h3><p>De Spritz op elk terras, de birra bij de pizza, de Negroni in elke cocktailbar. Italië heeft geen keuze gemaakt tussen zijn glazen, het heeft ze naast elkaar op tafel gezet en er een uur omheen gebouwd.</p></div>
 </div>
-<hr />
-<h3>Bronnen (selectie)</h3>
-<p><a href="https://www.camparino.com/history/">Camparino: The History</a> · <a href="https://www.camparino.com/en/beginning/">Camparino: The Beginning</a> · <a href="https://historiccafesroute.com/mulassano/">Historic Cafes Route: Caffè Mulassano</a> · <a href="https://www.mycornerofitaly.com/historic-cafes-in-turin/">My Corner of Italy: Historic cafés in Turin</a> · <a href="https://www.theworlds50best.com/stories/News/turin-and-the-art-of-the-aperitivo.html">The World's 50 Best: Turin and the art of the aperitivo</a> · <a href="https://caffeflorian.com/en/venetian-spritz-history-recipe-curiosities/">Caffè Florian: Venetian Spritz history</a> · <a href="https://www.euronews.com/culture/2024/08/11/spritz-cicchetti-and-dialect-inside-venices-traditional-bacaro-bar">Euronews: Inside Venice's traditional bacaro</a> · <a href="https://italysegreta.com/not-quite-dinner-not-quite-aperitivo/">Italy Segreta: Apericena</a> · <a href="https://spiritsselection.com/en/italys-tradition-of-the-aperitivo-down-through-history/">Spirits Selection: Italy's aperitivo through history</a></p>
+
 
 </div>
 
 ::: bronnen
 
 - **Bron** · Oorspronkelijk verschenen in Editie 1 · Lente · De Opening. Bronnen van de bijbehorende wereld staan op de wereldpagina.
+- **Bron** · [Camparino: The History](https://www.camparino.com/history/)
+- **Bron** · [Camparino: The Beginning](https://www.camparino.com/en/beginning/)
+- **Bron** · [Historic Cafes Route: Caffè Mulassano](https://historiccafesroute.com/mulassano/)
+- **Bron** · [My Corner of Italy: Historic cafés in Turin](https://www.mycornerofitaly.com/historic-cafes-in-turin/)
+- **Bron** · [The World's 50 Best: Turin and the art of the aperitivo](https://www.theworlds50best.com/stories/News/turin-and-the-art-of-the-aperitivo.html)
+- **Bron** · [Caffè Florian: Venetian Spritz history](https://caffeflorian.com/en/venetian-spritz-history-recipe-curiosities/)
+- **Bron** · [Euronews: Inside Venice's traditional bacaro](https://www.euronews.com/culture/2024/08/11/spritz-cicchetti-and-dialect-inside-venices-traditional-bacaro-bar)
+- **Bron** · [Italy Segreta: Apericena](https://italysegreta.com/not-quite-dinner-not-quite-aperitivo/)
+- **Bron** · [Spirits Selection: Italy's aperitivo through history](https://spiritsselection.com/en/italys-tradition-of-the-aperitivo-down-through-history/)

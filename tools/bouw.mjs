@@ -255,9 +255,6 @@ function artikel(v) {
     : '';
   const vervolg = v.langType === 'vervolg' ? `<div class="vervolg" id="vervolg"><div class="vervolg-kop">Vanaf hier: de lange versie</div>${v.lang}</div>` : '';
   const lVersie = v.langType === 'volledig' ? `<div class="versie" data-v="l">${v.lang}</div>` : '';
-  const bronnenHTML = v.bronnen.length ? `<details class="weten"><summary>Hoe we dit weten <span>${v.bronnen.length} bronnen en noten <span class="pijl" aria-hidden="true">▾</span></span></summary>
-<ul>${v.bronnen.map((b) => `<li>${b.soort ? `<b>${esc(b.soort)}</b>` : ''}${inline(b.tekst)}</li>`).join('')}</ul>
-<p class="uitleg">We maken onderscheid tussen feiten (met bron), overlevering, observaties en interpretatie. Een <em>samengestelde scène</em> is gebaseerd op deze bronnen, maar beschrijft niet één echte avond. <a href="/verhaal.html#werkwijze">Zo werken we.</a></p></details>` : '';
   const plekLinks = v.plekken.map((p) => { const pl = plekVan(p); return pl ? `<a href="/steden.html#stad-${slugify(pl.naam)}">${esc(p)}</a>` : esc(p); }).join(', ');
   const body = `<div class="voortgang" aria-hidden="true"></div>
 <article data-slug="${v.slug}" data-titel="${esc(v.titel)}" data-min='${JSON.stringify(v.mins)}' data-lang="${v.langType}">
@@ -282,7 +279,6 @@ ${v.ondertitel ? `<p class="stand">${esc(v.ondertitel)}</p>` : ''}
 ${lVersie}
 </div>
 <div class="aacties"><button type="button" data-bewaar aria-pressed="false">Bewaar voor later</button><button type="button" data-deel>Deel dit verhaal</button><button type="button" data-lees aria-expanded="false">Aa · lezen</button></div>
-${bronnenHTML}
 </div>
 </article>
 <section class="hierna" aria-labelledby="hierna-kop"><div class="w">

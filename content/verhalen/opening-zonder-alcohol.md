@@ -79,12 +79,17 @@ bijschrift:
 <div class="tl-item"><div class="y">De laatste decennia</div><h3>De theepot reist mee</h3><p>De Marokkaanse gemeenschap neemt atay mee naar Europa. In Nederlandse en Franse steden wordt de theepot het middelpunt van de huiskamer, en Casablanca-bier groeit uit tot een exportnaam die je hier in het schap ziet staan.</p>
 <div class="tl-item"><div class="y">Vandaag</div><h3>Het bewijs van de hele stelling</h3><p>Terwijl de rest van de wereld het alcoholvrije aperitief herontdekt, doet Marokko al anderhalve eeuw wat de trend nu pas ziet: de pauze, de aandacht en de schenkende hand hebben geen alcoholpercentage nodig. Atay opent de avond zonder één druppel.</p></div>
 </div>
-<hr />
-<h3>Bronnen (selectie)</h3>
-<p><a href="https://teatrade.co.uk/learning/maghrebi-mint-history.html">TeaTrade: Maghrebi mint history</a> · <a href="https://moroccofy.com/atay-the-sacred-ritual-of-moroccan-mint-tea/">Moroccofy: Atay, the sacred ritual</a> · <a href="https://www.marrakeche.com/complete-guide-to-moroccan-tea-ceremony/">Marrakeche: Moroccan tea ceremony guide</a> · <a href="https://www.arabamerica.com/?p=206192">Arab America: Why do Moroccans pour their tea so high</a> · <a href="https://cookedbytaste.com/why-is-moroccan-tea-poured-from-a-height/">CookedByTaste: Why is Moroccan tea poured from a height</a> · <a href="https://www.baytalfann.com/post/the-art-of-the-morrocan-magrehbi-tea-ceremony">Bayt Al Fann: The art of the Moroccan tea ceremony</a> · <a href="https://originaltravelsco.com/moroccan-mint-tea-hospitality/">Original Travels: Moroccan mint tea and hospitality</a></p>
+
 
 </div>
 
 ::: bronnen
 
 - **Bron** · Oorspronkelijk verschenen in Editie 2 · Zomer · Water bij de wijn. Bronnen van de bijbehorende wereld staan op de wereldpagina.
+- **Bron** · [TeaTrade: Maghrebi mint history](https://teatrade.co.uk/learning/maghrebi-mint-history.html)
+- **Bron** · [Moroccofy: Atay, the sacred ritual](https://moroccofy.com/atay-the-sacred-ritual-of-moroccan-mint-tea/)
+- **Bron** · [Marrakeche: Moroccan tea ceremony guide](https://www.marrakeche.com/complete-guide-to-moroccan-tea-ceremony/)
+- **Bron** · [Arab America: Why do Moroccans pour their tea so high](https://www.arabamerica.com/?p=206192)
+- **Bron** · [CookedByTaste: Why is Moroccan tea poured from a height](https://cookedbytaste.com/why-is-moroccan-tea-poured-from-a-height/)
+- **Bron** · [Bayt Al Fann: The art of the Moroccan tea ceremony](https://www.baytalfann.com/post/the-art-of-the-morrocan-magrehbi-tea-ceremony)
+- **Bron** · [Original Travels: Moroccan mint tea and hospitality](https://originaltravelsco.com/moroccan-mint-tea-hospitality/)

@@ -32,7 +32,7 @@
 | **Steden-pagina** met kaart | Navigeren via plekken; "verdwalen op een goede manier" |
 | **Reeksen** (Om zes uur in…, Toen/nu, Wie zat waar, De ongeschreven regels, Eén glas één stad, Waarom we dit drinken, Op tafel, De zes werelden, Essay) | Terugkerende formats maken schrijven makkelijker en terugkomen logischer |
 | **"Hierna" met reden** ("Ook in Athene", "Een andere tijd: 1881") | Aanbevelingen die zeggen waarom |
-| **Hoe we dit weten** onder elk verhaal, met labels feit/overlevering/observatie/interpretatie/scène | Eerlijkheid als onderscheidend kenmerk |
+| **Bronnen alleen intern** (in `content/verhalen/*.md` en Studio), niet op de site | Besluit na de eerste review: bronvermelding op de site is niet nodig. Ook de oude "Bronnen (selectie)"-blokken van de wereldpagina's zijn weg; die lijsten staan in `content/wereldbronnen.md` |
 | **Samengestelde scènes** gelabeld in de tekst | Beeldend schrijven zonder feiten te verzinnen |
 | **Mobiele navigatie** (menu) | De oude site had onder 860px géén navigatie |
 | **Echte nieuwsbriefaanmelding** (`api/aanmelden.mjs`, De Inschenker) | Was een `mailto:`-link. Werkt in testmodus tot er een dienst is gekoppeld, en zegt dat eerlijk |

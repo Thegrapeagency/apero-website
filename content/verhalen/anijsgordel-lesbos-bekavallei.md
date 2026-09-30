@@ -81,12 +81,21 @@ bijschrift:
 <div class="tl-item"><div class="y">1997</div><h3>Het bier van de laatste zomers</h3><p>Mythos komt op de markt en wordt het populaire Griekse bier van de laatste generatie, het glas van elke zomervakantie op elk eiland. In Beiroet tilt jong talent de arak intussen naar de cocktailbar.</p>
 <div class="tl-item"><div class="y">Vandaag</div><h3>De wolk en het koude glas</h3><p>De ouzo slaat nog altijd melkwit uit, de arak keert terug in de bars van Beiroet, en er staat een koud lokaal bier naast. De mezetafel is voller dan ooit, en heeft nog steeds geen haast.</p></div>
 </div>
-<hr />
-<h3>Bronnen (selectie)</h3>
-<p><a href="https://en.wikipedia.org/wiki/Ouzo">Wikipedia: Ouzo</a> · <a href="https://news.gtp.gr/2017/06/30/secrets-lesvos-intoxicating-spirit-ouzo/">GTP: The secrets of Lesvos' intoxicating spirit</a> · <a href="https://www.greekgastronomyguide.gr/en/item/ouzo-mitilinis-plomari-lesvos/">Greek Gastronomy Guide: Ouzo of Lesvos</a> · <a href="https://www.varvayanni.com/en/">Varvayanni distillery</a> · <a href="https://www.discovergreece.com/experiences/sampling-ouzo-tradition-plomari">Discover Greece: Ouzo tradition of Plomari</a> · <a href="https://www.thegreekvibe.com/how-to-drink-ouzo-raki-tsipouro/">The Greek Vibe: How to drink ouzo, raki or tsipouro</a> · <a href="https://en.wikipedia.org/wiki/Arak_(drink)">Wikipedia: Arak</a> · <a href="https://en.wikipedia.org/wiki/Massaya">Wikipedia: Massaya</a> · <a href="https://www.skurnik.com/exploring-arak-the-ancient-elixir-and-a-new-chapter-with-massaya/">Skurnik: Exploring arak with Massaya</a> · <a href="https://lebanontraveler.com/en/magazine/lebanon-traveler-the_milk_of_lions">Lebanon Traveler: The milk of lions</a> · <a href="https://the961.com/lebanese-arak-distilleries/">The961: Traditional arak distilleries in Lebanon</a></p>
+
 
 </div>
 
 ::: bronnen
 
 - **Bron** · Oorspronkelijk verschenen in Editie 2 · Zomer · Water bij de wijn. Bronnen van de bijbehorende wereld staan op de wereldpagina.
+- **Bron** · [Wikipedia: Ouzo](https://en.wikipedia.org/wiki/Ouzo)
+- **Bron** · [GTP: The secrets of Lesvos' intoxicating spirit](https://news.gtp.gr/2017/06/30/secrets-lesvos-intoxicating-spirit-ouzo/)
+- **Bron** · [Greek Gastronomy Guide: Ouzo of Lesvos](https://www.greekgastronomyguide.gr/en/item/ouzo-mitilinis-plomari-lesvos/)
+- **Bron** · [Varvayanni distillery](https://www.varvayanni.com/en/)
+- **Bron** · [Discover Greece: Ouzo tradition of Plomari](https://www.discovergreece.com/experiences/sampling-ouzo-tradition-plomari)
+- **Bron** · [The Greek Vibe: How to drink ouzo, raki or tsipouro](https://www.thegreekvibe.com/how-to-drink-ouzo-raki-tsipouro/)
+- **Bron** · [Wikipedia: Arak](https://en.wikipedia.org/wiki/Arak_(drink))
+- **Bron** · [Wikipedia: Massaya](https://en.wikipedia.org/wiki/Massaya)
+- **Bron** · [Skurnik: Exploring arak with Massaya](https://www.skurnik.com/exploring-arak-the-ancient-elixir-and-a-new-chapter-with-massaya/)
+- **Bron** · [Lebanon Traveler: The milk of lions](https://lebanontraveler.com/en/magazine/lebanon-traveler-the_milk_of_lions)
+- **Bron** · [The961: Traditional arak distilleries in Lebanon](https://the961.com/lebanese-arak-distilleries/)

@@ -28,7 +28,7 @@ De route die we willen ondersteunen: **nieuwsgierigheid → ontdekking → herke
 ### 4. Narrative transportation
 **Wat:** lezers die in een verhaal opgaan, onthouden meer en voelen meer (Green & Brock 2000; meta-analyse Van Laer e.a. 2014). Zintuiglijke details, een tijdstip en een persoon helpen.
 **Waar:** de samengestelde scènes, de zeven vragen van de tafel in het playbook.
-**Grens:** omdat getransporteerde lezers minder kritisch zijn, zijn we extra eerlijk. Elke samengestelde scène is gelabeld en verantwoord.
+**Grens:** omdat getransporteerde lezers minder kritisch zijn, zijn we extra eerlijk. Elke samengestelde scène is gelabeld in de tekst; de onderbouwing staat intern bij het verhaal.
 
 ### 5. Verwerkingsgemak (cognitive fluency)
 **Wat:** informatie die makkelijk te verwerken is, voelt prettiger en geloofwaardiger.

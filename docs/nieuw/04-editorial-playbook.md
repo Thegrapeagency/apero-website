@@ -86,7 +86,7 @@ Het is 18:14 op een dinsdag in oktober…
 
 ## Bronnen en factchecking
 
-Elke bewering krijgt in *Hoe we dit weten* een label:
+De bronnen staan **niet op de site** (besluit redactie, oktober 2026), maar wel intern: in het blok `::: bronnen` van elk verhaal en in Studio (Bibliotheek → Bronnen). Elke bewering krijgt daar een label. Wat de lezer wél ziet: overlevering wordt in de tekst zelf zo genoemd ("het verhaal gaat…"), en samengestelde scènes hebben hun label.
 
 | Label | Betekenis | Voorbeeld |
 |---|---|---|
@@ -156,7 +156,7 @@ Elke bewering krijgt in *Hoe we dit weten* een label:
 
 - [ ] Kort, middel (en eventueel lang) staan en lezen los
 - [ ] Titel, ondertitel en intro kloppen met de inhoud (geen gap die niet gesloten wordt)
-- [ ] *Hoe we dit weten* is compleet en gelabeld; tweede lezer heeft gekeken
+- [ ] Bronnen (intern, `::: bronnen`) zijn compleet en gelabeld; tweede lezer heeft gekeken
 - [ ] Samengestelde scènes zijn gemarkeerd
 - [ ] Beeld past, herkomst genoteerd
 - [ ] AI-toets gedaan (hardop gelezen)
