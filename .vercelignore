@@ -1,6 +1,6 @@
 # Interne bestanden horen niet op de publieke site.
-# Studio 2.0 wordt als apart, afgeschermd Vercel-project gedeployed.
+# studio/ blijft meegaan: op de publieke site zit /studio achter de redactie-login (middleware.js);
+# het losse Studio-project (rootDirectory studio) heeft die map nodig.
 docs/
 tools/
 content/
-studio/
