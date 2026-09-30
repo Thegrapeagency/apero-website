@@ -76,6 +76,9 @@
 | **"Met je handen op je rug"** (jenever buigen) | Niet in de bronnen: het gaat om drinken zonder handen. Gecorrigeerd. |
 | **"Een uur rijden" naar Volos** | Het is ruim driehonderd kilometer. Gecorrigeerd vóór publicatie. |
 | **Zeigarnik-effect als ontwerpprincipe** | Overwogen voor "cliffhangers" tussen versies. Na lezing van de meta-analyse (2025) vervangen door hervatten (Ovsiankina). |
+| **Klok zonder uitleg** | Op de voorpagina verving de klok de enige zin die zegt wat APÉRO is. Een nieuwe bezoeker zag "Athene, 18:14" zonder te weten waar hij was. De definitie staat nu vast onder de klok. |
+| **Klok 's avonds** | Na het uur zei de klok alleen twee tijden. Nu: "Het uur is voorbij. Morgen weer, rond zes." en overdag "Nog vier uur, dan begint het." |
+| **Studio: nieuw idee onzichtbaar** | Bij de gebruikerstest bleef een oude zoekterm actief en belandde het nieuwe idee in het ingeklapte deel van de kolom. Nieuwe ideeën staan nu bovenaan, en filters worden gewist. |
 | **`.vercelignore` met `studio/`** | Hield ook het losse Studio-project leeg. Vervangen door login-bescherming via middleware. |
 
 ## Niet gedaan (bewust)

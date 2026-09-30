@@ -342,7 +342,8 @@ function voorpagina() {
   const dranken = [['ouzo', 'athene-1814'], ['vermut', 'spanje-1974-en-nu'], ['jenever', 'jenever-en-het-loon'], ['ombra', 'ombra'], ['atay', 'opening-zonder-alcohol'], ['Negroni', 'de-graaf-en-de-soda'], ['pastis', 'dranken-uit-een-verbod']];
   const body = `<section class="opening"><div class="w"><div class="grid">
 <div>
-<p class="klok" id="klok"><span class="punt" aria-hidden="true"></span><span>Een magazine over het uur tussen werk en diner.</span></p>
+<p class="klok" id="klok"><span class="punt" aria-hidden="true"></span><span>Het uur tussen werk en diner.</span></p>
+<p class="wat">APÉRO is een magazine over het uur tussen werk en diner, van Porto tot Beiroet. In juni 2027 staat het op tafel in Utrecht. <a href="/verhaal.html">Over APÉRO</a></p>
 <span class="lbl">${esc(hoofd.kicker)}</span>
 <h1 class="kop-xl">${esc(hoofd.titel)}</h1>
 <p class="stand">${esc(hoofd.ondertitel)}</p>

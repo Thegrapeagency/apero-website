@@ -155,7 +155,7 @@
     var items = gefilterd();
     if (S.ui.view === 'bord') {
       h += '<div class="bord">' + STATUS.map(function (s) {
-        var k = items.filter(function (i) { return i.status === s; }).sort(function (a, b) { return (a.prioriteit || 9) - (b.prioriteit || 9) || (a.datum || a.maand || 'z').localeCompare(b.datum || b.maand || 'z'); });
+        var k = items.filter(function (i) { return i.status === s; }).sort(function (a, b) { return (b.nieuw || 0) - (a.nieuw || 0) || (a.prioriteit || 9) - (b.prioriteit || 9) || (a.datum || a.maand || 'z').localeCompare(b.datum || b.maand || 'z'); });
         var max = (s === 'idee' ? 8 : s === 'gepubliceerd' ? 5 : 99), alles = S.ui.open && S.ui.open[s];
         var zicht = alles ? k : k.slice(0, max);
         return '<section class="kolom" data-status="' + s + '"><h3>' + STATUSNAAM[s] + '<span>' + k.length + '</span></h3>' + zicht.map(itemKaart).join('') +
@@ -358,7 +358,7 @@
     if (act === 'sluit') sluitLade();
     if (act === 'nieuw-idee') {
       openLade('Nieuw idee', '<form id="ideeform">' + veld('titel', 'Werktitel', '') + veld('reeks', 'Reeks', 'om-zes-uur', 'select', S.reeksen.map(function (r) { return [r.id, r.naam]; })) + veld('invalshoek', 'In één of twee zinnen: wat is de invalshoek?', '', 'area') + '<div class="knoppen"><button class="knop" type="submit">Zet in de contentbank</button></div><p class="uitleg">Meer hoeft niet. De rest vul je in als het idee verder komt.</p></form>');
-      $('#ideeform').addEventListener('submit', function (ev) { ev.preventDefault(); var f = new FormData(ev.target); if (!f.get('titel').trim()) { toast('Geef het een werktitel.'); return; } S.items.unshift({ id: uid('cb'), titel: f.get('titel').trim(), reeks: f.get('reeks'), status: 'idee', prioriteit: 2, invalshoek: f.get('invalshoek'), plekken: [], versies: {}, social: [] }); bewaar(); sluitLade(); location.hash = '#verhalen'; route(); toast('In de contentbank gezet.'); });
+      $('#ideeform').addEventListener('submit', function (ev) { ev.preventDefault(); var f = new FormData(ev.target); if (!f.get('titel').trim()) { toast('Geef het een werktitel.'); return; } S.items.unshift({ id: uid('cb'), nieuw: Date.now(), titel: f.get('titel').trim(), reeks: f.get('reeks'), status: 'idee', prioriteit: 2, invalshoek: f.get('invalshoek'), plekken: [], versies: {}, social: [] }); bewaar(); sluitLade(); S.ui.q = ''; S.ui.reeks = ''; S.ui.prio = ''; S.ui.fest = false; S.ui.view = 'bord'; if (location.hash !== '#verhalen') location.hash = '#verhalen'; else route(); toast('In de contentbank gezet.'); });
       setTimeout(function () { $('#ideeform input').focus(); }, 60);
     }
     if (act === 'social-nieuw' || act === 'nb-nieuw') {

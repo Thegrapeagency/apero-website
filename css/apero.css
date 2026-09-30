@@ -77,6 +77,8 @@ a{color:inherit}
 .klok .punt{width:8px;height:8px;border-radius:50%;background:var(--terracotta);flex:none;box-shadow:0 0 0 0 rgba(196,95,56,.4);animation:puls 2.6s ease-out infinite}
 @keyframes puls{0%{box-shadow:0 0 0 0 rgba(196,95,56,.45)}70%{box-shadow:0 0 0 9px rgba(196,95,56,0)}100%{box-shadow:0 0 0 0 rgba(196,95,56,0)}}
 @media(prefers-reduced-motion:reduce){.klok .punt{animation:none}}
+.opening .wat{font-size:15px;line-height:1.55;color:var(--ink-70);max-width:46ch;margin:-6px 0 26px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.opening .wat a{color:var(--terracotta);font-weight:600;white-space:nowrap}
 .opening .kop-xl{margin:10px 0 16px}
 .opening .stand{max-width:30ch}
 .opening .acties{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:26px}
