@@ -1,0 +1,6 @@
+# Interne bestanden horen niet op de publieke site.
+# Studio 2.0 wordt als apart, afgeschermd Vercel-project gedeployed.
+docs/
+tools/
+content/
+studio/
