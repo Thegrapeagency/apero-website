@@ -23,7 +23,7 @@ In Athene wordt de rekening vaak gewoon door het aantal mensen gedeeld. Dat heet
 
 In Spanje gaan rondjes om, of wordt er gedeeld, *a escote*. Wie van plan is meerdere bars te doen, legt vooraf geld in een pot, de *bote*. Daaruit wordt de hele middag betaald en niemand hoeft te onthouden wie aan de beurt is.
 
-In een Nederlands café geven mensen rondjes. Engelsen noemen apart betalen ondertussen al eeuwen *going Dutch*.
+In een Nederlands café geven mensen rondjes. Engelsen noemen apart betalen ondertussen *going Dutch*.
 
 In Marokko betaal je als gast niet voor je thee. Dat is niet ter discussie.
 
@@ -51,7 +51,7 @@ Voor een enkele bar doe je dat niet. Dan gaan er rondjes (*una ronda invita uno,
 
 ## Nederland: rondjes, en een misverstand
 
-Het Engelse *going Dutch* (ieder betaalt zijn eigen deel) is een uitdrukking uit een tijd dat Engelsen en Nederlanders rivalen waren, en "Dutch" in het Engels een scheldwoord kon zijn. Er bestonden ook *Dutch courage* (drankmoed) en *a Dutch treat* (een traktatie waarbij je zelf betaalt).
+Het Engels kent een rijtje uitdrukkingen met "Dutch" die niet vriendelijk bedoeld zijn, een erfenis van de rivaliteit tussen beide zeevarende landen: *Dutch courage* (drankmoed), *a Dutch treat* (een traktatie waarbij je zelf betaalt) en *going Dutch*, ieder betaalt zijn eigen deel. Die laatste is jonger dan je zou denken, van rond 1900.
 
 In een Nederlands café is het beeld eerder omgekeerd. Er gaan rondjes. Iemand staat op, vraagt "wat willen jullie?", en komt terug met een dienblad. De volgende keer is een ander aan de beurt. Wie drie rondjes overslaat, valt op. Wie steeds als eerste opstaat, ook.
 
@@ -72,7 +72,7 @@ Het enige wat overal fout is, is de rekenmachine op je telefoon.
 - **Feit** · Naamdag: de jarige betaalt: [Keep It Greece](https://keepitgreece.com/article/the-name-day-guest-guide-how-to-celebrate-like-a-local-in-greece/)
 - **Feit** · Rondas, *a escote*, *bote* bij meerdere bars: [WordReference-forum](https://forum.wordreference.com/threads/pagar-a-pachas-bote-a-medias-a-escote.2105826/)
 - **Feit** · Cuadrilla en de txikitera-spaarpot in Bilbao: [La Troupe](https://www.latroupe.com/en/city-stories/txikiteros-wine-legend/); [Buber's Basque Page](https://www.buber.net/Basque/Food/Recipes/jaz.tapas.php)
-- **Feit** · *Going Dutch*, *Dutch treat*, *Dutch courage* en de Engels-Nederlandse rivaliteit: [Wikipedia, *Going Dutch*](https://en.wikipedia.org/wiki/Going_Dutch)
+- **Feit** · *Going Dutch*, *Dutch treat*, *Dutch courage*, de datering en de Engels-Nederlandse rivaliteit als achtergrond: [Wikipedia, *Going Dutch*](https://en.wikipedia.org/wiki/Going_Dutch)
 - **Observatie** · Het rondje in het Nederlandse café, en wie te vaak overslaat of te vaak opstaat. Eigen waarneming, geen onderzoek.
 - **Observatie** · Gastvrijheid aan de Marokkaanse theetafel: zie ook de APÉRO-longread *De schenkende hand* en haar bronnen.
 - **Interpretatie** · "Het doel is overal dat er niet gerekend hoeft te worden" is een redactionele lezing, geen onderzoeksuitkomst.

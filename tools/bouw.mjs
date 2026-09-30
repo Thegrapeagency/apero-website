@@ -32,6 +32,7 @@ const lijst = (s) => String(s || '').split(',').map((x) => x.trim()).filter(Bool
 const woorden = (html) => html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
 const minuten = (html) => Math.max(1, Math.round(woorden(html) / 220));
 const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+const VANDAAG = new Date().toISOString().slice(0, 10);
 const datumNL = (iso) => { const [y, m, dd] = String(iso).split('-').map(Number); return y ? `${dd} ${MAANDEN[m - 1]} ${y}` : ''; };
 const slugify = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
@@ -265,7 +266,7 @@ function artikel(v) {
 <span class="lbl">${esc(v.kicker || (r && r.naam) || '')}</span>
 <h1>${esc(v.titel)}</h1>
 ${v.ondertitel ? `<p class="stand">${esc(v.ondertitel)}</p>` : ''}
-<div class="ameta meta">${v.datum ? `<span>${datumNL(v.datum)}</span>` : ''}${plekLinks ? `<span>${plekLinks}</span>` : ''}</div>
+<div class="ameta meta">${v.datum && v.datum <= VANDAAG ? `<span>${datumNL(v.datum)}</span>` : ''}${plekLinks ? `<span>${plekLinks}</span>` : ''}</div>
 <div class="versies" role="group" aria-label="Kies hoeveel tijd je hebt">
 <span class="vl">Hoeveel tijd heb je?</span>
 <div class="vk">${vb('k')}${vb('m')}${vb('l')}</div>
@@ -415,13 +416,15 @@ const WERELDEN = [
 function steden() {
   const perStad = PLEKKEN.map((p) => ({ p, v: PUBLIEK.filter((v) => v.plekken.some((x) => (plekVan(x) || {}).naam === p.naam)) })).filter((x) => x.v.length);
   // projectie: eenvoudig equirectangulair op een vlak van 1000 x 560
-  const lon0 = -11, lon1 = 38, lat0 = 29, lat1 = 55;
+  const lon0 = -16, lon1 = 42, lat0 = 29.5, lat1 = 54.5;
+  // labelplaatsing per stad: [kant, verticale verschuiving]
+  const LABEL = { Porto: ['r', 0], Marrakech: ['r', 0], Santander: ['l', -4], Madrid: ['l', 4], Bilbao: ['r', -20], Barcelona: ['r', 6], Marseille: ['l', 4], Amsterdam: ['r', -8], Utrecht: ['r', 14], Turijn: ['l', 0], Milaan: ['l', -14], 'Venetië': ['r', -6], Florence: ['r', 8], Rome: ['r', 6], Thessaloniki: ['r', -4], Volos: ['l', 2], Athene: ['l', 8], Lesbos: ['r', 4], Beiroet: ['l', 0] };
   const X = (lon) => ((lon - lon0) / (lon1 - lon0)) * 1000;
   const Y = (lat) => ((lat1 - lat) / (lat1 - lat0)) * 560;
   const punten = perStad.map(({ p, v }) => {
     const x = X(p.lon), y = Y(p.lat), r = 5 + Math.min(v.length, 6) * 1.6;
-    const links = ['Porto', 'Marrakech', 'Madrid', 'Santander', 'Venetië', 'Marseille', 'Florence', 'Rome', 'Turijn'].includes(p.naam);
-    return `<a href="#stad-${slugify(p.naam)}" aria-label="${p.naam}, ${v.length} ${v.length === 1 ? 'verhaal' : 'verhalen'}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="var(--terracotta)" fill-opacity=".85"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(r * .36).toFixed(1)}" fill="var(--panna)"/><text x="${(x + (links ? -r - 6 : r + 6)).toFixed(1)}" y="${(y + 5).toFixed(1)}" text-anchor="${links ? 'end' : 'start'}" font-family="Bodoni Moda, serif" font-weight="700" font-size="19" fill="var(--espresso)">${p.naam}</text></a>`;
+    const [kant, dy] = LABEL[p.naam] || ['r', 0]; const links = kant === 'l';
+    return `<a href="#stad-${slugify(p.naam)}" aria-label="${p.naam}, ${v.length} ${v.length === 1 ? 'verhaal' : 'verhalen'}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="var(--terracotta)" fill-opacity=".85"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(r * .36).toFixed(1)}" fill="var(--panna)"/><text x="${(x + (links ? -r - 6 : r + 6)).toFixed(1)}" y="${(y + 5 + dy).toFixed(1)}" text-anchor="${links ? 'end' : 'start'}" font-family="Bodoni Moda, serif" font-weight="700" font-size="19" fill="var(--espresso)">${p.naam}</text></a>`;
   }).join('');
   const lengtes = [-5, 0, 5, 10, 15, 20, 25, 30, 35].map((l) => `<line x1="${X(l)}" y1="0" x2="${X(l)}" y2="560" stroke="var(--line)" stroke-dasharray="2 6"/>`).join('');
   const svg = `<svg viewBox="0 0 1000 560" role="img" aria-labelledby="kaart-titel kaart-uitleg"><title id="kaart-titel">Steden in APÉRO</title><desc id="kaart-uitleg">Elke stip is een stad waar een verhaal speelt. Hoe groter de stip, hoe meer verhalen.</desc>${lengtes}${punten}
@@ -431,7 +434,7 @@ function steden() {
 <p class="lede">Het zes-uurmoment trekt elke avond van oost naar west over de kaart. In Beiroet zit men al als Porto nog aan het werk is. Kies een stad.</p>
 </div></header>
 <section class="blok" style="padding-top:20px"><div class="w">
-<div class="kaartvlak"><div class="petals" aria-hidden="true"></div>${svg}</div>
+<div class="kaartvlak">${svg}</div>
 <div class="stad-lijst">${perStad.map(({ p, v }) => `<div class="stad" id="stad-${slugify(p.naam)}"><h3>${p.naam}<small>${p.land} · <span data-tz="${p.tz}"><span class="t"></span></span></small></h3><ul>${v.map((x) => `<li><a href="${x.url}?v=m">${esc(x.titel)}</a></li>`).join('')}</ul></div>`).join('')}</div>
 </div></section>
 ${inschenkerBlok('steden')}`;

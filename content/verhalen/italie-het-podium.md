@@ -20,7 +20,7 @@ bijschrift:
 
 ::: kort
 
-<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het uur waarop Italië zichzelf wordt. Stap binnen in de wereld waar het bittere geen bijwerking is, maar het punt.</p>
+<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het uur waarop Italië zichzelf wordt. Bitter is hier geen bijwerking.</p>
 <blockquote>
 <p>Op 14 november 1867 werd in Milaan een jongen geboren in een winkelpassage. Niet ernaast, niet erboven: erin. Davide Campari, eerste burger van de Galleria. Het aperitief heeft in Italië een geboorteakte, en er staat een adres op.</p>
 </blockquote>
@@ -28,7 +28,7 @@ bijschrift:
 
 ::: middel
 
-<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het uur waarop Italië zichzelf wordt. Stap binnen in de wereld waar het bittere geen bijwerking is, maar het punt.</p>
+<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het uur waarop Italië zichzelf wordt. Bitter is hier geen bijwerking.</p>
 <blockquote>
 <p>Op 14 november 1867 werd in Milaan een jongen geboren in een winkelpassage. Niet ernaast, niet erboven: erin. Davide Campari, eerste burger van de Galleria. Het aperitief heeft in Italië een geboorteakte, en er staat een adres op.</p>
 </blockquote>
@@ -45,7 +45,7 @@ bijschrift:
 
 ::: lang
 
-<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het uur waarop Italië zichzelf wordt. Stap binnen in de wereld waar het bittere geen bijwerking is, maar het punt.</p>
+<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het uur waarop Italië zichzelf wordt. Bitter is hier geen bijwerking.</p>
 <blockquote>
 <p>Op 14 november 1867 werd in Milaan een jongen geboren in een winkelpassage. Niet ernaast, niet erboven: erin. Davide Campari, eerste burger van de Galleria. Het aperitief heeft in Italië een geboorteakte, en er staat een adres op.</p>
 </blockquote>
