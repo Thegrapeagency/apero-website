@@ -145,6 +145,13 @@ section.blok{padding:56px 0;border-bottom:1px solid var(--line)}
 .wereld p{margin:0;font-size:14.5px;color:var(--ink-70);line-height:1.5}
 .wereld:hover .kop-m{color:var(--mattone)}
 
+/* ingangen: lexicon en Aperokiezer */
+.ingang{display:flex;flex-direction:column;gap:10px}
+.ingang .boog{display:block;height:220px;margin-bottom:8px}
+.ingang p{margin:0;color:var(--ink-70);font-size:15.5px;line-height:1.55;max-width:46ch}
+.ingang .ingang-links{display:flex;gap:18px;flex-wrap:wrap}
+.ingang:hover .kop-m{color:var(--mattone)}
+
 /* deuren: waar wil je beginnen */
 .deuren{display:grid;gap:14px}
 @media(min-width:760px){.deuren{grid-template-columns:repeat(2,1fr);gap:18px}}

@@ -161,7 +161,7 @@ export function aanmeldForm(bron, licht) {
 export function inschenkerBlok(bron) {
   return `<section class="inschenker" aria-labelledby="ins-${bron}"><div class="petals" aria-hidden="true"></div><div class="w"><div class="in">
 <div><span class="lbl">De Inschenker · de nieuwsbrief</span><h2 class="kop-l" id="ins-${bron}">Eén verhaal, net voordat het uur begint.</h2>
-<p>Eens in de twee weken op donderdagmiddag. Het nieuwste verhaal, één ding om zelf te proberen, en wat we onderweg tegenkwamen. Wie meeleest, hoort ook als eerste wat er in juni 2027 op tafel komt.</p></div>
+<p>Eens in de twee weken op donderdagmiddag. Het nieuwste verhaal, één ding om zelf te proberen, en wat we onderweg tegenkwamen. Wie meeleest, hoort ook als eerste nieuws over juni 2027.</p></div>
 ${aanmeldForm(bron)}
 </div></div></section>`;
 }
@@ -183,6 +183,7 @@ export function html({ titel, omschrijving, pad, beeld, actief, body, type = 'we
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="/apero-tokens.css"><link rel="stylesheet" href="/css/apero.css">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest-verhalen.json"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="APÉRO">
 ${extraHead}${ld}
 </head>
 <body class="apero-body">
@@ -383,6 +384,17 @@ ${kaart(tweede).replace('class="kaart rv"', 'class="kaart groot rv"').replace('<
 <div class="werelden">${WERELDEN.map(([u, img, n, zin]) => `<a class="wereld rv" href="${u}"><div class="boog"><img src="/${img}" alt="" loading="lazy" decoding="async"><div class="wash"></div></div><h3 class="kop-m">${n}</h3><p>${zin}</p></a>`).join('')}</div>
 </div></section>
 
+<section class="blok"><div class="w"><div class="twee">
+<div class="ingang rv"><a class="boog" href="/lexicon.html" aria-label="Naar het lexicon"><img src="/assets/motion/lexicon-poster.jpg" alt="" loading="lazy" decoding="async"><div class="wash"></div></a>
+<span class="lbl">Het lexicon</span><h2 class="kop-m">Wat is louchen eigenlijk?</h2>
+<p>Tremoços, cicchetti, apericena, de planche. De woorden die je aan tafel hoort maar zelden uitgelegd krijgt, staan in het lexicon. Kort, en zonder college.</p>
+<a class="tekstlink" href="/lexicon.html">Blader door het lexicon</a></div>
+<div class="ingang rv"><a class="boog" href="/app.html" aria-label="Naar de Aperokiezer"><img src="/assets/fresco/fresco-02.jpg" alt="" loading="lazy" decoding="async"><div class="wash"></div></a>
+<span class="lbl">De Aperokiezer</span><h2 class="kop-m">Hoe open jij de avond?</h2>
+<p>Tweeëndertig vragen over smaak, gezelschap en tempo. Aan het eind weet je welke van de zes werelden het dichtst bij je zit, en wat je daarover kunt lezen.</p>
+<p class="ingang-links"><a class="tekstlink" href="/app.html">Doe de Aperokiezer</a><a class="tekstlink" href="/atlas.html">Bekijk de Atlas</a></p></div>
+</div></div></section>
+
 <section class="blok"><div class="w">
 <div class="bkop"><div><span class="lbl">De reeksen</span><h2 class="kop-l">Terugkerende tafels</h2></div></div>
 <div class="reeksen">${REEKSEN.filter((r) => telReeks(r.id)).map((r, i) => `<a class="reeks" href="/verhalen/?reeks=${r.id}"><span class="n">${['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'][i]}</span><div><h3>${esc(r.naam)}</h3><p>${esc(r.kort)}</p></div><span class="tel">${telReeks(r.id)}</span></a>`).join('')}</div>
@@ -392,8 +404,8 @@ ${inschenkerBlok('voorpagina')}
 
 <section class="blok"><div class="w"><div class="spoor">
 <div class="datum rv">Juni<br><em>2027</em></div>
-<div class="rv"><span class="lbl">Utrecht</span><h2 class="kop-l" style="margin:10px 0 14px">Wat je hier leest, komt dan op tafel.</h2>
-<p class="lede">Een paar dagen lang wordt het uur tussen werk en diner een plek waar je naartoe kunt. Met de dranken, de borden en de gebruiken uit deze verhalen. Meer zeggen we nog niet.</p>
+<div class="rv"><span class="lbl">Utrecht</span><h2 class="kop-l" style="margin:10px 0 14px">Dan komt APÉRO naar Utrecht.</h2>
+<p class="lede">Een paar dagen lang wordt het uur tussen werk en diner een plek waar je naartoe kunt. Het programma maken we nog. Meer zeggen we nu niet.</p>
 <p style="margin-top:22px"><a class="tekstlink" href="/festival.html">Wat we al wel weten</a></p></div>
 </div></div></section>`;
   const ld = `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'APÉRO Culture', url: SITE, inLanguage: 'nl', description: 'Een magazine over het uur tussen werk en diner.' })}</script>`;

@@ -79,6 +79,8 @@
 | **Klok zonder uitleg** | Op de voorpagina verving de klok de enige zin die zegt wat APÉRO is. Een nieuwe bezoeker zag "Athene, 18:14" zonder te weten waar hij was. De definitie staat nu vast onder de klok. |
 | **Klok 's avonds** | Na het uur zei de klok alleen twee tijden. Nu: "Het uur is voorbij. Morgen weer, rond zes." en overdag "Nog vier uur, dan begint het." |
 | **Studio: nieuw idee onzichtbaar** | Bij de gebruikerstest bleef een oude zoekterm actief en belandde het nieuwe idee in het ingeklapte deel van de kolom. Nieuwe ideeën staan nu bovenaan, en filters worden gewist. |
+| **Programmabeloftes over het festival** | Zinnen als "wat je in de verhalen leest, kom je er tegen" en "met de dranken en borden uit deze verhalen" beloofden een programma dat nog niet bestaat. Verwijderd: het festival wordt alleen aangekondigd. |
+| **Inhoud van de oude Verhaal-pagina** | "Eén gebaar, duizend vormen", de drie vragen en zeven tijdlijnmomenten waren bij de overstap weggevallen. Teruggezet op de Over-pagina, opnieuw geschreven in de APÉRO-toon. Ook het lexicon, de Aperokiezer en de Atlas hebben weer een ingang op de voorpagina, en verhalen zijn weer op het beginscherm te zetten. |
 | **`.vercelignore` met `studio/`** | Hield ook het losse Studio-project leeg. Vervangen door login-bescherming via middleware. |
 
 ## Niet gedaan (bewust)
