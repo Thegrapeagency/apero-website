@@ -831,12 +831,13 @@ fieldset.strip-veld{border:0;margin:0}
      Formspree   https://formspree.io/f/xxxxxxx
      Basin       https://usebasin.com/f/xxxxxxx
      Google Apps Script (naar een Google Sheet) /exec-URL
+     -> zie aanmeldingen-naar-sheet.gs voor het script
    Leeg = aanmelden staat uit en de bezoeker krijgt een melding.
 
    CONTACT_EMAIL: wordt getoond als er iets misgaat, zodat gasten
    zich altijd nog per mail kunnen aanmelden.
    ============================================================ */
-var AANMELD_ENDPOINT = '';
+var AANMELD_ENDPOINT = '/api/aanmelden'; // schrijft via api/aanmelden.mjs naar de Google Sheet
 var CONTACT_EMAIL = '';
 
 var HALTES = [
@@ -1043,17 +1044,23 @@ var VERTREK = new Date('2026-12-01T17:00:00+01:00');
     var data = new FormData(form);
     data.append('event', 'Volgende Halte · 1 december 2026');
     data.append('kaartnummer', $('kaartnr').textContent);
+    data.append('bron', new URLSearchParams(location.search).get('bron') || 'direct');
     data.append('_subject', (reistMee() ? 'Aanmelding' : 'Afmelding') + ' Volgende Halte: ' + form.voornaam.value + ' ' + form.achternaam.value + ' (' + form.bedrijf.value + ')');
 
     knop.disabled = true;
     $('knoptekst').textContent = 'Bezig met stempelen…';
 
-    fetch(AANMELD_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); gestempeld(); })
-      .catch(function () {
+    var verzoek = fetch(AANMELD_ENDPOINT, { method: 'POST', body: new URLSearchParams(data), headers: { Accept: 'application/json' } })
+      .then(function (r) {
+        if (r.status === 503) { var e = new Error('uit'); e.uit = true; throw e; }
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+      });
+    verzoek
+      .then(function () { gestempeld(); })
+      .catch(function (err) {
         knop.disabled = false;
         $('knoptekst').textContent = reistMee() ? 'Stempel mijn kaart' : 'Meld me af';
-        toonFout('Oei, de automaat hapert. Probeer het zo nog eens.' + mailLink());
+        toonFout((err && err.uit ? 'De stempelautomaat is nog niet aangesloten: aanmelden is nog niet geactiveerd.' : 'Oei, de automaat hapert. Probeer het zo nog eens.') + mailLink());
       });
   });
 
