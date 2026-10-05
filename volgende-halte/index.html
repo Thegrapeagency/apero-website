@@ -143,6 +143,7 @@ a{color:inherit}
   box-shadow:inset 0 0 0 2px rgba(255,255,255,.15);
 }
 .samenwerking-binnen .label{color:#ffb3b4;font-weight:600}
+.samenwerking-binnen .breek{width:1px;height:18px;background:rgba(255,255,255,.35);margin:0 6px}
 .samenwerking-binnen .stip{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--rood);box-shadow:0 0 0 2px #fff}
 
 /* ---------- Hero: de kaart ---------- */
@@ -155,7 +156,7 @@ a{color:inherit}
 .kaart{
   position:relative;
   container-type:inline-size;
-  aspect-ratio:1920/1240;
+  aspect-ratio:1920/1350;
   border-radius:6px;
   overflow:hidden;
   box-shadow:0 30px 60px rgba(0,0,0,.5), 0 8px 18px rgba(0,0,0,.35);
@@ -191,31 +192,25 @@ a{color:inherit}
 @keyframes ping{0%{transform:scale(.7);opacity:.9}80%,100%{transform:scale(1.6);opacity:0}}
 .halte-knop:hover::before,.halte-knop:focus-visible::before{animation:none;opacity:1;transform:scale(1.15)}
 
-.kaart-intro{display:none}
-
-/* Op brede schermen: de intro in het lege krantenvlak links op de kaart */
+.kaart-link{display:none}
+/* Op brede schermen: een echte knop op de plek van "[link]" in de uitnodiging */
 @media (min-width:1000px){
-  .kaart-intro{
-    display:flex;flex-direction:column;
-    position:absolute;
-    left:4.9%;top:32.6%;
-    width:28.6%;height:55%;
-    font-size:1.13cqw;
-    line-height:1.45;
-    color:var(--navy);
+  .kaart-link{
+    display:inline-flex;align-items:center;gap:.45em;
+    position:absolute;left:14.5%;top:76.75%;
+    translate:0 -50%;
+    font-family:var(--kop);font-weight:800;text-transform:uppercase;letter-spacing:.04em;
+    font-size:1.05cqw;line-height:1;white-space:nowrap;
+    color:#fff;background:var(--rood);text-decoration:none;
+    border:.16cqw solid var(--navy);border-radius:999px;
+    padding:.4em .85em .38em;
+    box-shadow:0 .25cqw 0 var(--navy);
+    animation:wenk 2.4s ease-in-out infinite;
   }
-  .kaart-intro h2{
-    margin:0 0 .35em;
-    font-family:var(--kop);font-style:italic;font-weight:900;
-    font-size:3.1em;line-height:.92;letter-spacing:-.01em;
-    color:var(--rood);
-    text-transform:uppercase;
-  }
-  .kaart-intro h2 span{color:var(--navy)}
-  .kaart-intro p{margin:0 0 .75em}
-  .kaart-intro strong{font-weight:600}
-  .kaart-intro .knop{margin-top:auto;align-self:flex-start;font-size:1.5em}
+  .kaart-link:hover{background:var(--rood-donker);animation:none}
+  .kaart-link svg{width:1em;height:1em}
 }
+@keyframes wenk{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 
 /* ---------- Knoppen ---------- */
 .knop{
@@ -499,7 +494,9 @@ fieldset.strip-veld{border:0;margin:0}
 .instapbewijs .knop{font-size:18px;box-shadow:0 4px 0 #000;border-color:#000}
 
 /* ---------- Partners ---------- */
-.conducteurs{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.conducteurs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.dank-kop{margin:36px 0 18px}
+.logo-kaart.navy .logo-vlak{background:#1a2463}
 .logo-kaart{
   display:flex;flex-direction:column;
   border:3px solid var(--navy);border-radius:8px;overflow:hidden;
@@ -564,7 +561,7 @@ fieldset.strip-veld{border:0;margin:0}
     font-size:clamp(40px,11vw,64px);line-height:.88;letter-spacing:-.015em;
   }
   .mobiel-kop h1 small{display:block;font-style:normal;font-weight:800;font-size:.5em;letter-spacing:-.01em;margin-top:6px}
-  .kaart{aspect-ratio:1180/1240;border-radius:0 0 6px 6px}
+  .kaart{aspect-ratio:1180/1350;border-radius:0 0 6px 6px}
   .kaart-vlak{width:162.712%;left:-55.932%}
   .halte-knop{width:5.2%}
   .dienstregeling{grid-template-columns:1fr 1fr}
@@ -598,7 +595,7 @@ fieldset.strip-veld{border:0;margin:0}
   .conducteurs{grid-template-columns:1fr}
   .vel-kop .label{font-size:13px}
   .samenwerking-binnen{font-size:13.5px;gap:4px 10px;padding:10px 12px}
-  .samenwerking-binnen .label{flex-basis:100%}
+  .samenwerking-binnen .breek{flex-basis:100%;height:0;margin:0}
   .samenwerking-binnen .stip{width:6px;height:6px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -630,12 +627,12 @@ fieldset.strip-veld{border:0;margin:0}
 </header>
 
 <div class="samenwerking">
-  <p class="samenwerking-binnen" style="margin:0"><span class="label">Een samenwerking van</span> Matter Events <span class="stip" aria-hidden="true"></span> De Hallen Studio's <span class="stip" aria-hidden="true"></span> Kitchen Creative Catering <span class="stip" aria-hidden="true"></span> Meisjes van de Wijn <span class="stip" aria-hidden="true"></span> Production People</p>
+  <p class="samenwerking-binnen" style="margin:0">Meisjes van de Wijn <span class="stip" aria-hidden="true"></span> Matter <span class="stip" aria-hidden="true"></span> De Hallen Studio's <span class="label">presenteren</span><span class="breek" aria-hidden="true"></span><span class="label">met dank aan</span> Kitchen Creative Catering <span class="stip" aria-hidden="true"></span> Production People</p>
 </div>
 
 <section class="hero" aria-label="Uitnodiging">
   <div class="mobiel-kop" aria-hidden="false">
-    <div class="regel"><span>Relatieborrel</span><span>De Hallen Studios</span></div>
+    <div class="regel"><span>Relatieborrel</span><span>De Hallen Studio's</span></div>
     <div class="blok">
       <div class="andreas" aria-hidden="true"><span></span><span>✕</span><span>✕</span><span>✕</span><span></span></div>
       <h1>Volgende Halte<small>Een avond door Amsterdam</small></h1>
@@ -645,8 +642,8 @@ fieldset.strip-veld{border:0;margin:0}
 
   <div class="kaart" id="kaart">
     <div class="kaart-vlak">
-      <img src="img/kaart.jpg" width="1600" height="1033" alt="Tramkaart van Amsterdam met de gastlijn: halte 0 De Hallen Studio's (17:00 opstappen), halte 1 Zeedijk, halte 2 De Pijp (17:45) en halte 3 Jordaan (18:30).">
-      <svg class="kaart-svg" viewBox="0 0 1920 1240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <img src="img/kaart.jpg" width="1600" height="1125" alt="Uitnodiging Volgende Halte: Meisjes van de Wijn, Matter en De Hallen Studio's presenteren een avond door Amsterdam op dinsdag 1 december 2026, met een tramkaart van de gastlijn: halte 0 De Hallen Studio's (17:00 opstappen), halte 1 Zeedijk, halte 2 De Pijp (17:45) en halte 3 Jordaan (18:30).">
+      <svg class="kaart-svg" viewBox="0 0 1920 1350" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <path id="rit-a" d="M718 675 L830 633 L933 595 L975 573 L1020 662 L1092 762 L1187 690 L1328 603 L1420 568 L1470 482 L1512 390" fill="none"/>
         <path id="rit-b" d="M1512 390 L1470 482 L1420 568 L1328 603 L1338 660 L1318 773 L1287 933 L1276 1105" fill="none"/>
         <path id="rit-c" d="M1276 1105 L1287 933 L1318 773 L1338 660 L1328 603 L1322 493 L1315 383 L1292 352 L1300 315 L1318 290 L1293 272 L1213 236 L1105 183" fill="none"/>
@@ -666,19 +663,12 @@ fieldset.strip-veld{border:0;margin:0}
           </g>
         </g>
       </svg>
-      <button class="halte-knop" type="button" data-halte="0" style="left:37.40%;top:54.44%" aria-label="Halte 0: De Hallen Studio's, 17:00 opstappen"></button>
-      <button class="halte-knop" type="button" data-halte="1" style="left:78.75%;top:31.45%" aria-label="Halte 1: Zeedijk"></button>
-      <button class="halte-knop" type="button" data-halte="2" style="left:66.46%;top:89.11%" aria-label="Halte 2: De Pijp"></button>
-      <button class="halte-knop" type="button" data-halte="3" style="left:57.55%;top:14.76%" aria-label="Halte 3: Jordaan"></button>
+      <button class="halte-knop" type="button" data-halte="0" style="left:37.40%;top:50.00%" aria-label="Halte 0: De Hallen Studio's, 17:00 opstappen"></button>
+      <button class="halte-knop" type="button" data-halte="1" style="left:78.75%;top:28.89%" aria-label="Halte 1: Zeedijk"></button>
+      <button class="halte-knop" type="button" data-halte="2" style="left:66.46%;top:81.85%" aria-label="Halte 2: De Pijp"></button>
+      <button class="halte-knop" type="button" data-halte="3" style="left:57.55%;top:13.56%" aria-label="Halte 3: Jordaan"></button>
+      <a class="kaart-link" href="#aanmelden">Reserveer hier <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8h9M8 3.5 12.5 8 8 12.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
-  </div>
-
-  <div class="kaart-intro">
-    <h2>Ding, ding, <span>ding!</span></h2>
-    <p><strong>Instappen maar.</strong> Op dinsdag 1 december nemen we je mee op reis. Geen gewone tramrit door Amsterdam, maar een avond langs verschillende haltes en stadsdelen, binnen de muren van de iconische oude tramremise van De Hallen.</p>
-    <p>Bij iedere halte wacht een nieuwe setting, met gerechten van <strong>Kitchen Creative</strong> én natuurlijk bijpassende wijnen van <strong>Meisjes van de Wijn</strong>.</p>
-    <p>Eén avond. Meerdere haltes. Een culinaire tramreis door Amsterdam.</p>
-    <a class="knop" href="#aanmelden"><span class="bol" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8h9M8 3.5 12.5 8 8 12.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Reserveer je plek</a>
   </div>
 </section>
 
@@ -687,9 +677,12 @@ fieldset.strip-veld{border:0;margin:0}
   <section class="vel intro-mobiel" aria-labelledby="intro-titel">
     <div class="vel-kop"><span class="label">Uitnodiging</span><span class="label">Instappen 17:00</span></div>
     <h2 class="titel" id="intro-titel">Ding, ding, ding!</h2>
-    <p><strong>Instappen maar.</strong> Op dinsdag 1 december nemen we je mee op reis. Geen gewone tramrit door Amsterdam, maar een avond langs verschillende haltes en stadsdelen, binnen de muren van de iconische oude tramremise van De Hallen.</p>
-    <p>Bij iedere halte wacht een nieuwe setting, met gerechten van <strong>Kitchen Creative</strong> én natuurlijk bijpassende wijnen van <strong>Meisjes van de Wijn</strong>.</p>
-    <p style="margin-bottom:22px">Eén avond. Meerdere haltes. Een culinaire tramreis door Amsterdam.</p>
+    <p><strong>Instappen maar.</strong> Op <em>dinsdag 1 december</em> nemen we je mee op reis.</p>
+    <p>Geen gewone tramrit door Amsterdam, maar een avond langs verschillende haltes en stadsdelen binnen de muren van de iconische oude tramremise van De Hallen.</p>
+    <p>Samen met <em>Meisjes van de Wijn</em>, <em>Matter Events</em> en <em>De Hallen Studio's</em> sluiten we het jaar graag af met onze favoriete relaties. En dat doen we natuurlijk niet met zomaar een borrel.</p>
+    <p>Bij iedere halte wacht een nieuwe setting, met gerechten van <em>Kitchen Creative</em> én natuurlijk bijpassende wijnen van <em>Meisjes van de Wijn</em>.</p>
+    <p>Zorg dat je op tijd bent, want de tram wacht niet!</p>
+    <p style="margin-bottom:22px"><strong>Eén avond. Meerdere haltes. Een culinaire tramreis door Amsterdam.</strong></p>
     <a class="knop" href="#aanmelden"><span class="bol" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8h9M8 3.5 12.5 8 8 12.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Reserveer je plek</a>
   </section>
 
@@ -790,24 +783,24 @@ fieldset.strip-veld{border:0;margin:0}
     <div class="vel-kop"><span class="label">Uw conducteurs vanavond</span></div>
     <h2 class="titel" id="partners-titel">We zien je graag aan boord!</h2>
     <div class="conducteurs">
-      <div class="logo-kaart">
-        <div class="logo-vlak"><img src="img/logo-de-hallen-studios.png" width="191" height="133" alt="De Hallen Studio's"></div>
-        <div class="logo-onder"><b>De Hallen Studio's</b>De oude tramremise, jullie remise voor één avond.</div>
-      </div>
-      <div class="logo-kaart">
-        <div class="logo-vlak">
-          <!-- Woordmerk als plaatshouder: vervang door het echte logo, bv. <img src="img/logo-meisjes-van-de-wijn.png" alt="Meisjes van de Wijn"> -->
-          <div class="woordmerk" role="img" aria-label="Meisjes van de Wijn"><span class="w1">Meisjes</span><span class="w2">van de</span><span class="w3">Wijn</span></div>
-        </div>
+      <div class="logo-kaart navy">
+        <div class="logo-vlak"><img src="img/logo-meisjes-van-de-wijn.png" width="120" height="120" alt="Meisjes van de Wijn"></div>
         <div class="logo-onder"><b>Meisjes van de Wijn</b>Bij iedere halte het juiste glas.</div>
       </div>
       <div class="logo-kaart grijs">
         <div class="logo-vlak"><img src="img/logo-matter.gif" width="220" height="61" alt="Matter Events"></div>
         <div class="logo-onder"><b>Matter Events</b>Zet de wissels om en houdt de dienstregeling strak.</div>
       </div>
+      <div class="logo-kaart">
+        <div class="logo-vlak"><img src="img/logo-de-hallen-studios.png" width="191" height="133" alt="De Hallen Studio's"></div>
+        <div class="logo-onder"><b>De Hallen Studio's</b>De oude tramremise, jullie remise voor één avond.</div>
+      </div>
+    </div>
+    <div class="vel-kop dank-kop"><span class="label">Met dank aan</span></div>
+    <div class="conducteurs">
       <div class="logo-kaart donker">
         <div class="logo-vlak"><img src="img/logo-kitchen-creative-catering.jpg" width="600" height="360" alt="Kitchen Creative Catering"></div>
-        <div class="logo-onder"><b>Kitchen Creative</b>Een nieuw gerecht bij iedere halte.</div>
+        <div class="logo-onder"><b>Kitchen Creative Catering</b>Een nieuw gerecht bij iedere halte.</div>
       </div>
       <div class="logo-kaart">
         <div class="logo-vlak">
@@ -826,7 +819,7 @@ fieldset.strip-veld{border:0;margin:0}
     <span>17:00 – 19:15</span>
     <a href="https://www.google.com/maps/search/?api=1&query=Hannie+Dankbaarpassage+18+Amsterdam" target="_blank" rel="noopener">Hannie Dankbaarpassage 18</a>
   </div>
-  <p>Volgende Halte · Een samenwerking van Matter Events, De Hallen Studio's, Kitchen Creative Catering, Meisjes van de Wijn en Production People</p>
+  <p>Volgende Halte · Meisjes van de Wijn, Matter &amp; De Hallen Studio's presenteren · Met dank aan Kitchen Creative Catering en Production People</p>
 </footer>
 
 <script>
@@ -897,7 +890,7 @@ var VERTREK = new Date('2026-12-01T17:00:00+01:00');
     var deel = dagen > 1 ? 'Nog ' + dagen + ' dagen tot vertrek' :
                dagen === 1 ? 'Morgen vertrekt de tram!' :
                dagen === 0 ? 'Vandaag vertrekt de tram!' : 'Bedankt voor het meereizen!';
-    ledLoop.textContent = deel + ' · Dinsdag 1 december 2026 · Instappen vanaf 17:00 · De Hallen Studio\'s · Hannie Dankbaarpassage 18 · Gerechten van Kitchen Creative · Wijnen van Meisjes van de Wijn · Een samenwerking van Matter Events, De Hallen Studio\'s, Kitchen Creative Catering, Meisjes van de Wijn en Production People · De tram wacht niet! · ';
+    ledLoop.textContent = deel + ' · Dinsdag 1 december 2026 · Instappen vanaf 17:00 · De Hallen Studio\'s · Hannie Dankbaarpassage 18 · Gerechten van Kitchen Creative · Wijnen van Meisjes van de Wijn · Meisjes van de Wijn, Matter & De Hallen Studio\'s presenteren · Met dank aan Kitchen Creative Catering en Production People · De tram wacht niet! · ';
   })();
 
   /* ---------- Trambel (Web Audio, alleen na klik) ---------- */
