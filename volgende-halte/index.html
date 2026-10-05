@@ -197,10 +197,10 @@ a{color:inherit}
 @media (min-width:1000px){
   .kaart-link{
     display:inline-flex;align-items:center;gap:.45em;
-    position:absolute;left:14.5%;top:76.75%;
+    position:absolute;left:18.8%;top:76.75%;
     translate:0 -50%;
     font-family:var(--kop);font-weight:800;text-transform:uppercase;letter-spacing:.04em;
-    font-size:1.05cqw;line-height:1;white-space:nowrap;
+    font-size:.95cqw;line-height:1;white-space:nowrap;
     color:#fff;background:var(--rood);text-decoration:none;
     border:.16cqw solid var(--navy);border-radius:999px;
     padding:.4em .85em .38em;
@@ -210,7 +210,7 @@ a{color:inherit}
   .kaart-link:hover{background:var(--rood-donker);animation:none}
   .kaart-link svg{width:1em;height:1em}
 }
-@keyframes wenk{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes wenk{0%,100%{box-shadow:0 .25cqw 0 var(--navy),0 0 0 0 rgba(232,38,42,.45)}50%{box-shadow:0 .25cqw 0 var(--navy),0 0 0 .5cqw rgba(232,38,42,0)}}
 
 /* ---------- Knoppen ---------- */
 .knop{
@@ -784,7 +784,7 @@ fieldset.strip-veld{border:0;margin:0}
     <h2 class="titel" id="partners-titel">We zien je graag aan boord!</h2>
     <div class="conducteurs">
       <div class="logo-kaart navy">
-        <div class="logo-vlak"><img src="img/logo-meisjes-van-de-wijn.png" width="120" height="120" alt="Meisjes van de Wijn"></div>
+        <div class="logo-vlak"><img src="img/logo-meisjes-van-de-wijn.png" width="300" height="315" alt="Meisjes van de Wijn" style="max-height:104px"></div>
         <div class="logo-onder"><b>Meisjes van de Wijn</b>Bij iedere halte het juiste glas.</div>
       </div>
       <div class="logo-kaart grijs">
