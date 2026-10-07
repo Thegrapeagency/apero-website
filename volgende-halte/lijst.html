@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Volgende Halte · aanmeldingen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;1,900&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0c165b;--rood:#e8262a;--papier:#f0e0c9;--licht:#f8eedd;--inkt:#1a1f3d}
+*{box-sizing:border-box}
+body{margin:0;background:#2d2e32;color:var(--inkt);font-family:Barlow,Arial,sans-serif;font-size:15px}
+.wrap{max-width:1200px;margin:0 auto;padding:16px}
+.kop{background:var(--navy);color:#fff;border-radius:6px;padding:16px 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.kop h1{margin:0;font-family:"Barlow Condensed",sans-serif;font-style:italic;font-weight:900;font-size:30px}
+.vel{background:var(--papier);border-radius:6px;padding:20px;margin-top:14px}
+form{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+input[type=password]{font:inherit;padding:10px 12px;border:2px solid var(--navy);border-radius:6px;min-width:240px}
+button{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:17px;color:#fff;background:var(--rood);border:2px solid var(--navy);border-radius:999px;padding:9px 18px;cursor:pointer}
+button.licht{background:#fff;color:var(--navy)}
+.fout{color:#9b1014;font-weight:600}
+.tellers{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.teller{background:#fff;border:2px solid var(--navy);border-radius:6px;padding:10px 16px;min-width:140px}
+.teller b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:34px;line-height:1;color:var(--navy)}
+.knoppen{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+.zoek{font:inherit;padding:8px 10px;border:2px solid var(--navy);border-radius:6px;min-width:220px}
+.tabel-wrap{overflow-x:auto;background:#fff;border:2px solid var(--navy);border-radius:6px}
+table{border-collapse:collapse;width:100%;min-width:900px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #e6dccb;vertical-align:top}
+th{background:var(--licht);font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--navy);position:sticky;top:0}
+tr.nee td{color:#888}
+.label{display:inline-block;padding:2px 8px;border-radius:999px;font-weight:600;font-size:13px}
+.ja{background:#dff3df;color:#1d6b1d}.af{background:#f3dede;color:#8a1c1c}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kop"><h1>Volgende Halte · aanmeldingen</h1><span>Dinsdag 1 december 2026 · De Hallen Studio's</span></div>
+
+  <div class="vel" id="inlog">
+    <form id="inlogform">
+      <label for="ww"><b>Wachtwoord</b></label>
+      <input type="password" id="ww" autocomplete="current-password" required>
+      <button type="submit">Bekijk aanmeldingen</button>
+      <span class="fout" id="fout"></span>
+    </form>
+  </div>
+
+  <div class="vel" id="overzicht" hidden>
+    <div class="tellers">
+      <div class="teller"><b id="t-ja">0</b>reizen mee</div>
+      <div class="teller"><b id="t-nee">0</b>afgemeld</div>
+      <div class="teller"><b id="t-dieet">0</b>met dieetwens</div>
+    </div>
+    <div class="knoppen">
+      <button type="button" id="download">Download voor Excel</button>
+      <button type="button" class="licht" id="ververs">Verversen</button>
+      <input class="zoek" id="zoek" type="search" placeholder="Zoek op naam, bedrijf of e-mail">
+      <span id="bijgewerkt"></span>
+    </div>
+    <div class="tabel-wrap">
+      <table>
+        <thead><tr><th>Aangemeld op</th><th>Komt</th><th>Naam</th><th>Bedrijf</th><th>E-mail</th><th>Dieetwensen</th><th>Opmerking</th><th>Via</th></tr></thead>
+        <tbody id="rijen"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+var URL_LIJST = 'https://ogzpdhasoxmblesbcrpz.supabase.co/rest/v1/rpc/vh_lijst';
+var SLEUTEL = 'sb_publishable_oPbogUKKc8ocz7yJ9t3AoA_EgajDJP9';
+var data = [], wachtwoord = '';
+var $ = function (id) { return document.getElementById(id); };
+
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+function datum(s) { var d = new Date(s); return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' }) + ' ' + d.toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }); }
+
+function laad() {
+  return fetch(URL_LIJST, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', apikey: SLEUTEL },
+    body: JSON.stringify({ wachtwoord: wachtwoord })
+  }).then(function (r) {
+    if (!r.ok) throw new Error(r.status === 400 || r.status === 401 || r.status === 403 || r.status === 500 ? 'Onjuist wachtwoord' : 'Laden mislukt');
+    return r.json();
+  }).then(function (rijen) {
+    data = rijen; toon();
+    $('bijgewerkt').textContent = 'Bijgewerkt om ' + new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
+  });
+}
+
+function toon() {
+  var q = $('zoek').value.trim().toLowerCase();
+  var zicht = data.filter(function (r) { return !q || [r.voornaam, r.achternaam, r.bedrijf, r.email].join(' ').toLowerCase().indexOf(q) > -1; });
+  $('t-ja').textContent = data.filter(function (r) { return r.reist_mee; }).length;
+  $('t-nee').textContent = data.filter(function (r) { return !r.reist_mee; }).length;
+  $('t-dieet').textContent = data.filter(function (r) { return r.reist_mee && r.dieetwensen; }).length;
+  $('rijen').innerHTML = zicht.map(function (r) {
+    return '<tr class="' + (r.reist_mee ? '' : 'nee') + '"><td>' + datum(r.aangemeld_op) + '</td><td>' +
+      (r.reist_mee ? '<span class="label ja">Ja</span>' : '<span class="label af">Afgemeld</span>') + '</td><td>' +
+      esc(r.voornaam + ' ' + r.achternaam) + '</td><td>' + esc(r.bedrijf) + '</td><td><a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a></td><td>' +
+      esc(r.dieetwensen) + '</td><td>' + esc(r.opmerking) + '</td><td>' + esc(r.bron) + '</td></tr>';
+  }).join('') || '<tr><td colspan="8">Nog geen aanmeldingen.</td></tr>';
+}
+
+function csv() {
+  var kol = ['Aangemeld op', 'Komt', 'Voornaam', 'Achternaam', 'Bedrijf', 'E-mail', 'Dieetwensen', 'Opmerking', 'Via'];
+  var cel = function (v) { v = String(v == null ? '' : v); if (/^[=+\-@]/.test(v)) v = "'" + v; return '"' + v.replace(/"/g, '""') + '"'; };
+  var regels = [kol.map(cel).join(';')].concat(data.map(function (r) {
+    return [datum(r.aangemeld_op), r.reist_mee ? 'Ja' : 'Afgemeld', r.voornaam, r.achternaam, r.bedrijf, r.email, r.dieetwensen, r.opmerking, r.bron].map(cel).join(';');
+  }));
+  var blob = new Blob(['﻿' + regels.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'volgende-halte-aanmeldingen.csv';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+$('inlogform').addEventListener('submit', function (e) {
+  e.preventDefault(); $('fout').textContent = '';
+  wachtwoord = $('ww').value;
+  laad().then(function () {
+    $('inlog').hidden = true; $('overzicht').hidden = false;
+    try { sessionStorage.setItem('vh-ww', wachtwoord); } catch (x) {}
+  }).catch(function (err) { $('fout').textContent = err.message; });
+});
+$('ververs').addEventListener('click', function () { laad().catch(function (err) { alert(err.message); }); });
+$('download').addEventListener('click', csv);
+$('zoek').addEventListener('input', toon);
+try { var w = sessionStorage.getItem('vh-ww'); if (w) { $('ww').value = w; $('inlogform').requestSubmit(); } } catch (x) {}
+</script>
+</body>
+</html>

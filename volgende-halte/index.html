@@ -827,18 +827,16 @@ fieldset.strip-veld{border:0;margin:0}
 /* ============================================================
    INSTELLINGEN — pas hier aan
    ------------------------------------------------------------
-   AANMELD_ENDPOINT: waar de aanmeldingen naartoe gaan. Werkt met
-   elke dienst die een gewone formulier-POST accepteert, bv.
-     Formspree   https://formspree.io/f/xxxxxxx
-     Basin       https://usebasin.com/f/xxxxxxx
-     Google Apps Script (naar een Google Sheet) /exec-URL
-     -> zie aanmeldingen-naar-sheet.gs voor het script
+   AANMELD_ENDPOINT: de aanmeldingen gaan naar de tabel
+   volgende_halte_aanmeldingen in Supabase (project Totaalapp-mvdw),
+   via de functie vh_aanmelden. Bekijken/downloaden: lijst.html.
    Leeg = aanmelden staat uit en de bezoeker krijgt een melding.
 
    CONTACT_EMAIL: wordt getoond als er iets misgaat, zodat gasten
    zich altijd nog per mail kunnen aanmelden.
    ============================================================ */
-var AANMELD_ENDPOINT = '/api/aanmelden'; // schrijft via api/aanmelden.mjs naar de Google Sheet
+var AANMELD_ENDPOINT = 'https://ogzpdhasoxmblesbcrpz.supabase.co/rest/v1/rpc/vh_aanmelden';
+var AANMELD_SLEUTEL = 'sb_publishable_oPbogUKKc8ocz7yJ9t3AoA_EgajDJP9'; // publieke sleutel: mag alleen aanmelden, niets lezen
 var CONTACT_EMAIL = '';
 
 var HALTES = [
@@ -1051,7 +1049,13 @@ var VERTREK = new Date('2026-12-01T17:00:00+01:00');
     knop.disabled = true;
     $('knoptekst').textContent = 'Bezig met stempelen…';
 
-    var verzoek = fetch(AANMELD_ENDPOINT, { method: 'POST', body: new URLSearchParams(data), headers: { Accept: 'application/json' } })
+    var velden = {};
+    data.forEach(function (v, k) { velden[k] = String(v); });
+    var verzoek = fetch(AANMELD_ENDPOINT, {
+        method: 'POST',
+        body: JSON.stringify({ p: velden }),
+        headers: { 'Content-Type': 'application/json', apikey: AANMELD_SLEUTEL }
+      })
       .then(function (r) {
         if (r.status === 503) { var e = new Error('uit'); e.uit = true; throw e; }
         if (!r.ok) throw new Error('HTTP ' + r.status);
