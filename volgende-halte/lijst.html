@@ -51,7 +51,9 @@ tr.nee td{color:#888}
 
   <div class="vel" id="overzicht" hidden>
     <div class="tellers">
-      <div class="teller"><b id="t-ja">0</b>reizen mee</div>
+      <div class="teller"><b id="t-personen">0</b>personen totaal</div>
+      <div class="teller"><b id="t-ja">0</b>aanmeldingen</div>
+      <div class="teller"><b id="t-collega">0</b>nemen collega mee</div>
       <div class="teller"><b id="t-nee">0</b>afgemeld</div>
       <div class="teller"><b id="t-dieet">0</b>met dieetwens</div>
     </div>
@@ -63,7 +65,7 @@ tr.nee td{color:#888}
     </div>
     <div class="tabel-wrap">
       <table>
-        <thead><tr><th>Aangemeld op</th><th>Komt</th><th>Naam</th><th>Bedrijf</th><th>E-mail</th><th>Dieetwensen</th><th>Opmerking</th><th>Via</th></tr></thead>
+        <thead><tr><th>Aangemeld op</th><th>Komt</th><th>Naam</th><th>Bedrijf</th><th>E-mail</th><th>Collega</th><th>Dieetwensen</th><th>Opmerking</th><th>Via</th></tr></thead>
         <tbody id="rijen"></tbody>
       </table>
     </div>
@@ -94,23 +96,26 @@ function laad() {
 
 function toon() {
   var q = $('zoek').value.trim().toLowerCase();
-  var zicht = data.filter(function (r) { return !q || [r.voornaam, r.achternaam, r.bedrijf, r.email].join(' ').toLowerCase().indexOf(q) > -1; });
+  var zicht = data.filter(function (r) { return !q || [r.voornaam, r.achternaam, r.bedrijf, r.email, r.collega_naam, r.collega_email].join(' ').toLowerCase().indexOf(q) > -1; });
   $('t-ja').textContent = data.filter(function (r) { return r.reist_mee; }).length;
+  $('t-collega').textContent = data.filter(function (r) { return r.reist_mee && r.met_collega; }).length;
+  $('t-personen').textContent = data.reduce(function (n, r) { return n + (r.reist_mee ? (r.met_collega ? 2 : 1) : 0); }, 0);
   $('t-nee').textContent = data.filter(function (r) { return !r.reist_mee; }).length;
   $('t-dieet').textContent = data.filter(function (r) { return r.reist_mee && r.dieetwensen; }).length;
   $('rijen').innerHTML = zicht.map(function (r) {
     return '<tr class="' + (r.reist_mee ? '' : 'nee') + '"><td>' + datum(r.aangemeld_op) + '</td><td>' +
       (r.reist_mee ? '<span class="label ja">Ja</span>' : '<span class="label af">Afgemeld</span>') + '</td><td>' +
       esc(r.voornaam + ' ' + r.achternaam) + '</td><td>' + esc(r.bedrijf) + '</td><td><a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a></td><td>' +
+      (r.met_collega ? esc(r.collega_naam) + (r.collega_email ? '<br><a href="mailto:' + esc(r.collega_email) + '">' + esc(r.collega_email) + '</a>' : '') : '') + '</td><td>' +
       esc(r.dieetwensen) + '</td><td>' + esc(r.opmerking) + '</td><td>' + esc(r.bron) + '</td></tr>';
-  }).join('') || '<tr><td colspan="8">Nog geen aanmeldingen.</td></tr>';
+  }).join('') || '<tr><td colspan="9">Nog geen aanmeldingen.</td></tr>';
 }
 
 function csv() {
-  var kol = ['Aangemeld op', 'Komt', 'Voornaam', 'Achternaam', 'Bedrijf', 'E-mail', 'Dieetwensen', 'Opmerking', 'Via'];
+  var kol = ['Aangemeld op', 'Komt', 'Voornaam', 'Achternaam', 'Bedrijf', 'E-mail', 'Collega', 'E-mail collega', 'Dieetwensen', 'Opmerking', 'Via'];
   var cel = function (v) { v = String(v == null ? '' : v); if (/^[=+\-@]/.test(v)) v = "'" + v; return '"' + v.replace(/"/g, '""') + '"'; };
   var regels = [kol.map(cel).join(';')].concat(data.map(function (r) {
-    return [datum(r.aangemeld_op), r.reist_mee ? 'Ja' : 'Afgemeld', r.voornaam, r.achternaam, r.bedrijf, r.email, r.dieetwensen, r.opmerking, r.bron].map(cel).join(';');
+    return [datum(r.aangemeld_op), r.reist_mee ? 'Ja' : 'Afgemeld', r.voornaam, r.achternaam, r.bedrijf, r.email, r.met_collega ? r.collega_naam : '', r.met_collega ? r.collega_email : '', r.dieetwensen, r.opmerking, r.bron].map(cel).join(';');
   }));
   var blob = new Blob(['﻿' + regels.join('\r\n')], { type: 'text/csv;charset=utf-8' });
   var a = document.createElement('a');

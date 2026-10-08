@@ -59,6 +59,7 @@ body{
 }
 img{max-width:100%;display:block}
 a{color:inherit}
+[hidden]{display:none!important}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 :focus-visible{outline:3px solid var(--led);outline-offset:3px}
 
@@ -745,12 +746,26 @@ fieldset.strip-veld{border:0;margin:0}
             <div class="strip-nr" aria-hidden="true">4</div>
             <div class="strip-veld"><label for="email">E-mailadres</label><input type="email" id="email" name="email" autocomplete="email" required placeholder="naam@bedrijf.nl"></div>
           </div>
-          <div class="strip" id="strip-dieet">
+          <div class="strip" id="strip-collega">
             <div class="strip-nr" aria-hidden="true">5</div>
-            <div class="strip-veld"><label for="dieet">Dieetwensen of allergieën <em>(optioneel)</em></label><textarea id="dieet" name="dieetwensen" rows="2" placeholder="Bijv. vegetarisch, geen noten…"></textarea></div>
+            <fieldset class="strip-veld">
+              <legend>Neem je een collega mee?</legend>
+              <div class="keuzes">
+                <label class="keuze"><input type="radio" name="met_collega" value="nee" checked><span>Nee, ik kom alleen</span></label>
+                <label class="keuze"><input type="radio" name="met_collega" value="ja"><span>Ja, met een collega</span></label>
+              </div>
+              <div class="duo" id="collega-velden" hidden style="margin-top:12px">
+                <div><label for="collega_naam">Naam collega</label><input type="text" id="collega_naam" name="collega_naam" autocomplete="off" placeholder="Voor- en achternaam"></div>
+                <div><label for="collega_email">E-mail collega <em>(optioneel)</em></label><input type="email" id="collega_email" name="collega_email" autocomplete="off" placeholder="collega@bedrijf.nl"></div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="strip" id="strip-dieet">
+            <div class="strip-nr" aria-hidden="true">6</div>
+            <div class="strip-veld"><label for="dieet">Dieetwensen of allergieën <em id="dieet-hint">(optioneel)</em></label><textarea id="dieet" name="dieetwensen" rows="2" placeholder="Bijv. vegetarisch, geen noten…"></textarea></div>
           </div>
           <div class="strip">
-            <div class="strip-nr" aria-hidden="true">6</div>
+            <div class="strip-nr" aria-hidden="true">7</div>
             <div class="strip-veld"><label for="opmerking">Nog iets voor de conducteur? <em>(optioneel)</em></label><input type="text" id="opmerking" name="opmerking" placeholder=""></div>
           </div>
           <div class="hp" aria-hidden="true"><label>Laat dit leeg <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
@@ -1006,9 +1021,18 @@ var VERTREK = new Date('2026-12-01T17:00:00+01:00');
   $('kaartnr').textContent = String(Math.floor(Math.random() * 900000) + 100000);
 
   function reistMee() { return form.reist_mee.value !== 'nee'; }
+  function metCollega() { return reistMee() && form.met_collega.value === 'ja'; }
   form.addEventListener('change', function (e) {
+    if (e.target.name === 'met_collega') {
+      var mee = metCollega();
+      $('collega-velden').hidden = !mee;
+      $('dieet-hint').textContent = mee ? '(optioneel, ook voor je collega)' : '(optioneel)';
+      if (mee) $('collega_naam').focus();
+      return;
+    }
     if (e.target.name !== 'reist_mee') return;
     $('strip-dieet').style.display = reistMee() ? '' : 'none';
+    $('strip-collega').style.display = reistMee() ? '' : 'none';
     $('knoptekst').textContent = reistMee() ? 'Stempel mijn kaart' : 'Meld me af';
   });
 
@@ -1023,11 +1047,12 @@ var VERTREK = new Date('2026-12-01T17:00:00+01:00');
     e.preventDefault();
     melding.classList.remove('zichtbaar');
 
-    var verplicht = ['voornaam', 'achternaam', 'bedrijf', 'email'];
+    var verplicht = ['voornaam', 'achternaam', 'bedrijf', 'email'].concat(metCollega() ? ['collega_naam', 'collega_email'] : []);
     for (var i = 0; i < verplicht.length; i++) {
       var veld = form.elements[verplicht[i]];
-      if (!veld.value.trim() || !veld.checkValidity()) {
-        var naam = form.querySelector('label[for="' + veld.id + '"]').textContent;
+      var optioneel = veld.name === 'collega_email';
+      if ((!optioneel && !veld.value.trim()) || !veld.checkValidity()) {
+        var naam = form.querySelector('label[for="' + veld.id + '"]').childNodes[0].textContent.trim();
         toonFout('Ho, stop! Strip <b>' + naam.toLowerCase() + '</b> is nog niet (goed) ingevuld.');
         veld.focus();
         return;
@@ -1082,7 +1107,8 @@ var VERTREK = new Date('2026-12-01T17:00:00+01:00');
     $('automaat').style.display = 'none';
     if (mee) {
       $('bewijs-titel').textContent = 'Je bent aan boord, ' + voornaam + '!';
-      $('bewijs-tekst').textContent = 'Je kaart is gestempeld. We zien je graag op dinsdag 1 december vanaf 17:00 in De Hallen Studio\'s. Zorg dat je op tijd bent, want de tram wacht niet!';
+      var collega = metCollega() ? form.collega_naam.value.trim() : '';
+      $('bewijs-tekst').textContent = 'Je kaart is gestempeld' + (collega ? ', ook voor ' + collega : '') + '. We zien ' + (collega ? 'jullie' : 'je') + ' graag op dinsdag 1 december vanaf 17:00 in De Hallen Studio\'s. Zorg dat je op tijd bent, want de tram wacht niet!';
       $('agenda').href = agendaLink();
     } else {
       $('bewijs-titel').textContent = 'Jammer, ' + voornaam + '!';
