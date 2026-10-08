@@ -4,7 +4,7 @@
    Twee rollen, allebei via HTTP basic-auth, niets hardcoded
    (deze repo is publiek):
 
-   REDACTIE (volledige toegang: /dashboard, /api, /partner)
+   REDACTIE (volledige toegang: /dashboard, /studio, /api, /partner)
      DASH_USER   (bv. "redactie")
      DASH_PASS   (een sterk wachtwoord)
 
@@ -18,7 +18,7 @@
    Zolang er niets gezet is, blijft alles dicht (veilige default).
    De rest van de site (incl. /tools) blijft publiek.
    ============================================================ */
-export const config = { matcher: ['/dashboard/:path*', '/api/:path*', '/partner/:path*'] };
+export const config = { matcher: ['/dashboard/:path*', '/studio/:path*', '/studio', '/api/:path*', '/partner/:path*'] };
 
 function parseBasic(header) {
   if (!header || !header.startsWith('Basic ')) return null;
@@ -44,6 +44,9 @@ export default function middleware(request) {
   const PASS = process.env.DASH_PASS;
   const url = new URL(request.url);
   const pad = url.pathname;
+
+  // de nieuwsbrief-aanmelding is publiek
+  if (pad === '/api/aanmelden') return;
 
   const isPartnerZone = pad.startsWith('/partner') || pad.startsWith('/api/partner-data');
 

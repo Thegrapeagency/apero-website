@@ -1,0 +1,21 @@
+[
+  {"naam":"Porto","land":"Portugal","lat":41.15,"lon":-8.61,"tz":"Europe/Lisbon"},
+  {"naam":"Marrakech","land":"Marokko","lat":31.63,"lon":-8.0,"tz":"Africa/Casablanca","alias":["Marokko"]},
+  {"naam":"Santander","land":"Spanje","lat":43.46,"lon":-3.81,"tz":"Europe/Madrid"},
+  {"naam":"Madrid","land":"Spanje","lat":40.42,"lon":-3.70,"tz":"Europe/Madrid"},
+  {"naam":"Bilbao","land":"Spanje","lat":43.26,"lon":-2.93,"tz":"Europe/Madrid"},
+  {"naam":"Barcelona","land":"Spanje","lat":41.39,"lon":2.17,"tz":"Europe/Madrid","alias":["Spanje"]},
+  {"naam":"Marseille","land":"Frankrijk","lat":43.30,"lon":5.37,"tz":"Europe/Paris","alias":["Frankrijk"]},
+  {"naam":"Amsterdam","land":"Nederland","lat":52.37,"lon":4.90,"tz":"Europe/Amsterdam","alias":["Nederland","Groningen","Drenthe"]},
+  {"naam":"Utrecht","land":"Nederland","lat":52.09,"lon":5.12,"tz":"Europe/Amsterdam"},
+  {"naam":"Turijn","land":"Italië","lat":45.07,"lon":7.69,"tz":"Europe/Rome"},
+  {"naam":"Milaan","land":"Italië","lat":45.46,"lon":9.19,"tz":"Europe/Rome","alias":["Italië"]},
+  {"naam":"Venetië","land":"Italië","lat":45.44,"lon":12.33,"tz":"Europe/Rome"},
+  {"naam":"Florence","land":"Italië","lat":43.77,"lon":11.25,"tz":"Europe/Rome"},
+  {"naam":"Rome","land":"Italië","lat":41.90,"lon":12.50,"tz":"Europe/Rome"},
+  {"naam":"Thessaloniki","land":"Griekenland","lat":40.64,"lon":22.94,"tz":"Europe/Athens"},
+  {"naam":"Volos","land":"Griekenland","lat":39.36,"lon":22.94,"tz":"Europe/Athens"},
+  {"naam":"Athene","land":"Griekenland","lat":37.98,"lon":23.73,"tz":"Europe/Athens","alias":["Griekenland"]},
+  {"naam":"Lesbos","land":"Griekenland","lat":39.10,"lon":26.55,"tz":"Europe/Athens","alias":["Plomari"]},
+  {"naam":"Beiroet","land":"Libanon","lat":33.89,"lon":35.50,"tz":"Asia/Beirut","alias":["Bekavallei","Zahle","Libanon"]}
+]

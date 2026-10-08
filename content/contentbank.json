@@ -1,0 +1,1353 @@
+[
+ {
+  "titel": "Utrecht, 17:30",
+  "reeks": "om-zes-uur",
+  "invalshoek": "Hoe ziet het uur eruit in de festivalstad, nu al? Echte reportage: drie plekken, drie tijden, gesprekken met kroegbazen en vaste gasten. Geen samengestelde scène: dit kunnen we zelf zien.",
+  "waarom": "Maakt de brug naar juni 2027 zonder het festival te noemen. Lokaal publiek, lokale pers, en het eerste verhaal dat we volledig zelf waarnemen.",
+  "bronnen": "Eigen waarneming; gesprekken met horeca (KHN Utrecht); gemeente Utrecht terrassenbeleid",
+  "plekken": "Utrecht · kroegbazen aan de Oudegracht, Lombok, Twijnstraat",
+  "beeld": "Eigen fotografie in de fresco-behandeling (wash + boog), geen stockbeeld",
+  "versies": {
+   "k": "Drie plekken in één alinea",
+   "m": "De reportage",
+   "l": "Plus: een kaartje van de route en wat er om 17:30, 18:30, 19:30 gebeurt"
+  },
+  "social": [
+   "Carrousel: drie tafels, drie tijden",
+   "Reel: 30 sec. van één tafel om 17:30 (met toestemming)",
+   "Story-poll: waar begint jouw uur in Utrecht?"
+  ],
+  "prioriteit": 1,
+  "seizoen": "voorjaar",
+  "festival": "Hoog: introduceert de stad, zonder festival-woorden",
+  "periode": "nu",
+  "research": "midden",
+  "maand": "2027-03",
+  "id": "cb-001",
+  "status": "idee"
+ },
+ {
+  "titel": "Milaan, 18:30",
+  "reeks": "om-zes-uur",
+  "invalshoek": "Het aperitivo met buffet: één drankje, een bord dat je zelf vult. Wie gaat waarheen, wat kost het, wanneer werd het een maaltijd (apericena)?",
+  "waarom": "Meest gezochte aperitivo-stad; laat zien hoe een ritueel verandert als er geld mee gemoeid is.",
+  "bronnen": "Camparino in Galleria; Milanese pers over apericena; Accademia della Crusca over het woord 'apericena'",
+  "plekken": "Milaan · Navigli, Porta Venezia, Galleria",
+  "beeld": "Fresco italie-alt; later eigen beeld",
+  "versies": {
+   "k": "Het bord dat je zelf vult",
+   "m": "Het buffet, de prijs, de studenten",
+   "l": "Plus: de ruzie over het woord apericena"
+  },
+  "social": [
+   "Carrousel: wat je krijgt voor één drankje (2006 vs nu)",
+   "Quote-kaart uit het verhaal"
+  ],
+  "prioriteit": 1,
+  "seizoen": "lente/zomer",
+  "festival": "Middel: het bord als onderdeel van het glas",
+  "periode": "nu",
+  "research": "midden",
+  "maand": "2027-01",
+  "id": "cb-002",
+  "status": "idee"
+ },
+ {
+  "titel": "Marseille, 18:00",
+  "reeks": "om-zes-uur",
+  "invalshoek": "Pastis op het terras aan de Vieux-Port: 'un jaune', en de varianten met siroop (mauresque, perroquet, tomate). Wie bestelt wat, en waarom?",
+  "waarom": "Kleurrijk, concreet, zomers. De siroopvarianten zijn bij ons onbekend en direct deelbaar.",
+  "bronnen": "Ricard-geschiedenis; Marseillaise pers; Wikipedia Pastis (varianten)",
+  "plekken": "Marseille · Vieux-Port, Le Panier",
+  "beeld": "Fresco frankrijk; illustratie van de vier kleuren pastis",
+  "versies": {
+   "k": "Vier kleuren pastis",
+   "m": "Het terras, de klok, de jeu de boules",
+   "l": "Plus: waarom pastis in 1932 kon ontstaan"
+  },
+  "social": [
+   "Carrousel: 'Een geel, een papegaai, een tomaat' (de vier pastis)",
+   "Poll: zou jij een pastis met muntsiroop bestellen?"
+  ],
+  "prioriteit": 1,
+  "seizoen": "zomer",
+  "festival": "Middel: kleurrijk serveerbaar",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-06",
+  "id": "cb-003",
+  "status": "idee"
+ },
+ {
+  "titel": "Istanbul, 19:00",
+  "reeks": "om-zes-uur",
+  "invalshoek": "De meyhane en de çilingir sofrası: de 'slotenmakerstafel', een klein tafeltje voor rakı en meze thuis. Waarom heet het zo?",
+  "waarom": "Een woord dat niemand kent en iedereen wil kennen. Breidt de anijsgordel uit naar Turkije, met de nodige zorg.",
+  "bronnen": "Turkse culinaire literatuur (o.a. Artun Ünsal); meyhane-geschiedenis; Wikipedia Meyhane",
+  "plekken": "Istanbul · Beyoğlu, Kumkapı",
+  "beeld": "Fresco anijsgordel; illustratie van een klein tafeltje",
+  "versies": {
+   "k": "Het tafeltje van de slotenmaker",
+   "m": "De meyhane, de rakı, de fasıl-muziek",
+   "l": "Plus: wie mocht er in de meyhane komen (klasse, religie)"
+  },
+  "social": [
+   "Carrousel: 'De tafel die zo heet omdat…' (curiosity, met antwoord)",
+   "Reel: rakı wordt wit"
+  ],
+  "prioriteit": 2,
+  "seizoen": "najaar",
+  "festival": "Laag",
+  "periode": "19e eeuw, nu",
+  "research": "hoog",
+  "maand": "2027-02",
+  "id": "cb-004",
+  "status": "idee"
+ },
+ {
+  "titel": "Porto, 18:00",
+  "reeks": "om-zes-uur",
+  "invalshoek": "Aan de rivier: witte port met tonic, een 'fino' (tapbier), tremoços. Waarom drinken Porto's inwoners hun beroemdste drank bijna nooit?",
+  "waarom": "Een paradox die klopt en die mensen willen delen. Zomerse seizoenswaarde.",
+  "bronnen": "Instituto dos Vinhos do Douro e Porto; Portugese pers",
+  "plekken": "Porto · Ribeira, Gaia, Foz",
+  "beeld": "Fresco portugal-alt (sardines)",
+  "versies": {
+   "k": "De drank die de stad niet drinkt",
+   "m": "De rivier, de fino, de tremoços",
+   "l": "Plus: 1756 en de grenspalen van Pombal"
+  },
+  "social": [
+   "Carrousel: wat Porto zelf drinkt",
+   "Kaart: de Douro in 3 stippen"
+  ],
+  "prioriteit": 2,
+  "seizoen": "zomer",
+  "festival": "Middel: portonic als serve",
+  "periode": "nu, 1756",
+  "research": "midden",
+  "maand": "2027-05",
+  "id": "cb-005",
+  "status": "idee"
+ },
+ {
+  "titel": "Sevilla, 13:30",
+  "reeks": "om-zes-uur",
+  "invalshoek": "In Zuid-Spanje valt 'het uur' midden op de dag: el aperitivo vóór de late lunch. Een andere klok, dezelfde behoefte.",
+  "waarom": "Doorbreekt het idee dat het uur altijd 18:00 is. Goed voor de tijdkaart op de site.",
+  "bronnen": "Spaanse maaltijdtijden (INE-tijdsbestedingsonderzoek); Sevillaanse tapasliteratuur",
+  "plekken": "Sevilla · Triana, Alfalfa",
+  "beeld": "Fresco spanje",
+  "versies": {
+   "k": "Het uur om half twee",
+   "m": "Tapeo, de toog, de siësta-mythe",
+   "l": "Plus: waarom Spanje in de verkeerde tijdzone leeft (1940)"
+  },
+  "social": [
+   "Kaart: hoe laat is 'het uur' per land",
+   "Carrousel: Spanje leeft sinds 1940 in de tijdzone van Berlijn"
+  ],
+  "prioriteit": 1,
+  "seizoen": "lente",
+  "festival": "Laag",
+  "periode": "1940, nu",
+  "research": "midden",
+  "maand": "2027-04",
+  "id": "cb-006",
+  "status": "idee"
+ },
+ {
+  "titel": "Lyon, 18:30",
+  "reeks": "om-zes-uur",
+  "invalshoek": "De bouchon en de 'pot lyonnais', een fles van 46 cl met een dikke bodem. Waarom 46?",
+  "waarom": "Specifiek, grappig, waar; Lyon is gastronomisch zwaargewicht maar weinig bekend als aperostad.",
+  "bronnen": "Lyonese pers; Wikipedia Pot lyonnais",
+  "plekken": "Lyon · Vieux Lyon, Croix-Rousse",
+  "beeld": "Illustratie van de pot",
+  "versies": {
+   "k": "De fles van 46 centiliter",
+   "m": "De bouchon, de canuts, het ritme van de zijdewerkers",
+   "l": "Plus: de 'mâchon', het ontbijt van de arbeiders"
+  },
+  "social": [
+   "Carrousel: 'Waarom 46 cl?'",
+   "Quote-kaart"
+  ],
+  "prioriteit": 3,
+  "seizoen": "najaar",
+  "festival": "Laag",
+  "periode": "19e eeuw, nu",
+  "research": "midden",
+  "maand": "2027-10",
+  "id": "cb-007",
+  "status": "idee"
+ },
+ {
+  "titel": "Beiroet, 19:00",
+  "reeks": "om-zes-uur",
+  "invalshoek": "Arak en mezze in Mar Mikhael en Gemmayzeh, na alles wat de stad meemaakte. Wie zit er nog, en waarom blijven ze zitten?",
+  "waarom": "Menselijk en actueel, maar gevoelig. Alleen maken met een Libanese schrijver of gesprekspartner.",
+  "bronnen": "Libanese schrijvers/journalisten; Massaya; eigen interviews",
+  "plekken": "Beiroet · Mar Mikhael, Gemmayzeh",
+  "beeld": "Eigen beeld via partner; geen stock",
+  "versies": {
+   "k": "De tafel die blijft staan",
+   "m": "Arak, mezze, de stad",
+   "l": "Plus: de karakeh in de bergen"
+  },
+  "social": [
+   "Interview-carrousel met één citaat per slide"
+  ],
+  "prioriteit": 3,
+  "seizoen": "najaar",
+  "festival": "Laag",
+  "periode": "nu",
+  "research": "hoog",
+  "maand": "2027-09",
+  "id": "cb-008",
+  "status": "idee"
+ },
+ {
+  "titel": "Parijs: de zinc, 1960 en nu",
+  "reeks": "toen-nu",
+  "invalshoek": "De toog van het Parijse café, waar 's ochtends een 'petit blanc' werd gedronken door mensen op weg naar werk. Frankrijk telde ooit enkele honderdduizenden cafés; nu een fractie daarvan.",
+  "waarom": "Sterke cijfers (verifiëren!), herkenbare beelden, en een verhaal over verdwijnen dat niet nostalgisch hoeft te zijn.",
+  "bronnen": "INSEE; France Boissons/UMIH-cijfers over aantallen cafés; Balzac ('le comptoir d'un café est le parlement du peuple')",
+  "plekken": "Parijs · een café-tabac in het 11e",
+  "beeld": "Archieffoto's (rechten!) of fresco frankrijk-alt",
+  "versies": {
+   "k": "De toog verdween",
+   "m": "Wie er stond, wat het kostte, wat er gezegd werd",
+   "l": "Plus: het café als parlement van het volk (Balzac)"
+  },
+  "social": [
+   "Toen/nu-carrousel met twee cijfers",
+   "Poll: heb jij een stamcafé?"
+  ],
+  "prioriteit": 1,
+  "seizoen": "winter",
+  "festival": "Middel",
+  "periode": "1960, nu",
+  "research": "midden",
+  "maand": "2027-01",
+  "id": "cb-009",
+  "status": "idee"
+ },
+ {
+  "titel": "Het bruine café, 1975 en nu",
+  "reeks": "toen-nu",
+  "invalshoek": "Amsterdam, Utrecht: het bruine café voor en na het rookverbod (2008), de sluitingen, de nieuwe eigenaren. Wie komt er nu?",
+  "waarom": "Nederlands, dichtbij, en de natuurlijke opvolger van het jeneververhaal. Sterke herkenning bij lezers.",
+  "bronnen": "KHN-cijfers; Stadsarchieven; interviews met vaste gasten en eigenaren",
+  "plekken": "Amsterdam, Utrecht · stamgasten, eigenaren",
+  "beeld": "Eigen fotografie",
+  "versies": {
+   "k": "Wat verdween en wat bleef",
+   "m": "1975 en nu, tafel voor tafel",
+   "l": "Plus: de stamtafel als instituut"
+  },
+  "social": [
+   "Toen/nu-carrousel",
+   "Reel: de stamtafel om 17:00"
+  ],
+  "prioriteit": 1,
+  "seizoen": "winter",
+  "festival": "Hoog: Utrecht-lokaal",
+  "periode": "1975, 2008, nu",
+  "research": "midden",
+  "maand": "2026-12",
+  "id": "cb-010",
+  "status": "idee"
+ },
+ {
+  "titel": "Athene: van kafeneio naar frappé",
+  "reeks": "toen-nu",
+  "invalshoek": "In 1957 ontstond op een beurs in Thessaloniki per ongeluk de frappé. Hoe verving een geschudde koffie de dorpskafeneio als ontmoetingsplek?",
+  "waarom": "Een ongeluk met een datum; goed verhaal, deelbaar, laat zien dat rituelen ook nieuw kunnen zijn.",
+  "bronnen": "Nestlé Hellas-geschiedenis; Wikipedia Frappé coffee; Griekse pers",
+  "plekken": "Thessaloniki, Athene",
+  "beeld": "Illustratie van het schudbekertje",
+  "versies": {
+   "k": "Een ongeluk uit 1957",
+   "m": "Het kafeneio, de frappé, de uren op het terras",
+   "l": "Plus: freddo espresso en de nieuwe generatie"
+  },
+  "social": [
+   "Carrousel: 'Deze koffie bestaat door een ongeluk'",
+   "Poll: frappé of freddo?"
+  ],
+  "prioriteit": 2,
+  "seizoen": "zomer",
+  "festival": "Laag",
+  "periode": "1957, nu",
+  "research": "laag",
+  "maand": "2027-07",
+  "id": "cb-011",
+  "status": "idee"
+ },
+ {
+  "titel": "Marseille, 1951: de pastis mag weer",
+  "reeks": "toen-nu",
+  "invalshoek": "Vichy verbood anijsdranken in 1940; na de oorlog kwam de pastis terug. Wat betekende dat voor de terrassen van Marseille?",
+  "waarom": "Politiek en drank in één verhaal. Past bij 'Dranken uit een verbod' en verdiept het.",
+  "bronnen": "Franse wetgeving 1940–1951 (Légifrance); Ricard-archief; historici van de Franse drankpolitiek",
+  "plekken": "Marseille",
+  "beeld": "Fresco frankrijk",
+  "versies": {
+   "k": "Het verbod en de terugkeer",
+   "m": "Vichy, de anijs, het terras",
+   "l": "Plus: waarom 45%"
+  },
+  "social": [
+   "Carrousel: tijdlijn 1915–1951"
+  ],
+  "prioriteit": 2,
+  "seizoen": "zomer",
+  "festival": "Laag",
+  "periode": "1940, 1951",
+  "research": "hoog",
+  "maand": "2027-06",
+  "id": "cb-012",
+  "status": "idee"
+ },
+ {
+  "titel": "Het Nederlandse terras, 1960 en nu",
+  "reeks": "toen-nu",
+  "invalshoek": "Wanneer werd buiten zitten normaal in Nederland? Vergunningen, weer, de spritz, en de coronazomer van 2020 die terrassen uitbreidde.",
+  "waarom": "Seizoensopener voor het voorjaar; herkenning; de brug naar 'Nederland pakt het uur terug'.",
+  "bronnen": "Gemeentelijke terrasregels; KHN; krantenarchief Delpher",
+  "plekken": "Utrecht, Amsterdam",
+  "beeld": "Eigen fotografie + Delpher-krantenknipsels",
+  "versies": {
+   "k": "Buiten zitten, sinds wanneer?",
+   "m": "Het terras als nieuwe tafel",
+   "l": "Plus: de coronazomer"
+  },
+  "social": [
+   "Delpher-knipsel als carrousel",
+   "Poll: eerste terrasdag al gehad?"
+  ],
+  "prioriteit": 1,
+  "seizoen": "voorjaar",
+  "festival": "Hoog: het festival is buiten",
+  "periode": "1960, 2020, nu",
+  "research": "midden",
+  "maand": "2027-03",
+  "id": "cb-013",
+  "status": "idee"
+ },
+ {
+  "titel": "De apericena, 2000 en nu",
+  "reeks": "toen-nu",
+  "invalshoek": "Studenten in Milaan rekten het aperitivo-buffet op tot avondeten. Grootmoeders vonden het niets. Wat bleef er over na twintig jaar?",
+  "waarom": "Generaties, geld en eten. Leuk contrast met de 'generatie die minder drinkt'.",
+  "bronnen": "Italiaanse pers; Accademia della Crusca over het woord",
+  "plekken": "Milaan",
+  "beeld": "Fresco italie-alt",
+  "versies": {
+   "k": "Eén drankje, onbeperkt bord",
+   "m": "Hoe een woord ontstond",
+   "l": "Plus: waarom Italianen er ruzie over maken"
+  },
+  "social": [
+   "Carrousel: het woord apericena in 5 slides"
+  ],
+  "prioriteit": 3,
+  "seizoen": "lente",
+  "festival": "Laag",
+  "periode": "2000, nu",
+  "research": "laag",
+  "maand": "2027-05",
+  "id": "cb-014",
+  "status": "idee"
+ },
+ {
+  "titel": "Waar mocht een vrouw alleen zitten?",
+  "reeks": "wie-zat-waar",
+  "invalshoek": "Vier landen, vier momenten: wanneer werd het normaal dat een vrouw alleen een café of bar binnenliep? Griekse kafeneio, Spaanse bar, Nederlandse kroeg, Italiaanse bar.",
+  "waarom": "Het sterkste onderwerp in de hele bank: sociaal, onderzocht, en een vraag die veel lezers zichzelf nooit stelden.",
+  "bronnen": "Jane Cowan (1991); Spaanse sociale geschiedenis (licencia marital 1975); Nederlandse vrouwengeschiedenis (Atria); Italiaanse genderstudies",
+  "plekken": "Athene, Madrid, Amsterdam, Milaan",
+  "beeld": "Illustraties; archiefbeeld met rechten",
+  "versies": {
+   "k": "Vier deuren, vier jaartallen",
+   "m": "Het hele verhaal",
+   "l": "Plus: getuigenissen van vrouwen die het meemaakten"
+  },
+  "social": [
+   "Carrousel: vier jaartallen",
+   "Interviewserie: 'Mijn moeder ging nooit alleen'"
+  ],
+  "prioriteit": 1,
+  "seizoen": "voorjaar (8 maart)",
+  "festival": "Middel: wie zit er op het festival aan tafel",
+  "periode": "20e eeuw",
+  "research": "hoog",
+  "maand": "2027-03",
+  "id": "cb-015",
+  "status": "idee"
+ },
+ {
+  "titel": "Het café als parlement van het volk",
+  "reeks": "wie-zat-waar",
+  "invalshoek": "Balzac noemde de toog van een café het parlement van het volk. Wat werd er besproken, door wie, en waarom keek de politie mee?",
+  "waarom": "Politiek en tafel. Onderscheidend ten opzichte van lifestylemedia.",
+  "bronnen": "Balzac; W. Scott Haine, 'The World of the Paris Café' (1996)",
+  "plekken": "Parijs, 19e eeuw",
+  "beeld": "Archiefprenten (publiek domein)",
+  "versies": {
+   "k": "De toog als parlement",
+   "m": "Arbeiders, politie, kranten",
+   "l": "Plus: de cafés van de Commune"
+  },
+  "social": [
+   "Quote-kaart Balzac",
+   "Carrousel: wat de politie noteerde"
+  ],
+  "prioriteit": 2,
+  "seizoen": "winter",
+  "festival": "Laag",
+  "periode": "19e eeuw",
+  "research": "hoog",
+  "maand": "2027-02",
+  "id": "cb-016",
+  "status": "idee"
+ },
+ {
+  "titel": "De sociëteit en de kroeg",
+  "reeks": "wie-zat-waar",
+  "invalshoek": "Twee Nederlandse drinkplekken op honderd meter afstand: de herensociëteit met leestafel en de kroeg met jenever. Wie kwam waar, en waarom nooit in de ander?",
+  "waarom": "Vervolg op het jeneververhaal. Klasse zichtbaar gemaakt in één straat.",
+  "bronnen": "Archieven van sociëteiten (bv. De Witte, Den Haag, 1802); Brugmans; stadsarchieven",
+  "plekken": "Den Haag, Utrecht",
+  "beeld": "Archiefbeeld",
+  "versies": {
+   "k": "Honderd meter",
+   "m": "Twee drinkplekken, twee standen",
+   "l": "Plus: de ballotage"
+  },
+  "social": [
+   "Carrousel: ballotage uitgelegd"
+  ],
+  "prioriteit": 2,
+  "seizoen": "najaar",
+  "festival": "Laag",
+  "periode": "19e eeuw",
+  "research": "hoog",
+  "maand": "2027-10",
+  "id": "cb-017",
+  "status": "idee"
+ },
+ {
+  "titel": "De havenkroeg",
+  "reeks": "wie-zat-waar",
+  "invalshoek": "Rotterdam, Marseille, Genua: kroegen bij de haven waar sjouwers, zeelieden en handelaren door elkaar zaten. Wie betaalde met welk geld?",
+  "waarom": "Internationaal en rauw; laat de handel achter de drank zien.",
+  "bronnen": "Havenarchieven; Rotterdamse stadsgeschiedenis; Marseillaise historici",
+  "plekken": "Rotterdam, Marseille, Genua",
+  "beeld": "Archief",
+  "versies": {
+   "k": "Drie havens",
+   "m": "Het hele verhaal",
+   "l": "Plus: het drinkgeld en de ploegbaas"
+  },
+  "social": [
+   "Kaart: drie havens"
+  ],
+  "prioriteit": 3,
+  "seizoen": "najaar",
+  "festival": "Laag",
+  "periode": "19e–20e eeuw",
+  "research": "hoog",
+  "maand": "2027-11",
+  "id": "cb-018",
+  "status": "idee"
+ },
+ {
+  "titel": "De Spritz en de Oostenrijkers",
+  "reeks": "wie-zat-waar",
+  "invalshoek": "Veneto onder Habsburgs bestuur: soldaten en ambtenaren die de wijn te sterk vonden en er water bij deden. Wie dronk de spritz vóór hij oranje werd?",
+  "waarom": "Rekent af met de marketinggeschiedenis; laat zien wie er in 1850 aan de toog stond.",
+  "bronnen": "Italiaanse historici; Wikipedia Spritz (bronnen nalopen); Aperol-archief voor de latere fase",
+  "plekken": "Venetië, Padua, Triëst",
+  "beeld": "Fresco",
+  "versies": {
+   "k": "Het water van de bezetter",
+   "m": "Van spuitwater naar oranje",
+   "l": "Plus: de spritz-oorlog tussen Aperol, Select en Campari"
+  },
+  "social": [
+   "Carrousel: 4 kleuren spritz, 4 steden"
+  ],
+  "prioriteit": 2,
+  "seizoen": "zomer",
+  "festival": "Middel",
+  "periode": "1800–1866, nu",
+  "research": "midden",
+  "maand": "2027-06",
+  "id": "cb-019",
+  "status": "idee"
+ },
+ {
+  "titel": "Staan of zitten",
+  "reeks": "ongeschreven",
+  "invalshoek": "In Italië kost hetzelfde glas aan de toog de helft van aan een tafeltje. Waarom, en wat zegt dat over wie er staat?",
+  "waarom": "Praktisch, verrassend, voor iedereen die naar Italië gaat. Hoge zoekwaarde zonder contentfarm te zijn.",
+  "bronnen": "Italiaanse consumentenorganisaties; Michelin Guide-artikel over koffieregels; gemeentelijke prijsregels",
+  "plekken": "Italië",
+  "beeld": "Illustratie toog vs tafel",
+  "versies": {
+   "k": "Dezelfde koffie, twee prijzen",
+   "m": "Het hele verhaal",
+   "l": "Plus: de bar als democratische plek"
+  },
+  "social": [
+   "Carrousel: 'Waarom je in Italië moet blijven staan'",
+   "Poll: staan of zitten?"
+  ],
+  "prioriteit": 1,
+  "seizoen": "lente (reisseizoen)",
+  "festival": "Laag",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-04",
+  "id": "cb-020",
+  "status": "idee"
+ },
+ {
+  "titel": "Proosten",
+  "reeks": "ongeschreven",
+  "invalshoek": "Yamas, salud, santé, proost. Kijk je elkaar aan? Tik je met water? Een vergelijking van de regels rond het proosten, met duidelijk onderscheid tussen gewoonte en bijgeloof.",
+  "waarom": "Iedereen proost; niemand weet de regels van een ander. Perfect voor social en gesprek aan tafel.",
+  "bronnen": "Etiquette-literatuur; taalkundige bronnen per land; label 'bijgeloof' waar het bijgeloof is",
+  "plekken": "Athene, Madrid, Parijs, Rome, Utrecht",
+  "beeld": "Illustratie: zes glazen",
+  "versies": {
+   "k": "Zes landen, één gebaar",
+   "m": "Het hele verhaal",
+   "l": "Plus: waarom we eigenlijk tikken"
+  },
+  "social": [
+   "Reel: 'Proost' in zes talen",
+   "Carrousel: de regels per land"
+  ],
+  "prioriteit": 1,
+  "seizoen": "december (feestdagen)",
+  "festival": "Middel",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2026-12",
+  "id": "cb-021",
+  "status": "idee"
+ },
+ {
+  "titel": "Hoe laat is het uur?",
+  "reeks": "ongeschreven",
+  "invalshoek": "Een datavergelijking: wanneer begint het uur tussen werk en diner in twaalf steden, en wanneer eten ze? Met één grote grafiek.",
+  "waarom": "Visueel, deelbaar, en het fundament onder de klok op de voorpagina.",
+  "bronnen": "Nationale tijdsbestedingsonderzoeken (Eurostat HETUS); INE; CBS",
+  "plekken": "Europa",
+  "beeld": "Grafiek in huisstijl",
+  "versies": {
+   "k": "Eén grafiek",
+   "m": "De grafiek, uitgelegd",
+   "l": "Plus: waarom Nederland zo vroeg eet"
+  },
+  "social": [
+   "De grafiek als post",
+   "Carrousel per stad"
+  ],
+  "prioriteit": 1,
+  "seizoen": "winter",
+  "festival": "Middel: het festivaluur",
+  "periode": "nu",
+  "research": "midden",
+  "maand": "2027-01",
+  "id": "cb-022",
+  "status": "idee"
+ },
+ {
+  "titel": "Waarom Nederlanders om zes uur eten",
+  "reeks": "ongeschreven",
+  "invalshoek": "Wij eten vroeg, Spanjaarden laat. Wat verklaart dat? Werktijden, protestantisme, fabrieken, de zon? Uitzoeken wat klopt en wat mythe is.",
+  "waarom": "De vraag die elke Nederlander in Spanje stelt. Sterke zoekvraag, en precies het terrein van APÉRO.",
+  "bronnen": "CBS tijdsbesteding; historici van het Nederlandse eetpatroon (bv. Jozien Jobse-van Putten, 'Eenvoudig maar voedzaam', 1995)",
+  "plekken": "Nederland, Spanje",
+  "beeld": "Grafiek",
+  "versies": {
+   "k": "Het korte antwoord",
+   "m": "Het hele verhaal",
+   "l": "Plus: waarom het uur daardoor bij ons verdween"
+  },
+  "social": [
+   "Poll: hoe laat eet jij?",
+   "Carrousel: 3 mythes, 1 verklaring"
+  ],
+  "prioriteit": 1,
+  "seizoen": "najaar",
+  "festival": "Hoog: waarom het festival vroeg begint",
+  "periode": "19e eeuw, nu",
+  "research": "hoog",
+  "maand": "2027-02",
+  "id": "cb-023",
+  "status": "idee"
+ },
+ {
+  "titel": "Het ijs komt als laatste",
+  "reeks": "ongeschreven",
+  "invalshoek": "Water, dan ijs, of andersom? Van arak tot pastis tot vermut: de volgorde van schenken, en de natuurkunde erachter.",
+  "waarom": "Kort, praktisch, met een 'waarom'. Goed voor video.",
+  "bronnen": "Scheikunde van anijsolie (louche); drankliteratuur",
+  "plekken": "Anijsgordel, Frankrijk, Spanje",
+  "beeld": "Video: macro van een glas",
+  "versies": {
+   "k": "De volgorde",
+   "m": "De volgorde en de natuurkunde",
+   "l": ""
+  },
+  "social": [
+   "Reel: de volgorde in 15 seconden"
+  ],
+  "prioriteit": 2,
+  "seizoen": "zomer",
+  "festival": "Middel: live aan de bar",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-07",
+  "id": "cb-024",
+  "status": "idee"
+ },
+ {
+  "titel": "Fooi aan de toog",
+  "reeks": "ongeschreven",
+  "invalshoek": "Laat je wisselgeld liggen? Rond je af? Een vergelijking van fooigewoonten aan de bar in zes landen.",
+  "waarom": "Praktisch en licht; zomerse reisvraag.",
+  "bronnen": "Nationale horecaorganisaties; reisliteratuur; eigen vragen aan barpersoneel",
+  "plekken": "Europa",
+  "beeld": "Illustratie",
+  "versies": {
+   "k": "Zes landen",
+   "m": "Het hele verhaal",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: fooi per land"
+  ],
+  "prioriteit": 3,
+  "seizoen": "zomer",
+  "festival": "Laag",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-08",
+  "id": "cb-025",
+  "status": "idee"
+ },
+ {
+  "titel": "Wie schenkt?",
+  "reeks": "ongeschreven",
+  "invalshoek": "In Marokko schenkt de gastheer, in Griekenland de oudste, in Nederland wie opstaat. Over de hand die inschenkt.",
+  "waarom": "Vervolg op 'Wie betaalt?'. Sluit aan bij de naam van de nieuwsbrief.",
+  "bronnen": "Etnografische literatuur; eigen gesprekken",
+  "plekken": "Marrakech, Athene, Utrecht",
+  "beeld": "Illustratie: de schenkende hand",
+  "versies": {
+   "k": "De hand die schenkt",
+   "m": "Het hele verhaal",
+   "l": ""
+  },
+  "social": [
+   "Reel: vijf manieren van schenken"
+  ],
+  "prioriteit": 2,
+  "seizoen": "najaar",
+  "festival": "Hoog: het festival schenkt",
+  "periode": "nu",
+  "research": "midden",
+  "maand": "2027-09",
+  "id": "cb-026",
+  "status": "idee"
+ },
+ {
+  "titel": "Kir, Dijon",
+  "reeks": "een-glas",
+  "invalshoek": "Een burgemeester en kanunnik, Félix Kir, die na de oorlog aligoté met crème de cassis schonk. Waarom werd dit glas een stadssymbool?",
+  "waarom": "Een echte persoon, een echte stad, een glas dat iedereen kent maar niemand kan plaatsen.",
+  "bronnen": "Wikipedia Félix Kir; stad Dijon; Franse pers",
+  "plekken": "Dijon · Félix Kir",
+  "beeld": "Archieffoto Kir (rechten nagaan)",
+  "versies": {
+   "k": "De kanunnik en de cassis",
+   "m": "Het hele verhaal",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: 'Deze drank is een burgemeester'"
+  ],
+  "prioriteit": 1,
+  "seizoen": "winter",
+  "festival": "Middel",
+  "periode": "1945, nu",
+  "research": "laag",
+  "maand": "2027-01",
+  "id": "cb-027",
+  "status": "idee"
+ },
+ {
+  "titel": "Frappé, Thessaloniki",
+  "reeks": "een-glas",
+  "invalshoek": "1957: een vertegenwoordiger op een beurs, geen heet water, een schudbeker. (Toen/nu-variant staat ook in de bank; kies één.)",
+  "waarom": "Klein, grappig, waar.",
+  "bronnen": "Wikipedia Frappé coffee; Nestlé Hellas",
+  "plekken": "Thessaloniki",
+  "beeld": "Illustratie",
+  "versies": {
+   "k": "Het ongeluk",
+   "m": "Het glas en de stad",
+   "l": ""
+  },
+  "social": [
+   "Reel: schudden"
+  ],
+  "prioriteit": 3,
+  "seizoen": "zomer",
+  "festival": "Laag",
+  "periode": "1957",
+  "research": "laag",
+  "maand": "2027-07",
+  "id": "cb-028",
+  "status": "idee"
+ },
+ {
+  "titel": "Kopstoot, Schiedam",
+  "reeks": "een-glas",
+  "invalshoek": "Een glas jenever en een biertje ernaast. Schiedam, de stad met de hoogste molens ter wereld, en de branderijen die de lucht zwart maakten.",
+  "waarom": "Nederlands, dichtbij festival, visueel sterk (molens), en de brug van jenever naar nu.",
+  "bronnen": "Nationaal Jenevermuseum Schiedam; stadsarchief Schiedam",
+  "plekken": "Schiedam · het Jenevermuseum",
+  "beeld": "Eigen fotografie molens",
+  "versies": {
+   "k": "Twee glazen",
+   "m": "De stad die naar mout rook",
+   "l": "Plus: 'Zwart Nazareth'"
+  },
+  "social": [
+   "Reel: de molens",
+   "Carrousel: kopstoot uitgelegd"
+  ],
+  "prioriteit": 1,
+  "seizoen": "winter",
+  "festival": "Hoog: Nederlandse bar",
+  "periode": "19e eeuw, nu",
+  "research": "midden",
+  "maand": "2026-12",
+  "id": "cb-029",
+  "status": "idee"
+ },
+ {
+  "titel": "Txakoli, Getaria",
+  "reeks": "een-glas",
+  "invalshoek": "Een Baskische witte wijn die van hoog wordt ingeschonken, zodat hij even bruist. Wie schenkt, hoe hoog, en waarom?",
+  "waarom": "Het gebaar van hoog schenken verbindt Baskenland met Marokko (atay). Visueel sterk.",
+  "bronnen": "DO Getariako Txakolina; Baskische bronnen",
+  "plekken": "Getaria, Bilbao",
+  "beeld": "Video: de straal",
+  "versies": {
+   "k": "Van hoog",
+   "m": "Het glas en de kust",
+   "l": ""
+  },
+  "social": [
+   "Reel: de straal in slow motion"
+  ],
+  "prioriteit": 2,
+  "seizoen": "zomer",
+  "festival": "Hoog: het gebaar van hoog schenken",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-06",
+  "id": "cb-030",
+  "status": "idee"
+ },
+ {
+  "titel": "Picon bière, Lille",
+  "reeks": "een-glas",
+  "invalshoek": "Een bitter uit Algerije (1837, Gaétan Picon) die in Noord-Frankrijk in het bier belandde. Koloniale geschiedenis in een pils.",
+  "waarom": "Onverwacht, kritisch, dichtbij (Noord-Frankrijk). Laat zien hoe een glas geschiedenis draagt.",
+  "bronnen": "Wikipedia Amer Picon; historici Franse koloniale handel",
+  "plekken": "Lille, Straatsburg, Algerije",
+  "beeld": "Fresco",
+  "versies": {
+   "k": "Een bitter in je bier",
+   "m": "Van Algerije naar Lille",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: de reis van één fles"
+  ],
+  "prioriteit": 2,
+  "seizoen": "najaar",
+  "festival": "Laag",
+  "periode": "1837, nu",
+  "research": "midden",
+  "maand": "2027-10",
+  "id": "cb-031",
+  "status": "idee"
+ },
+ {
+  "titel": "Bicerin, Turijn",
+  "reeks": "een-glas",
+  "invalshoek": "Koffie, chocolade en room in lagen, sinds 1763 geschonken in Caffè Al Bicerin tegenover de Consolata. Het winterglas van de stad.",
+  "waarom": "Winterseizoen zonder alcohol; mooie plek; laat zien dat het uur ook warm kan zijn.",
+  "bronnen": "Caffè Al Bicerin; Turijnse stadsgeschiedenis",
+  "plekken": "Turijn · Caffè Al Bicerin",
+  "beeld": "Fresco / eigen beeld",
+  "versies": {
+   "k": "Drie lagen",
+   "m": "Het glas en de kerk",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: drie lagen"
+  ],
+  "prioriteit": 2,
+  "seizoen": "winter",
+  "festival": "Middel: alcoholvrij",
+  "periode": "1763, nu",
+  "research": "laag",
+  "maand": "2026-12",
+  "id": "cb-032",
+  "status": "idee"
+ },
+ {
+  "titel": "Portonic, Porto",
+  "reeks": "een-glas",
+  "invalshoek": "Witte port, tonic, ijs, munt. Hoe de wijn van export een zomerdrankje voor thuis werd.",
+  "waarom": "Zomer, makkelijk na te maken, sluit aan bij de Portugal-wereld.",
+  "bronnen": "IVDP; Porto-huizen (bronnen kritisch lezen)",
+  "plekken": "Porto",
+  "beeld": "Fresco portugal",
+  "versies": {
+   "k": "Het glas",
+   "m": "Het glas en de rivier",
+   "l": ""
+  },
+  "social": [
+   "Reel: zelf maken",
+   "Carrousel: 3 ingrediënten"
+  ],
+  "prioriteit": 2,
+  "seizoen": "zomer",
+  "festival": "Middel: serve",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-07",
+  "id": "cb-033",
+  "status": "idee"
+ },
+ {
+  "titel": "Americano, Milaan",
+  "reeks": "een-glas",
+  "invalshoek": "Milano-Torino plus soda: waarom heet een Italiaans drankje 'Amerikaans'?",
+  "waarom": "Een vraag die iedereen stelt; leidt naar de Negroni (bestaand verhaal).",
+  "bronnen": "Camparino; Italiaanse drankgeschiedenis; bronnen kritisch (veel mythes)",
+  "plekken": "Milaan",
+  "beeld": "Fresco italie",
+  "versies": {
+   "k": "De naam",
+   "m": "Het hele verhaal",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: 'Waarom Americano?'"
+  ],
+  "prioriteit": 3,
+  "seizoen": "lente",
+  "festival": "Laag",
+  "periode": "19e–20e eeuw",
+  "research": "midden",
+  "maand": "2027-04",
+  "id": "cb-034",
+  "status": "idee"
+ },
+ {
+  "titel": "Waarom Campari rood is",
+  "reeks": "waarom",
+  "invalshoek": "Tot 2006 kwam de rode kleur van Campari uit karmijn, gemaakt van schildluizen. Wat zegt een kleur over een drank?",
+  "waarom": "Een feit dat mensen doorvertellen. Goed onderbouwbaar.",
+  "bronnen": "Campari Group (verklaring 2006); voedingsmiddelenregistratie E120",
+  "plekken": "Milaan",
+  "beeld": "Macrofoto rood",
+  "versies": {
+   "k": "De luis in de fles",
+   "m": "Kleur, merk en herkenning",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: 'Tot 2006 zat hier een insect in'"
+  ],
+  "prioriteit": 1,
+  "seizoen": "lente",
+  "festival": "Laag",
+  "periode": "2006",
+  "research": "laag",
+  "maand": "2027-02",
+  "id": "cb-035",
+  "status": "idee"
+ },
+ {
+  "titel": "Waarom tonic bitter is",
+  "reeks": "waarom",
+  "invalshoek": "Kinine tegen malaria, Britse soldaten in India, gin erbij. Hoe een medicijn een aperitief werd.",
+  "waarom": "Past bij 'Waarom bitter'. Kritisch over koloniale geschiedenis.",
+  "bronnen": "Medische geschiedenis van kinine; Wellcome Collection",
+  "plekken": "India, Londen",
+  "beeld": "Fresco",
+  "versies": {
+   "k": "Het medicijn",
+   "m": "Van kinine tot tonic",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: tijdlijn kinine"
+  ],
+  "prioriteit": 2,
+  "seizoen": "zomer",
+  "festival": "Laag",
+  "periode": "19e eeuw",
+  "research": "midden",
+  "maand": "2027-08",
+  "id": "cb-036",
+  "status": "idee"
+ },
+ {
+  "titel": "Waarom de spritz oranje werd",
+  "reeks": "waarom",
+  "invalshoek": "Aperol werd in 1919 in Padua gelanceerd; de oranje spritz is vooral een succes van reclame. Wat was de spritz daarvoor?",
+  "waarom": "Nuanceert een hype; mensen houden van 'het zit anders'.",
+  "bronnen": "Aperol/Campari-archief (kritisch); Italiaanse pers; reclamehistorici",
+  "plekken": "Padua, Venetië",
+  "beeld": "Oude reclames (rechten!)",
+  "versies": {
+   "k": "Oranje is jong",
+   "m": "Het hele verhaal",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: reclames door de jaren"
+  ],
+  "prioriteit": 2,
+  "seizoen": "zomer",
+  "festival": "Laag",
+  "periode": "1919, 1950s, nu",
+  "research": "midden",
+  "maand": "2027-06",
+  "id": "cb-037",
+  "status": "idee"
+ },
+ {
+  "titel": "Waarom er alsem in vermout zit",
+  "reeks": "waarom",
+  "invalshoek": "Wermut, alsem, maagklachten, en de mythe van de gekmakende absint.",
+  "waarom": "Wetenschap en mythe; past bij de vermut-revival.",
+  "bronnen": "Farmacologische literatuur over thujon; EU-regels voor vermout",
+  "plekken": "Turijn",
+  "beeld": "Illustratie alsem",
+  "versies": {
+   "k": "De plant",
+   "m": "Plant, maag en mythe",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: mythe vs feit"
+  ],
+  "prioriteit": 3,
+  "seizoen": "najaar",
+  "festival": "Laag",
+  "periode": "1786, nu",
+  "research": "midden",
+  "maand": "2027-09",
+  "id": "cb-038",
+  "status": "idee"
+ },
+ {
+  "titel": "Waarom er bitterballen bij de borrel horen",
+  "reeks": "waarom",
+  "invalshoek": "Het bittergarnituur: wat je at bij een bittertje, en hoe de bitterbal het Nederlandse hapje werd.",
+  "waarom": "Nederlands, herkenbaar, deelbaar, en de 'meze' van Nederland.",
+  "bronnen": "Delpher (krantenadvertenties bittergarnituur); culinaire historici",
+  "plekken": "Nederland",
+  "beeld": "Eigen fotografie",
+  "versies": {
+   "k": "De bal bij het bittertje",
+   "m": "Het hele verhaal",
+   "l": ""
+  },
+  "social": [
+   "Poll: mosterd of niet?",
+   "Carrousel: bittergarnituur 1920 vs nu"
+  ],
+  "prioriteit": 1,
+  "seizoen": "najaar",
+  "festival": "Hoog: Nederlandse tafel",
+  "periode": "20e eeuw, nu",
+  "research": "midden",
+  "maand": "2026-11",
+  "id": "cb-039",
+  "status": "idee"
+ },
+ {
+  "titel": "De gilda",
+  "reeks": "op-tafel",
+  "invalshoek": "Ansjovis, olijf, pepertje op een prikker: in San Sebastián vernoemd naar Rita Hayworth in 'Gilda' (1946), 'groen, zout en een beetje pittig'.",
+  "waarom": "Een hapje met een filmster en een jaartal. Makkelijk thuis te maken.",
+  "bronnen": "Casa Vallés, San Sebastián; Baskische culinaire bronnen",
+  "plekken": "San Sebastián · Casa Vallés",
+  "beeld": "Eigen foto; filmposter (rechten)",
+  "versies": {
+   "k": "Het hapje van een filmster",
+   "m": "Het hele verhaal",
+   "l": ""
+  },
+  "social": [
+   "Reel: gilda maken in 20 sec",
+   "Carrousel: 3 ingrediënten + 1 film"
+  ],
+  "prioriteit": 1,
+  "seizoen": "lente",
+  "festival": "Hoog: serveerbaar",
+  "periode": "1946, nu",
+  "research": "laag",
+  "maand": "2027-03",
+  "id": "cb-040",
+  "status": "idee"
+ },
+ {
+  "titel": "Conservas: vis uit blik",
+  "reeks": "op-tafel",
+  "invalshoek": "In Portugal en Spanje is vis uit blik geen armoede maar trots, en een jonge generatie ontdekte het opnieuw. Wie maakt het, wie eet het?",
+  "waarom": "Actuele trend (tinned fish), met echte makers en geschiedenis.",
+  "bronnen": "Portugese conservenfabrieken (Ramirez 1853); marktdata; eigen interviews",
+  "plekken": "Matosinhos, Lissabon, Galicië",
+  "beeld": "Eigen fotografie blikken",
+  "versies": {
+   "k": "Het blikje",
+   "m": "De fabriek, de vissers, de trend",
+   "l": "Plus: waarom het blik ooit een noodzaak was"
+  },
+  "social": [
+   "Carrousel: blikken als kunst",
+   "Reel: blik open, brood, olie"
+  ],
+  "prioriteit": 1,
+  "seizoen": "zomer",
+  "festival": "Hoog: serveerbaar, partners",
+  "periode": "1853, nu",
+  "research": "midden",
+  "maand": "2027-05",
+  "id": "cb-041",
+  "status": "idee"
+ },
+ {
+  "titel": "Tramezzino, Turijn",
+  "reeks": "op-tafel",
+  "invalshoek": "Het korstloze driehoekje zou in 1925 bij Caffè Mulassano zijn uitgevonden, en de naam van D'Annunzio hebben gekregen. Wat klopt ervan?",
+  "waarom": "Mooi verhaal dat om factcheck vraagt: laat zien hoe APÉRO met overlevering omgaat.",
+  "bronnen": "Caffè Mulassano; Italiaanse culinaire historici",
+  "plekken": "Turijn · Caffè Mulassano",
+  "beeld": "Fresco",
+  "versies": {
+   "k": "Het driehoekje",
+   "m": "Het hele verhaal, met factcheck",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: 'Klopt dit?'"
+  ],
+  "prioriteit": 2,
+  "seizoen": "lente",
+  "festival": "Laag",
+  "periode": "1925",
+  "research": "midden",
+  "maand": "2027-04",
+  "id": "cb-042",
+  "status": "idee"
+ },
+ {
+  "titel": "De olijf",
+  "reeks": "op-tafel",
+  "invalshoek": "Waarom staat er overal ter wereld een schaaltje olijven bij het glas? Over zout, dorst, handel en gastvrijheid.",
+  "waarom": "Het meest universele hapje; laat verschillen per land zien.",
+  "bronnen": "Culinaire literatuur; olijfteeltbronnen",
+  "plekken": "Middellandse Zee",
+  "beeld": "Macrofotografie",
+  "versies": {
+   "k": "Het schaaltje",
+   "m": "Het hele verhaal",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: zes olijven, zes landen"
+  ],
+  "prioriteit": 2,
+  "seizoen": "najaar (oogst)",
+  "festival": "Middel",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-11",
+  "id": "cb-043",
+  "status": "idee"
+ },
+ {
+  "titel": "Hoeveel borden is een meze?",
+  "reeks": "op-tafel",
+  "invalshoek": "Aan een Griekse of Libanese tafel komen de borden in golven. Is er een volgorde, een logica, een eind?",
+  "waarom": "Vervolg op Athene; eten krijgt de hoofdrol.",
+  "bronnen": "Libanese en Griekse kookboeken; interviews met koks",
+  "plekken": "Athene, Beiroet, Volos",
+  "beeld": "Bovenaanzicht van een volle tafel",
+  "versies": {
+   "k": "De golven",
+   "m": "Het hele verhaal",
+   "l": ""
+  },
+  "social": [
+   "Reel: tafel vol in 10 sec (timelapse)"
+  ],
+  "prioriteit": 2,
+  "seizoen": "zomer",
+  "festival": "Hoog: het festivalbord",
+  "periode": "nu",
+  "research": "midden",
+  "maand": "2027-06",
+  "id": "cb-044",
+  "status": "idee"
+ },
+ {
+  "titel": "Het apéro dînatoire",
+  "reeks": "op-tafel",
+  "invalshoek": "De Franse avond waarin het aperitief het diner wordt: plankjes, quiches, en geen hoofdgerecht. Sinds wanneer, en waarom?",
+  "waarom": "Thuis na te doen; sluit aan bij hoe Nederlanders nu 'borrelen' als diner.",
+  "bronnen": "Franse pers; sociologen van het Franse eten",
+  "plekken": "Frankrijk",
+  "beeld": "Eigen styling",
+  "versies": {
+   "k": "Geen hoofdgerecht",
+   "m": "Het hele verhaal",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: een planche opbouwen"
+  ],
+  "prioriteit": 2,
+  "seizoen": "najaar",
+  "festival": "Middel",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-11",
+  "id": "cb-045",
+  "status": "idee"
+ },
+ {
+  "titel": "Alcoholvrij aan tafel",
+  "reeks": "essay",
+  "invalshoek": "Nieuwe cijfers: Nederlandse jongeren drinken steeds vaker niet, alcoholvrij bier groeit hard. Wat betekent dat voor het uur?",
+  "waarom": "Actueel (Dry January), onderbouwd met Trimbos/NJi-data, sluit aan op bestaand essay.",
+  "bronnen": "Trimbos factsheet alcoholvrije dranken (2025); NJi; Nederlandse Brouwers (2025)",
+  "plekken": "Nederland",
+  "beeld": "Grafiek",
+  "versies": {
+   "k": "De cijfers",
+   "m": "Wat er verandert aan tafel",
+   "l": ""
+  },
+  "social": [
+   "Grafiek-post",
+   "Poll: drink jij in januari?"
+  ],
+  "prioriteit": 1,
+  "seizoen": "januari",
+  "festival": "Hoog: alcoholvrij op het festival",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-01",
+  "id": "cb-046",
+  "status": "idee"
+ },
+ {
+  "titel": "De apéro géant van 2010",
+  "reeks": "essay",
+  "invalshoek": "Via Facebook kwamen in Nantes duizenden mensen samen voor een gigantische apéro; er viel een dode. Wat gebeurt er als het uur viraal gaat?",
+  "waarom": "Social media en tafelcultuur; kritisch en actueel. Ook een les voor een festival.",
+  "bronnen": "Franse pers 2010 (Le Monde, Libération)",
+  "plekken": "Nantes, Frankrijk",
+  "beeld": "Archiefbeeld (rechten)",
+  "versies": {
+   "k": "De avond in Nantes",
+   "m": "Het hele verhaal",
+   "l": "Plus: wat een festival hiervan leert"
+  },
+  "social": [
+   "Carrousel: tijdlijn van een virale apéro"
+  ],
+  "prioriteit": 2,
+  "seizoen": "voorjaar",
+  "festival": "Hoog: hoe groot mag een tafel worden",
+  "periode": "2010",
+  "research": "midden",
+  "maand": "2027-05",
+  "id": "cb-047",
+  "status": "idee"
+ },
+ {
+  "titel": "De borrel staat in de agenda",
+  "reeks": "essay",
+  "invalshoek": "Waarom de Nederlandse borrel om vijf begint en om zeven stopt, en wat er verloren ging toen hij een werkafspraak werd.",
+  "waarom": "De eigen stem van APÉRO; prikkelend maar niet belerend.",
+  "bronnen": "CBS werktijden; eigen observatie",
+  "plekken": "Nederland",
+  "beeld": "Illustratie",
+  "versies": {
+   "k": "Vijf tot zeven",
+   "m": "Het essay",
+   "l": ""
+  },
+  "social": [
+   "Quote-kaart",
+   "Poll: wanneer stopt jouw borrel?"
+  ],
+  "prioriteit": 2,
+  "seizoen": "najaar",
+  "festival": "Hoog: waarom een festival zonder eindtijd",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-10",
+  "id": "cb-048",
+  "status": "idee"
+ },
+ {
+  "titel": "Waarom een festival een tafel is",
+  "reeks": "essay",
+  "invalshoek": "Waarom maakt een magazine een festival? Een essay dat uitlegt wat er in juni gebeurt, zonder programma.",
+  "waarom": "Het moment waarop magazine en festival samenvallen. Alleen publiceren in de onthullingsfase.",
+  "bronnen": "Eigen redactie",
+  "plekken": "Utrecht",
+  "beeld": "Eigen beeld",
+  "versies": {
+   "k": "De tafel",
+   "m": "Het essay",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: de vijf regels van APÉRO"
+  ],
+  "prioriteit": 1,
+  "seizoen": "winter",
+  "festival": "Kern: de onthulling",
+  "periode": "nu",
+  "research": "laag",
+  "maand": "2027-01",
+  "id": "cb-049",
+  "status": "idee"
+ },
+ {
+  "titel": "De barman van de Camparino",
+  "reeks": "wie-zat-waar",
+  "invalshoek": "Een dag met de mensen achter de toog van de Camparino in Galleria, waar sinds 1915 de soda uit de kraan komt.",
+  "waarom": "Mensen, niet merken. Laat vakmanschap zien.",
+  "bronnen": "Eigen interview; Camparino",
+  "plekken": "Milaan · Camparino",
+  "beeld": "Eigen fotografie",
+  "versies": {
+   "k": "Eén dienst",
+   "m": "Het portret",
+   "l": ""
+  },
+  "social": [
+   "Interview-carrousel: 5 vragen"
+  ],
+  "prioriteit": 2,
+  "seizoen": "lente",
+  "festival": "Middel: gastbartender?",
+  "periode": "nu",
+  "research": "hoog",
+  "maand": "2027-04",
+  "id": "cb-050",
+  "status": "idee"
+ },
+ {
+  "titel": "Een ouzeri in Volos",
+  "reeks": "om-zes-uur",
+  "invalshoek": "Een echt portret van één tsipouradiko: de eigenaar, de keuken die beslist, de vaste gasten. Het vervolg op de samengestelde scène in Athene, maar dan waargenomen.",
+  "waarom": "Maakt de samengestelde scène 'echt'; laat zien dat we ook ter plekke gaan.",
+  "bronnen": "Eigen reportage; tolk",
+  "plekken": "Volos · één tsipouradiko",
+  "beeld": "Eigen fotografie",
+  "versies": {
+   "k": "Eén keuken",
+   "m": "De reportage",
+   "l": "Plus: het recept van het derde bordje"
+  },
+  "social": [
+   "Reel: de borden komen",
+   "Carrousel: bordje 1 t/m 6"
+  ],
+  "prioriteit": 1,
+  "seizoen": "najaar",
+  "festival": "Hoog: gastkeuken?",
+  "periode": "nu",
+  "research": "hoog",
+  "maand": "2027-09",
+  "id": "cb-051",
+  "status": "idee"
+ },
+ {
+  "titel": "De Utrechtse kroegbaas",
+  "reeks": "wie-zat-waar",
+  "invalshoek": "Een profiel van iemand die al decennia een Utrechtse kroeg runt: wie er kwam, wie er nog komt.",
+  "waarom": "Lokaal, menselijk, festivalbrug.",
+  "bronnen": "Eigen interview",
+  "plekken": "Utrecht",
+  "beeld": "Eigen fotografie",
+  "versies": {
+   "k": "Veertig jaar",
+   "m": "Het portret",
+   "l": ""
+  },
+  "social": [
+   "Interview-reel"
+  ],
+  "prioriteit": 1,
+  "seizoen": "voorjaar",
+  "festival": "Hoog: lokale partner",
+  "periode": "1980–nu",
+  "research": "midden",
+  "maand": "2027-02",
+  "id": "cb-052",
+  "status": "idee"
+ },
+ {
+  "titel": "De importeur",
+  "reeks": "wie-zat-waar",
+  "invalshoek": "Wie brengt de vermut, de ouzo en de port naar Nederland? Een portret van een importeur, met de kritische vragen erbij.",
+  "waarom": "Brug naar partners zonder advertorial te worden. Transparant over belangen.",
+  "bronnen": "Eigen interview; branchecijfers",
+  "plekken": "Nederland",
+  "beeld": "Eigen fotografie",
+  "versies": {
+   "k": "De fles",
+   "m": "Het portret",
+   "l": ""
+  },
+  "social": [
+   "Carrousel: de reis van één fles naar Nederland"
+  ],
+  "prioriteit": 2,
+  "seizoen": "najaar",
+  "festival": "Hoog: partner, maar redactioneel",
+  "periode": "nu",
+  "research": "midden",
+  "maand": "2027-10",
+  "id": "cb-053",
+  "status": "idee"
+ }
+]

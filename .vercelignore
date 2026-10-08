@@ -1,0 +1,6 @@
+# Interne bestanden horen niet op de publieke site.
+# studio/ blijft meegaan: op de publieke site zit /studio achter de redactie-login (middleware.js);
+# het losse Studio-project (rootDirectory studio) heeft die map nodig.
+docs/
+tools/
+content/
