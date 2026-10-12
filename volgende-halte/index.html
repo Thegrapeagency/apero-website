@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Volgende Halte · Een avond door Amsterdam</title>
-<meta name="description" content="Dinsdag 1 december 2026: een culinaire tramreis door Amsterdam in De Hallen Studio's. Instappen vanaf 17.00 uur. Reserveer je plek.">
+<meta name="description" content="Dinsdag 1 december 2026: een culinaire tramreis door Amsterdam in De Hallen Studio's. Om 17.00 uur aanwezig voor vertrek van de tram. Reserveer je plek.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0c165b">
 <meta property="og:type" content="website">
@@ -621,7 +621,7 @@ fieldset.strip-veld{border:0;margin:0}
     <div class="lijnnummer" aria-hidden="true"><div><small>LIJN</small>1/12</div></div>
     <div class="led" role="status" aria-live="polite">
       <div class="led-regel led-boven"><span id="led-boven">Volgende halte: De Hallen Studio's</span><span id="led-klok" aria-hidden="true">--:--</span></div>
-      <div class="led-regel led-onder" aria-hidden="true"><span class="led-loop" id="led-loop">Instappen vanaf 17:00 · Dinsdag 1 december 2026 · Hannie Dankbaarpassage 18 · De tram wacht niet! · </span></div>
+      <div class="led-regel led-onder" aria-hidden="true"><span class="led-loop" id="led-loop">17:00 aanwezig voor vertrek tram · 19:30 laatste halte · Dinsdag 1 december 2026 · Hannie Dankbaarpassage 18 · De tram wacht niet! · </span></div>
     </div>
     <button class="bel" id="bel" type="button" aria-label="Ding, ding, ding! (laat de trambel klinken)" title="Ding, ding, ding!"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 3.2a1.3 1.3 0 0 1 1.3 1.3v.6a6 6 0 0 1 4.7 5.9v3.6l1.7 2.4H4.3L6 14.6V11a6 6 0 0 1 4.7-5.9v-.6A1.3 1.3 0 0 1 12 3.2Z" fill="#1a1300"/><path d="M9.6 19.2a2.4 2.4 0 0 0 4.8 0" fill="none" stroke="#1a1300" stroke-width="2" stroke-linecap="round"/></svg></button>
   </div>
@@ -707,7 +707,7 @@ fieldset.strip-veld{border:0;margin:0}
         <p class="lead">Vul je strippenkaart in, gooi hem in de stempelautomaat en je plek aan boord is gereserveerd.</p>
         <dl>
           <dt>Wanneer</dt><dd>Dinsdag 1 december 2026</dd>
-          <dt>Instappen</dt><dd>Vanaf 17:00 uur · eindhalte 19:15</dd>
+          <dt>Vertrek</dt><dd>17:00 aanwezig voor vertrek tram<br>19:30 laatste halte</dd>
           <dt>Waar</dt><dd>De Hallen Studio's<br>Hannie Dankbaarpassage 18, Amsterdam<br><a href="https://www.google.com/maps/search/?api=1&query=Hannie+Dankbaarpassage+18+Amsterdam" target="_blank" rel="noopener">Route plannen ↗</a></dd>
           <dt>Aan boord</dt><dd>Gerechten van Kitchen Creative, wijnen van Meisjes van de Wijn</dd>
         </dl>
@@ -832,7 +832,7 @@ fieldset.strip-veld{border:0;margin:0}
 <footer class="voet">
   <div class="eindhalte">
     <span>1 december 2026</span>
-    <span>17:00 – 19:15</span>
+    <span>17:00 vertrek · 19:30 laatste halte</span>
     <a href="https://www.google.com/maps/search/?api=1&query=Hannie+Dankbaarpassage+18+Amsterdam" target="_blank" rel="noopener">Hannie Dankbaarpassage 18</a>
   </div>
   <p>Volgende Halte · Meisjes van de Wijn, Matter &amp; De Hallen Studio's presenteren · Met dank aan Kitchen Creative Catering, Production People en Vixy Live</p>
@@ -905,7 +905,7 @@ var VERTREK = new Date('2026-12-01T17:00:00+01:00');
     var deel = dagen > 1 ? 'Nog ' + dagen + ' dagen tot vertrek' :
                dagen === 1 ? 'Morgen vertrekt de tram!' :
                dagen === 0 ? 'Vandaag vertrekt de tram!' : 'Bedankt voor het meereizen!';
-    ledLoop.textContent = deel + ' · Dinsdag 1 december 2026 · Instappen vanaf 17:00 · De Hallen Studio\'s · Hannie Dankbaarpassage 18 · Gerechten van Kitchen Creative · Wijnen van Meisjes van de Wijn · Meisjes van de Wijn, Matter & De Hallen Studio\'s presenteren · Met dank aan Kitchen Creative Catering, Production People en Vixy Live · De tram wacht niet! · ';
+    ledLoop.textContent = deel + ' · Dinsdag 1 december 2026 · 17:00 aanwezig voor vertrek tram · 19:30 laatste halte · De Hallen Studio\'s · Hannie Dankbaarpassage 18 · Gerechten van Kitchen Creative · Wijnen van Meisjes van de Wijn · Meisjes van de Wijn, Matter & De Hallen Studio\'s presenteren · Met dank aan Kitchen Creative Catering, Production People en Vixy Live · De tram wacht niet! · ';
   })();
 
   /* ---------- Trambel (Web Audio, alleen na klik) ---------- */
@@ -1129,9 +1129,9 @@ var VERTREK = new Date('2026-12-01T17:00:00+01:00');
       'UID:volgende-halte-20261201@dehallen',
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, ''),
       'DTSTART:20261201T160000Z',
-      'DTEND:20261201T181500Z',
+      'DTEND:20261201T183000Z',
       'SUMMARY:Volgende Halte · Een avond door Amsterdam',
-      'DESCRIPTION:Culinaire tramreis in De Hallen Studio\'s. Instappen vanaf 17.00 uur. De tram wacht niet!',
+      'DESCRIPTION:Culinaire tramreis in De Hallen Studio\'s. Om 17.00 uur aanwezig voor vertrek van de tram\\, 19.30 uur laatste halte. De tram wacht niet!',
       'LOCATION:De Hallen Studio\'s\\, Hannie Dankbaarpassage 18\\, Amsterdam',
       'BEGIN:VALARM', 'TRIGGER:-PT2H', 'ACTION:DISPLAY', 'DESCRIPTION:Ding ding! Over 2 uur vertrekt de tram', 'END:VALARM',
       'END:VEVENT', 'END:VCALENDAR'
