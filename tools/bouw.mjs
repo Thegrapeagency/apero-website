@@ -337,12 +337,25 @@ function voorpagina() {
     ['Waarom drinken we iets bitters vóór het eten?', 'waarom-bitter']
   ].filter(([, s]) => OP_SLUG[s]);
   const dranken = [['ouzo', 'athene-1814'], ['vermut', 'spanje-1974-en-nu'], ['jenever', 'jenever-en-het-loon'], ['ombra', 'ombra'], ['atay', 'opening-zonder-alcohol'], ['Negroni', 'de-graaf-en-de-soda'], ['pastis', 'dranken-uit-een-verbod']];
-  const body = `<section class="opening"><div class="w"><div class="grid">
-<div>
+  const eeuwen = [
+    ['Eerste eeuw', 'Mulsum', 'Rome', 'mulsum'],
+    ['1786', 'Vermout', 'Turijn', 'italie-het-podium'],
+    ['1881', 'Jenever', 'Amsterdam', 'jenever-en-het-loon'],
+    ['1919', 'Negroni', 'Florence', 'de-graaf-en-de-soda'],
+    ['1974', 'Vermut', 'Madrid', 'spanje-1974-en-nu']
+  ].filter(([, , , s]) => OP_SLUG[s]);
+  const body = `<section class="welkom"><div class="w">
 <p class="klok" id="klok"><span class="punt" aria-hidden="true"></span><span>Het uur tussen werk en diner.</span></p>
-<p class="wat">APÉRO is een magazine over het uur tussen werk en diner, van Porto tot Beiroet. In juni 2027 staat het op tafel in Utrecht. <a href="/verhaal.html">Over APÉRO</a></p>
-<span class="lbl">${esc(hoofd.kicker)}</span>
-<h1 class="kop-xl">${esc(hoofd.titel)}</h1>
+<span class="lbl">Dit is APÉRO Culture</span>
+<h1 class="kop-xl">Wat dronken zij,<br><em>en wat drink jij?</em></h1>
+<p class="lede">Hier lees je over de aperitiefcultuur van Europa en de Middellandse Zee, door de eeuwen heen. Van de Romeinen, die hun maaltijd openden met wijn en honing, en de Grieken, die hun wijn met water aanlengden, tot het terras van vandaag. Wat stond er op tafel, wie schoof er aan, en wat zegt dat over toen? En wat drink jij, om zes uur, als de dag klaar is?</p>
+<p class="acties"><a class="knop" href="/verhalen/">Lees de verhalen</a><a class="knop licht" href="/verhaal.html#tijdlijn">Van Rome tot nu</a></p>
+<ol class="eeuwen" aria-label="Door de eeuwen heen">${eeuwen.map(([j, d, p, s]) => `<li><a href="${OP_SLUG[s].url}?v=k"><span class="j">${j}</span><b>${d}</b><span class="p">${p}</span></a></li>`).join('')}<li class="nu"><a href="/verhalen/?tijd=nu"><span class="j">Nu</span><b>Jij</b><span class="p">Op het terras</span></a></li></ol>
+</div></section>
+<section class="opening"><div class="w"><div class="grid">
+<div>
+<span class="lbl">Om te beginnen · ${esc(hoofd.plekken?.[0] || hoofd.kicker)}</span>
+<h2 class="kop-xl">${esc(hoofd.titel)}</h2>
 <p class="stand">${esc(hoofd.ondertitel)}</p>
 <div class="tijdkeuze" role="group" aria-label="Lees dit verhaal"><span class="tk-l">Hoeveel tijd heb je?</span>
 <a href="${hoofd.url}?v=k"><b>Kort</b><span>${hoofd.mins.k} min</span></a>

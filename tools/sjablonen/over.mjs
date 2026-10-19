@@ -52,7 +52,7 @@ export function pagina({ html }) {
 <p>Bij elk verhaal kies je zelf hoeveel tijd je hebt. De korte versie is de kern. De middellange is het hele verhaal. De lange gaat verder waar de middellange ophoudt, zonder dat je opnieuw hoeft te beginnen. Je keuze wordt onthouden, en je kunt altijd wisselen.</p>
 </div></section>
 
-<section class="blok"><div class="w">
+<section class="blok" id="tijdlijn"><div class="w">
 <div class="bkop"><div><span class="lbl">Door de tijd</span><h2 class="kop-l">Van mulsum naar Utrecht</h2></div></div>
 <p class="lede" style="margin:-6px 0 28px">Hoe verder we terugzochten, hoe minder dit een Europese uitvinding leek. Het is eerder iets wat mensen overal doen als de dag klaar is, en wat in Europa toevallig een naam kreeg. En er staat altijd een bord naast.</p>
 <ol class="tijdlijn" style="max-width:720px">${tijdlijn.map(([y, t, p]) => `<li class="rv"><span class="y">${y}</span><h3>${t}</h3><p>${p}</p></li>`).join('')}</ol>

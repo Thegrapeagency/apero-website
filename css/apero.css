@@ -70,6 +70,24 @@ a{color:inherit}
 /* ============================================================
    VOORPAGINA
    ============================================================ */
+.welkom{border-bottom:1px solid var(--line);padding:36px 0 40px;background:linear-gradient(180deg,var(--panna-2),var(--panna))}
+@media(min-width:900px){.welkom{padding:72px 0 64px}}
+.welkom .kop-xl{margin:12px 0 22px;max-width:14ch}
+.welkom .kop-xl em{font-style:italic;font-weight:500;color:var(--terracotta)}
+.welkom .lede{max-width:60ch}
+.welkom .acties{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 0}
+.eeuwen{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+@media(min-width:760px){.eeuwen{grid-template-columns:repeat(6,1fr)}}
+.eeuwen li{border-bottom:1px solid var(--line)}
+@media(min-width:760px){.eeuwen li{border-bottom:0}}
+.eeuwen a{display:flex;flex-direction:column;gap:2px;padding:16px 10px 14px 0;color:inherit;text-decoration:none;position:relative}
+.eeuwen a::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--panna);box-shadow:inset 0 0 0 1.5px var(--terracotta)}
+.eeuwen .j{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-50)}
+.eeuwen b{font-family:var(--disp);font-size:clamp(19px,2.2vw,24px);font-weight:700;line-height:1.15}
+.eeuwen .p{font-size:14px;color:var(--ink-70)}
+.eeuwen a:hover b{color:var(--terracotta)}
+.eeuwen .nu a::before{background:var(--terracotta)}
+.eeuwen .nu b{font-style:italic;color:var(--terracotta)}
 .opening{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
 .opening .grid{display:grid;gap:28px;padding:28px 0 36px}
 @media(min-width:900px){.opening .grid{grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:56px 0 64px}}
