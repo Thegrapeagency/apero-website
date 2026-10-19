@@ -7,7 +7,7 @@
   var d = document, w = window;
   var OPSLAG = 'apero_studio2_v1';
   // Waar staat de publieke site? Lokaal: één map omhoog. Los gedeployed: de nieuwe site.
-  var SITE = /^(localhost|127\.)/.test(location.hostname) ? '..' : 'https://apero-nieuw.vercel.app';
+  var SITE = /^(localhost|127\.)/.test(location.hostname) ? '..' : /^\/studio/.test(location.pathname) ? '' : 'https://www.apero-culture.com';
   var STATUS = ['idee', 'research', 'schrijven', 'redactie', 'klaar', 'gepubliceerd'];
   var STATUSNAAM = { idee: 'Idee', research: 'Research', schrijven: 'Schrijven', redactie: 'Redactie', klaar: 'Klaar', gepubliceerd: 'Gepubliceerd' };
   var TYPES = { verhaal: 'Verhaal', social: 'Social', nieuwsbrief: 'Nieuwsbrief', festival: 'Festival', taak: 'Taak' };

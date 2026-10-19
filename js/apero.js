@@ -101,7 +101,11 @@
       fetch('/api/aanmelden', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: mail, bron: f.getAttribute('data-bron') || location.pathname, website: ($('input[name=website]', f) || {}).value || '' }) })
         .then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
         .then(function (j) {
-          if (j && j.ok) {
+          if (j && j.ok && j.testmodus && !/\.vercel\.app$/.test(location.hostname)) {
+            // Op het echte domein, maar nog geen nieuwsbriefdienst gekoppeld: niets laten verdwijnen.
+            var mailto = 'mailto:hallo@apero-culture.nl?subject=' + encodeURIComponent('Aanmelding De Inschenker') + '&body=' + encodeURIComponent('Zet me op de lijst voor De Inschenker: ' + mail);
+            st.innerHTML = 'Het automatisch inschrijven staat nog niet aan. <a href="' + mailto + '">Stuur ons even een mailtje</a>, dan zetten we je er zelf op.';
+          } else if (j && j.ok) {
             LS.set('ingeschreven', true);
             st.textContent = j.testmodus
               ? 'Dank je. Let op: dit is de testomgeving, je adres is niet opgeslagen.'
