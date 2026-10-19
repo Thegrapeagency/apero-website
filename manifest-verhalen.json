@@ -1,0 +1,28 @@
+{
+ "name": "APÉRO Culture",
+ "short_name": "APÉRO",
+ "start_url": "/verhalen/",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#F4EAD6",
+ "theme_color": "#F4EAD6",
+ "description": "Verhalen over het uur tussen werk en diner.",
+ "icons": [
+  {
+   "src": "/icon.svg",
+   "sizes": "any",
+   "type": "image/svg+xml"
+  },
+  {
+   "src": "/app/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/app/icon-512-maskable.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

@@ -1,0 +1,406 @@
+[
+ {
+  "id": "p-037",
+  "datum": "2026-10-01",
+  "type": "taak",
+  "titel": "Kies de nieuwsbriefdienst (voorstel: Brevo) en zet de variabelen in Vercel",
+  "status": "open",
+  "notitie": "Zie api/aanmelden.mjs"
+ },
+ {
+  "id": "p-038",
+  "datum": "2026-10-02",
+  "type": "taak",
+  "titel": "Athene, 18:14: tweede lezer doet de factcheck op de bronnenlijst",
+  "status": "open",
+  "notitie": ""
+ },
+ {
+  "id": "p-039",
+  "datum": "2026-10-02",
+  "type": "taak",
+  "titel": "Instagram-bio en highlights aanpassen: magazine eerst, festival als hint",
+  "status": "open",
+  "notitie": ""
+ },
+ {
+  "id": "p-040",
+  "datum": "2026-10-05",
+  "type": "taak",
+  "titel": "Beeldrechten fresco's vastleggen (herkomst, licentie) in de Bibliotheek",
+  "status": "open",
+  "notitie": ""
+ },
+ {
+  "id": "p-001",
+  "datum": "2026-10-06",
+  "type": "verhaal",
+  "titel": "Athene, 18:14",
+  "status": "gepland",
+  "verhaal": "athene-1814",
+  "kanaal": "site"
+ },
+ {
+  "id": "p-025",
+  "datum": "2026-10-06",
+  "type": "festival",
+  "titel": "Festivalpagina: minder vertellen, wel \"wat we weten / nog niet\"",
+  "status": "live",
+  "notitie": "Nieuwe versie van de site",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-006",
+  "datum": "2026-10-07",
+  "type": "social",
+  "titel": "Het bord dat niemand besteld heeft",
+  "status": "gepland",
+  "verhaal": "athene-1814",
+  "kanaal": "instagram",
+  "format": "carrousel",
+  "notitie": "6 slides: de tafel om 18:14 · kerasma · xerosfyri · Volos, een bordje per flesje · refené · \"lees kort (1 min) of lang (7 min)\""
+ },
+ {
+  "id": "p-041",
+  "datum": "2026-10-07",
+  "type": "taak",
+  "titel": "Utrecht, 17:30: drie kroegen benaderen voor de reportage",
+  "status": "open",
+  "notitie": "Contentbank cb-001"
+ },
+ {
+  "id": "p-018",
+  "datum": "2026-10-08",
+  "type": "nieuwsbrief",
+  "titel": "#1 · Een bord dat niemand besteld heeft",
+  "status": "gepland",
+  "verhaal": "athene-1814",
+  "kanaal": "mail"
+ },
+ {
+  "id": "p-042",
+  "datum": "2026-10-08",
+  "type": "taak",
+  "titel": "Keuze maken: welke 6 onderwerpen uit de contentbank voor januari–maart",
+  "status": "open",
+  "notitie": "Zie prioriteit 1 in de bank"
+ },
+ {
+  "id": "p-007",
+  "datum": "2026-10-09",
+  "type": "social",
+  "titel": "Doe jij meteen iets terug als iemand je trakteert?",
+  "status": "gepland",
+  "verhaal": "athene-1814",
+  "kanaal": "instagram",
+  "format": "story-poll",
+  "notitie": "Ja, meteen / Nee, later / Ik laat het gebeuren. Resultaat delen in De Inschenker."
+ },
+ {
+  "id": "p-043",
+  "datum": "2026-10-09",
+  "type": "taak",
+  "titel": "Besluit: nieuwe site live zetten of nog niet (vergelijk met de huidige)",
+  "status": "open",
+  "notitie": "Migratie alleen na expliciet akkoord"
+ },
+ {
+  "id": "p-008",
+  "datum": "2026-10-13",
+  "type": "social",
+  "titel": "Ouzo wordt wit",
+  "status": "gepland",
+  "verhaal": "athene-1814",
+  "kanaal": "instagram",
+  "format": "reel",
+  "notitie": "15 sec macro van water in ouzo. Tekst: \"Nooit op de droge hamer.\" Geen muziek-trend, wel omgevingsgeluid."
+ },
+ {
+  "id": "p-002",
+  "datum": "2026-10-20",
+  "type": "verhaal",
+  "titel": "Spanje, 1974. En nu.",
+  "status": "gepland",
+  "verhaal": "spanje-1974-en-nu",
+  "kanaal": "site"
+ },
+ {
+  "id": "p-009",
+  "datum": "2026-10-21",
+  "type": "social",
+  "titel": "Zondag, kwart over één. 1974 en nu.",
+  "status": "gepland",
+  "verhaal": "spanje-1974-en-nu",
+  "kanaal": "instagram",
+  "format": "carrousel",
+  "notitie": "Twee scènes naast elkaar, slide voor slide: wie staat er, wat staat er, wat ligt er op de vloer."
+ },
+ {
+  "id": "p-019",
+  "datum": "2026-10-22",
+  "type": "nieuwsbrief",
+  "titel": "#2 · Zondag, kwart over één",
+  "status": "gepland",
+  "verhaal": "spanje-1974-en-nu",
+  "kanaal": "mail"
+ },
+ {
+  "id": "p-010",
+  "datum": "2026-10-23",
+  "type": "social",
+  "titel": "Sinds wanneer mag er in Spaanse bars niet meer gerookt worden?",
+  "status": "gepland",
+  "verhaal": "spanje-1974-en-nu",
+  "kanaal": "instagram",
+  "format": "story-quiz",
+  "notitie": "2006 / 2011 / 2016. Antwoord: 2 januari 2011, terrassen uitgezonderd."
+ },
+ {
+  "id": "p-011",
+  "datum": "2026-10-25",
+  "type": "social",
+  "titel": "Het is zondag, kwart over één.",
+  "status": "gepland",
+  "verhaal": "spanje-1974-en-nu",
+  "kanaal": "instagram",
+  "format": "post",
+  "notitie": "Om 13:15 posten, het moment van de scène. Eén beeld, één zin, link in bio."
+ },
+ {
+  "id": "p-003",
+  "datum": "2026-11-03",
+  "type": "verhaal",
+  "titel": "Wie betaalt?",
+  "status": "gepland",
+  "verhaal": "wie-betaalt",
+  "kanaal": "site"
+ },
+ {
+  "id": "p-012",
+  "datum": "2026-11-04",
+  "type": "social",
+  "titel": "Wie betaalt? Vier landen, vier systemen",
+  "status": "gepland",
+  "verhaal": "wie-betaalt",
+  "kanaal": "instagram",
+  "format": "carrousel",
+  "notitie": "Refené · de bote · het rondje · de gastheer. Laatste slide: \"En bij jou?\""
+ },
+ {
+  "id": "p-013",
+  "datum": "2026-11-05",
+  "type": "social",
+  "titel": "Rondje, pot of ieder voor zich?",
+  "status": "gepland",
+  "verhaal": "wie-betaalt",
+  "kanaal": "instagram",
+  "format": "story-poll",
+  "notitie": "Resultaat in de volgende Inschenker."
+ },
+ {
+  "id": "p-020",
+  "datum": "2026-11-05",
+  "type": "nieuwsbrief",
+  "titel": "#3 · Wie betaalt?",
+  "status": "gepland",
+  "verhaal": "wie-betaalt",
+  "kanaal": "mail"
+ },
+ {
+  "id": "p-004",
+  "datum": "2026-11-17",
+  "type": "verhaal",
+  "titel": "Het loon werd in de kroeg betaald",
+  "status": "gepland",
+  "verhaal": "jenever-en-het-loon",
+  "kanaal": "site"
+ },
+ {
+  "id": "p-014",
+  "datum": "2026-11-18",
+  "type": "social",
+  "titel": "1881 in zes cijfers",
+  "status": "gepland",
+  "verhaal": "jenever-en-het-loon",
+  "kanaal": "instagram",
+  "format": "carrousel",
+  "notitie": "5 liter · 9 liter · 45.000 verkopers · 33.000 vergunningen · 12.000 sluitingen · 1 verbod: geen loon in de kroeg"
+ },
+ {
+  "id": "p-021",
+  "datum": "2026-11-19",
+  "type": "nieuwsbrief",
+  "titel": "#4 · Buigen voor je glas",
+  "status": "gepland",
+  "verhaal": "jenever-en-het-loon",
+  "kanaal": "mail"
+ },
+ {
+  "id": "p-015",
+  "datum": "2026-11-21",
+  "type": "social",
+  "titel": "De eerste slok buig je",
+  "status": "gepland",
+  "verhaal": "jenever-en-het-loon",
+  "kanaal": "instagram",
+  "format": "reel",
+  "notitie": "Opname bij een proeflokaal (toestemming vragen). Geen voice-over, alleen het gebaar."
+ },
+ {
+  "id": "p-026",
+  "datum": "2026-11-30",
+  "type": "festival",
+  "titel": "Besluit: data en locatie vast (intern)",
+  "status": "voorstel",
+  "notitie": "Voorwaarde voor de onthulling in januari",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-005",
+  "datum": "2026-12-01",
+  "type": "verhaal",
+  "titel": "Een schaduw, graag",
+  "status": "gepland",
+  "verhaal": "ombra",
+  "kanaal": "site"
+ },
+ {
+  "id": "p-016",
+  "datum": "2026-12-02",
+  "type": "social",
+  "titel": "Een schaduw, graag",
+  "status": "gepland",
+  "verhaal": "ombra",
+  "kanaal": "instagram",
+  "format": "carrousel",
+  "notitie": "Het verhaal van de toren, met het label \"overlevering\" op de slide. Transparantie is hier het punt."
+ },
+ {
+  "id": "p-022",
+  "datum": "2026-12-03",
+  "type": "nieuwsbrief",
+  "titel": "#5 · Een schaduw, graag",
+  "status": "gepland",
+  "verhaal": "ombra",
+  "kanaal": "mail"
+ },
+ {
+  "id": "p-017",
+  "datum": "2026-12-04",
+  "type": "social",
+  "titel": "Heb jij een woord voor een klein glas wijn?",
+  "status": "gepland",
+  "verhaal": "ombra",
+  "kanaal": "instagram",
+  "format": "story-vraag",
+  "notitie": "Open vraag; de beste antwoorden in De Inschenker (met toestemming)."
+ },
+ {
+  "id": "p-023",
+  "datum": "2026-12-17",
+  "type": "nieuwsbrief",
+  "titel": "#6 · Proosten (en een jaar in zes glazen)",
+  "status": "gepland",
+  "verhaal": "",
+  "kanaal": "mail"
+ },
+ {
+  "id": "p-024",
+  "datum": "2027-01-14",
+  "type": "nieuwsbrief",
+  "titel": "#8 · Juni 2027: de data en de plek (een week eerder dan de rest)",
+  "status": "gepland",
+  "verhaal": "",
+  "kanaal": "mail"
+ },
+ {
+  "id": "p-027",
+  "datum": "2027-01-14",
+  "type": "festival",
+  "titel": "Onthulling data + plek, eerst in De Inschenker",
+  "status": "voorstel",
+  "notitie": "Belofte: een week eerder dan de rest",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-028",
+  "datum": "2027-01-21",
+  "type": "festival",
+  "titel": "Onthulling data + plek, publiek",
+  "status": "voorstel",
+  "notitie": "Pers + Instagram + site",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-029",
+  "datum": "2027-02-15",
+  "type": "festival",
+  "titel": "Eerste partners rond (intern)",
+  "status": "voorstel",
+  "notitie": "Zie partners.html en de pitch",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-030",
+  "datum": "2027-03-11",
+  "type": "festival",
+  "titel": "Voorverkoop voor lezers van De Inschenker",
+  "status": "voorstel",
+  "notitie": "Geen aftelklok, wel een echte, eerlijke eerste kans",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-031",
+  "datum": "2027-03-18",
+  "type": "festival",
+  "titel": "Kaartverkoop open",
+  "status": "voorstel",
+  "notitie": "",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-032",
+  "datum": "2027-04-08",
+  "type": "festival",
+  "titel": "Onthulling 1: wie er schenkt (drie namen, drie verhalen)",
+  "status": "voorstel",
+  "notitie": "Elke naam krijgt een eigen verhaal op de site",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-033",
+  "datum": "2027-05-06",
+  "type": "festival",
+  "titel": "Onthulling 2: de keukens en het programma",
+  "status": "voorstel",
+  "notitie": "",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-034",
+  "datum": "2027-05-27",
+  "type": "festival",
+  "titel": "Praktisch: plattegrond, tijden, alcoholvrij",
+  "status": "voorstel",
+  "notitie": "",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-035",
+  "datum": "2027-06-15",
+  "type": "festival",
+  "titel": "APÉRO Festival, Utrecht (datum volgt)",
+  "status": "voorstel",
+  "notitie": "Placeholderdatum",
+  "kanaal": "festival"
+ },
+ {
+  "id": "p-036",
+  "datum": "2027-06-24",
+  "type": "festival",
+  "titel": "Afterglow: verslag, foto's, \"wat we leerden\"",
+  "status": "voorstel",
+  "notitie": "",
+  "kanaal": "festival"
+ }
+]

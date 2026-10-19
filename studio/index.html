@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APÉRO Studio</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#F4EAD6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='%23C45F38'%3E%3Ccircle cx='16' cy='8.3' r='7.7'/%3E%3Ccircle cx='16' cy='23.7' r='7.7'/%3E%3Ccircle cx='8.3' cy='16' r='7.7'/%3E%3Ccircle cx='23.7' cy='16' r='7.7'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='5.4' fill='%23F4EAD6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;0,6..96,800;1,6..96,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="studio.css">
+</head>
+<body>
+<div class="testdata" role="note"><b>Testomgeving.</b> De planning en toewijzingen zijn een voorbeeld. Wijzigingen worden alleen in deze browser bewaard. <button type="button" data-actie="gegevens">Gegevens &amp; export</button></div>
+
+<header class="balk">
+  <div class="in">
+    <a class="merk" href="#vandaag">APÉR<span class="flower" aria-hidden="true"></span><span class="sub">STUDIO</span></a>
+    <nav class="tabs" aria-label="Studio">
+      <a href="#vandaag" data-tab="vandaag">Vandaag</a>
+      <a href="#verhalen" data-tab="verhalen">Verhalen</a>
+      <a href="#kalender" data-tab="kalender">Kalender</a>
+      <a href="#bibliotheek" data-tab="bibliotheek">Bibliotheek</a>
+    </nav>
+    <button class="nieuw" type="button" data-actie="nieuw-idee">+ Idee</button>
+  </div>
+</header>
+
+<main id="paneel" class="paneel" tabindex="-1"><p class="laden">Even de tafel dekken…</p></main>
+
+<div class="scrim" data-actie="sluit"></div>
+<aside class="lade" id="lade" aria-hidden="true" aria-labelledby="lade-titel" role="dialog">
+  <div class="lade-kop"><h2 id="lade-titel"></h2><button type="button" class="sluit" data-actie="sluit" aria-label="Sluiten">×</button></div>
+  <div class="lade-body" id="lade-body"></div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="studio.js"></script>
+</body>
+</html>

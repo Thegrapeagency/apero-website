@@ -1,0 +1,8 @@
+/* Oudere pagina's (werelden, lexicon, faq, partners, podcast, magazine) krijgen de nieuwe
+   navigatie en voet. Hier alleen de kleine correcties zodat oud en nieuw naast elkaar passen. */
+body{padding-top:0!important}
+.kop .in{max-width:1160px}
+.voet{margin-top:0}
+.article-hero{padding-top:70px!important}
+@media(max-width:600px){.article-hero{padding-top:40px!important}}
+.hero{min-height:auto}
