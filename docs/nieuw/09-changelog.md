@@ -1,6 +1,6 @@
 # 09 · Change log
 
-*Wat is veranderd, waarom, wat bewust behouden is, en wat getest en weer verwijderd of teruggedraaid is. Alles staat op branch `claude/loving-bell-sdc4eu`. De huidige productiesite (`main`) is niet aangeraakt.*
+*Wat is veranderd, waarom, wat bewust behouden is, en wat getest en weer verwijderd of teruggedraaid is. Sinds 19 oktober 2026 staat deze versie live op www.apero-culture.com; de oude site staat als archief op `apero-archief.vercel.app` (alleen met Vercel-login).*
 
 ---
 
@@ -81,11 +81,11 @@
 | **Studio: nieuw idee onzichtbaar** | Bij de gebruikerstest bleef een oude zoekterm actief en belandde het nieuwe idee in het ingeklapte deel van de kolom. Nieuwe ideeën staan nu bovenaan, en filters worden gewist. |
 | **Programmabeloftes over het festival** | Zinnen als "wat je in de verhalen leest, kom je er tegen" en "met de dranken en borden uit deze verhalen" beloofden een programma dat nog niet bestaat. Verwijderd: het festival wordt alleen aangekondigd. |
 | **Inhoud van de oude Verhaal-pagina** | "Eén gebaar, duizend vormen", de drie vragen en zeven tijdlijnmomenten waren bij de overstap weggevallen. Teruggezet op de Over-pagina, opnieuw geschreven in de APÉRO-toon. Ook het lexicon, de Aperokiezer en de Atlas hebben weer een ingang op de voorpagina, en verhalen zijn weer op het beginscherm te zetten. |
+| **Voorpagina opende met een verhaal** | Na livegang: een nieuwe bezoeker kreeg nergens te horen wat APÉRO Culture is. Eerst geprobeerd met een vraag als kop ("Wat dronken zij, en wat drink jij?") en collages van fresco's; dat vertelde nog steeds niet wat het is, en een proef met gegenereerde beelden paste niet bij de stijl. Nu een echte landing: groot bewegend fresco, de kop "Het aperitief, van Rome tot jouw terras", één zin die zegt wat het is, en drie blokken (verhalen, door de tijd, juni 2027). De rij eeuwen staat eronder. |
 | **`.vercelignore` met `studio/`** | Hield ook het losse Studio-project leeg. Vervangen door login-bescherming via middleware. |
 
 ## Niet gedaan (bewust)
 
 - Geen rebranding, geen nieuw logo, geen nieuwe kleuren.
 - Geen AI-generatie van content in Studio.
-- Geen migratie naar het productiedomein. Dat is een besluit voor jullie.
 - Geen koppeling met een nieuwsbriefdienst zonder account van jullie (zie `api/aanmelden.mjs`).

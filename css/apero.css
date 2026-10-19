@@ -70,6 +70,46 @@ a{color:inherit}
 /* ============================================================
    VOORPAGINA
    ============================================================ */
+.welkom{position:relative;overflow:hidden;background:var(--panna-2);border-bottom:1px solid var(--line)}
+.welkom .achter{position:relative;height:clamp(260px,62vw,420px);overflow:hidden}
+.welkom .achter img,.welkom .achter video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.welkom .achter::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(235,220,190,0) 55%,var(--panna-2) 100%)}
+.welkom .w{position:relative}
+.welkom .tekst-kol{padding:8px 0 44px;max-width:640px}
+.merkkop{margin:14px 0 22px;display:flex;flex-direction:column;align-items:flex-start;color:var(--espresso)}
+.merkkop .lockup{font-size:clamp(84px,15vw,188px);display:inline-flex;align-items:center}
+.merkkop .cul{font-family:var(--body);font-weight:600;font-size:clamp(13px,1.5vw,18px);letter-spacing:.62em;color:var(--terracotta);margin:10px 0 0 .2em;text-transform:uppercase}
+.welkom .slogan{margin:0 0 16px;font-size:clamp(26px,3vw,38px);line-height:1.12}
+.welkom .slogan em{font-style:italic;font-weight:500;color:var(--terracotta)}
+.welkom .stand{max-width:34ch;color:var(--espresso)}
+.welkom .acties{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+@media(min-width:900px){
+.welkom .achter{position:absolute;inset:0 0 0 40%;height:auto}
+.welkom .achter::after{background:linear-gradient(90deg,var(--panna-2) 0%,rgba(235,220,190,.82) 16%,rgba(235,220,190,0) 52%)}
+.welkom .w{min-height:clamp(560px,78vh,740px);display:flex;align-items:center}
+.welkom .tekst-kol{padding:64px 0;max-width:600px}
+}
+.watis{padding:56px 0 64px;border-bottom:1px solid var(--line)}
+.watis .drie{display:grid;gap:14px}
+@media(min-width:900px){.watis .drie{grid-template-columns:repeat(3,1fr);gap:22px}}
+.punt-w{display:block;padding:26px 24px 24px;border-radius:18px;background:var(--panna);box-shadow:0 0 0 1px var(--line);color:inherit;text-decoration:none;transition:box-shadow .3s,transform .3s}
+.punt-w:hover{box-shadow:0 0 0 1px var(--terracotta),0 24px 40px -30px rgba(35,27,19,.45);transform:translateY(-2px)}
+.punt-w .n{font-family:var(--disp);font-style:italic;font-size:22px;color:var(--terracotta)}
+.punt-w h2{font-family:var(--disp);font-size:clamp(26px,2.6vw,32px);line-height:1.1;margin:6px 0 10px}
+.punt-w p{margin:0 0 16px;color:var(--ink-70);line-height:1.55}
+.eeuwen{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px 14px}
+@media(min-width:760px){.eeuwen{grid-template-columns:repeat(6,1fr);gap:18px}}
+.eeuwen a{display:flex;flex-direction:column;gap:2px;color:inherit;text-decoration:none}
+.eeuwen .boog{display:block;height:clamp(110px,30vw,170px);margin-bottom:10px;box-shadow:0 0 0 1px var(--line)}
+.eeuwen .boog img{transition:transform 1.2s ease}
+.eeuwen a:hover .boog img,.eeuwen a:focus-visible .boog img{transform:scale(1.07)}
+.eeuwen .j{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-50)}
+.eeuwen b{font-family:var(--disp);font-size:clamp(18px,2.1vw,23px);font-weight:700;line-height:1.15}
+.eeuwen .p{font-size:14px;color:var(--ink-70)}
+.eeuwen a:hover b{color:var(--terracotta)}
+.eeuwen .nu .boog{box-shadow:0 0 0 2px var(--terracotta)}
+.eeuwen .nu b{font-style:italic;color:var(--terracotta)}
+@media(prefers-reduced-motion:reduce){.welkom .achter video{display:none}.eeuwen .boog img{transition:none}}
 .opening{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
 .opening .grid{display:grid;gap:28px;padding:28px 0 36px}
 @media(min-width:900px){.opening .grid{grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:56px 0 64px}}

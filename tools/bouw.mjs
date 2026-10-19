@@ -337,12 +337,39 @@ function voorpagina() {
     ['Waarom drinken we iets bitters vóór het eten?', 'waarom-bitter']
   ].filter(([, s]) => OP_SLUG[s]);
   const dranken = [['ouzo', 'athene-1814'], ['vermut', 'spanje-1974-en-nu'], ['jenever', 'jenever-en-het-loon'], ['ombra', 'ombra'], ['atay', 'opening-zonder-alcohol'], ['Negroni', 'de-graaf-en-de-soda'], ['pastis', 'dranken-uit-een-verbod']];
-  const body = `<section class="opening"><div class="w"><div class="grid">
-<div>
+  // Eigen beelden (assets/beeld/) gaan voor; zolang die er niet zijn, de bestaande fresco's.
+  const beeld = (eigen, oud) => (fs.existsSync(P(`assets/beeld/${eigen}.jpg`)) ? `beeld/${eigen}.jpg` : oud);
+  const eeuwen = [
+    ['Eerste eeuw', 'Mulsum', 'Rome', 'mulsum', beeld('tijd-mulsum', 'fresco/fresco-06.jpg')],
+    ['1786', 'Vermout', 'Turijn', 'italie-het-podium', beeld('tijd-vermout', 'fresco/fresco-04.jpg')],
+    ['1881', 'Jenever', 'Amsterdam', 'jenever-en-het-loon', beeld('tijd-jenever', 'fresco/fresco-10.jpg')],
+    ['1919', 'Negroni', 'Florence', 'de-graaf-en-de-soda', beeld('tijd-negroni', 'fresco/fresco-02.jpg')],
+    ['1974', 'Vermut', 'Madrid', 'spanje-1974-en-nu', beeld('tijd-vermut', 'landen/spanje-alt.jpg')]
+  ].filter(([, , , s]) => OP_SLUG[s]);
+  const stap = (j, d, p, href, img, nu) => `<li${nu ? ' class="nu"' : ''}><a href="${href}"><span class="boog"><img src="/assets/${img}" alt="" loading="lazy" decoding="async"></span><span class="j">${j}</span><b>${d}</b><span class="p">${p}</span></a></li>`;
+  const body = `<section class="welkom">
+<div class="achter" aria-hidden="true"><img src="/assets/motion/fresco-terras-poster.jpg" alt="" loading="eager" decoding="async"><video autoplay muted loop playsinline preload="metadata" poster="/assets/motion/fresco-terras-poster.jpg"><source src="/assets/motion/fresco-terras.mp4" type="video/mp4"></video></div>
+<div class="w"><div class="tekst-kol">
 <p class="klok" id="klok"><span class="punt" aria-hidden="true"></span><span>Het uur tussen werk en diner.</span></p>
-<p class="wat">APÉRO is een magazine over het uur tussen werk en diner, van Porto tot Beiroet. In juni 2027 staat het op tafel in Utrecht. <a href="/verhaal.html">Over APÉRO</a></p>
-<span class="lbl">${esc(hoofd.kicker)}</span>
-<h1 class="kop-xl">${esc(hoofd.titel)}</h1>
+<h1 class="merkkop"><span class="lockup">APÉR<span class="flower" aria-hidden="true"></span><span class="sr">O</span></span><span class="cul">Culture</span></h1>
+<p class="kop-l slogan">Het aperitief, <em>van Rome tot jouw terras.</em></p>
+<p class="stand">APÉRO Culture is een magazine over de aperitiefcultuur van Europa en de Middellandse Zee. Over wat er in het glas zat, wat er op tafel stond en wie er aanschoof, door de eeuwen heen.</p>
+<p class="acties"><a class="knop" href="/verhalen/">Begin met lezen</a><a class="knop licht" href="/verhaal.html">Wat is APÉRO?</a></p>
+</div></div>
+</section>
+
+<section class="watis"><div class="w"><div class="drie">
+<a class="punt-w rv" href="/verhalen/"><span class="n">01</span><h2>Verhalen</h2><p>Over het glas, het bord en de mensen eromheen. Elk verhaal lees je in één, vier of zeven minuten.</p><span class="tekstlink">Naar de verhalen</span></a>
+<a class="punt-w rv" href="#eeuwen"><span class="n">02</span><h2>Door de tijd</h2><p>Van de honingwijn van de Romeinen tot de vermut van 1974. Wat dronken zij, en wat drink jij?</p><span class="tekstlink">Van Rome tot nu</span></a>
+<a class="punt-w rv" href="/festival.html"><span class="n">03</span><h2>Juni 2027</h2><p>Dan komt APÉRO naar Utrecht. Een paar dagen lang wordt het uur tussen werk en diner een plek.</p><span class="tekstlink">Over het festival</span></a>
+</div>
+<div class="bkop" id="eeuwen" style="margin-top:56px"><div><span class="lbl">Door de eeuwen heen</span><h2 class="kop-l">Wat dronken zij?</h2></div><a class="tekstlink" href="/verhaal.html#tijdlijn">De hele tijdlijn</a></div>
+<ol class="eeuwen" aria-label="Door de eeuwen heen">${eeuwen.map(([j, d, p, s, img]) => stap(j, d, p, `${OP_SLUG[s].url}?v=k`, img)).join('')}${stap('Nu', 'Jij', 'Op het terras', '/verhalen/?tijd=nu', beeld('tijd-jij', 'fresco/fresco-01.jpg'), true)}</ol>
+</div></section>
+<section class="opening"><div class="w"><div class="grid">
+<div>
+<span class="lbl">Om te beginnen · ${esc(hoofd.plekken?.[0] || hoofd.kicker)}</span>
+<h2 class="kop-xl">${esc(hoofd.titel)}</h2>
 <p class="stand">${esc(hoofd.ondertitel)}</p>
 <div class="tijdkeuze" role="group" aria-label="Lees dit verhaal"><span class="tk-l">Hoeveel tijd heb je?</span>
 <a href="${hoofd.url}?v=k"><b>Kort</b><span>${hoofd.mins.k} min</span></a>
