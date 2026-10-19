@@ -85,6 +85,9 @@ a{color:inherit}
 .collage .tag{position:absolute;font-family:var(--disp);font-style:italic;font-size:clamp(20px,2.4vw,26px);color:var(--terracotta);background:var(--panna);padding:4px 14px;border-radius:999px;box-shadow:0 0 0 1px var(--line)}
 .collage .t-toen{left:6%;bottom:calc(56% - 18px)}
 .collage .t-nu{right:6%;top:18px}
+.boog img.kb{animation:kenburns 22s ease-in-out infinite alternate;transform-origin:60% 40%}
+.collage .klein img.kb{animation-duration:18s;animation-delay:-6s;transform-origin:30% 60%}
+@keyframes kenburns{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.14) translate(-2%,-1.5%)}}
 @keyframes zweef{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .eeuwen{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px 14px}
 @media(min-width:760px){.eeuwen{grid-template-columns:repeat(6,1fr);gap:18px}}
@@ -98,7 +101,7 @@ a{color:inherit}
 .eeuwen a:hover b{color:var(--terracotta)}
 .eeuwen .nu .boog{box-shadow:0 0 0 2px var(--terracotta)}
 .eeuwen .nu b{font-style:italic;color:var(--terracotta)}
-@media(prefers-reduced-motion:reduce){.collage .groot,.collage .klein{animation:none}.boog video{display:none}.eeuwen .boog img{transition:none}}
+@media(prefers-reduced-motion:reduce){.collage .groot,.collage .klein,.boog img.kb{animation:none}.boog video{display:none}.eeuwen .boog img{transition:none}}
 .opening{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
 .opening .grid{display:grid;gap:28px;padding:28px 0 36px}
 @media(min-width:900px){.opening .grid{grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:56px 0 64px}}

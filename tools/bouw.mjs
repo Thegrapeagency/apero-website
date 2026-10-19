@@ -337,14 +337,18 @@ function voorpagina() {
     ['Waarom drinken we iets bitters vóór het eten?', 'waarom-bitter']
   ].filter(([, s]) => OP_SLUG[s]);
   const dranken = [['ouzo', 'athene-1814'], ['vermut', 'spanje-1974-en-nu'], ['jenever', 'jenever-en-het-loon'], ['ombra', 'ombra'], ['atay', 'opening-zonder-alcohol'], ['Negroni', 'de-graaf-en-de-soda'], ['pastis', 'dranken-uit-een-verbod']];
+  // Eigen beelden (assets/beeld/) gaan voor; zolang die er niet zijn, de bestaande fresco's.
+  const beeld = (eigen, oud) => (fs.existsSync(P(`assets/beeld/${eigen}.jpg`)) ? `beeld/${eigen}.jpg` : oud);
   const eeuwen = [
-    ['Eerste eeuw', 'Mulsum', 'Rome', 'mulsum', 'fresco/fresco-06.jpg'],
-    ['1786', 'Vermout', 'Turijn', 'italie-het-podium', 'fresco/fresco-04.jpg'],
-    ['1881', 'Jenever', 'Amsterdam', 'jenever-en-het-loon', 'fresco/fresco-10.jpg'],
-    ['1919', 'Negroni', 'Florence', 'de-graaf-en-de-soda', 'fresco/fresco-02.jpg'],
-    ['1974', 'Vermut', 'Madrid', 'spanje-1974-en-nu', 'landen/spanje-alt.jpg']
+    ['Eerste eeuw', 'Mulsum', 'Rome', 'mulsum', beeld('tijd-mulsum', 'fresco/fresco-06.jpg')],
+    ['1786', 'Vermout', 'Turijn', 'italie-het-podium', beeld('tijd-vermout', 'fresco/fresco-04.jpg')],
+    ['1881', 'Jenever', 'Amsterdam', 'jenever-en-het-loon', beeld('tijd-jenever', 'fresco/fresco-10.jpg')],
+    ['1919', 'Negroni', 'Florence', 'de-graaf-en-de-soda', beeld('tijd-negroni', 'fresco/fresco-02.jpg')],
+    ['1974', 'Vermut', 'Madrid', 'spanje-1974-en-nu', beeld('tijd-vermut', 'landen/spanje-alt.jpg')]
   ].filter(([, , , s]) => OP_SLUG[s]);
-  const film = (naam, cls) => `<div class="boog ${cls}"><img src="/assets/motion/${naam}-poster.jpg" alt="" loading="eager" decoding="async"><video autoplay muted loop playsinline preload="metadata" poster="/assets/motion/${naam}-poster.jpg" aria-hidden="true"><source src="/assets/motion/${naam}.mp4" type="video/mp4"></video><div class="wash"></div></div>`;
+  const film = (eigen, naam, cls) => fs.existsSync(P(`assets/beeld/${eigen}.jpg`))
+    ? `<div class="boog ${cls}"><img class="kb" src="/assets/beeld/${eigen}.jpg" alt="" loading="eager" decoding="async"><div class="wash"></div></div>`
+    : `<div class="boog ${cls}"><img src="/assets/motion/${naam}-poster.jpg" alt="" loading="eager" decoding="async"><video autoplay muted loop playsinline preload="metadata" poster="/assets/motion/${naam}-poster.jpg" aria-hidden="true"><source src="/assets/motion/${naam}.mp4" type="video/mp4"></video><div class="wash"></div></div>`;
   const stap = (j, d, p, href, img, nu) => `<li${nu ? ' class="nu"' : ''}><a href="${href}"><span class="boog"><img src="/assets/${img}" alt="" loading="lazy" decoding="async"></span><span class="j">${j}</span><b>${d}</b><span class="p">${p}</span></a></li>`;
   const body = `<section class="welkom"><div class="w"><div class="grid">
 <div class="tekst-kol">
@@ -355,12 +359,12 @@ function voorpagina() {
 <p class="acties"><a class="knop" href="/verhalen/">Lees de verhalen</a><a class="knop licht" href="/verhaal.html#tijdlijn">Van Rome tot nu</a></p>
 </div>
 <div class="collage" aria-hidden="true">
-${film('fresco-terras', 'groot')}
-${film('fresco-proost', 'klein')}
+${film('home-nu', 'fresco-terras', 'groot')}
+${film('home-toen', 'fresco-proost', 'klein')}
 <span class="tag t-toen">Toen</span><span class="tag t-nu">Nu</span>
 </div>
 </div>
-<ol class="eeuwen" aria-label="Door de eeuwen heen">${eeuwen.map(([j, d, p, s, img]) => stap(j, d, p, `${OP_SLUG[s].url}?v=k`, img)).join('')}${stap('Nu', 'Jij', 'Op het terras', '/verhalen/?tijd=nu', 'fresco/fresco-01.jpg', true)}</ol>
+<ol class="eeuwen" aria-label="Door de eeuwen heen">${eeuwen.map(([j, d, p, s, img]) => stap(j, d, p, `${OP_SLUG[s].url}?v=k`, img)).join('')}${stap('Nu', 'Jij', 'Op het terras', '/verhalen/?tijd=nu', beeld('tijd-jij', 'fresco/fresco-01.jpg'), true)}</ol>
 </div></section>
 <section class="opening"><div class="w"><div class="grid">
 <div>
