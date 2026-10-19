@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Het viltjesspel · APÉRO Culture</title>
+<meta name="description" content="Vijf viltjes, vijf letters, één woord. Vul het in en win een gratis ticket voor APÉRO Festival 2027.">
+<meta name="theme-color" content="#F4EAD6">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.apero-culture.com/viltjes.html">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="apero-tokens.css">
+<style>
+  html{scroll-behavior:smooth}
+  body{background:var(--panna);color:var(--espresso);margin:0}
+  .narrow{max-width:760px;margin:0 auto;padding:0 22px}
+
+  nav.top{position:sticky;top:0;z-index:50;background:rgba(244,234,214,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav.top .in{max-width:760px;margin:0 auto;padding:13px 22px;display:flex;justify-content:space-between;align-items:center}
+  nav.top .lk{font-family:var(--disp);font-weight:800;font-size:20px;display:inline-flex;align-items:center;color:var(--espresso);text-decoration:none}
+  nav.top .lk .flower{width:.7em;height:.7em;margin-left:.04em}
+  nav.top .lk .cul{font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.34em;color:var(--terracotta);margin-left:10px}
+  nav.top .nr{font-family:var(--body);font-size:13px;color:var(--ink-50);text-decoration:none}
+
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .petals{position:absolute;inset:0;--c:120px;opacity:.12}
+  .hero-in{position:relative;z-index:2;padding:56px 22px 44px;max-width:760px;margin:0 auto}
+  .eyebrow{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--terracotta)}
+  .hero h1{font-family:var(--disp);font-weight:800;line-height:.95;font-size:clamp(40px,8vw,78px);margin:14px 0 0}
+  .hero h1 .flower{width:.6em;height:.6em;vertical-align:-.02em;margin-left:.04em}
+  .intro p{font-family:var(--body);font-size:clamp(17px,2vw,19px);line-height:1.65;color:var(--ink-70);margin:18px 0 0}
+  .intro p.big{font-family:var(--disp);font-size:clamp(22px,3vw,28px);line-height:1.3;color:var(--espresso)}
+
+  .jump{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+  .jump a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;
+    border:1.5px solid var(--line);font-family:var(--disp);font-weight:700;font-size:16px;color:var(--espresso);text-decoration:none;background:var(--panna)}
+  .jump a:hover{border-color:var(--terracotta);color:var(--terracotta)}
+
+  .viltje{padding:56px 0 52px;border-bottom:1px solid var(--line);scroll-margin-top:70px}
+  .viltje:target{background:var(--panna-2)}
+  .viltje .kop{display:flex;gap:18px;align-items:flex-start}
+  .viltje .num{flex:none;width:58px;height:58px;border-radius:50%;background:var(--terracotta);color:var(--panna);
+    display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:24px}
+  .viltje:nth-of-type(3n+2) .num{background:var(--salvia)}
+  .viltje:nth-of-type(3n) .num{background:var(--mattone)}
+  .viltje .land{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-50)}
+  .viltje h2{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4vw,36px);line-height:1.12;margin:6px 0 0}
+  .viltje .body p{font-family:var(--body);font-size:18px;line-height:1.7;color:var(--ink-70);margin:18px 0 0}
+  .viltje .body p:first-child{margin-top:24px}
+  .viltje .verder{display:inline-block;margin-top:22px;font-family:var(--body);font-weight:600;font-size:15px;color:var(--terracotta);text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
+
+  .slot{padding:64px 0 80px;text-align:left}
+  .slot h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,5vw,44px);margin:0}
+  .slot p{font-family:var(--body);font-size:18px;line-height:1.7;color:var(--ink-70);margin:16px 0 0}
+  .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .btn{display:inline-block;padding:14px 24px;border-radius:100px;background:var(--terracotta);color:var(--panna);font-family:var(--body);font-weight:600;font-size:15px;text-decoration:none}
+  .btn.ghost{background:transparent;color:var(--espresso);border:1.5px solid var(--espresso)}
+  .spel,.claim{margin:30px 0 0;padding:26px;border-radius:22px;background:var(--panna-2);border:1px solid var(--line)}
+  .spel-lbl{display:block;font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--terracotta)}
+  .letters{display:flex;gap:10px;margin:14px 0 18px}
+  .letters input{width:min(17vw,62px);height:min(19vw,72px);box-sizing:border-box;text-align:center;text-transform:uppercase;font-family:var(--disp);font-weight:800;font-size:clamp(26px,6vw,36px);
+    color:var(--espresso);background:var(--panna);border:2px solid var(--line);border-radius:14px;outline:none}
+  .letters input:focus{border-color:var(--terracotta)}
+  .spel.fout .letters input{border-color:var(--mattone);animation:schud .35s}
+  @keyframes schud{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+  .spel.goed .letters input{border-color:var(--salvia);background:var(--salvia);color:var(--panna)}
+  .melding{font-family:var(--body);font-size:15px;color:var(--ink-70);margin:14px 0 0;min-height:1.2em}
+  .claim-kop{font-family:var(--disp);font-size:22px;color:var(--espresso);margin:0}
+  .claim p{font-family:var(--body);font-size:16px;line-height:1.6;color:var(--ink-70)}
+  .claim label{display:block;font-family:var(--body);font-weight:600;font-size:14px;margin:14px 0 0}
+  .claim label input{display:block;width:100%;box-sizing:border-box;margin-top:6px;font:16px var(--body);padding:13px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--panna);color:var(--espresso)}
+  .claim .btn{margin-top:20px;border:0;cursor:pointer}
+  .spel .btn{border:0;cursor:pointer}
+  .hp{position:absolute;left:-9999px}
+  .ant-kop{display:block;padding-top:48px}
+  footer.mini{border-top:1px solid var(--line);padding:26px 22px;text-align:center;font-family:var(--body);font-size:13px;color:var(--ink-50);background:var(--panna)}
+</style>
+</head>
+<body class="apero-body">
+<nav class="top" aria-label="Navigatie"><div class="in">
+  <a class="lk" href="index.html">APÉR<span class="flower"></span><span class="cul">CULTURE</span></a>
+  <a class="nr" href="#spel">Speel mee</a>
+</div></nav>
+
+<header class="hero">
+  <div class="petals" aria-hidden="true"></div>
+  <div class="hero-in intro">
+    <span class="eyebrow">Het viltjesspel</span>
+    <h1>Vijf viltjes, één woord<span class="flower" aria-hidden="true"></span></h1>
+    <p class="big">Op Nacht van de Wijn liggen vijf viltjes met een vraag. Elk goed antwoord is een letter. Samen vormen ze een woord.</p>
+    <p>Apero komt van het Latijnse <em>aperire</em>, openen. Het is het uur tussen de werkdag en het diner: iets in het glas, iets op het bord, en vooral even zitten met de mensen om je heen. In Milaan heet het aperitivo, in Barcelona la hora del vermut, in Marseille l'heure de l'apéro. APÉRO Culture onderzoekt dat uur in zes werelden, en in 2027 vieren we het met een festival.</p>
+    <p>Heb je alle vijf de letters? Vul het woord hieronder in. De eerste 200 mensen met het goede woord krijgen een gratis ticket voor APÉRO Festival 2027.</p>
+
+    <form class="spel" id="spel" autocomplete="off" novalidate>
+      <label class="spel-lbl" for="l1">Jouw woord</label>
+      <div class="letters">
+        <input id="l1" maxlength="1" inputmode="text" aria-label="Letter 1"><input maxlength="1" aria-label="Letter 2"><input maxlength="1" aria-label="Letter 3"><input maxlength="1" aria-label="Letter 4"><input maxlength="1" aria-label="Letter 5">
+      </div>
+      <button class="btn" type="submit">Controleer</button>
+      <p class="melding" id="melding" role="status" aria-live="polite"></p>
+    </form>
+
+    <form class="claim" id="claim" hidden novalidate>
+      <p class="claim-kop">Goed. Het woord is <strong>TAFEL</strong>, want daar draait de apero om.</p>
+      <p>Laat je naam en mailadres achter. Zodra de kaartverkoop voor APÉRO Festival 2027 opent, krijg je je gratis ticket in je mailbox.</p>
+      <label>Naam<input name="naam" required autocomplete="name"></label>
+      <label>Mailadres<input name="email" type="email" required autocomplete="email"></label>
+      <input name="website" class="hp" tabindex="-1" aria-hidden="true">
+      <button class="btn" type="submit">Claim mijn ticket</button>
+      <p class="melding" id="claimMelding" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</header>
+
+<main class="narrow">
+
+<div id="antwoorden" class="antwoorden" hidden>
+<p class="eyebrow ant-kop">De vijf antwoorden</p>
+<section class="viltje" id="v1">
+  <div class="kop"><span class="num">1</span><div><span class="land">Spanje</span><h2>Hoe laat begint la hora del vermut?</h2></div></div>
+  <div class="body">
+    <p>Om twaalf uur 's middags. La hora del vermut valt tussen twaalf en twee, ruim voor de lunch die pas rond half drie op tafel komt.</p>
+    <p>Het klassieke beeld is Catalaans: families die na de zondagsmis een vermut nemen, vaak drie generaties aan één tafel. Op ijs, met een schijfje sinaasappel en een olijf, en een sifón op tafel om hem zelf aan te lengen. In Catalonië zeggen ze nog altijd "fer el vermut", de vermut doen. Ook als je iets anders drinkt.</p>
+  </div>
+  <a class="verder" href="werelden/spanje.html">Lees Spanje</a>
+</section>
+
+<section class="viltje" id="v2">
+  <div class="kop"><span class="num">2</span><div><span class="land">Overal</span><h2>Wat betekent aperire?</h2></div></div>
+  <div class="body">
+    <p>Openen. Het is Latijn, en het zit onder apéritif, aperitivo en apéro. Een aperitief opent de eetlust, en eigenlijk ook het gesprek en de avond.</p>
+    <p>Het idee is oud. Romeinse banketten begonnen al met de gustatio: eieren, olijven en groenten bij mulsum, wijn gezoet met honing. Pas daarna kwam het echte eten. De volgorde is in tweeduizend jaar niet veranderd.</p>
+  </div>
+  <a class="verder" href="lexicon.html">Lees het lexicon</a>
+</section>
+
+<section class="viltje" id="v3">
+  <div class="kop"><span class="num">3</span><div><span class="land">Marokko</span><h2>Wat zeggen de drie glazen muntthee?</h2></div></div>
+  <div class="body">
+    <p>Het eerste glas is bitter als het leven, het tweede sterk als de liefde, het derde zacht als de dood. Alle drie weigeren geldt als onbeleefd.</p>
+    <p>In Marokko is het aperitief een glas atay: groene thee, verse munt en veel suiker, van hoog ingeschonken zodat er schuim op komt. Dat hoge schenken is geen show. Het belucht de thee, en de schuimkraag laat zien dat de pot goed is gezet. Hier gaat het niet om wat er in het glas zit, maar om de hand die schenkt.</p>
+  </div>
+  <a class="verder" href="werelden/marokko-longread.html">Lees Marokko</a>
+</section>
+
+<section class="viltje" id="v4">
+  <div class="kop"><span class="num">4</span><div><span class="land">De anijsgordel</span><h2>Hoe proost je aan een Turkse rakıtafel?</h2></div></div>
+  <div class="body">
+    <p>Je tikt met de onderkant van je glas tegen dat van de ander. Zo laat je zien dat iedereen aan tafel gelijk is.</p>
+    <p>De rakı sofrası is een lange avond met meze, en de eerste hap is bijna altijd witte kaas met meloen: zout en zoet, precies goed bij de anijs. Wat je niet doet is je lege glas omgekeerd op tafel zetten, hard ruzie maken of vroeg weggaan. De tafel is het punt. De rakı (in Turkije heet hij leeuwenmelk) helpt alleen een handje.</p>
+  </div>
+  <a class="verder" href="werelden/anijsgordel.html">Lees de anijsgordel</a>
+</section>
+
+<section class="viltje" id="v5">
+  <div class="kop"><span class="num">5</span><div><span class="land">Portugal</span><h2>Waar komt tempura eigenlijk vandaan?</h2></div></div>
+  <div class="body">
+    <p>Uit Portugal. Peixinhos da horta, letterlijk visjes uit de moestuin, zijn gefrituurde sperziebonen in beslag. In de zestiende eeuw reisden ze mee met Portugese missionarissen naar Japan, waar ze gelden als voorloper van tempura.</p>
+    <p>Een borrelhapje uit een Lissabonse tasca dat aan de andere kant van de wereld een keuken veranderde. Niet slecht voor een sperzieboon.</p>
+  </div>
+  <a class="verder" href="werelden/portugal.html">Lees Portugal</a>
+</section>
+</div>
+
+<section class="slot">
+  <span class="eyebrow">En nu</span>
+  <h2>Zes werelden, één uur</h2>
+  <p>Achter elke vraag zit een hele wereld, van de vermutbar in Barcelona tot de theepot in Fez. Lees verder, of zoek uit welke apero bij jou past.</p>
+  <div class="btns"><a class="btn" href="index.html#werelden">Naar de werelden</a><a class="btn ghost" href="app.html">Doe de Aperokiezer</a></div>
+</section>
+
+</main>
+<footer class="mini">APÉRO Culture · een onderzoek naar de Europese aperitiefcultuur · te gast op Nacht van de Wijn</footer>
+<script>
+(function(){
+  var URL='https://snfojphxsbzfewwfbfka.supabase.co/rest/v1/rpc/', KEY='sb_publishable_MymbMA8MJ5i5SfJR4mORvg_oFpWXNsg';
+  function rpc(fn,body){return fetch(URL+fn,{method:'POST',headers:{apikey:KEY,'content-type':'application/json'},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw 0;return r.json()})}
+  var spel=document.getElementById('spel'), claim=document.getElementById('claim'), ins=[].slice.call(spel.querySelectorAll('.letters input'));
+  var m=document.getElementById('melding'), cm=document.getElementById('claimMelding'), woord='';
+  ins.forEach(function(el,i){
+    el.addEventListener('input',function(){el.value=el.value.replace(/[^a-z]/gi,'').slice(-1).toUpperCase();if(el.value&&ins[i+1])ins[i+1].focus()});
+    el.addEventListener('keydown',function(e){if(e.key==='Backspace'&&!el.value&&ins[i-1])ins[i-1].focus()});
+    el.addEventListener('paste',function(e){var t=(e.clipboardData.getData('text')||'').replace(/[^a-z]/gi,'').toUpperCase();if(t){e.preventDefault();ins.forEach(function(x,j){x.value=t[j]||''});(ins[t.length]||ins[4]).focus()}});
+  });
+  function toon(){document.getElementById('antwoorden').hidden=false}
+  spel.addEventListener('submit',function(e){
+    e.preventDefault(); woord=ins.map(function(x){return x.value}).join('');
+    spel.classList.remove('fout');
+    if(woord.length<5){m.textContent='Je mist nog een letter of wat. Er liggen vijf viltjes.';return}
+    m.textContent='Even kijken…';
+    rpc('apero_viltjes_check',{p_woord:woord}).then(function(ok){
+      if(ok){spel.classList.add('goed');m.textContent='';ins.forEach(function(x){x.disabled=true});claim.hidden=false;toon();claim.querySelector('input').focus()}
+      else{void spel.offsetWidth;spel.classList.add('fout');m.textContent='Dat is het nog niet. Kijk de viltjes nog eens na, of vraag het aan de bar.'}
+    }).catch(function(){m.textContent='Er ging iets mis met de verbinding. Probeer het zo nog eens.'});
+  });
+  claim.addEventListener('submit',function(e){
+    e.preventDefault(); var f=claim.elements; if(f.website.value)return;
+    var naam=f.naam.value.trim(), email=f.email.value.trim();
+    if(naam.length<2){cm.textContent='Vul je naam even in.';return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){cm.textContent='Dat lijkt nog geen mailadres.';return}
+    cm.textContent='Bezig…';
+    rpc('apero_viltjes_claim',{p_woord:woord,p_naam:naam,p_email:email}).then(function(r){
+      if(r.geclaimd){claim.innerHTML='<p class="claim-kop">Je ticket staat op je naam.</p><p>Zodra de kaartverkoop voor APÉRO Festival 2027 opent, krijg je hem op '+email.replace(/</g,'')+'. Proost.</p>'}
+      else if(r.al){cm.textContent='Dit mailadres heeft al een ticket. Eén per persoon.'}
+      else if(r.vol){cm.textContent='De 200 tickets zijn op. Je was snel, maar net niet snel genoeg. Hieronder lees je wel alle antwoorden.'}
+      else{cm.textContent='Controleer je naam en mailadres nog even.'}
+    }).catch(function(){cm.textContent='Er ging iets mis met de verbinding. Probeer het zo nog eens.'});
+  });
+})();
+</script>
+</body>
+</html>

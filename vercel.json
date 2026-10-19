@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/viltjes", "destination": "/viltjes.html", "permanent": false }
+  ]
+}
