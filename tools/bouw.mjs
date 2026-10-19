@@ -361,7 +361,6 @@ function voorpagina() {
 <div class="collage" aria-hidden="true">
 ${film('home-nu', 'fresco-terras', 'groot')}
 ${film('home-toen', 'fresco-proost', 'klein')}
-<span class="tag t-toen">Toen</span><span class="tag t-nu">Nu</span>
 </div>
 </div>
 <ol class="eeuwen" aria-label="Door de eeuwen heen">${eeuwen.map(([j, d, p, s, img]) => stap(j, d, p, `${OP_SLUG[s].url}?v=k`, img)).join('')}${stap('Nu', 'Jij', 'Op het terras', '/verhalen/?tijd=nu', beeld('tijd-jij', 'fresco/fresco-01.jpg'), true)}</ol>
