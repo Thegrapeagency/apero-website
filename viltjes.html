@@ -29,6 +29,12 @@
   .hero h1{font-family:var(--disp);font-weight:800;line-height:.95;font-size:clamp(40px,8vw,78px);margin:14px 0 0}
   .hero h1 .flower{width:.6em;height:.6em;vertical-align:-.02em;margin-left:.04em}
   .intro p{font-family:var(--body);font-size:clamp(17px,2vw,19px);line-height:1.65;color:var(--ink-70);margin:18px 0 0}
+  .feiten{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}
+  .feiten li{font-family:var(--body);font-weight:600;font-size:14px;padding:8px 14px;border-radius:100px;border:1.5px solid var(--line);background:var(--panna);color:var(--espresso)}
+  .feiten a{color:var(--terracotta);text-decoration:none}
+  .spelkop{margin-top:44px;padding-top:40px;border-top:1px solid var(--line)}
+  .spelkop h2{font-family:var(--disp);font-weight:800;line-height:1;font-size:clamp(32px,6vw,52px);margin:12px 0 0}
+  .spelkop h2 .flower{width:.6em;height:.6em;vertical-align:-.02em;margin-left:.04em}
   .intro p.big{font-family:var(--disp);font-size:clamp(22px,3vw,28px);line-height:1.3;color:var(--espresso)}
 
   .jump{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
@@ -89,10 +95,21 @@
 <header class="hero">
   <div class="petals" aria-hidden="true"></div>
   <div class="hero-in intro">
-    <span class="eyebrow">Het viltjesspel</span>
-    <h1>Vijf viltjes, één woord<span class="flower" aria-hidden="true"></span></h1>
-    <p class="big">Op Nacht van de Wijn liggen vijf viltjes met een vraag. Elk goed antwoord is een letter. Samen vormen ze een woord.</p>
-    <p>Heb je alle vijf de letters? Vul het woord hieronder in. De eerste 200 mensen met het goede woord krijgen een gratis ticket voor APÉRO Festival 2027.</p>
+    <span class="eyebrow">Te gast op Nacht van de Wijn</span>
+    <h1>APÉRO Festival</h1>
+    <ul class="feiten">
+      <li>Juni 2027</li>
+      <li>Noorderpark, Utrecht</li>
+      <li><a href="https://www.instagram.com/apero.festival" target="_blank" rel="noopener">@apero.festival</a></li>
+    </ul>
+    <p class="big">Een onderzoek naar de Europese aperitiefcultuur, bekroond met een festival.</p>
+    <p>Het uur tussen de werkdag en het diner, van de vermutbar in Barcelona tot de theepot in Fez. APÉRO Culture onderzoekt dat uur in zes werelden. In juni 2027 komen ze samen in het Noorderpark in Utrecht.</p>
+
+    <div class="spelkop">
+      <span class="eyebrow">Het viltjesspel</span>
+      <h2>Vijf viltjes, één woord<span class="flower" aria-hidden="true"></span></h2>
+      <p>Op Nacht van de Wijn liggen vijf viltjes met een vraag. Elk goed antwoord is een letter, samen vormen ze een woord. Vul het hieronder in. De eerste 200 mensen met het goede woord krijgen een gratis ticket voor APÉRO Festival 2027.</p>
+    </div>
 
     <form class="spel" id="spel" autocomplete="off" novalidate>
       <label class="spel-lbl" for="l1">Jouw woord</label>
@@ -117,7 +134,7 @@
       <span class="eyebrow" id="uitlegKop">Waarom dit woord</span>
       <p>Apero komt van het Latijnse <em>aperire</em>, openen. Het is het uur tussen de werkdag en het diner: iets in het glas, iets op het bord, en vooral even zitten met de mensen om je heen. Daar gaat het woord over.</p>
       <p id="onthulling" hidden>In elk land staat er iets anders in het glas, maar overal zit je aan tafel. Drie generaties tegelijk in Catalonië, uren aan een Turkse rakı sofrası, bij een gastheer in Fez die de thee voor je schenkt. Daar schuif je aan, en daar gaat de avond open.</p>
-      <p>In Milaan heet het aperitivo, in Barcelona la hora del vermut, in Marseille l'heure de l'apéro. APÉRO Culture onderzoekt dat uur in zes werelden, en in 2027 vieren we het met een festival.</p>
+      <p>In Milaan heet het aperitivo, in Barcelona la hora del vermut, in Marseille l'heure de l'apéro.</p>
       <a class="verder" href="index.html">Lees meer over APÉRO</a>
     </div>
   </div>
