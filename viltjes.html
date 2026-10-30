@@ -58,7 +58,7 @@
   .spel,.claim{margin:30px 0 0;padding:26px;border-radius:22px;background:var(--panna-2);border:1px solid var(--line)}
   .spel-lbl{display:block;font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--terracotta)}
   .letters{display:flex;gap:10px;margin:14px 0 18px}
-  .letters input{width:min(17vw,62px);height:min(19vw,72px);box-sizing:border-box;text-align:center;text-transform:uppercase;font-family:var(--disp);font-weight:800;font-size:clamp(26px,6vw,36px);
+  .letters input{flex:1 1 0;min-width:0;max-width:62px;height:min(19vw,72px);box-sizing:border-box;text-align:center;text-transform:uppercase;font-family:var(--disp);font-weight:800;font-size:clamp(26px,6vw,36px);
     color:var(--espresso);background:var(--panna);border:2px solid var(--line);border-radius:14px;outline:none}
   .letters input:focus{border-color:var(--terracotta)}
   .spel.fout .letters input{border-color:var(--mattone);animation:schud .35s}
@@ -74,6 +74,9 @@
   .spel .btn{border:0;cursor:pointer}
   .hp{position:absolute;left:-9999px}
   .ant-kop{display:block;padding-top:48px}
+  .uitleg{margin-top:44px}
+  .uitleg p{margin-top:14px}
+  .uitleg .verder{display:inline-block;margin-top:20px;font-family:var(--body);font-weight:600;font-size:15px;color:var(--terracotta);text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
   footer.mini{border-top:1px solid var(--line);padding:26px 22px;text-align:center;font-family:var(--body);font-size:13px;color:var(--ink-50);background:var(--panna)}
 </style>
 </head>
@@ -89,7 +92,6 @@
     <span class="eyebrow">Het viltjesspel</span>
     <h1>Vijf viltjes, één woord<span class="flower" aria-hidden="true"></span></h1>
     <p class="big">Op Nacht van de Wijn liggen vijf viltjes met een vraag. Elk goed antwoord is een letter. Samen vormen ze een woord.</p>
-    <p>Apero komt van het Latijnse <em>aperire</em>, openen. Het is het uur tussen de werkdag en het diner: iets in het glas, iets op het bord, en vooral even zitten met de mensen om je heen. In Milaan heet het aperitivo, in Barcelona la hora del vermut, in Marseille l'heure de l'apéro. APÉRO Culture onderzoekt dat uur in zes werelden, en in 2027 vieren we het met een festival.</p>
     <p>Heb je alle vijf de letters? Vul het woord hieronder in. De eerste 200 mensen met het goede woord krijgen een gratis ticket voor APÉRO Festival 2027.</p>
 
     <form class="spel" id="spel" autocomplete="off" novalidate>
@@ -102,7 +104,7 @@
     </form>
 
     <form class="claim" id="claim" hidden novalidate>
-      <p class="claim-kop">Goed. Het woord is <strong>TAFEL</strong>, want daar draait de apero om.</p>
+      <p class="claim-kop">Goed geraden. Het woord is <strong>TAFEL</strong>.</p>
       <p>Laat je naam en mailadres achter. Zodra de kaartverkoop voor APÉRO Festival 2027 opent, krijg je je gratis ticket in je mailbox.</p>
       <label>Naam<input name="naam" required autocomplete="name"></label>
       <label>Mailadres<input name="email" type="email" required autocomplete="email"></label>
@@ -110,6 +112,14 @@
       <button class="btn" type="submit">Claim mijn ticket</button>
       <p class="melding" id="claimMelding" role="status" aria-live="polite"></p>
     </form>
+
+    <div class="uitleg">
+      <span class="eyebrow" id="uitlegKop">Waarom dit woord</span>
+      <p>Apero komt van het Latijnse <em>aperire</em>, openen. Het is het uur tussen de werkdag en het diner: iets in het glas, iets op het bord, en vooral even zitten met de mensen om je heen. Daar gaat het woord over.</p>
+      <p id="onthulling" hidden>In elk land staat er iets anders in het glas, maar overal zit je aan tafel. Drie generaties tegelijk in Catalonië, uren aan een Turkse rakı sofrası, bij een gastheer in Fez die de thee voor je schenkt. Daar schuif je aan, en daar gaat de avond open.</p>
+      <p>In Milaan heet het aperitivo, in Barcelona la hora del vermut, in Marseille l'heure de l'apéro. APÉRO Culture onderzoekt dat uur in zes werelden, en in 2027 vieren we het met een festival.</p>
+      <a class="verder" href="index.html">Lees meer over APÉRO</a>
+    </div>
   </div>
 </header>
 
@@ -183,7 +193,7 @@
     el.addEventListener('keydown',function(e){if(e.key==='Backspace'&&!el.value&&ins[i-1])ins[i-1].focus()});
     el.addEventListener('paste',function(e){var t=(e.clipboardData.getData('text')||'').replace(/[^a-z]/gi,'').toUpperCase();if(t){e.preventDefault();ins.forEach(function(x,j){x.value=t[j]||''});(ins[t.length]||ins[4]).focus()}});
   });
-  function toon(){document.getElementById('antwoorden').hidden=false}
+  function toon(){document.getElementById('antwoorden').hidden=false;document.getElementById('onthulling').hidden=false;document.getElementById('uitlegKop').textContent='Waarom TAFEL'}
   spel.addEventListener('submit',function(e){
     e.preventDefault(); woord=ins.map(function(x){return x.value}).join('');
     spel.classList.remove('fout');
