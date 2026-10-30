@@ -67,6 +67,7 @@
   .melding{font-family:var(--body);font-size:15px;color:var(--ink-70);margin:14px 0 0;min-height:1.2em}
   .claim-kop{font-family:var(--disp);font-size:22px;color:var(--espresso);margin:0}
   .claim p{font-family:var(--body);font-size:16px;line-height:1.6;color:var(--ink-70)}
+  .claim a{color:var(--terracotta);font-weight:600}
   .claim label{display:block;font-family:var(--body);font-weight:600;font-size:14px;margin:14px 0 0}
   .claim label input{display:block;width:100%;box-sizing:border-box;margin-top:6px;font:16px var(--body);padding:13px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--panna);color:var(--espresso)}
   .claim .btn{margin-top:20px;border:0;cursor:pointer}
@@ -166,7 +167,7 @@
   <span class="eyebrow">En nu</span>
   <h2>Zes werelden, één uur</h2>
   <p>Achter elke vraag zit een hele wereld, van de vermutbar in Barcelona tot de theepot in Fez. Lees verder, of zoek uit welke apero bij jou past.</p>
-  <div class="btns"><a class="btn" href="index.html#werelden">Naar de werelden</a><a class="btn ghost" href="app.html">Doe de Aperokiezer</a></div>
+  <div class="btns"><a class="btn" href="index.html#werelden">Naar de werelden</a><a class="btn ghost" href="app.html">Doe de Aperokiezer</a><a class="btn ghost" href="https://www.instagram.com/apero.festival" target="_blank" rel="noopener">Volg @apero.festival</a></div>
 </section>
 
 </main>
@@ -200,7 +201,7 @@
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){cm.textContent='Dat lijkt nog geen mailadres.';return}
     cm.textContent='Bezig…';
     rpc('apero_viltjes_claim',{p_woord:woord,p_naam:naam,p_email:email}).then(function(r){
-      if(r.geclaimd){claim.innerHTML='<p class="claim-kop">Je ticket staat op je naam.</p><p>Zodra de kaartverkoop voor APÉRO Festival 2027 opent, krijg je hem op '+email.replace(/</g,'')+'. Proost.</p>'}
+      if(r.geclaimd){claim.innerHTML='<p class="claim-kop">Je ticket staat op je naam.</p><p>Zodra de kaartverkoop voor APÉRO Festival 2027 opent, krijg je hem op '+email.replace(/</g,'')+'. Proost.</p><p>Volg ons tot die tijd op <a href="https://www.instagram.com/apero.festival" target="_blank" rel="noopener">Instagram</a>.</p>'}
       else if(r.al){cm.textContent='Dit mailadres heeft al een ticket. Eén per persoon.'}
       else if(r.vol){cm.textContent='De 200 tickets zijn op. Je was snel, maar net niet snel genoeg. Hieronder lees je wel alle antwoorden.'}
       else{cm.textContent='Controleer je naam en mailadres nog even.'}
