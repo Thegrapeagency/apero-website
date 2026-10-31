@@ -1,0 +1,325 @@
+/* APÉRO · kassa, bedankt- en ticketpagina's (afgeleid van de NvdW-tickets) */
+/* ===================== TICKETS & BEDANKT (hersteld 7 aug 2026) =====================
+   Dit blok verdween per ongeluk in commit 7fd7bec (14 jun); tickets.html en
+   bedankt.html hebben deze stijlen nodig (shop.js injecteert ze NIET). */
+/* ---- bedankt / tickets pagina's ---- */
+.page-narrow{ max-width: 860px; margin: 0 auto; padding: 110px 22px 80px; min-height: 70vh; }
+.pay-state{ text-align: left; padding: 30px 0 8px; }
+.pay-state h1{ font-family: var(--disp); font-weight: 800; font-size: clamp(28px, 5vw, 44px); margin: 0 0 14px; }
+.pay-state p{ max-width: 56ch; }
+.pay-ref{ font-family: var(--body); font-size: 14px; }
+.spinner{ width: 30px; height: 30px; border: 3px solid var(--line); border-top-color: var(--terracotta); border-radius: 50%; animation: aperospin 0.9s linear infinite; margin-bottom: 18px; }
+@keyframes aperospin{ to{ transform: rotate(360deg); } }
+.tix-head{ display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 18px; margin-bottom: 22px; }
+.tix-head h1{ font-family: var(--disp); font-weight: 800; font-size: clamp(28px, 5vw, 44px); margin: 0; }
+.tix-head p{ margin: 0; color: var(--ink-70); }
+.tix-note{ font-size: 13px; color: var(--ink-50); max-width: 64ch; margin-top: 22px; }
+.tix-grid{ display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 360px)); gap: 32px; margin-top: 26px; justify-content: center; align-items: start; }
+
+/* --- Premium festival-ticket: stub-look met geperforeerde scheidingslijn --- */
+.tix-card{
+  --tix-accent: #C45F38;   /* bordeaux */
+  --tix-ink: #231B13;      /* night navy */
+  --tix-bg: #F4EAD6;       /* warm cream */
+  --tix-gold: #EEB24A;     /* harvest gold */
+  --tix-sand: #EBDCBE;     /* sand, zachte secundaire vlakkleur */
+  --notch: 17px;           /* straal van de ponsgaten */
+  --page-bg: var(--panna, #F4EAD6);  /* paginakleur waar ponsgaten naar uitknippen */
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  background: var(--tix-bg);
+  color: var(--tix-ink);
+  border-radius: 20px;
+  overflow: hidden;
+  /* Hairline goud-zegelrand + zachte navy-diepteschaduw voor fysiek gevoel */
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--tix-gold) 38%, transparent),
+    0 1px 0 rgba(255,255,255,.5),
+    0 22px 48px -26px rgba(35,27,19,.6),
+    0 4px 14px -8px rgba(35,27,19,.28);
+  display: block;
+  isolation: isolate;
+}
+/* Subtiele papiertextuur/vignet over de hele kaart, zeer ingehouden */
+.tix-card::after{
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(140% 120% at 50% -10%, transparent 60%, rgba(35,27,19,.05) 100%);
+}
+
+/* Hoofdzone */
+.tix-main{ position: relative; z-index: 1; }
+
+/* Donkere merkkop */
+.tix-brand{
+  display: flex; align-items: center; gap: 13px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--tix-ink) 90%, #fff) 0%, var(--tix-ink) 62%);
+  color: var(--tix-bg);
+  padding: 17px 20px 18px;
+  position: relative;
+}
+/* Dunne gouden hairline onderaan de kop als zegel-accent */
+.tix-brand::after{
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--tix-gold) 92%, transparent) 14%,
+    var(--tix-gold) 50%,
+    color-mix(in srgb, var(--tix-gold) 92%, transparent) 86%,
+    transparent 100%);
+}
+.tix-logo{ width: 42px; height: 42px; object-fit: contain; display: block; flex: 0 0 auto; }
+.tix-brand-text{ display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1 1 auto; }
+.tix-wordmark{
+  font-family: var(--disp); font-weight: 800;
+  font-size: 17px; line-height: 1; letter-spacing: .015em; color: var(--tix-bg);
+  word-break: break-word;
+}
+.tix-edition{
+  font-family: var(--body); font-weight: 600; text-transform: uppercase;
+  font-size: 9px; letter-spacing: .22em; color: var(--tix-gold);
+}
+.tix-count{
+  font-family: var(--body); font-weight: 600; font-size: 9.5px; letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(244,234,214,.62);
+  white-space: nowrap; align-self: flex-start; flex: 0 0 auto;
+  padding: 4px 9px; border-radius: 999px;
+  border: 1px solid rgba(244,234,214,.22);
+}
+
+/* Ticketinfo */
+.tix-body{ padding: 22px 22px 24px; display: grid; gap: 16px; }
+.tix-daywrap{ display: grid; gap: 9px; }
+.tix-daylabel{
+  font-family: var(--body); font-weight: 600; text-transform: uppercase;
+  font-size: 9.5px; letter-spacing: .2em; color: var(--tix-accent);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+/* Gouden hairline-streepje naast het label */
+.tix-daylabel::after{
+  content: ""; flex: 1 1 auto; height: 1px; min-width: 18px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--tix-gold) 70%, transparent), transparent);
+}
+.tix-days{ display: flex; gap: 9px; flex-wrap: wrap; }
+/* De dag is het visuele middelpunt: groot blok-display, hoog contrast */
+.tix-day{
+  font-family: var(--disp); font-weight: 800;
+  font-size: clamp(26px, 8vw, 34px); line-height: .92; letter-spacing: .01em;
+  padding: 14px 18px 11px; border-radius: 13px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--tix-ink) 92%, #fff) 0%, var(--tix-ink) 70%);
+  color: var(--tix-bg);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--tix-gold) 28%, transparent),
+    0 6px 14px -10px rgba(35,27,19,.7);
+}
+.tix-type{
+  font-family: var(--disp); font-style: italic; font-weight: 600;
+  font-size: 18px; line-height: 1.25;
+  color: var(--tix-ink); padding-top: 14px;
+  position: relative;
+}
+/* Fijne dubbele scheidingslijn boven het type, huisstijlkleuren */
+.tix-type::before{
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: color-mix(in srgb, var(--tix-ink) 18%, transparent);
+}
+.tix-name{
+  font-family: var(--disp); font-weight: 800;
+  font-size: 23px; line-height: 1.02; letter-spacing: .01em;
+  color: var(--tix-accent); word-break: break-word;
+}
+.tix-name--buyer{
+  font-family: var(--disp); font-style: italic; text-transform: none; font-weight: 600;
+  font-size: 14px; letter-spacing: 0;
+  color: color-mix(in srgb, var(--tix-ink) 68%, transparent);
+}
+
+/* Geperforeerde scheidingslijn + twee ronde ponsgaten die uitknippen naar paginakleur.
+   De bovenrand van .tix-stub is de scheurnaad. De stub krijgt een eigen zandkleur
+   (afwijkend van het cream-corpus) zodat de scheiding ook zonder ponsgaten leesbaar is.
+   De perforatie-stippellijn zit als achtergrond op .tix-stub zelf; beide pseudo's
+   zijn vrij voor de twee ronde ponsgaten links/rechts. */
+.tix-stub{
+  position: relative;
+  padding: 26px 22px 22px;
+  text-align: center;
+  background-color: var(--tix-sand);
+  /* Stippellijn-perforatie langs de bovenrand */
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--tix-ink) 38%, transparent) 1.1px, transparent 1.5px);
+  background-size: 10px 2px;
+  background-repeat: repeat-x;
+  background-position: top 1px center;
+  /* Lichte slagschaduw onder de naad voor diepte */
+  box-shadow: inset 0 3px 6px -5px rgba(35,27,19,.5);
+  overflow: visible;
+}
+/* Twee ronde ponsgaten, "uitgeknipt" naar de paginakleur, op de scheurnaad */
+.tix-stub::before, .tix-stub::after{
+  content: ""; position: absolute; top: 0; z-index: 2;
+  width: calc(var(--notch) * 2); height: calc(var(--notch) * 2);
+  background: var(--page-bg);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.tix-stub::before{
+  left: calc(var(--notch) * -1);
+  box-shadow: inset -2px 1px 4px -2px rgba(35,27,19,.3);
+}
+.tix-stub::after{
+  right: calc(var(--notch) * -1);
+  box-shadow: inset 2px 1px 4px -2px rgba(35,27,19,.3);
+}
+
+/* QR — altijd donker-op-wit voor scanners, ongeacht thema, netjes omkaderd */
+.tix-qr{
+  width: 176px; max-width: 72%; margin: 0 auto 14px; padding: 14px;
+  background: #ffffff; border-radius: 14px;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--tix-ink) 14%, transparent),
+    inset 0 0 0 5px #ffffff,
+    inset 0 0 0 6px color-mix(in srgb, var(--tix-gold) 55%, transparent),
+    0 4px 12px -8px rgba(35,27,19,.4);
+}
+.tix-qr svg, .tix-qr img{ width: 100%; height: auto; display: block; }
+/* Alleen de QR-modules (path) donker kleuren; de witte achtergrond-rect NOOIT
+   raken — anders verdwijnt het scannercontrast. */
+.tix-qr svg path{ fill: #231B13 !important; }
+.tix-qr svg rect{ fill: #ffffff !important; }
+.tix-code{
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-weight: 600;
+  font-size: 13px; letter-spacing: .14em; color: var(--tix-ink);
+}
+.tix-ref{
+  font-family: var(--body); font-weight: 600; text-transform: uppercase;
+  font-size: 9px; letter-spacing: .16em; margin-top: 7px;
+  color: color-mix(in srgb, var(--tix-ink) 52%, transparent);
+}
+
+/* Voided */
+.tix-card.is-void{ opacity: .55; filter: saturate(.5); }
+.tix-card.is-void .tix-name, .tix-card.is-void .tix-type, .tix-card.is-void .tix-day, .tix-card.is-void .tix-code{ text-decoration: line-through; }
+.tix-void{
+  position: absolute; top: 14px; right: 14px; z-index: 3;
+  font-family: var(--body); text-transform: uppercase;
+  font-size: 11px; letter-spacing: .16em; font-weight: 700;
+  padding: 5px 12px; border-radius: 999px;
+  background: var(--tix-accent); color: #fff;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--tix-bg) 80%, transparent);
+  transform: rotate(4deg);
+}
+
+@media (max-width: 420px){
+  .tix-grid{ grid-template-columns: minmax(0, 360px); justify-content: center; }
+}
+
+@media print {
+  .topnav, .ticker, footer, .tix-print, .scrollprog, .theme-toggle{ display: none !important; }
+  .page-narrow{ padding: 0; }
+  .tix-grid{ grid-template-columns: 1fr; gap: 0; justify-content: stretch; }
+  body{ background: #fff !important; }
+  .tix-card{
+    max-width: 100%; margin: 0 0 12px;
+    box-shadow: inset 0 0 0 1.5px #231B13 !important; border-radius: 14px;
+    page-break-inside: avoid; page-break-after: always;
+    background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .tix-card::after{ display: none !important; }
+  /* Geen donkere inktvlakken in print: lichte kop met bordeaux tekst + cremerand */
+  .tix-brand{ background: #F4EAD6 !important; color: #C45F38 !important; border-bottom: 1.5px solid #C45F38; }
+  .tix-brand::after{ background: #EEB24A !important; }
+  .tix-wordmark{ color: #C45F38 !important; }
+  .tix-edition{ color: #ac595a !important; }
+  .tix-count{ color: rgba(35,27,19,.6) !important; border-color: rgba(35,27,19,.3) !important; }
+  .tix-day{
+    background: #fff !important; color: #231B13 !important;
+    border: 1.5px solid #231B13; box-shadow: none !important;
+  }
+  .tix-stub{
+    background-color: #fff !important;
+    background-image: radial-gradient(circle, #231B13 1.1px, transparent 1.5px) !important;
+    box-shadow: none !important;
+  }
+  .tix-stub::before, .tix-stub::after{ background: #fff !important; box-shadow: 0 0 0 1px #231B13 !important; }
+  .tix-qr{ box-shadow: inset 0 0 0 1px #999 !important; }
+  .tix-qr svg path{ fill: #000 !important; }
+  .tix-qr svg rect{ fill: #fff !important; }
+  .tix-void{ box-shadow: none !important; }
+}
+
+
+.tix-holder{ font-family:var(--disp); font-weight:600; font-size:15px; }
+
+/* ===== Zelfservice dagwissel onder ticketkaart ===== */
+.tix-actions{ margin-top:10px; padding:12px 14px; border:1px dashed var(--line); border-radius:12px; background:var(--panna); }
+.tix-swaplabel{ font-family:var(--body); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-50); }
+.tix-swapbtns{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.tix-swapbtn{ font-family:var(--body); font-size:13px; padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--espresso); cursor:pointer; }
+.tix-swapbtn:hover{ background:var(--terracotta); border-color:var(--terracotta); color:var(--panna); }
+.tix-swapbtn:disabled{ opacity:.5; cursor:wait; }
+.tix-swapmsg{ font-size:12.5px; margin:8px 0 0; min-height:1px; }
+.tix-swapmsg.ok{ color:#2e7d32; } .tix-swapmsg.bad{ color:var(--terracotta); }
+@media print { .tix-actions{ display:none !important; } }
+
+/* ===== Tickets kwijt: zelfbedieningsformulier op /tickets + verwijzingen (7 aug 2026) ===== */
+.hp{ display:none !important; }
+.recovery-form{ display:grid; gap:12px; margin-top:20px; }
+.recovery-form input[type="email"]{ font-family:var(--body); font-size:15px; padding:13px 16px; border-radius:10px; border:1px solid var(--line); background:var(--panna); color:var(--espresso); width:100%; }
+.recovery-form input[type="email"]:focus{ outline:2px solid var(--terracotta); outline-offset:1px; }
+.recovery-form .btn-buy{ justify-content:center; font-size:16px; }
+.recovery-form .btn-buy:disabled{ opacity:.6; cursor:wait; }
+.disc-msg{ font-size:13px; margin:2px 0 0; min-height:1px; }
+.disc-msg.ok{ color:#2e7d32; }
+.disc-msg.bad{ color:var(--terracotta); }
+.shop-recover{ margin:16px 2px 0; font-size:14px; color:var(--ink-50); }
+.shop-recover a{ color:var(--terracotta); text-decoration:underline; text-underline-offset:3px; }
+
+/* ===== Tickets kwijt: opvallender kaartje (kassa + FAQ) ===== */
+.recover-card{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px 22px;
+  margin-top:26px; padding:18px 22px;
+  border:1px solid var(--line); border-radius:16px;
+  background:var(--panna);
+}
+.recover-card .rc-text{ margin:0; }
+.recover-card .rc-title{ font-family:var(--disp); font-weight:600; font-size:17px; display:block; }
+.recover-card .rc-sub{ font-size:14px; color:var(--ink-70); display:block; margin-top:3px; }
+.recover-card .btn{ white-space:nowrap; }
+@media (max-width: 560px){ .recover-card{ flex-direction:column; align-items:flex-start; } }
+
+/* APÉRO-aanvullingen */
+.tix-logo.flower{width:30px;height:30px;--p1:var(--panna);--p2:var(--burro);--hole:var(--tix-accent)}
+.tix-brand{background:var(--tix-accent)!important}
+.tix-brand::after{background:var(--tix-gold)!important;opacity:.7}
+.tix-day{background:var(--tix-ink)!important;text-transform:capitalize}
+.tix-name{font-weight:800}
+.page-narrow{padding-top:40px}
+.pay-state h1,.tix-head h1{font-weight:800;letter-spacing:-.01em}
+#ticketshop{scroll-margin-top:80px}
+#ticketshop .shop-terms a{color:var(--terracotta)}
+
+/* knoppen die de shop zelf maakt, in de vorm van .knop */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--body);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:var(--espresso);color:var(--panna);padding:14px 24px;border-radius:100px;border:0;cursor:pointer;text-decoration:none;min-height:48px;transition:background .2s}
+.btn:hover{background:var(--terracotta)}
+.btn.btn-buy{background:var(--terracotta)}
+.btn.btn-buy:hover{background:var(--espresso)}
+.btn.btn-ghost{background:transparent;color:var(--espresso);box-shadow:inset 0 0 0 1px var(--ink-30)}
+.btn.btn-ghost:hover{background:var(--espresso);color:var(--panna)}
+.btn:disabled{opacity:.55;cursor:wait}
+.tix-qr svg path{fill:#231B13!important}
+
+/* vier dagen naast elkaar passen ook op een smal scherm */
+#ticketshop .day-tabs{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+#ticketshop .day-tab{min-width:0;padding:11px 2px 9px!important}
+#ticketshop .day-tab .dt-day{font-size:clamp(13px,3.6vw,18px)!important;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:420px){#ticketshop .day-tab .dt-day{font-size:12px!important;letter-spacing:-.02em;text-overflow:clip}}
+.kassa-shop{min-width:0;overflow:hidden}
+.kassa-in>*{min-width:0}

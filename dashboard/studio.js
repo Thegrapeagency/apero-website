@@ -523,76 +523,37 @@ function loginBeheer(){
    MODULE: TICKETSHOP
    ============================================================ */
 registreer('tickets','Ticketshop',function(p){
-  var t=LS.get('tickets',{types:[
-      {naam:'Regulier',prijs:27.5,cap:800,info:'Toegang + welkomstglas'},
-      {naam:'Vroege vogel',prijs:22.5,cap:200,info:'Eerste lichting, beperkt'},
-      {naam:'Zonder alcohol',prijs:22.5,cap:150,info:'Volwaardig alcoholvrij programma'}
-    ],verkoopstart:'',maxPerBestelling:6,draaiboek:{}});
-  function bewaar(){LS.set('tickets',t)}
-
-  p.appendChild(el('div','mkop','<span class="klabel">Festival</span><h2>Ticketshop</h2><p>De achterkant van de kaartverkoop. De verkoop is nog niet live; hier staat alles klaar zodat de knop om kan zodra datum en locatie rond zijn. We hergebruiken de bewezen kaartverkoop-stack van Nacht van de Wijn (eigen shop, Mollie, scanner, mails).</p>'));
-
-  var g=el('div','grid k3');
-  var cap=t.types.reduce(function(s,x){return s+(+x.cap||0)},0);
-  var omzet=t.types.reduce(function(s,x){return s+(+x.cap||0)*(+x.prijs||0)},0);
-  g.appendChild(el('div','kaart','<span class="cijfer klein">niet live</span><div class="cijfsub">verkoopstatus</div>'));
-  g.appendChild(el('div','kaart','<span class="cijfer klein">'+cap+'</span><div class="cijfsub">capaciteit (alle types)</div>'));
-  g.appendChild(el('div','kaart','<span class="cijfer klein">&euro; '+Math.round(omzet).toLocaleString('nl-NL')+'</span><div class="cijfsub">potentieel bij uitverkocht</div>'));
-  p.appendChild(g);
-
-  var types=el('div','kaart');types.style.marginTop='16px';
-  types.innerHTML='<span class="klabel kl">Instellingen</span><h3>Tickettypes</h3>';
-  var tb=el('table','tabel');
-  function tekenTypes(){
-    tb.innerHTML='<tr><th>Naam</th><th>Prijs &euro;</th><th>Capaciteit</th><th>Omschrijving</th><th></th></tr>';
-    t.types.forEach(function(x,i){
-      var r=el('tr');
-      function inp(v,key,type){var c=el('td');var f=el('input');f.type=type||'text';f.value=v;
-        f.style.cssText='width:100%;font-family:var(--body);font-size:13px;border:1px solid transparent;background:transparent;padding:4px;border-radius:6px';
-        f.onfocus=function(){f.style.borderColor='var(--line)';f.style.background='var(--panna)'};
-        f.onblur=function(){f.style.borderColor='transparent';f.style.background='transparent';x[key]=type==='number'?+f.value:f.value;bewaar();render()};
-        c.appendChild(f);return c}
-      r.appendChild(inp(x.naam,'naam'));r.appendChild(inp(x.prijs,'prijs','number'));r.appendChild(inp(x.cap,'cap','number'));r.appendChild(inp(x.info,'info'));
-      var td=el('td');td.appendChild(knop('&times;','geest klein',function(){t.types.splice(i,1);bewaar();render()}));r.appendChild(td);
-      tb.appendChild(r);
-    });
+  // Live koppeling met de kaartverkoop (Supabase edge function 'apero').
+  // De beheersleutel is dezelfde als in /ticketbeheer.html en staat in deze browser.
+  var API='https://snfojphxsbzfewwfbfka.supabase.co/functions/v1/apero/admin';
+  var sleutel='';try{sleutel=localStorage.getItem('apero-admin')||''}catch(e){}
+  p.appendChild(el('div','mkop','<span class="klabel">Festival</span><h2>Ticketshop</h2><p>De kaartverkoop draait op dezelfde opzet als Nacht van de Wijn: eigen shop op de festivalpagina, Mollie, ticketmail met QR-code, scan-app en een volledig ticketbeheer. Hier zie je de stand van vandaag.</p>'));
+  var knoppen=el('div','knoprij');
+  knoppen.appendChild(knop('Open het ticketbeheer','',function(){window.open('/ticketbeheer.html','_blank')}));
+  knoppen.appendChild(knop('Scan-app','geest',function(){window.open('/scanner.html','_blank')}));
+  knoppen.appendChild(knop('Bekijk de shop','geest',function(){window.open('/festival.html#tickets','_blank')}));
+  p.appendChild(knoppen);
+  var g=el('div','grid k3');g.style.marginTop='16px';p.appendChild(g);
+  var dagen=el('div','kaart');dagen.style.marginTop='16px';p.appendChild(dagen);
+  var eur=function(c){return '&euro; '+(Math.round(c)/100).toLocaleString('nl-NL',{minimumFractionDigits:2,maximumFractionDigits:2})};
+  if(!sleutel){
+    g.appendChild(el('div','kaart','<h4>Nog niet gekoppeld</h4><p>Log een keer in op het ticketbeheer in deze browser, dan verschijnen hier de verkoopcijfers.</p>'));
+    return;
   }
-  tekenTypes();types.appendChild(tb);
-  var tk=el('div','knoprij');
-  tk.appendChild(knop('+ Tickettype','geest klein',function(){t.types.push({naam:'Nieuw type',prijs:0,cap:0,info:''});bewaar();render()}));
-  tk.appendChild(knop('Exporteer configuratie','geest klein',function(){download('apero-tickets-config.json',t)}));
-  types.appendChild(tk);
-  p.appendChild(types);
-
-  var g2=el('div','grid k2');g2.style.marginTop='16px';
-  var verkoop=el('div','kaart');
-  verkoop.innerHTML='<span class="klabel kl">Verkoopinstellingen</span><h3>Regels</h3>'+
-    '<div class="veld"><label>Geplande verkoopstart</label><input type="date" id="tkStart" value="'+esc(t.verkoopstart)+'"></div>'+
-    '<div class="veld"><label>Max. tickets per bestelling</label><input type="number" id="tkMax" value="'+t.maxPerBestelling+'"></div>';
-  g2.appendChild(verkoop);
-  setTimeout(function(){
-    $('tkStart').onchange=function(){t.verkoopstart=this.value;bewaar()};
-    $('tkMax').onchange=function(){t.maxPerBestelling=+this.value;bewaar()};
-  },0);
-
-  var orders=el('div','kaart');
-  orders.innerHTML='<span class="klabel kl">Bestellingen</span><h3>Orders &amp; omzet</h3>';
-  orders.appendChild(el('div','leeg','<span class="flower"></span><h4>Nog geen verkoop</h4><p>Zodra de shop live gaat verschijnen hier bestellingen, dagomzet en scanstatistieken, zoals bij Nacht van de Wijn.</p>'));
-  g2.appendChild(orders);
-  p.appendChild(g2);
-
-  var db=el('div','kaart');db.style.marginTop='16px';
-  db.innerHTML='<span class="klabel kl">Go-live draaiboek</span><h3>Wat er moet gebeuren vóór de verkoop opent</h3>';
-  var punten=['Datum en locatie definitief','Mollie-organisatie aanmaken (of NvdW-account uitbreiden)','Shop-frontend bouwen op festival.html (NvdW-stack klonen)','Orderdatabase + e-ticketmail met QR','Scanner-app gereedmaken','Testbestelling + refund-flow testen','Servicekosten en voorwaarden vaststellen','Capaciteiten definitief zetten'];
-  var dl=el('div');
-  punten.forEach(function(tk2,i){
-    var lab=el('label','check'+(t.draaiboek[i]?' af':''));
-    lab.innerHTML='<input type="checkbox"'+(t.draaiboek[i]?' checked':'')+'><span>'+tk2+'</span>';
-    lab.querySelector('input').onchange=function(){t.draaiboek[i]=this.checked;lab.classList.toggle('af',this.checked);bewaar()};
-    dl.appendChild(lab);
+  g.appendChild(el('div','kaart','<span class="cijfer klein">&hellip;</span><div class="cijfsub">laden</div>'));
+  fetch(API+'/stats',{headers:{'x-admin-key':sleutel}}).then(function(r){if(!r.ok)throw r.status;return r.json()}).then(function(d){
+    g.innerHTML='';
+    var rev=d.revenue||{};
+    g.appendChild(el('div','kaart','<span class="cijfer klein">'+(d.tickets_total||0)+'</span><div class="cijfsub">geldige tickets</div>'));
+    g.appendChild(el('div','kaart','<span class="cijfer klein">'+eur(rev.paid_total_cents||0)+'</span><div class="cijfsub">omzet, '+(rev.orders_paid||0)+' bestellingen</div>'));
+    g.appendChild(el('div','kaart','<span class="cijfer klein">'+eur((rev.service_fees_cents||0)+(rev.transaction_fees_cents||0))+'</span><div class="cijfsub">service- en transactiekosten</div>'));
+    var namen={thu:'Donderdag',fri:'Vrijdag',sat:'Zaterdag',sun:'Zondag'};
+    var rijen=(d.inventory||[]).map(function(i){var pct=i.capacity?Math.round(i.sold/i.capacity*100):0;
+      return '<tr><td>'+namen[i.day]+'</td><td>'+i.sold+' / '+i.capacity+'</td><td style="width:45%"><div style="height:8px;border-radius:8px;background:var(--panna-2)"><div style="height:8px;border-radius:8px;width:'+pct+'%;background:var(--terracotta)"></div></div></td></tr>'}).join('');
+    dagen.innerHTML='<span class="klabel kl">Per dag</span><h3>Bezetting</h3><table class="tabel"><tr><th>Dag</th><th>Verkocht</th><th></th></tr>'+rijen+'</table>';
+  }).catch(function(e){
+    g.innerHTML='';g.appendChild(el('div','kaart','<h4>Kon de cijfers niet ophalen</h4><p>'+(e===401?'De beheersleutel in deze browser klopt niet meer. Log opnieuw in op het ticketbeheer.':'Probeer het zo nog eens.')+'</p>'));
   });
-  db.appendChild(dl);
-  p.appendChild(db);
 });
 
 /* ============================================================
@@ -670,7 +631,7 @@ var DRAAIBOEK=[
   {fase:'Programma',items:['Masterclass-line-up per wereld','Talks met makers en importeurs boeken','Podcast live-opname plannen','Wijnbiecht-format uitwerken','Lange tafel: catering en dekking']},
   {fase:'Productie',items:['Barbouw en inrichting per wereld','Techniek: geluid en licht','Bewegwijzering in huisstijl','Glaswerk en logistiek','Crew en vrijwilligers']},
   {fase:'Marketing',items:['Campagnekalender vanaf 6 maanden vooraf','Editie-releases koppelen aan festivalmomenten','Instagram-cadans opvoeren','Persbericht en perslijst','Partnercommunicatie-pakket']},
-  {fase:'Kaartverkoop',items:['Ticketshop live (zie Ticketshop-module)','Prijsstrategie en vroege-vogel-moment','Capaciteitsbewaking','Scanplan voor de dag zelf']}
+  {fase:'Kaartverkoop',items:['Ticketshop live (early bird sinds 31 okt 2026)','Prijsstrategie en vroege-vogel-moment','Capaciteitsbewaking','Scanplan voor de dag zelf']}
 ];
 registreer('festival','Draaiboek',async function(p){
   var d=await laadPartners();

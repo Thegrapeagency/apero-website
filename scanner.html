@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#231B13" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="APÉRO Scan" />
+<title>APÉRO Scan</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">
+<style>
+  :root{ --navy:#231B13; --bordeaux:#C45F38; --gold:#EEB24A; --cream:#F4EAD6; --green:#15803d; --red:#b91c1c; --orange:#d97706; }
+  *{ box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  html,body{ background:var(--navy); color:var(--cream); font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-height:100dvh; }
+  body{ padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom); }
+  .hide{ display:none !important; }
+
+  /* inloggen */
+  #login{ padding:48px 22px; max-width:420px; margin:0 auto; }
+  #login .logo{ font-size:12px; letter-spacing:.2em; color:var(--gold); font-weight:700; margin-bottom:10px; }
+  #login h1{ font-size:28px; margin-bottom:8px; }
+  #login p{ font-size:15px; opacity:.75; margin-bottom:26px; line-height:1.5; }
+  #login label{ display:block; font-size:13px; opacity:.8; margin-bottom:6px; }
+  #login input{ width:100%; padding:16px; border-radius:12px; border:1px solid rgba(254,241,213,.3); background:rgba(254,241,213,.08); color:var(--cream); font-size:18px; margin-bottom:16px; }
+  #login input#pin{ letter-spacing:.4em; font-size:24px; text-align:center; }
+  .btn{ width:100%; padding:17px; border-radius:12px; border:0; background:var(--bordeaux); color:var(--cream); font-size:17px; font-weight:700; }
+  #login-err{ color:#fca5a5; font-size:14px; min-height:20px; margin-bottom:10px; }
+
+  /* scannen */
+  .top{ display:flex; justify-content:space-between; align-items:center; padding:12px 16px; gap:10px; }
+  .top .who{ font-weight:700; font-size:16px; }
+  .top .meta{ font-size:12px; opacity:.75; margin-top:2px; }
+  .top button{ background:none; border:1px solid rgba(254,241,213,.3); color:var(--cream); border-radius:8px; padding:7px 11px; font-size:13px; }
+  #testbar{ background:var(--gold); color:var(--navy); text-align:center; font-weight:800; font-size:13px; padding:7px 10px; letter-spacing:.04em; }
+  #daybar{ background:var(--orange); color:#fff; text-align:center; font-weight:700; font-size:14px; padding:10px; }
+  #readerwrap{ position:relative; margin:6px 12px 0; border-radius:18px; overflow:hidden; background:#000; aspect-ratio:1/1; max-width:520px; margin-left:auto; margin-right:auto; }
+  #reader{ width:100%; height:100%; }
+  #reader video{ width:100% !important; height:100% !important; object-fit:cover; }
+  #camerr{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; font-size:15px; line-height:1.5; }
+  .hint{ text-align:center; font-size:14px; opacity:.7; padding:12px 16px 4px; }
+  .count{ text-align:center; padding:10px; }
+  .count b{ font-size:34px; display:block; color:var(--gold); }
+  .count span{ font-size:13px; opacity:.75; }
+  .manual{ display:block; margin:8px auto 24px; background:none; border:0; color:var(--gold); font-size:15px; text-decoration:underline; }
+
+  /* uitslag */
+  #ov{ position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:30px 24px; z-index:50; color:#fff; }
+  #ov.ok{ background:var(--green); }
+  #ov.bad{ background:var(--red); }
+  #ov.warn{ background:var(--orange); }
+  #ov .icon{ font-size:110px; line-height:1; margin-bottom:14px; font-weight:800; }
+  #ov h2{ font-size:44px; line-height:1.05; letter-spacing:.02em; margin-bottom:16px; text-transform:uppercase; }
+  #ov .type{ font-size:21px; font-weight:700; margin-bottom:8px; }
+  #ov .why{ font-size:19px; line-height:1.4; opacity:.95; max-width:440px; }
+  #ov .big{ font-size:26px; font-weight:800; margin-top:14px; background:rgba(0,0,0,.18); padding:8px 16px; border-radius:10px; }
+  #ov .tap{ position:absolute; bottom:calc(30px + env(safe-area-inset-bottom)); left:0; right:0; font-size:15px; opacity:.8; }
+  #busy{ position:fixed; inset:0; background:rgba(35,27,19,.7); display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:700; z-index:40; }
+</style>
+</head>
+<body>
+
+<div id="login">
+  <div class="logo">APÉRO FESTIVAL</div>
+  <h1>Tickets scannen</h1>
+  <p>Log in met de loginnaam en pincode die je van de organisatie hebt gekregen.</p>
+  <label for="lg">Loginnaam</label>
+  <input id="lg" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" />
+  <label for="pin">Pincode (6 cijfers)</label>
+  <input id="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="current-password" />
+  <div id="login-err"></div>
+  <button class="btn" id="go">Inloggen</button>
+</div>
+
+<div id="app" class="hide">
+  <div id="testbar" class="hide"></div>
+  <div class="top">
+    <div><div class="who" id="who"></div><div class="meta" id="meta"></div></div>
+    <button id="logout">Uitloggen</button>
+  </div>
+  <div id="daybar" class="hide"></div>
+  <div id="readerwrap"><div id="reader"></div><div id="camerr" class="hide"></div></div>
+  <div class="hint">Houd de QR-code van de bezoeker in het vierkant</div>
+  <div class="count"><b id="cnt">0</b><span id="cntlbl">door jou goedgekeurd</span></div>
+  <button class="manual" id="manual">Code met de hand intypen</button>
+</div>
+
+<div id="busy" class="hide">Controleren…</div>
+<div id="ov" class="hide" role="alert">
+  <div class="icon" id="ov-icon"></div>
+  <h2 id="ov-title"></h2>
+  <div class="type" id="ov-type"></div>
+  <div class="why" id="ov-why"></div>
+  <div class="tap" id="ov-tap">tik om verder te scannen</div>
+</div>
+
+<script src="/js/html5-qrcode.min.js"></script>
+<script>
+(function () {
+  var API = "https://snfojphxsbzfewwfbfka.supabase.co/functions/v1/apero/scan";
+  var DAY = { thu: "donderdag", fri: "vrijdag", sat: "zaterdag", sun: "zondag" };
+  var CAT = { entree: "entree", tafel: "tafels", workshop: "masterclasses" };
+  var CAT1 = { entree: "entreeticket", tafel: "tafelticket", workshop: "masterclassticket" };
+  // Binnen deze tijd door dezelfde scanner nogmaals gescand = per ongeluk dubbel, gewoon goed
+  var DOUBLE_SEC = 20;
+  var $ = function (id) { return document.getElementById(id); };
+  var auth = null, me = null, qr = null, busy = false, lastCode = "", lastAt = 0, okCount = 0, ovTimer = null;
+
+  try { auth = JSON.parse(localStorage.getItem("apero-scan-auth") || "null"); } catch (e) {}
+  try { okCount = parseInt(sessionStorage.getItem("apero-scan-ok") || "0", 10) || 0; } catch (e) {}
+
+  function call(action, body) {
+    return fetch(API + "?action=" + action, {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-scan-login": auth.login, "x-scan-pin": auth.pin },
+      body: JSON.stringify(body || {})
+    }).then(function (r) { return r.json().then(function (d) { d._status = r.status; return d; }); });
+  }
+
+  function loginErr(code) {
+    return { login_onjuist: "Loginnaam of pincode klopt niet.", geblokkeerd: "Te vaak een foute pincode. Vraag de organisatie om een nieuwe.", uitgezet: "Jouw account staat uit. Vraag de organisatie om 'm aan te zetten." }[code] || "Inloggen lukt niet. Check je internet.";
+  }
+
+  function doLogin(silent) {
+    return call("login").then(function (d) {
+      if (d._status !== 200) {
+        if (!silent || d._status === 401 || d._status === 403) logout(loginErr(d.error));
+        return;
+      }
+      me = d; showApp();
+    }).catch(function () {
+      if (silent && me) return;
+      $("login-err").textContent = "Geen verbinding. Check je internet en probeer opnieuw.";
+    });
+  }
+
+  $("go").addEventListener("click", function () {
+    var lg = $("lg").value.trim(), pin = $("pin").value.trim();
+    if (!lg || !/^\d{6}$/.test(pin)) { $("login-err").textContent = "Vul je loginnaam en 6-cijferige pincode in."; return; }
+    auth = { login: lg, pin: pin };
+    $("go").disabled = true; $("go").textContent = "Bezig…";
+    doLogin(false).then(function () {
+      $("go").disabled = false; $("go").textContent = "Inloggen";
+      if (me) { try { localStorage.setItem("apero-scan-auth", JSON.stringify(auth)); } catch (e) {} }
+    });
+  });
+  $("pin").addEventListener("keydown", function (e) { if (e.key === "Enter") $("go").click(); });
+
+  function logout(msg) {
+    try { localStorage.removeItem("apero-scan-auth"); } catch (e) {}
+    auth = null; me = null;
+    if (qr) { try { qr.stop(); } catch (e) {} qr = null; }
+    $("app").classList.add("hide"); $("login").classList.remove("hide");
+    $("pin").value = "";
+    $("login-err").textContent = msg || "";
+  }
+  $("logout").addEventListener("click", function () { if (confirm("Uitloggen?")) logout(); });
+
+  function showApp() {
+    $("login").classList.add("hide"); $("app").classList.remove("hide");
+    $("who").textContent = me.name;
+    $("meta").textContent = "Scant: " + me.categories.map(function (c) { return CAT[c]; }).join(", ") +
+      " · " + me.days.map(function (d) { return DAY[d]; }).join(", ");
+    $("testbar").classList.toggle("hide", !me.test);
+    $("testbar").textContent = me.day ? "TESTMODUS · alsof het " + DAY[me.day].toUpperCase() + " is · echte tickets worden niet afgestreept" : "TESTMODUS staat uit";
+    var dayMsg = !me.day ? "Vandaag wordt er niet gescand." : (!me.day_allowed ? "Jij bent niet ingeroosterd op " + DAY[me.day] + ". Scannen werkt nu niet." : "");
+    $("daybar").textContent = dayMsg; $("daybar").classList.toggle("hide", !dayMsg);
+    $("cnt").textContent = okCount;
+    startCamera();
+  }
+
+  function startCamera() {
+    if (qr) return;
+    if ("wakeLock" in navigator) {
+      navigator.wakeLock.request("screen").catch(function () {});
+      document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "visible" && navigator.wakeLock) navigator.wakeLock.request("screen").catch(function () {});
+      });
+    }
+    qr = new Html5Qrcode("reader", { verbose: false });
+    qr.start({ facingMode: "environment" },
+      { fps: 12, qrbox: function (w, h) { var s = Math.floor(Math.min(w, h) * 0.72); return { width: s, height: s }; } },
+      onDecode, function () {}
+    ).catch(function () {
+      $("camerr").classList.remove("hide");
+      $("camerr").textContent = "De camera start niet. Geef deze website toegang tot je camera (instellingen van je browser) en herlaad de pagina.";
+    });
+  }
+
+  function onDecode(text) {
+    if (busy || !$("ov").classList.contains("hide")) return;
+    var now = Date.now();
+    if (text === lastCode && now - lastAt < 2500) return;
+    lastCode = text; lastAt = now;
+    check(text);
+  }
+
+  $("manual").addEventListener("click", function () {
+    var code = prompt("Typ de ticketcode (de letters en cijfers onder de QR-code):");
+    if (code) check(code);
+  });
+
+  function check(code) {
+    busy = true; $("busy").classList.remove("hide");
+    call("scan", { code: code }).then(function (d) {
+      busy = false; $("busy").classList.add("hide");
+      if (d._status === 401 || d._status === 403) { logout(loginErr(d.error)); return; }
+      if (d._status !== 200) { show("bad", "!", "Fout", "", "Er ging iets mis bij het controleren. Probeer het nog een keer."); return; }
+      render(d);
+    }).catch(function () {
+      busy = false; $("busy").classList.add("hide");
+      show("warn", "?", "Geen internet", "", "De code kon niet gecontroleerd worden. Check je verbinding en scan opnieuw.");
+    });
+  }
+
+  function ago(sec) {
+    if (sec < 60) return sec + (sec === 1 ? " seconde" : " seconden") + " geleden";
+    var m = Math.round(sec / 60);
+    if (m < 60) return m + (m === 1 ? " minuut" : " minuten") + " geleden";
+    var h = Math.floor(m / 60);
+    return h + " uur en " + (m % 60) + " min geleden";
+  }
+  function clock(iso) {
+    return new Date(iso).toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Amsterdam" });
+  }
+  function daysTxt(days) { return (days || []).map(function (x) { return DAY[x]; }).join(", "); }
+
+  function render(d) {
+    var t = d.ticket || {}, type = t.type_name || "";
+    var persons = t.admits > 1 ? t.admits + " personen" : "";
+    switch (d.result) {
+      case "admitted":
+        okCount++; try { sessionStorage.setItem("apero-scan-ok", okCount); } catch (e) {}
+        $("cnt").textContent = okCount;
+        return show("ok", "✓", "Goed", type, t.holder_name || "", persons);
+      case "already_used":
+        if (d.first_scan_self && d.first_scan_seconds <= DOUBLE_SEC) {
+          return show("ok", "✓", "Goed", type, "Dubbel gescand: jij keurde deze " + ago(d.first_scan_seconds) + " al goed.", persons);
+        }
+        return show("bad", "✕", "Al gescand", type,
+          "Vandaag al binnengelaten om " + clock(d.first_scan_at) + (d.first_scan_by ? " door " + d.first_scan_by : "") + ".",
+          d.first_scan_seconds != null ? ago(d.first_scan_seconds) : "");
+      case "wrong_day":
+        return show("bad", "✕", "Niet voor vandaag", type, "Dit ticket is geldig op " + daysTxt(t.valid_days) + ".");
+      case "wrong_category":
+        return show("warn", "!", "Verkeerde scanner", type, "Dit is een " + (CAT1[d.category] || "ander ticket") + ". Jij scant alleen " + me.categories.map(function (c) { return CAT[c]; }).join(", ") + ".");
+      case "void":
+        return show("bad", "✕", "Ongeldig", type, "Dit ticket is geannuleerd of terugbetaald.");
+      case "scanner_day":
+        return show("warn", "!", "Jij scant vandaag niet", "", "Je bent ingeroosterd op " + daysTxt(d.days) + ".");
+      case "no_day":
+        return show("warn", "!", "Vandaag geen scandag", "", "Scannen werkt alleen op de festivaldagen.");
+      default:
+        return show("bad", "✕", "Onbekende code", "", "Deze code hoort niet bij een ticket van APÉRO Festival.");
+    }
+  }
+
+  function show(kind, icon, title, type, why, big) {
+    var ov = $("ov");
+    ov.className = kind;
+    $("ov-icon").textContent = icon;
+    $("ov-title").textContent = title;
+    $("ov-type").textContent = type || "";
+    $("ov-why").innerHTML = "";
+    $("ov-why").appendChild(document.createTextNode(why || ""));
+    if (big) { var b = document.createElement("div"); b.className = "big"; b.textContent = big; $("ov-why").appendChild(b); }
+    $("ov-tap").textContent = kind === "ok" ? "" : "tik om verder te scannen";
+    buzz(kind);
+    clearTimeout(ovTimer);
+    // Groen gaat vanzelf weg zodat de rij doorloopt, rood/oranje blijft staan tot je tikt
+    if (kind === "ok") ovTimer = setTimeout(hideOv, 1600);
+  }
+  function hideOv() { clearTimeout(ovTimer); $("ov").className = "hide"; lastAt = Date.now(); }
+  $("ov").addEventListener("click", hideOv);
+
+  var actx = null;
+  function buzz(kind) {
+    try { if (navigator.vibrate) navigator.vibrate(kind === "ok" ? 80 : [200, 80, 200]); } catch (e) {}
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      var notes = kind === "ok" ? [880, 1320] : [220, 180];
+      notes.forEach(function (f, i) {
+        var o = actx.createOscillator(), g = actx.createGain();
+        o.frequency.value = f; o.type = kind === "ok" ? "sine" : "square";
+        g.gain.value = 0.08;
+        o.connect(g); g.connect(actx.destination);
+        o.start(actx.currentTime + i * 0.12); o.stop(actx.currentTime + i * 0.12 + 0.11);
+      });
+    } catch (e) {}
+  }
+
+  if (auth && auth.login) { $("lg").value = auth.login; doLogin(true); }
+})();
+</script>
+</body>
+</html>
