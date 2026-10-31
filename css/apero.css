@@ -40,6 +40,13 @@ a{color:inherit}
 /* ============================================================
    NAVIGATIE
    ============================================================ */
+.festbalk{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 14px;padding:9px 16px;background:var(--terracotta);color:var(--panna);font-size:13px;font-weight:600;letter-spacing:.06em;text-decoration:none;text-align:center}
+.festbalk b{letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+.festbalk span{opacity:.92}
+.festbalk span::before{content:"·";margin-right:14px;opacity:.6}
+.festbalk em{font-style:normal;text-decoration:underline;text-underline-offset:3px}
+.festbalk:hover{background:var(--mattone)}
+@media(max-width:560px){.festbalk{font-size:12px;gap:2px 10px}.festbalk span::before{margin-right:10px}.festbalk span:last-of-type{flex-basis:100%}.festbalk span:last-of-type::before{display:none}.festbalk em{display:none}}
 .kop{position:sticky;top:0;z-index:60;background:rgba(244,234,214,.94);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .kop .in{max-width:1160px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
 @media(min-width:720px){.kop .in{padding:10px 32px}}
@@ -76,10 +83,17 @@ a{color:inherit}
 .welkom .achter::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(235,220,190,0) 55%,var(--panna-2) 100%)}
 .welkom .w{position:relative}
 .welkom .tekst-kol{padding:8px 0 44px;max-width:640px}
-.merkkop{margin:14px 0 22px;display:flex;flex-direction:column;align-items:flex-start;color:var(--espresso)}
+.merkkop{margin:30px 0 22px;display:flex;flex-direction:column;align-items:flex-start;color:var(--espresso)}
 .merkkop .lockup{font-size:clamp(84px,15vw,188px);display:inline-flex;align-items:center}
 .merkkop .cul{font-family:var(--body);font-weight:600;font-size:clamp(13px,1.5vw,18px);letter-spacing:.62em;color:var(--terracotta);margin:10px 0 0 .2em;text-transform:uppercase}
-.welkom .slogan{margin:0 0 16px;font-size:clamp(26px,3vw,38px);line-height:1.12}
+.fest-lbl{display:inline-block;margin:0 0 12px;padding:5px 12px;border-radius:999px;background:var(--terracotta);color:var(--panna);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.feiten{display:flex;flex-wrap:wrap;gap:12px;margin:4px 0 20px}
+.feiten span{display:flex;flex-direction:column;padding:12px 18px;border-radius:14px;background:var(--panna);box-shadow:0 0 0 1.5px var(--terracotta)}
+.feiten b{font-family:var(--disp);font-size:clamp(22px,2.4vw,30px);line-height:1.1;color:var(--espresso)}
+.feiten small{font-size:13px;color:var(--ink-70);margin-top:2px}
+.welkom .ondertussen{margin:26px 0 0;padding-top:18px;border-top:1px solid var(--line);font-size:15px;color:var(--ink-70);max-width:52ch}
+.welkom .ondertussen a{color:var(--terracotta);font-weight:600;white-space:nowrap}
+.welkom .slogan{margin:0 0 16px;font-size:clamp(32px,4vw,52px);line-height:1.05}
 .welkom .slogan em{font-style:italic;font-weight:500;color:var(--terracotta)}
 .welkom .stand{max-width:34ch;color:var(--espresso)}
 .welkom .acties{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
