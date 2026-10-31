@@ -23,6 +23,14 @@ import { pagina as inschenkerPagina } from './sjablonen/inschenker.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...a) => path.join(ROOT, ...a);
 const SITE = 'https://www.apero-culture.nl';
+/* Festivalfeiten: één plek, overal gebruikt (balk, voorpagina, festivalpagina, voet). */
+export const FEST = {
+  wanneer: 'Juni 2027',
+  plek: 'Noordse Park',
+  stad: 'Utrecht',
+  kern: 'Proef vijf eeuwen aperitief.',
+  belofte: 'Op het APÉRO Festival proef je alles wat de afgelopen vijfhonderd jaar een rol speelde in de aperitiefcultuur, van jenever en vermout tot pastis, ouzo en spritz. En je leert er alles over: waar het vandaan komt, wie het dronk en waarom.'
+};
 const lees = (f) => fs.readFileSync(P(f), 'utf8');
 const schrijf = (f, s) => { fs.mkdirSync(path.dirname(P(f)), { recursive: true }); fs.writeFileSync(P(f), s); };
 
@@ -123,12 +131,13 @@ const NAV = [
   ['Verhalen', '/verhalen/', 'Alles wat er te lezen is'],
   ['Steden', '/steden.html', 'Waar het uur zich afspeelt'],
   ['Lexicon', '/lexicon.html', 'De woorden van de tafel'],
-  ['Festival', '/festival.html', 'Utrecht, juni 2027'],
+  ['Festival', '/festival.html', `${FEST.wanneer} · ${FEST.plek}, ${FEST.stad}`],
   ['Over', '/verhaal.html', 'Wat APÉRO is']
 ];
 export function kop(actief) {
   const links = NAV.map(([n, u]) => `<a href="${u}"${actief === u ? ' aria-current="page"' : ''}>${n}</a>`).join('');
   return `<!--nav--><a class="sr" href="#inhoud">Naar de inhoud</a>
+<a class="festbalk" href="/festival.html"><b>APÉRO Festival</b><span>${FEST.wanneer}</span><span>${FEST.plek}, ${FEST.stad}</span><em>Meer weten</em></a>
 <header class="kop"><div class="in">
 <a class="merk" href="/" aria-label="APÉRO Culture, naar de voorpagina">APÉR<span class="flower" aria-hidden="true"></span><span class="cul">CULTURE</span></a>
 <nav class="hoofdnav" aria-label="Hoofdmenu">${links}<a class="knop klein" href="/inschenker.html">De Inschenker</a></nav>
@@ -143,7 +152,7 @@ export function kop(actief) {
 }
 export function voet() {
   return `<!--voet--><footer class="voet"><div class="petals" aria-hidden="true"></div><div class="w"><div class="in">
-<div><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><p>Een magazine over het uur tussen werk en diner. Van <em>aperire</em>, openen. In juni 2027 aan tafel in Utrecht.</p></div>
+<div><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><p>Een magazine over het uur tussen werk en diner. Van <em>aperire</em>, openen. In juni 2027 het APÉRO Festival in het ${FEST.plek}, ${FEST.stad}.</p></div>
 <div><h4>Lezen</h4><a href="/verhalen/">Verhalen</a><a href="/steden.html">Steden</a><a href="/verhalen/?reeks=werelden">De zes werelden</a><a href="/lexicon.html">Lexicon</a></div>
 <div><h4>APÉRO</h4><a href="/verhaal.html">Over</a><a href="/festival.html">Festival 2027</a><a href="/app.html">De Aperokiezer</a><a href="/partners.html">Partners</a><a href="/faq.html">Vragen</a></div>
 <div><h4>Blijf in de buurt</h4><a href="/inschenker.html">De Inschenker</a><a href="https://www.instagram.com/apero.festival">Instagram</a><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a></div>
@@ -352,16 +361,19 @@ function voorpagina() {
 <div class="w"><div class="tekst-kol">
 <p class="klok" id="klok"><span class="punt" aria-hidden="true"></span><span>Het uur tussen werk en diner.</span></p>
 <h1 class="merkkop"><span class="lockup">APÉR<span class="flower" aria-hidden="true"></span><span class="sr">O</span></span><span class="cul">Culture</span></h1>
-<p class="kop-l slogan">Het aperitief, <em>van Rome tot jouw terras.</em></p>
-<p class="stand">APÉRO Culture is een magazine over de aperitiefcultuur van Europa en de Middellandse Zee. Over wat er in het glas zat, wat er op tafel stond en wie er aanschoof, door de eeuwen heen.</p>
-<p class="acties"><a class="knop" href="/verhalen/">Begin met lezen</a><a class="knop licht" href="/verhaal.html">Wat is APÉRO?</a></p>
+<p class="fest-lbl">Het festival</p>
+<p class="kop-l slogan">${FEST.kern.replace('aperitief.', '<em>aperitief.</em>')}</p>
+<div class="feiten"><span><b>${FEST.wanneer}</b><small>De precieze data volgen</small></span><span><b>${FEST.plek}</b><small>${FEST.stad}</small></span></div>
+<p class="stand">${FEST.belofte}</p>
+<p class="acties"><a class="knop" href="#ins-voorpagina">Als eerste weten</a><a class="knop licht" href="/festival.html">Over het festival</a></p>
+<p class="ondertussen">Tot die tijd: het magazine, over het aperitief van Rome tot jouw terras. <a href="/verhalen/">Begin met lezen</a></p>
 </div></div>
 </section>
 
 <section class="watis"><div class="w"><div class="drie">
 <a class="punt-w rv" href="/verhalen/"><span class="n">01</span><h2>Verhalen</h2><p>Over het glas, het bord en de mensen eromheen. Elk verhaal lees je in één, vier of zeven minuten.</p><span class="tekstlink">Naar de verhalen</span></a>
 <a class="punt-w rv" href="#eeuwen"><span class="n">02</span><h2>Door de tijd</h2><p>Van de honingwijn van de Romeinen tot de vermut van 1974. Wat dronken zij, en wat drink jij?</p><span class="tekstlink">Van Rome tot nu</span></a>
-<a class="punt-w rv" href="/festival.html"><span class="n">03</span><h2>Juni 2027</h2><p>Dan komt APÉRO naar Utrecht. Een paar dagen lang wordt het uur tussen werk en diner een plek.</p><span class="tekstlink">Over het festival</span></a>
+<a class="punt-w rv" href="#ins-voorpagina"><span class="n">03</span><h2>Als eerste weten</h2><p>Wanneer de data en de kaartverkoop bekend zijn, hoor je het via De Inschenker een week eerder dan de rest.</p><span class="tekstlink">Schrijf je in</span></a>
 </div>
 <div class="bkop" id="eeuwen" style="margin-top:56px"><div><span class="lbl">Door de eeuwen heen</span><h2 class="kop-l">Wat dronken zij?</h2></div><a class="tekstlink" href="/verhaal.html#tijdlijn">De hele tijdlijn</a></div>
 <ol class="eeuwen" aria-label="Door de eeuwen heen">${eeuwen.map(([j, d, p, s, img]) => stap(j, d, p, `${OP_SLUG[s].url}?v=k`, img)).join('')}${stap('Nu', 'Jij', 'Op het terras', '/verhalen/?tijd=nu', beeld('tijd-jij', 'fresco/fresco-01.jpg'), true)}</ol>
@@ -431,12 +443,12 @@ ${inschenkerBlok('voorpagina')}
 
 <section class="blok"><div class="w"><div class="spoor">
 <div class="datum rv">Juni<br><em>2027</em></div>
-<div class="rv"><span class="lbl">Utrecht</span><h2 class="kop-l" style="margin:10px 0 14px">Dan komt APÉRO naar Utrecht.</h2>
-<p class="lede">Een paar dagen lang wordt het uur tussen werk en diner een plek waar je naartoe kunt. Het programma maken we nog. Meer zeggen we nu niet.</p>
+<div class="rv"><span class="lbl">${FEST.plek} · ${FEST.stad}</span><h2 class="kop-l" style="margin:10px 0 14px">${FEST.kern}</h2>
+<p class="lede">${FEST.belofte}</p>
 <p style="margin-top:22px"><a class="tekstlink" href="/festival.html">Wat we al wel weten</a></p></div>
 </div></div></section>`;
   const ld = `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'APÉRO Culture', url: SITE, inLanguage: 'nl', description: 'Een magazine over het uur tussen werk en diner.' })}</script>`;
-  return html({ titel: 'APÉRO Culture · het uur tussen werk en diner', omschrijving: 'Een magazine over het uur tussen werk en diner: Athene om kwart over zes, een Spaanse bar in 1974, wie er betaalt. In juni 2027 aan tafel in Utrecht.', pad: '/', beeld: hoofd.beeld, actief: '/', body, ld });
+  return html({ titel: 'APÉRO Culture · het uur tussen werk en diner', omschrijving: `APÉRO Culture: het magazine en festival van het aperitief. ${FEST.wanneer}: het APÉRO Festival in het ${FEST.plek}, ${FEST.stad}. Proef vijf eeuwen aperitief en leer er alles over.`, pad: '/', beeld: hoofd.beeld, actief: '/', body, ld });
 }
 
 const WERELDEN = [
@@ -527,7 +539,7 @@ VERHALEN.forEach((v) => schrijf(`verhalen/${v.slug}.html`, artikel(v)));
 schrijf('verhalen/index.html', verhalenIndex());
 schrijf('index.html', voorpagina());
 schrijf('steden.html', steden());
-const ctx = { html, kop, voet, esc, aanmeldForm, inschenkerBlok, OP_SLUG, PUBLIEK, REEKSEN };
+const ctx = { html, kop, voet, esc, aanmeldForm, inschenkerBlok, OP_SLUG, PUBLIEK, REEKSEN, FEST };
 schrijf('festival.html', festivalPagina(ctx));
 schrijf('verhaal.html', overPagina(ctx));
 schrijf('inschenker.html', inschenkerPagina(ctx));
