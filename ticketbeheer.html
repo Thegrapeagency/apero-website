@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>APÉRO · ticketbeheer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700;6..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --navy:#231B13; --navy2:#3a2e22; --bordeaux:#C45F38; --gold:#EEB24A;
+    --paper:#F4EAD6; --card:#fffaf1;
+    --ink:#231B13; --ink-soft:rgba(35,27,19,.66); --ink-muted:rgba(35,27,19,.46);
+    --line:#e2d3b6; --line2:#ebdfc6;
+    --green:#1e7a3c; --red:#b3372e; --amber:#a87708;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ height:100%; }
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2{ font-family:'Bodoni Moda',Georgia,serif; color:var(--navy); }
+
+  /* LOGIN */
+  #login{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:22px; }
+  #login .box{ width:100%; max-width:380px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:32px 28px; box-shadow:0 10px 40px rgba(35,27,19,.07); }
+  #login h1{ font-size:24px; margin-bottom:4px; }
+  #login h1 b{ color:var(--bordeaux); }
+  #login p{ color:var(--ink-soft); font-size:13px; margin-bottom:18px; }
+
+  /* SHELL */
+  #app{ display:none; min-height:100vh; }
+  .shell{ display:flex; min-height:100vh; }
+  .side{
+    width:238px; flex:0 0 238px;
+    background:linear-gradient(177deg,#fcf8f0 0%,#f1e7d1 100%);
+    border-right:1px solid var(--line);
+    padding:26px 16px 18px; color:var(--ink);
+    display:flex; flex-direction:column; gap:3px; position:sticky; top:0; height:100vh; overflow-y:auto;
+  }
+  .brand{ font-family:'Bodoni Moda',Georgia,serif; font-size:20px; letter-spacing:.01em; padding:2px 10px 18px; margin-bottom:10px; color:var(--navy); border-bottom:1px solid rgba(35,27,19,.09); }
+  .brand b{ color:var(--bordeaux); font-weight:700; }
+  .nav{ display:flex; flex-direction:column; gap:2px; }
+  .nav a{
+    display:flex; align-items:center; gap:12px; padding:10px 13px; border-radius:10px;
+    color:var(--ink-soft); text-decoration:none; font-size:13.5px; font-weight:500; cursor:pointer;
+    transition:background .14s, color .14s, box-shadow .14s;
+  }
+  .nav a:hover{ background:rgba(35,27,19,.05); color:var(--navy); }
+  .nav a.active{
+    background:linear-gradient(90deg,rgba(196,95,56,.15),rgba(196,95,56,.05));
+    color:var(--bordeaux); font-weight:600; box-shadow:inset 3px 0 0 var(--bordeaux);
+  }
+  .nav .ic{ width:18px; text-align:center; opacity:.72; font-size:12px; color:var(--navy); }
+  .nav a:hover .ic{ opacity:1; }
+  .nav a.active .ic{ color:var(--bordeaux); opacity:1; }
+  .side .foot{ margin-top:auto; padding:12px 4px 2px; border-top:1px solid rgba(35,27,19,.09); }
+  .side .foot button{ width:100%; background:transparent; border:1px solid var(--line); color:var(--ink-soft); }
+  .side .foot button:hover{ background:rgba(35,27,19,.04); color:var(--navy); filter:none; }
+
+  .main{ flex:1; min-width:0; padding:30px 34px 70px; max-width:1280px; }
+  .topbar{ display:flex; justify-content:space-between; align-items:flex-end; gap:14px; margin-bottom:20px; flex-wrap:wrap; }
+  .topbar h2{ font-size:26px; font-weight:600; letter-spacing:.01em; }
+  .topbar .sub{ color:var(--ink-muted); font-size:12.5px; margin-top:3px; }
+
+  .section{ display:none; }
+  .section.active{ display:block; }
+
+  /* CARDS / TABLES */
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin-bottom:16px; box-shadow:0 1px 2px rgba(35,27,19,.04); }
+  .card h3{ font-family:'Hanken Grotesk',sans-serif; font-size:11.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--ink-muted); margin-bottom:14px; font-weight:600; }
+  .card .hint{ color:var(--ink-soft); font-size:12.5px; margin-bottom:12px; line-height:1.55; }
+  table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  th,td{ text-align:left; padding:9px 10px; border-bottom:1px solid var(--line2); vertical-align:top; }
+  th{ color:var(--ink-muted); font-weight:600; white-space:nowrap; font-size:11px; text-transform:uppercase; letter-spacing:.06em; }
+  tbody tr:hover{ background:#faf8f2; }
+  .num{ text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .tablewrap{ overflow-x:auto; }
+  /* Productregels onder de kopersnaam: direct zien wat er gekocht is */
+  .oitems{ display:flex; flex-wrap:wrap; gap:4px; margin-top:5px; max-width:340px; }
+  .oi{ font-size:11px; line-height:1.3; padding:2px 7px; border-radius:6px; background:rgba(35,27,19,.06); color:var(--ink-soft); white-space:nowrap; }
+  .oi.is-extra{ background:rgba(196,95,56,.1); color:var(--bordeaux); font-weight:600; }
+  /* Tip naar de telefoon-app, alleen zichtbaar op kleine schermen */
+  .kassa-tip{ display:none; }
+  @media (max-width:760px){
+    .kassa-tip{
+      display:block; margin:0 0 14px; padding:12px 15px; border-radius:12px;
+      background:rgba(196,95,56,.09); border:1px solid rgba(196,95,56,.22);
+      color:var(--bordeaux); font-size:13.5px; font-weight:500; text-decoration:none;
+    }
+    .kassa-tip b{ font-weight:700; }
+  }
+
+  /* FORM */
+  input,select,textarea{
+    padding:10px 13px; border-radius:9px; border:1px solid #d9d2c0;
+    background:#fff; color:var(--ink); font-size:14px; font-family:inherit; width:100%;
+    transition:border-color .12s, box-shadow .12s;
+  }
+  input:focus,select:focus,textarea:focus{ outline:none; border-color:var(--bordeaux); box-shadow:0 0 0 3px rgba(196,95,56,.12); }
+  input[type=color]{ padding:4px; height:42px; cursor:pointer; }
+  input[type=checkbox]{ width:auto; accent-color:var(--bordeaux); }
+  textarea{ resize:vertical; min-height:62px; }
+  label{ display:block; font-size:12px; color:var(--ink-soft); margin-bottom:5px; font-weight:500; }
+  .field{ margin-bottom:12px; }
+  button{
+    padding:10px 17px; border-radius:9px; border:0; background:var(--bordeaux);
+    color:#fef1d5; font-size:13.5px; font-weight:600; cursor:pointer; font-family:inherit; white-space:nowrap;
+    transition:filter .12s, transform .05s;
+  }
+  button:hover{ filter:brightness(1.08); }
+  button:active{ transform:translateY(1px); }
+  button.ghost{ background:#fff; border:1px solid #d9d2c0; color:var(--ink); }
+  button.ghost:hover{ background:#faf8f2; filter:none; }
+  button.gold{ background:var(--navy); color:#fef1d5; }
+  button.danger{ background:#8c2620; }
+  button.sm{ padding:7px 12px; font-size:12.5px; }
+  .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; }
+  .row > *{ flex:0 0 auto; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
+
+  /* KPI */
+  .kpis{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:18px; }
+  .kpi{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:0 1px 2px rgba(35,27,19,.04); }
+  .kpi b{ display:block; font-family:'Bodoni Moda',Georgia,serif; font-size:28px; font-weight:600; color:var(--navy); letter-spacing:.01em; font-variant-numeric:tabular-nums; }
+  .kpi b.gold{ color:var(--bordeaux); }
+  .kpi span{ font-size:11.5px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.05em; font-weight:500; }
+
+  /* STATUS COLORS */
+  .st{ font-weight:600; }
+  .st-paid{ color:var(--green); }
+  .st-pending,.st-open,.st-pending_payment{ color:var(--amber); }
+  .st-refunded,.st-canceled,.st-expired,.st-failed,.st-cancelled,.st-invalid,.st-void{ color:var(--red); }
+  .st-comp,.st-valid,.st-used,.st-admitted,.st-sent{ color:var(--green); }
+  .st-queued,.st-sending,.st-none{ color:var(--ink-muted); }
+  .pill{ display:inline-block; padding:2px 9px; border-radius:999px; font-size:11px; font-weight:600; border:1px solid var(--line); }
+
+  /* BARS */
+  .invrow{ margin-bottom:14px; }
+  .invrow .lbl{ display:flex; justify-content:space-between; font-size:13px; margin-bottom:5px; font-weight:500; }
+  .invrow .lbl .pct{ color:var(--ink-muted); font-weight:400; font-variant-numeric:tabular-nums; }
+  .track{ height:10px; background:#ece7da; border-radius:999px; overflow:hidden; }
+  .track > div{ height:100%; background:var(--gold); border-radius:999px; transition:width .4s; }
+  .track > div.warn{ background:var(--bordeaux); }
+  .track > div.full{ background:var(--red); }
+
+  .muted{ color:var(--ink-muted); font-size:12.5px; }
+  a{ color:var(--bordeaux); }
+  .right{ margin-left:auto; }
+  .sp{ height:8px; }
+  .chip{ display:inline-block; padding:2px 9px; border-radius:6px; background:rgba(35,27,19,.06); font-size:11.5px; margin:2px 3px 2px 0; color:var(--ink-soft); }
+  .discount-code{ font-family:ui-monospace,SFMono-Regular,Menlo,monospace; background:#fff4d8; border:1px solid rgba(150,102,0,.18); color:#765000; white-space:nowrap; }
+
+  /* per-dag overzicht */
+  .daygrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; }
+  .daycol{ border:1px solid var(--line2); border-radius:12px; padding:14px 16px; background:#fdfcf8; }
+  .daycol .dayname{ font-weight:600; font-size:13px; margin-bottom:8px; }
+  .daycol .persons{ font-family:'Bodoni Moda',Georgia,serif; font-size:30px; font-weight:600; color:var(--navy); line-height:1.1; font-variant-numeric:tabular-nums; }
+  .daycol .persons small{ font-family:'Hanken Grotesk',sans-serif; font-size:11.5px; color:var(--ink-muted); font-weight:500; margin-left:6px; }
+  .daycol table{ margin-top:10px; font-size:12.5px; }
+  .daycol td{ padding:5px 4px; }
+  .daycol .subhead td{ color:var(--ink-muted); font-size:10.5px; text-transform:uppercase; letter-spacing:.07em; padding-top:10px; font-weight:600; border-bottom:0; }
+
+  /* bezoekersdata */
+  .demogrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
+  .demobox{ border:1px solid var(--line2); border-radius:12px; padding:14px 16px; background:#fdfcf8; }
+  .demotitle{ font-weight:600; font-size:13px; margin-bottom:10px; }
+  .demoflex{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  .legend{ flex:1; min-width:150px; }
+  .legrow{ display:flex; align-items:center; gap:8px; font-size:12.5px; padding:3px 0; }
+  .legrow .dot{ width:10px; height:10px; border-radius:50%; flex:0 0 10px; }
+  .legrow .leglbl{ flex:1; }
+  .legrow .legnum{ color:var(--ink-muted); font-variant-numeric:tabular-nums; white-space:nowrap; }
+
+  /* detail panel */
+  #ord-detail{ border-color:rgba(196,95,56,.4); box-shadow:0 2px 14px rgba(35,27,19,.06); }
+  .tl{ list-style:none; }
+  .tl li{ padding:7px 0; border-bottom:1px solid var(--line2); font-size:13px; display:flex; gap:10px; flex-wrap:wrap; }
+  .tl li time{ color:var(--ink-muted); flex:0 0 130px; font-variant-numeric:tabular-nums; }
+
+  /* toast */
+  #toast{ position:fixed; right:18px; bottom:18px; z-index:50; display:flex; flex-direction:column; gap:8px; }
+  #toast .t{ background:var(--card); border:1px solid var(--line); border-left:3px solid var(--gold); color:var(--ink); padding:12px 16px; border-radius:10px; font-size:13px; max-width:340px; box-shadow:0 10px 30px rgba(35,27,19,.15); }
+  #toast .t.err{ border-left-color:var(--red); }
+  #toast .t.ok{ border-left-color:var(--green); }
+
+  /* ticket preview */
+  .tkprev{ border-radius:14px; overflow:hidden; border:1px solid var(--line); width:300px; box-shadow:0 4px 18px rgba(35,27,19,.08); }
+  .tkprev .top{ padding:16px; }
+  .tkprev .qr{ width:104px; height:104px; border-radius:8px; display:grid; place-items:center; font-size:11px; font-weight:700; }
+  .tkprev .dchip{ display:inline-block; padding:3px 10px; border-radius:999px; font-size:11px; font-weight:700; margin-top:8px; }
+
+  /* mobile */
+  @media (max-width:760px){
+    .shell{ flex-direction:column; }
+    /* Zijbalk wordt één compacte, zijwaarts scrollbare balk. Eerder brak het
+       menu over vier regels af en was je hele eerste scherm menu. */
+    .side{
+      width:100%; flex:none; height:auto; position:sticky; top:0; z-index:20;
+      flex-direction:column; gap:0; padding:calc(env(safe-area-inset-top) + 9px) 0 0;
+      border-right:0; border-bottom:1px solid var(--line); overflow:visible;
+    }
+    .side .brand{ width:100%; margin:0; padding:0 14px 9px; font-size:17px; border-bottom:0; }
+    .side .nav{
+      flex-direction:row; flex-wrap:nowrap; gap:6px; overflow-x:auto;
+      padding:0 12px 10px; scrollbar-width:none; -webkit-overflow-scrolling:touch;
+    }
+    .side .nav::-webkit-scrollbar{ display:none; }
+    .side .nav a{
+      flex:0 0 auto; white-space:nowrap; padding:9px 15px; font-size:13.5px;
+      border-radius:999px; background:rgba(35,27,19,.05); min-height:40px;
+    }
+    .side .nav a.active{ background:var(--bordeaux); color:#fef1d5; box-shadow:none; }
+    .side .nav .ic{ display:none; }
+    /* Uitloggen naar de kop, zo kost het geen eigen regel meer */
+    .side .foot{ position:absolute; top:calc(env(safe-area-inset-top) + 3px); right:10px; margin:0; padding:0; border-top:0; }
+    .side .foot button{ width:auto; padding:7px 13px; font-size:12px; }
+    .main{ padding:18px 14px 60px; }
+    .topbar h2{ font-size:22px; }
+    .kpis{ grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+    .kpi{ padding:13px 14px; }
+    .kpi b{ font-size:21px; }
+    .kpi span{ font-size:10.5px; }
+    .card{ padding:16px 15px; }
+    .row > *{ flex:1 1 auto; }
+    .oitems{ max-width:none; }
+  }
+  .su-checks{ display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+  .su-checks label{ display:inline-flex; align-items:center; gap:5px; border:1px solid var(--line); border-radius:999px; padding:5px 11px; font-size:13px; cursor:pointer; margin:0; text-transform:none; letter-spacing:0; }
+  .su-checks input{ width:auto; margin:0; }
+</style>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-256.png" type="image/png" sizes="256x256">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+  <div class="box">
+    <h1><b>NVDW</b> kassa-admin</h1>
+    <p>Voer de admin-sleutel in. Wordt lokaal bewaard.</p>
+    <div class="field">
+      <input type="password" id="key" placeholder="Admin-sleutel" autocomplete="off" />
+    </div>
+    <button id="loginbtn" style="width:100%;">Inloggen</button>
+    <p id="login-err" class="muted" style="margin-top:10px; color:var(--red); display:none;">Sleutel ongeldig of verbinding mislukt.</p>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+<div class="shell">
+  <aside class="side">
+    <div class="brand"><b>APÉRO</b> tickets</div>
+    <nav class="nav" id="nav">
+      <a data-sec="overview" class="active"><span class="ic">▣</span><span class="lbl-txt">Overzicht</span></a>
+      <a data-sec="orders"><span class="ic">▤</span><span class="lbl-txt">Bestellingen</span></a>
+      <a data-sec="paylog"><span class="ic">€</span><span class="lbl-txt">Betaallog</span></a>
+      <a data-sec="guests"><span class="ic">◉</span><span class="lbl-txt">Gastenlijst</span></a>
+      <a data-sec="types"><span class="ic">◈</span><span class="lbl-txt">Tickettypes</span></a>
+      <a data-sec="fields"><span class="ic">⬚</span><span class="lbl-txt">Vragen</span></a>
+      <a data-sec="discounts"><span class="ic">%</span><span class="lbl-txt">Kortingscodes</span></a>
+      <a data-sec="reminders"><span class="ic">✉</span><span class="lbl-txt">Herinneringen</span></a>
+      <a data-sec="waitlist"><span class="ic">⏳</span><span class="lbl-txt">Wachtlijst</span></a>
+      <a data-sec="scanners"><span class="ic">▦</span><span class="lbl-txt">Scanners</span></a>
+      <a data-sec="settings"><span class="ic">⚙</span><span class="lbl-txt">Instellingen</span></a>
+    </nav>
+    <div class="foot">
+      <button class="ghost sm" id="logoutbtn">Uitloggen</button>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- OVERVIEW -->
+    <section class="section active" data-sec="overview">
+      <div class="topbar">
+        <div><h2>Overzicht</h2><div class="sub">Ververst automatisch elke 60 seconden. <span id="ov-time"></span></div></div>
+        <button class="ghost sm" id="ov-refresh">Nu verversen</button>
+      </div>
+      <a class="kassa-tip" href="./kassa.html">Op je telefoon? Gebruik <b>APÉRO Kassa</b>, gebouwd voor onderweg &rarr;</a>
+      <div class="kpis">
+        <div class="kpi"><b class="gold" id="k-rev">–</b><span>omzet betaald</span></div>
+        <div class="kpi"><b id="k-tickets">–</b><span>tickets verkocht</span></div>
+        <div class="kpi"><b id="k-orders">–</b><span>betaalde bestellingen</span></div>
+        <div class="kpi"><b id="k-fees">–</b><span>servicefees</span></div>
+        <div class="kpi"><b id="k-scans">–</b><span>scans vandaag</span></div>
+        <div class="kpi"><b id="k-refund">–</b><span>terugbetaald</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Per dag</h3>
+        <div class="hint">Personen = geldige tickets voor die dag, inclusief viltjes- en crewtickets. De balk laat zien hoe vol de dag is ten opzichte van de capaciteit.</div>
+        <div id="ov-days" class="daygrid"></div>
+      </div>
+
+      <div class="card">
+        <h3>Verkoop over tijd</h3>
+        <div class="tablewrap"><div id="chart"></div></div>
+        <div class="muted" style="margin-top:8px;"><span style="color:var(--gold);">▮</span> omzet per dag &nbsp; <span style="color:var(--bordeaux);">▮</span> aantal orders</div>
+      </div>
+
+      <div class="card" style="display:none">
+        <div class="row" style="justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
+          <h3 style="margin:0;">Voorverkoop op schema</h3>
+          <div class="row" id="ps-toggle" style="gap:6px;">
+            <button class="ghost sm" id="ps-tab-rev" data-metric="rev">Omzet</button>
+            <button class="ghost sm" id="ps-tab-tix" data-metric="tix">Tickets</button>
+            <button class="ghost sm" id="ps-tab-visitors" data-metric="visitors">Bezoekers</button>
+          </div>
+        </div>
+        <div id="presale-snapshot"></div>
+        <details id="presale-graph-wrap" style="margin-top:16px;">
+          <summary style="cursor:pointer; font-size:12px; color:var(--ink-muted); font-weight:600; text-transform:uppercase; letter-spacing:.06em;">Grafiek: verloop per week</summary>
+          <div class="tablewrap"><div id="presale-chart" style="margin-top:10px;"></div></div>
+          <div id="presale-legend"></div>
+        </details>
+      </div>
+
+      <div class="card" style="display:none">
+        <h3>Nieuw en terugkerend publiek</h3>
+        <div class="hint">Kopers gematcht op e-mailadres tegen de bezoekershistorie 2019 tot 2025. Trouwe gasten kopen vroeg, nieuwe bezoekers komen vooral in de laatste weken binnen; vergelijk daarom met de eindstand van eerdere edities.</div>
+        <div id="ov-audience"></div>
+      </div>
+
+      <div class="card">
+        <h3>Bezoekersdata</h3>
+        <div class="hint">Op basis van de vragen bij het afrekenen. Zet onder Vragen bijvoorbeeld Woonplaats of Leeftijd aan; elke betaalde bestelling vult deze grafieken automatisch.</div>
+        <div id="ov-demo" class="demogrid"></div>
+      </div>
+
+      <div class="card">
+        <h3>Tickets per categorie</h3>
+        <div class="hint">Toegang, extra's (zoals masterclasses) en crew apart.</div>
+        <div id="ov-categorieen"></div>
+        <div class="tablewrap"><table id="t-categorie-dag"><thead><tr><th>Dag</th><th class="num">Toegang</th><th class="num">Extra</th><th class="num">Crew</th><th class="num">Overig</th></tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card">
+        <h3>Verkoop per type</h3>
+        <div class="tablewrap"><table id="t-type"><thead><tr><th>Type</th><th class="num">Prijs</th><th class="num">Verkocht (orders)</th><th class="num">Toegangen</th></tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card">
+        <h3>BTW-split</h3>
+        <div class="tablewrap"><table id="t-vat"><thead><tr><th>Tarief</th><th class="num">Bruto</th><th class="num">BTW</th></tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card">
+        <h3>Laatste bestellingen</h3>
+        <div class="tablewrap"><table id="t-recent"><thead><tr><th>Datum</th><th>Ref</th><th>Naam</th><th class="num">Totaal</th><th>Status</th><th>Kanaal</th><th>Mail</th><th></th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- NIEUWSBRIEVEN -->
+    <!-- ORDERS -->
+    <section class="section" data-sec="orders">
+      <div class="topbar">
+        <div><h2>Bestellingen</h2></div>
+        <button class="ghost sm" id="exportbtn">Export CSV</button>
+      </div>
+      <div class="card">
+        <div class="row">
+          <div style="flex:1; min-width:220px;">
+            <label>Zoeken (ref / e-mail / naam)</label>
+            <input type="text" id="q" placeholder="NVDW-… of e-mail of naam" />
+          </div>
+          <div style="min-width:150px;">
+            <label>Status</label>
+            <select id="f-status">
+              <option value="">Alle</option>
+              <option value="pending">pending</option>
+              <option value="paid">paid</option>
+              <option value="expired">expired</option>
+              <option value="canceled">canceled</option>
+              <option value="failed">failed</option>
+              <option value="refunded">refunded</option>
+            </select>
+          </div>
+          <div style="min-width:140px;">
+            <label>Kanaal</label>
+            <select id="f-channel">
+              <option value="">Alle</option>
+              <option value="web">web</option>
+              <option value="comp">comp</option>
+            </select>
+          </div>
+          <button id="searchbtn">Zoek</button>
+        </div>
+        <div class="tablewrap" style="margin-top:14px;">
+          <table id="t-orders"><thead><tr><th>Datum</th><th>Ref</th><th>Naam</th><th>E-mail</th><th class="num">Tickets</th><th class="num">Eerder</th><th class="num">Totaal</th><th>Kortingscode</th><th class="num">Korting</th><th>Status</th><th>Mail</th><th></th></tr></thead><tbody></tbody></table>
+        </div>
+      </div>
+
+      <div id="ord-detail" class="card" style="display:none;"></div>
+
+      <div class="card">
+        <h3>Tickets versturen (gratis kaarten / scantest)</h3>
+        <div class="row">
+          <div style="min-width:170px;"><label>Type</label><select id="c-type"></select></div>
+          <div style="width:90px;"><label>Aantal</label><input type="number" id="c-qty" value="1" min="1" max="50" /></div>
+          <div style="min-width:160px;"><label>E-mail (optioneel)</label><input type="email" id="c-email" /></div>
+          <div style="min-width:160px;"><label>Naam (optioneel)</label><input type="text" id="c-name" /></div>
+          <button id="compbtn">Maak comp</button>
+        </div>
+        <label style="display:flex; gap:8px; align-items:center; margin-top:10px; font-weight:500;"><input type="checkbox" id="c-sendmail" checked style="width:auto;" /> Stuur de tickets per mail naar het e-mailadres</label>
+        <p id="c-result" class="muted" style="margin-top:10px;"></p>
+      </div>
+
+      <div class="card">
+        <h3>Bulk crewtickets</h3>
+        <div class="hint">Bulk crewtickets zijn gratis (comp) en tellen mee in de dagcapaciteit. Lijst-modus geeft elke persoon een eigen ticket en optioneel een mail; aantal-modus maakt een lot.</div>
+        <div class="row">
+          <div style="min-width:200px;"><label>Tickettype</label><select id="bc-type"></select></div>
+          <div>
+            <label>Modus</label>
+            <div class="row" id="bc-modes" style="gap:8px;">
+              <button type="button" class="sm bc-tab" data-mode="list">Lijst met namen</button>
+              <button type="button" class="ghost sm bc-tab" data-mode="count">Alleen aantal</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="bc-list-pane" style="margin-top:14px;">
+          <div class="field">
+            <label>Plak per regel "naam, email" (email mag ontbreken)</label>
+            <textarea id="bc-people" style="min-height:140px;" placeholder="Sanne de Vries, sanne@example.nl&#10;Tom Bakker; tom@example.nl&#10;Crewlid zonder mail"></textarea>
+            <div class="muted" id="bc-parsed" style="margin-top:5px;">0 regels herkend.</div>
+          </div>
+          <label style="display:flex; gap:8px; align-items:center; margin:0 0 4px;">
+            <input type="checkbox" id="bc-sendmail" /> Stuur elk een ticketmail
+          </label>
+        </div>
+
+        <div id="bc-count-pane" style="margin-top:14px; display:none;">
+          <div style="width:120px;"><label>Aantal</label><input type="number" id="bc-count" value="10" min="1" max="500" /></div>
+          <div class="muted" style="margin-top:5px;">Maakt een order met dit aantal crewtickets, zonder namen.</div>
+        </div>
+
+        <div class="row" style="margin-top:14px;">
+          <button id="bc-create">Maak crewtickets</button>
+        </div>
+
+        <div id="bc-result" style="display:none; margin-top:14px;">
+          <div id="bc-summary" style="font-weight:600; margin-bottom:8px;"></div>
+          <div class="tablewrap" id="bc-list-wrap" style="max-height:300px; overflow:auto; display:none;">
+            <table id="bc-table"><thead><tr><th>Naam</th><th>Status</th><th>Ticketlink</th></tr></thead><tbody></tbody></table>
+          </div>
+          <div class="row" style="margin-top:12px;">
+            <button class="ghost sm" id="bc-copy">Kopieer ticketlinks</button>
+            <button class="ghost sm" id="bc-csv">Download CSV</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAYMENT LOG -->
+    <section class="section" data-sec="paylog">
+      <div class="topbar">
+        <div><h2>Betaallog</h2><div class="sub">Is er betaald of niet. Bron: created, webhook, sweeper, manual.</div></div>
+        <button class="ghost sm" id="pl-refresh">Verversen</button>
+      </div>
+      <div class="card">
+        <div class="tablewrap"><table id="t-paylog"><thead><tr><th>Tijd</th><th>Ref</th><th>E-mail</th><th>Mollie status</th><th>Bron</th><th>Notitie</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- GUESTS -->
+    <section class="section" data-sec="guests">
+      <div class="topbar">
+        <div><h2>Gastenlijst</h2><div class="sub" id="g-count"></div></div>
+        <div class="row">
+          <select id="g-day" style="min-width:140px;">
+            <option value="">Alle dagen</option>
+            <option value="fri">Vrijdag</option>
+            <option value="sat">Zaterdag</option>
+            <option value="sun">Zondag</option>
+          </select>
+          <button class="ghost sm" id="g-refresh">Verversen</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Gasten exporteren</h3>
+        <div class="hint">Exporteer alle gasten, of filter op dag en/of tickettype (bijvoorbeeld alle early birds op zaterdag).</div>
+        <div class="row">
+          <div style="min-width:140px;"><label>Dag</label>
+            <select id="gx-day">
+              <option value="">Alle dagen</option>
+              <option value="thu">Donderdag</option>
+              <option value="fri">Vrijdag</option>
+              <option value="sat">Zaterdag</option>
+              <option value="sun">Zondag</option>
+            </select>
+          </div>
+          <div style="min-width:200px;"><label>Tickettype</label>
+            <select id="gx-type"><option value="">Alle types</option></select>
+          </div>
+          <button id="gx-export">Exporteer gasten (CSV)</button>
+        </div>
+        <div class="row" style="display:none">
+          <div style="flex:1;min-width:220px;"><label>Restaurant plaatsing</label>
+            <div class="hint" style="margin:0;">Alle betaalde reserveringen, gesorteerd op dag en tijd. Eén regel per reservering met aantal personen en allergieën.</div>
+          </div>
+          <button id="rx-export">Exporteer restaurant (CSV)</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="tablewrap"><table id="t-guests"><thead><tr><th>Naam op ticket</th><th>Type</th><th>Dagen</th><th>Status</th><th>Ref</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- TYPES -->
+    <section class="section" data-sec="types">
+      <div class="topbar">
+        <div><h2>Tickettypes</h2><div class="sub">Prijs in euro, btw zoals 9,00. Wijzig en sla per type op.</div></div>
+        <div class="row">
+          <button class="gold sm" id="ty-new">+ Nieuw tickettype</button>
+          <button class="ghost sm" id="ty-refresh">Verversen</button>
+        </div>
+      </div>
+      <div class="card" id="ty-new-card" style="display:none;">
+        <h3>Nieuw tickettype</h3>
+        <div class="grid">
+          <div class="field"><label>Naam</label><input type="text" id="tn-name" placeholder="bv Masterclass vermut" /></div>
+          <div class="field"><label>Categorie</label>
+            <select id="tn-cat">
+              <option value="proeverij">Extra (masterclass e.d.)</option>
+              <option value="entree">Entree</option>
+              <option value="overig">Anders</option>
+            </select>
+            <div class="muted" id="tn-cat-hint" style="margin-top:5px;"></div>
+          </div>
+          <div class="field"><label>Dag</label>
+            <select id="tn-day">
+              <option value="thu">Donderdag</option>
+              <option value="fri">Vrijdag</option>
+              <option value="sat">Zaterdag</option>
+              <option value="sun">Zondag</option>
+              <option value="all">Alle vier de dagen</option>
+            </select>
+          </div>
+          <div class="field"><label>Prijs (euro)</label><input type="text" id="tn-price" placeholder="15,00" /></div>
+          <div class="field"><label>Capaciteit (leeg = onbeperkt)</label><input type="number" id="tn-cap" min="0" />
+            <div class="muted" style="margin-top:5px;">Hoeveel er maximaal verkocht kunnen worden</div>
+          </div>
+          <div class="field"><label>BTW %</label><input type="text" id="tn-vat" value="9" /></div>
+          <div class="field"><label>Max per bestelling</label><input type="number" id="tn-max" value="10" min="1" /></div>
+        </div>
+        <div class="field"><label>Omschrijving (optioneel)</label><textarea id="tn-desc"></textarea></div>
+        <div class="row"><button id="tn-create">Tickettype aanmaken</button><button class="ghost" id="tn-cancel">Annuleren</button></div>
+      </div>
+      <div id="types-list"></div>
+      <div class="card">
+        <h3>Capaciteit per dag</h3>
+        <div class="hint">Verkocht is alleen-lezen. Pas capaciteit aan en sla op.</div>
+        <div id="cap-list"></div>
+        <button id="cap-save" style="margin-top:8px;">Capaciteit opslaan</button>
+      </div>
+    </section>
+
+    <!-- FIELDS -->
+    <section class="section" data-sec="fields">
+      <div class="topbar">
+        <div><h2>Vragen</h2><div class="sub">Vragen verschijnen in de shop bij het afrekenen. Per ticket = de koper vult het voor elk kaartje apart in (handig voor allergieën of namen).</div></div>
+        <button class="ghost sm" id="fl-refresh">Verversen</button>
+      </div>
+      <div class="card">
+        <h3>Snel toevoegen</h3>
+        <div class="row">
+          <button class="ghost sm fl-preset" data-label="Allergieën of dieetwensen" data-scope="ticket" data-type="text">+ Allergieën en dieetwensen</button>
+          <button class="ghost sm fl-preset" data-label="Naam op ticket" data-scope="ticket" data-type="text">+ Naam op ticket</button>
+          <button class="ghost sm fl-preset" data-label="Woonplaats" data-scope="order" data-type="text">+ Woonplaats</button>
+          <button class="ghost sm fl-preset" data-label="Leeftijd" data-scope="order" data-type="number">+ Leeftijd</button>
+          <button class="gold sm" id="fl-new">+ Nieuwe vraag</button>
+        </div>
+      </div>
+      <div id="fields-list"></div>
+    </section>
+
+    <!-- DISCOUNTS -->
+    <section class="section" data-sec="discounts">
+      <div class="topbar">
+        <div><h2>Kortingscodes</h2></div>
+        <button class="ghost sm" id="dc-refresh">Verversen</button>
+      </div>
+      <div class="card">
+        <h3>Bulk aanmaken</h3>
+        <div class="hint">Maak in een keer een reeks codes aan, bijvoorbeeld voor pers of partners. Elke code krijgt een willekeurig achtervoegsel.</div>
+        <div class="grid">
+          <div class="field"><label>Aantal codes</label><input type="number" id="dcb-count" min="1" max="500" value="25" /></div>
+          <div class="field"><label>Prefix</label><input type="text" id="dcb-prefix" value="PERS" />
+            <div class="muted" style="margin-top:4px;">Codes worden PREFIX-XXXXXX</div></div>
+          <div class="field"><label>Soort korting</label>
+            <select id="dcb-kind">
+              <option value="percent">Percentage (%)</option>
+              <option value="fixed_cents">Vast bedrag (euro)</option>
+            </select></div>
+          <div class="field"><label id="dcb-vlabel">Percentage</label><input type="text" id="dcb-value" /></div>
+          <div class="field"><label>Max gebruik per code</label><input type="number" id="dcb-maxuses" min="1" value="1" /></div>
+          <div class="field"><label>Max aantal tickets (leeg = onbeperkt)</label><input type="number" id="dcb-maxtickets" min="1" value="1" />
+            <div class="muted" style="margin-top:4px;">Op hoeveel tickets de korting maximaal telt (goedkoopste eerst). Een bundel zoals Party for 5 telt als 1.</div></div>
+          <div class="field"><label>Geldt voor type-ids (komma-gescheiden, leeg = alle)</label><input type="text" id="dcb-applies" /></div>
+          <div class="field"><label>Geldt voor</label><select id="dcb-scope"><option value="all">Alles (ook extra's)</option><option value="access">Alleen toegangstickets</option></select></div>
+          <div class="field"><label>Geldig tot (optioneel)</label><input type="date" id="dcb-until" /></div>
+        </div>
+        <div class="row"><button class="gold" id="dcb-generate">Genereer codes</button></div>
+        <div id="dcb-result" style="display:none; margin-top:12px;">
+          <div class="field"><label>Aangemaakte codes</label><textarea id="dcb-codes" readonly style="min-height:120px;"></textarea></div>
+          <div class="row">
+            <button class="ghost sm" id="dcb-copy">Kopieer alles</button>
+            <button class="ghost sm" id="dcb-csv">Download CSV</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="hint">Percentage = korting in procent (10 = 10%). Vast bedrag = korting in euro. Max gebruik leeg = ongelimiteerd. Toepassen op leeg = alle types.</div>
+        <button class="gold sm" id="dc-new">+ Nieuwe code</button>
+      </div>
+      <div id="dc-editor"></div>
+      <div id="discounts-list"></div>
+    </section>
+
+    <!-- REMINDERS -->
+    <section class="section" data-sec="reminders">
+      <div class="topbar">
+        <div><h2>Herinneringen</h2><div class="sub">Mensen die wel begonnen met afrekenen maar niet betaalden. Stuur ze handmatig een vriendelijk duwtje.</div></div>
+        <button class="ghost sm" id="rm-refresh">Verversen</button>
+      </div>
+      <div class="card">
+        <h3>Het mailtje</h3>
+        <div class="hint">Pas gerust aan. Leeg laten = de vrolijke standaardtekst. De naam van de ontvanger wordt automatisch ingevuld.</div>
+        <div class="field"><label>Taal</label><select id="rm-lang"><option value="auto">Automatisch (per gast)</option><option value="nl">Nederlands</option><option value="en">English</option></select>
+          <div class="hint" style="margin-top:5px; margin-bottom:0;">"Automatisch" gebruikt de taal die de gast koos. Kies Nederlands of English om de hele selectie in die taal te sturen.</div></div>
+        <div class="field"><label>Onderwerp</label><input type="text" id="rm-subject" placeholder="Je was er bijna, vergeet je tickets niet" /></div>
+        <div class="field"><label>Kop in de mail</label><input type="text" id="rm-headline" placeholder="Je stoel staat er nog." /></div>
+        <div class="field"><label>Bericht</label><textarea id="rm-body" style="min-height:90px;" placeholder="Je was bijna klaar met je tickets voor APÉRO Festival, maar je betaling werd niet afgerond. Geen zorgen, je plekje wacht nog op je."></textarea></div>
+        <div class="field"><label>Foto in de mail</label><div id="rm-photos" style="display:flex; flex-wrap:wrap; gap:8px;"></div></div>
+        <div class="hint">Onder de tekst komt automatisch een knop "Rond je bestelling af" naar de shop, plus een echte afmeldlink.</div>
+      </div>
+      <div class="card">
+        <h3>Voorbeeld</h3>
+        <div id="rm-preview"></div>
+      </div>
+      <div class="card">
+        <div class="row" style="justify-content:space-between; align-items:center;">
+          <label style="display:flex; gap:8px; align-items:center; margin:0; font-weight:600;"><input type="checkbox" id="rm-all" style="width:auto;" /> Selecteer alles</label>
+          <button class="gold" id="rm-send">Verstuur naar geselecteerden</button>
+        </div>
+      </div>
+      <div id="reminders-list"></div>
+    </section>
+
+    <!-- NIEUWSBRIEF -->
+    <section class="section" data-sec="nieuwsbrief">
+      <div class="topbar">
+        <div><h2>Nieuwsbrief</h2><div class="sub">Wat is er eerder verstuurd en hoe is het gelezen. Klik op een mailing om 'm terug te lezen zoals de ontvanger 'm zag.</div></div>
+        <button class="ghost sm" id="nb-refresh">Verversen</button>
+      </div>
+      <div id="nb-kpis" class="kpis"></div>
+      <div class="card">
+        <h3>Verstuurde mailings</h3>
+        <div id="nb-list"><div class="hint">Laden…</div></div>
+      </div>
+      <div class="card">
+        <div class="row" style="justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h3 style="margin:0;">Afmeldingen</h3>
+          <button class="ghost sm" id="nb-unsub-csv">Download CSV</button>
+        </div>
+        <div class="hint">Wie zich hebben uitgeschreven, met datum en na welke mailing dat gebeurde. Handig om te zien of er een partner of relatie tussen zit die je liever persoonlijk benadert.</div>
+        <div id="nb-unsubs"><div class="hint">Laden…</div></div>
+      </div>
+
+      <div class="card">
+        <h3>Hoe je deze cijfers leest</h3>
+        <div class="hint" id="nb-uitleg">
+          <b>Afgeleverd</b> is aangekomen bij de mailserver. <b>Geopend</b> telt unieke ontvangers die de mail openden; dat kan iets lager uitvallen dan de werkelijkheid, want Apple Mail en sommige bedrijfsmailservers blokkeren het meetpixeltje. <b>Geklikt</b> telt wie op een link in de mail drukte, en dat is het eerlijkste signaal. <b>Afgemeld</b> telt de afmeldingen tussen deze mailing en de volgende.<br />
+          Doorsturen kunnen we niet meten: zodra iemand een mail doorstuurt gebeurt dat in zijn eigen mailprogramma, buiten ons bereik. Geen enkel mailplatform kan dat zien. Wat je wel ziet is dat een doorgestuurde mail soms extra opens en kliks oplevert.<br /><br />
+          <b>Aankopen en netto omzet</b> tellen alleen mensen die aantoonbaar op een link in díe mailing klikten en daarna kochten. Dat is de harde ondergrens. Het kleinere grijze getal eronder is het ruimere venster: iedereen uit je abonneebestand die kocht tussen deze mailing en de volgende. Daar zit ook verkeer in dat via social of Google binnenkwam, dus de waarheid ligt tussen die twee. Netto omzet is de ticketprijs na korting, dus zonder service- en transactiekosten.
+        </div>
+      </div>
+    </section>
+
+    <!-- WAITLIST -->
+    <section class="section" data-sec="waitlist">
+      <div class="topbar">
+        <div><h2>Wachtlijst</h2><div class="sub">Je vraagmeter per tickettype. Zodra een tickettype uitverkocht is, kunnen gasten zich in de shop aanmelden. Veel plekken gevraagd? Dan loont een extra sessie.</div></div>
+        <button class="ghost sm" id="wl-refresh">Verversen</button>
+      </div>
+      <div id="wl-summary"></div>
+      <div class="card" id="wl-notify" style="display:none;">
+        <h3>Mail de wachtlijst</h3>
+        <div class="hint">Open je een extra sessie of komt er plek vrij? Mail dan in één klik de mensen die wachten op dat tickettype. Leeg laten = vrolijke standaardtekst, naam wordt per ontvanger ingevuld.</div>
+        <div class="field"><label>Voor welk tickettype</label><select id="wl-type"></select></div>
+        <div class="field"><label><input type="checkbox" id="wl-onlywaiting" checked style="width:auto; margin-right:6px;" />Alleen wie nog niet gemaild is</label></div>
+        <div class="field"><label>Taal</label><select id="wl-lang"><option value="auto">Automatisch (per gast)</option><option value="nl">Nederlands</option><option value="en">English</option></select></div>
+        <div class="field"><label>Onderwerp</label><input type="text" id="wl-subject" placeholder="Er is plek vrij bij APÉRO Festival" /></div>
+        <div class="field"><label>Kop in de mail</label><input type="text" id="wl-headline" placeholder="Goed nieuws, er is een extra plek voor je" /></div>
+        <div class="field"><label>Bericht</label><textarea id="wl-body" style="min-height:90px;" placeholder="Je stond op de wachtlijst en we hebben goed nieuws: er is plek vrijgekomen. Wees er snel bij, want vol is vol."></textarea></div>
+        <div class="row" style="justify-content:flex-end;"><button class="gold" id="wl-send">Mail de wachtlijst</button></div>
+      </div>
+    </section>
+
+    <!-- SCANNERS -->
+    <section class="section" data-sec="scanners">
+      <div class="topbar">
+        <div><h2>Scanners</h2><div class="sub">Iedereen die scant krijgt een eigen login voor de scan-app op <a href="/scanner.html" target="_blank">apero-culture.com/scanner.html</a>. Per persoon kies je wat ze mogen scannen en op welke dagen.</div></div>
+        <button class="ghost sm" id="sk-refresh">Verversen</button>
+      </div>
+
+      <div class="card">
+        <h3>Testmodus</h3>
+        <div class="hint" id="su-modus"></div>
+        <div class="row" style="align-items:flex-end;">
+          <div style="min-width:220px;"><label>Doe alsof het vandaag is</label>
+            <select id="su-testday"><option value="">Uit (geen testscans)</option><option value="thu">Donderdag</option><option value="fri">Vrijdag</option><option value="sat">Zaterdag</option><option value="sun">Zondag</option></select>
+          </div>
+          <button class="ghost sm" id="su-cleartest">Testscans wissen</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Nieuwe scanpersoon</h3>
+        <div class="row">
+          <div style="min-width:200px;"><label>Naam</label><input type="text" id="su-name" placeholder="Anna" /></div>
+          <div style="min-width:160px;"><label>Loginnaam (mag leeg, dan de naam)</label><input type="text" id="su-login" placeholder="anna" autocapitalize="none" /></div>
+        </div>
+        <div class="row" style="margin-top:10px;">
+          <div><label>Mag scannen</label><div id="su-cats-new" class="su-checks"></div></div>
+          <div><label>Op dagen</label><div id="su-days-new" class="su-checks"></div></div>
+        </div>
+        <div class="row" style="justify-content:flex-end; margin-top:10px;"><button class="gold" id="su-create">Persoon aanmaken</button></div>
+      </div>
+      <div class="card" id="su-newpin" style="display:none;">
+        <h3>Inloggegevens, nu doorgeven</h3>
+        <div class="hint">De pincode wordt maar één keer getoond. Kwijt? Dan maak je met "Nieuwe pincode" een nieuwe.</div>
+        <div id="su-newpin-txt" style="font-size:15px; line-height:1.7; margin:8px 0;"></div>
+        <button class="ghost sm" id="su-copy">Kopiëren voor WhatsApp</button>
+      </div>
+      <div id="su-list"></div>
+
+      <div style="display:none">
+      <h3 style="margin:26px 0 8px;">Oude toestel-sleutels (voor /scan)</h3>
+      <div class="card">
+        <h3>Nieuwe scanner-sleutel</h3>
+        <div class="row">
+          <div style="min-width:220px;"><label>Naam (bv. &quot;Deur 1&quot;, &quot;Ingang VIP&quot;)</label><input type="text" id="sk-label" placeholder="Deur 1" /></div>
+          <button class="gold" id="sk-create">Sleutel aanmaken</button>
+        </div>
+      </div>
+      <div class="card" id="sk-newkey" style="display:none;">
+        <h3>Nieuwe sleutel — nu direct kopiëren</h3>
+        <div class="hint">Deze sleutel wordt maar één keer getoond. Kopieer 'm en geef 'm door aan het toestel of de persoon die gaat scannen op /scan.</div>
+        <div class="row" style="align-items:center;">
+          <span class="pill discount-code" id="sk-newkey-value" style="font-size:14px; padding:6px 12px;"></span>
+          <button class="ghost sm" id="sk-copy">Kopiëren</button>
+        </div>
+      </div>
+      <div id="sk-list"></div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="section" data-sec="settings">
+      <div class="topbar">
+        <div><h2>Instellingen</h2></div>
+        <button class="ghost sm" id="se-refresh">Verversen</button>
+      </div>
+
+      <div class="card">
+        <h3>Servicekosten en transactiebijdrage</h3>
+        <div class="row">
+          <div style="min-width:170px;"><label>Servicekosten (euro)</label><input type="text" id="se-fee" placeholder="0,50" /></div>
+          <div style="min-width:200px;"><label>Berekening servicekosten</label>
+            <select id="se-fee-mode">
+              <option value="order">Eén keer per bestelling</option>
+              <option value="ticket">Per ticket</option>
+            </select>
+          </div>
+          <div style="min-width:170px;"><label>Transactiebijdrage (euro)</label><input type="text" id="se-txfee" placeholder="0,33" /></div>
+          <button id="se-save-fee">Opslaan</button>
+        </div>
+        <div class="muted" style="margin-top:10px;">Servicekosten per ticket = je marge (Party for 5 telt als 5 tickets). De transactiebijdrage is een vast bedrag per bestelling dat de betaalkosten dekt, gelijk voor elke betaalmethode (geen toeslag per methode, dat mag niet in de EU).</div>
+      </div>
+
+      <div class="card">
+        <h3>Evenement-info</h3>
+        <div class="grid">
+          <div class="field"><label>Naam</label><input type="text" id="se-name" /></div>
+          <div class="field"><label>Editie</label><input type="text" id="se-edition" /></div>
+          <div class="field"><label>Locatie</label><input type="text" id="se-location" /></div>
+          <div class="field"><label>Datums NL</label><input type="text" id="se-dates-nl" /></div>
+          <div class="field"><label>Datums EN</label><input type="text" id="se-dates-en" /></div>
+        </div>
+        <button id="se-save-event">Evenement-info opslaan</button>
+      </div>
+
+      <div class="card">
+        <h3>Ticketontwerp</h3>
+        <div class="row" style="align-items:flex-start;">
+          <div style="flex:1; min-width:280px;">
+            <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr));">
+              <div class="field"><label>Accentkleur</label><input type="color" id="se-accent" /></div>
+              <div class="field"><label>Inktkleur</label><input type="color" id="se-ink" /></div>
+              <div class="field"><label>Achtergrond</label><input type="color" id="se-bg" /></div>
+            </div>
+            <div class="field"><label>Ticketnotitie NL</label><textarea id="se-note-nl"></textarea></div>
+            <div class="field"><label>Ticketnotitie EN</label><textarea id="se-note-en"></textarea></div>
+            <button id="se-save-ticket">Ticketontwerp opslaan</button>
+          </div>
+          <div>
+            <label>Live voorbeeld</label>
+            <div class="tkprev" id="tk-prev">
+              <div class="top">
+                <div class="row" style="justify-content:space-between; align-items:flex-start;">
+                  <div>
+                    <div id="tp-event" style="font-weight:700; font-size:15px;">APÉRO Festival</div>
+                    <div id="tp-type" style="font-size:13px; opacity:.85; margin-top:2px;">Passe-partout</div>
+                    <div id="tp-name" style="font-size:12px; opacity:.7; margin-top:6px;">Naam van gast</div>
+                    <span class="dchip" id="tp-day">VR · ZA · ZO</span>
+                  </div>
+                  <div class="qr" id="tp-qr">QR</div>
+                </div>
+                <div id="tp-note" style="font-size:11px; margin-top:12px; opacity:.8;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Backup</h3>
+        <div class="hint">Download een volledige momentopname van alle orders, tickets en scans als JSON. Er gaat daarnaast elke nacht automatisch een backup-CSV naar cheers@apero-culture.com.</div>
+        <button id="se-backup">Download volledige backup (JSON)</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<div id="toast"></div>
+
+<script src="/js/ticketbeheer.js?v=1"></script>
+</body>
+</html>

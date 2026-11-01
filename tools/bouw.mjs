@@ -19,6 +19,7 @@ import { fileURLToPath } from 'node:url';
 import { pagina as festivalPagina } from './sjablonen/festival.mjs';
 import { pagina as overPagina } from './sjablonen/over.mjs';
 import { pagina as inschenkerPagina } from './sjablonen/inschenker.mjs';
+import { tickets as ticketsPagina, bedankt as bedanktPagina, voorwaarden as voorwaardenPagina } from './sjablonen/kassa.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const P = (...a) => path.join(ROOT, ...a);
@@ -118,12 +119,17 @@ const VERHALEN = fs.readdirSync(P('content/verhalen')).filter((f) => f.endsWith(
 const OP_SLUG = Object.fromEntries(VERHALEN.map((v) => [v.slug, v]));
 const PUBLIEK = VERHALEN.filter((v) => ['klaar', 'gepubliceerd'].includes(v.status));
 
+/* ---------------- cachebusting: ?v= per bestand op inhoud ---------------- */
+import crypto from 'node:crypto';
+const versie = (f) => { try { return crypto.createHash('sha1').update(fs.readFileSync(P(f))).digest('hex').slice(0, 8); } catch { return '1'; } };
+const V = (url) => `${url}?v=${versie(url.replace(/^\//, ''))}`;
+
 /* ---------------- gedeelde stukken ---------------- */
 const NAV = [
   ['Verhalen', '/verhalen/', 'Alles wat er te lezen is'],
   ['Steden', '/steden.html', 'Waar het uur zich afspeelt'],
   ['Lexicon', '/lexicon.html', 'De woorden van de tafel'],
-  ['Festival', '/festival.html', 'Utrecht, juni 2027'],
+  ['Festival', '/festival.html', 'Noorderpark, juni 2027'],
   ['Over', '/verhaal.html', 'Wat APÉRO is']
 ];
 export function kop(actief) {
@@ -131,21 +137,21 @@ export function kop(actief) {
   return `<!--nav--><a class="sr" href="#inhoud">Naar de inhoud</a>
 <header class="kop"><div class="in">
 <a class="merk" href="/" aria-label="APÉRO Culture, naar de voorpagina">APÉR<span class="flower" aria-hidden="true"></span><span class="cul">CULTURE</span></a>
-<nav class="hoofdnav" aria-label="Hoofdmenu">${links}<a class="knop klein" href="/inschenker.html">De Inschenker</a></nav>
+<nav class="hoofdnav" aria-label="Hoofdmenu">${links}<a class="knop klein knop-tickets" href="/festival.html#tickets">Tickets</a></nav>
 <button class="menuknop" type="button" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
 </div></header>
 <div class="menu" id="menu" aria-hidden="true" role="dialog" aria-label="Menu">
 <div class="mtop"><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><button class="menuknop" type="button" data-sluit-menu>Sluit</button></div>
 <nav aria-label="Menu">${NAV.map(([n, u, s]) => `<a href="${u}">${n}<small>${s}</small></a>`).join('')}</nav>
-<div class="mvoet"><a class="knop" href="/inschenker.html">Ontvang De Inschenker</a><a class="tekstlink" href="https://www.instagram.com/apero.festival">Instagram</a></div>
+<div class="mvoet"><a class="knop knop-tickets" href="/festival.html#tickets">Tickets · juni 2027</a><a class="knop licht" href="/inschenker.html">Ontvang De Inschenker</a><a class="tekstlink" href="https://www.instagram.com/apero.festival">Instagram</a></div>
 <div class="petals" aria-hidden="true"></div>
 </div><!--/nav-->`;
 }
 export function voet() {
   return `<!--voet--><footer class="voet"><div class="petals" aria-hidden="true"></div><div class="w"><div class="in">
-<div><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><p>Een magazine over het uur tussen werk en diner. Van <em>aperire</em>, openen. In juni 2027 aan tafel in Utrecht.</p></div>
+<div><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><p>Een magazine over het uur tussen werk en diner. Van <em>aperire</em>, openen. In juni 2027 aan tafel in het Noorderpark in Utrecht.</p></div>
 <div><h4>Lezen</h4><a href="/verhalen/">Verhalen</a><a href="/steden.html">Steden</a><a href="/verhalen/?reeks=werelden">De zes werelden</a><a href="/lexicon.html">Lexicon</a></div>
-<div><h4>APÉRO</h4><a href="/verhaal.html">Over</a><a href="/festival.html">Festival 2027</a><a href="/app.html">De Aperokiezer</a><a href="/partners.html">Partners</a><a href="/faq.html">Vragen</a></div>
+<div><h4>APÉRO</h4><a href="/verhaal.html">Over</a><a href="/festival.html">Festival 2027</a><a href="/festival.html#tickets">Tickets</a><a href="/tickets.html">Je tickets terugvinden</a><a href="/app.html">De Aperokiezer</a><a href="/partners.html">Partners</a><a href="/faq.html">Vragen</a></div>
 <div><h4>Blijf in de buurt</h4><a href="/inschenker.html">De Inschenker</a><a href="https://www.instagram.com/apero.festival">Instagram</a><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a></div>
 </div><div class="noot">APÉRO Culture · Utrecht · een initiatief van The Grape Agency</div></div></footer><!--/voet-->`;
 }
@@ -165,7 +171,7 @@ export function inschenkerBlok(bron) {
 ${aanmeldForm(bron)}
 </div></div></section>`;
 }
-export function html({ titel, omschrijving, pad, beeld, actief, body, type = 'website', extraHead = '', ld = '' }) {
+export function html({ titel, omschrijving, pad, beeld, actief, body, type = 'website', extraHead = '', ld = '', scripts = '', robots = '' }) {
   const canon = SITE + pad;
   const og = beeld && !beeld.startsWith('petals') ? SITE + '/' + beeld.replace(/^\//, '') : SITE + '/assets/fresco/fresco-04.jpg';
   return `<!DOCTYPE html>
@@ -175,16 +181,16 @@ export function html({ titel, omschrijving, pad, beeld, actief, body, type = 'we
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(titel)}</title>
 <meta name="description" content="${esc(omschrijving)}">
-<link rel="canonical" href="${canon}">
+<link rel="canonical" href="${canon}">${robots ? `<meta name="robots" content="${robots}">` : ''}
 <meta name="theme-color" content="#F4EAD6">
 <meta property="og:type" content="${type}"><meta property="og:site_name" content="APÉRO Culture">
 <meta property="og:title" content="${esc(titel)}"><meta property="og:description" content="${esc(omschrijving)}">
 <meta property="og:url" content="${canon}"><meta property="og:image" content="${og}"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/apero-tokens.css"><link rel="stylesheet" href="/css/apero.css">
+<link rel="stylesheet" href="${V('/apero-tokens.css')}"><link rel="stylesheet" href="${V('/css/apero.css')}">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/manifest-verhalen.json"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="APÉRO">
-${extraHead}${ld}
+${extraHead.replace(/href="(\/css\/[^"?]+)"/g, (m, u) => `href="${V(u)}"`)}${ld}
 </head>
 <body class="apero-body">
 ${kop(actief)}
@@ -192,8 +198,8 @@ ${kop(actief)}
 ${body}
 </main>
 ${voet()}
-<script src="/js/apero.js" defer></script>
-<script defer src="/_vercel/insights/script.js"></script>
+<script src="${V('/js/apero.js')}" defer></script>
+${scripts.replace(/(src|href)="(\/(?:js|css)\/[^"?]+)"/g, (m, k, u) => `${k}="${V(u)}"`)}<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
 `;
@@ -358,10 +364,14 @@ function voorpagina() {
 </div></div>
 </section>
 
+<a class="festband" href="/festival.html#tickets" aria-label="APÉRO Festival, juni 2027 in het Noorderpark. Naar de tickets.">
+<span class="fb-in"><span class="fb-lbl">Festival</span><span class="fb-t"><b>Juni 2027</b> · donderdag t/m zondag · Noorderpark, Utrecht</span><span class="fb-cta">Early bird € 9,50</span></span>
+</a>
+
 <section class="watis"><div class="w"><div class="drie">
 <a class="punt-w rv" href="/verhalen/"><span class="n">01</span><h2>Verhalen</h2><p>Over het glas, het bord en de mensen eromheen. Elk verhaal lees je in één, vier of zeven minuten.</p><span class="tekstlink">Naar de verhalen</span></a>
 <a class="punt-w rv" href="#eeuwen"><span class="n">02</span><h2>Door de tijd</h2><p>Van de honingwijn van de Romeinen tot de vermut van 1974. Wat dronken zij, en wat drink jij?</p><span class="tekstlink">Van Rome tot nu</span></a>
-<a class="punt-w rv" href="/festival.html"><span class="n">03</span><h2>Juni 2027</h2><p>Dan komt APÉRO naar Utrecht. Een paar dagen lang wordt het uur tussen werk en diner een plek.</p><span class="tekstlink">Over het festival</span></a>
+<a class="punt-w rv" href="/festival.html"><span class="n">03</span><h2>Juni 2027</h2><p>Dan komt APÉRO naar het Noorderpark in Utrecht. Vier dagen lang wordt het uur tussen werk en diner een plek.</p><span class="tekstlink">Over het festival</span></a>
 </div>
 <div class="bkop" id="eeuwen" style="margin-top:56px"><div><span class="lbl">Door de eeuwen heen</span><h2 class="kop-l">Wat dronken zij?</h2></div><a class="tekstlink" href="/verhaal.html#tijdlijn">De hele tijdlijn</a></div>
 <ol class="eeuwen" aria-label="Door de eeuwen heen">${eeuwen.map(([j, d, p, s, img]) => stap(j, d, p, `${OP_SLUG[s].url}?v=k`, img)).join('')}${stap('Nu', 'Jij', 'Op het terras', '/verhalen/?tijd=nu', beeld('tijd-jij', 'fresco/fresco-01.jpg'), true)}</ol>
@@ -429,11 +439,11 @@ ${kaart(tweede).replace('class="kaart rv"', 'class="kaart groot rv"').replace('<
 
 ${inschenkerBlok('voorpagina')}
 
-<section class="blok"><div class="w"><div class="spoor">
+<section class="blok festteaser"><div class="w"><div class="spoor">
 <div class="datum rv">Juni<br><em>2027</em></div>
-<div class="rv"><span class="lbl">Utrecht</span><h2 class="kop-l" style="margin:10px 0 14px">Dan komt APÉRO naar Utrecht.</h2>
-<p class="lede">Een paar dagen lang wordt het uur tussen werk en diner een plek waar je naartoe kunt. Het programma maken we nog. Meer zeggen we nu niet.</p>
-<p style="margin-top:22px"><a class="tekstlink" href="/festival.html">Wat we al wel weten</a></p></div>
+<div class="rv"><span class="lbl">APÉRO Festival · Noorderpark, Utrecht</span><h2 class="kop-l" style="margin:10px 0 14px">Dan komen de verhalen samen.</h2>
+<p class="lede">Donderdag tot en met zondag wordt elke wereld uit dit magazine een bar: de vermut van Madrid, de pastis van Marseille, de thee van Marrakech. Er staat iets te eten naast elk glas, en alcoholvrij hoort er gewoon bij.</p>
+<p class="acties" style="margin-top:24px"><a class="knop knop-tickets" href="/festival.html#tickets">Early bird · € 9,50</a><a class="tekstlink" href="/festival.html">Alles over het festival</a></p></div>
 </div></div></section>`;
   const ld = `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'APÉRO Culture', url: SITE, inLanguage: 'nl', description: 'Een magazine over het uur tussen werk en diner.' })}</script>`;
   return html({ titel: 'APÉRO Culture · het uur tussen werk en diner', omschrijving: 'Een magazine over het uur tussen werk en diner: Athene om kwart over zes, een Spaanse bar in 1974, wie er betaalt. In juni 2027 aan tafel in Utrecht.', pad: '/', beeld: hoofd.beeld, actief: '/', body, ld });
@@ -494,7 +504,7 @@ function vervangChrome(bestand, actief) {
   else s = s.replace(/<nav class="top">[\s\S]*?<\/nav>/, kop(actief));
   if (s.includes('<!--voet-->')) s = s.replace(/<!--voet-->[\s\S]*?<!--\/voet-->/, voet());
   else s = s.replace(/<footer[\s\S]*?<\/footer>/, voet());
-  if (!s.includes('/css/apero.css')) s = s.replace('</head>', '<link rel="stylesheet" href="/apero-tokens.css"><link rel="stylesheet" href="/css/apero.css"><link rel="stylesheet" href="/css/oud.css"></head>');
+  if (!s.includes('/css/apero.css')) s = s.replace('</head>', `<link rel="stylesheet" href="${V('/apero-tokens.css')}"><link rel="stylesheet" href="${V('/css/apero.css')}"><link rel="stylesheet" href="/css/oud.css"></head>`);
   if (!s.includes('/js/apero.js')) s = s.replace('</body>', '<script src="/js/apero.js" defer></script></body>');
   // relatieve links in oudere pagina's naar de oude reader wijzen nu naar de verhalen
   s = s.replace(/href="(\.\.\/)?lezen\.html"/g, 'href="/verhalen/"');
@@ -529,6 +539,9 @@ schrijf('index.html', voorpagina());
 schrijf('steden.html', steden());
 const ctx = { html, kop, voet, esc, aanmeldForm, inschenkerBlok, OP_SLUG, PUBLIEK, REEKSEN };
 schrijf('festival.html', festivalPagina(ctx));
+schrijf('tickets.html', ticketsPagina(ctx));
+schrijf('bedankt.html', bedanktPagina(ctx));
+schrijf('voorwaarden.html', voorwaardenPagina(ctx));
 schrijf('verhaal.html', overPagina(ctx));
 schrijf('inschenker.html', inschenkerPagina(ctx));
 schrijf('lezen.html', lezenDoorverwijzing());

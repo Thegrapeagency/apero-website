@@ -1,5 +1,46 @@
 {
   "redirects": [
-    { "source": "/viltjes", "destination": "/viltjes.html", "permanent": false }
+    {
+      "source": "/viltjes",
+      "destination": "/viltjes.html",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/tickets",
+      "destination": "/tickets.html"
+    },
+    {
+      "source": "/bedankt",
+      "destination": "/bedankt.html"
+    },
+    {
+      "source": "/scanner",
+      "destination": "/scanner.html"
+    },
+    {
+      "source": "/voorwaarden",
+      "destination": "/voorwaarden.html"
+    },
+    {
+      "source": "/ticketbeheer",
+      "destination": "/ticketbeheer.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(tickets|bedankt|ticketbeheer|scanner)(.html)?",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
+    }
   ]
 }

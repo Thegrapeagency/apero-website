@@ -439,3 +439,75 @@ body.nacht .boog img{filter:brightness(.82)}
 /* testomgeving-strook */
 .proef{background:var(--burro);color:var(--espresso);font-size:12.5px;text-align:center;padding:7px 16px;font-weight:600;letter-spacing:.02em}
 .proef a{font-weight:700}
+
+/* ============================================================
+   FESTIVAL & KASSA
+   ============================================================ */
+.knop.knop-tickets{background:var(--terracotta);color:var(--panna)}
+.knop.knop-tickets:hover{background:var(--espresso);color:var(--panna)}
+.hoofdnav .knop-tickets{margin-left:10px}
+
+/* band onder de welkom op de voorpagina */
+.festband{display:block;background:var(--espresso);color:var(--panna);text-decoration:none;border-bottom:1px solid var(--line)}
+.festband .fb-in{max-width:1160px;margin:0 auto;padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+@media(min-width:720px){.festband .fb-in{padding:16px 32px}}
+.festband .fb-lbl{font-weight:600;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--burro)}
+.festband .fb-t{font-size:15px;color:rgba(244,234,214,.88)}
+.festband .fb-t b{font-family:var(--disp);font-size:18px;color:var(--panna)}
+.festband .fb-cta{margin-left:auto;font-weight:600;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--terracotta);padding:9px 16px;border-radius:100px;transition:background .2s}
+.festband:hover .fb-cta{background:var(--burro);color:var(--espresso)}
+@media(max-width:560px){.festband .fb-cta{margin-left:0}}
+
+/* festivalkop */
+.fkop{position:relative;overflow:hidden;background:var(--panna-2);border-bottom:1px solid var(--line)}
+.fkop .petals{position:absolute;inset:0;--c:120px;opacity:.07}
+.fkop .w{position:relative}
+.fkop-in{display:grid;gap:26px;padding:40px 0 28px}
+@media(min-width:900px){.fkop-in{grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:72px 0 40px}}
+.fkop h1{margin:12px 0 18px}
+.fkop h1 em{font-style:italic;font-weight:500;color:var(--terracotta)}
+.fkop .stand{max-width:34ch}
+.fkop .acties{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 0}
+.fkop-beeld .boog{height:clamp(260px,52vw,440px)}
+.feiten{display:grid;gap:0;margin:0 0 8px;padding:0;border-top:1px solid var(--line)}
+@media(min-width:720px){.feiten{grid-template-columns:repeat(3,1fr)}}
+.feiten>div{padding:16px 0;border-bottom:1px solid var(--line)}
+@media(min-width:720px){.feiten>div{padding:18px 20px 18px 0;border-bottom:0}.feiten>div+div{padding-left:20px;border-left:1px solid var(--line)}}
+.feiten dt{font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:6px}
+.feiten dd{margin:0;font-family:var(--disp);font-weight:700;font-size:21px;line-height:1.2}
+.feiten dd.klein{font-family:var(--body);font-weight:500;font-size:13.5px;color:var(--ink-50);margin-top:3px}
+
+/* de zes bars */
+.bars{display:grid;gap:30px 24px}
+@media(min-width:640px){.bars{grid-template-columns:1fr 1fr}}
+@media(min-width:980px){.bars{grid-template-columns:repeat(3,1fr)}}
+.bar{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--espresso)}
+.bar .boog{height:210px;margin-bottom:8px}
+.bar .boog img{transition:transform 1s ease}
+.bar:hover .boog img{transform:scale(1.05)}
+.bar-n{font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta)}
+.bar p{margin:0;font-size:15px;line-height:1.55;color:var(--ink-70)}
+.bar:hover .kop-m{color:var(--mattone)}
+.bar .tekstlink{margin-top:2px}
+
+/* kassa */
+.kassa{background:var(--panna-2)}
+.kassa-in{display:grid;gap:30px}
+@media(min-width:1000px){.kassa-in{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}.kassa-tekst{position:sticky;top:90px}}
+.kassa-noten{list-style:none;margin:22px 0 0;padding:0;border-top:1px solid var(--line)}
+.kassa-noten li{padding:12px 0 12px 24px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.5;color:var(--ink-70);position:relative}
+.kassa-noten li::before{content:"";position:absolute;left:2px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--terracotta)}
+.klein-link{margin:18px 0 0;font-size:14.5px;color:var(--ink-70)}
+.klein-link a{color:var(--terracotta);font-weight:600}
+.kassa-shop{background:var(--panna);border:1px solid var(--line);border-radius:22px;padding:22px 18px;min-height:320px}
+@media(min-width:720px){.kassa-shop{padding:30px 28px}}
+.kassa-pagina{padding:36px 0 72px}
+
+/* vragen */
+.vraaglijst .weten{margin:0}
+.vraaglijst .weten summary{font-size:19px}
+.vraaglijst .antwoord{font-size:15.5px;line-height:1.6;color:var(--ink-70);margin:12px 0 16px}
+.vraaglijst .antwoord a{color:var(--mattone)}
+.voorwaarden h2{font-size:clamp(21px,2.6vw,25px)}
+.menu .mvoet .knop{justify-content:center;white-space:normal;text-align:center}
+.menu{overflow-x:hidden}
