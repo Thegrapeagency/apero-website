@@ -1,0 +1,49 @@
+# Het harnas: elke bouwbot-branch mag geen beschermde bestanden raken en het bouwscript moet slagen.
+# APÉRO Studio zet een wijziging alleen live als deze check groen is.
+name: Harnas
+on:
+  push:
+    branches: ['claude/**']
+  pull_request:
+    branches: [main]
+
+# De uitslag gaat als commit-status 'harnas' naar GitHub, want de Studio kan die lezen met een gewoon token.
+permissions:
+  contents: read
+  statuses: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Status op bezig
+        run: gh api repos/${{ github.repository }}/statuses/$SHA -f state=pending -f context=harnas -f description="Harnas draait"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Geen beschermde bestanden aangepast
+        run: |
+          git fetch origin main --depth=50
+          GEWIJZIGD=$(git diff --name-only origin/main...HEAD)
+          echo "$GEWIJZIGD"
+          FOUT=$(echo "$GEWIJZIGD" | grep -E '^(api/|\.github/|supabase/|middleware\.js$|vercel\.json$|\.vercelignore$|package(-lock)?\.json$|CLAUDE\.md$|\.env|js/(shop|ticketbeheer)\.js$|(ticketbeheer|scanner|tickets|bedankt|voorwaarden)\.html$|tools/sjablonen/kassa\.mjs$|dashboard/|studio/|partner/)' || true)
+          if [ -n "$FOUT" ] && [[ "$GITHUB_REF_NAME" == claude/* || "$GITHUB_HEAD_REF" == claude/* ]]; then
+            echo "::error::De bouwbot heeft beschermde bestanden aangepast: $FOUT"
+            exit 1
+          fi
+      - name: JavaScript is geldig
+        run: |
+          for f in $(git diff --name-only origin/main...HEAD | grep -E '\.(m?js)$' || true); do [ -f "$f" ] && node --check "$f"; done
+      - name: Bouwscript draait
+        run: node tools/bouw.mjs
+      - name: Uitslag doorgeven
+        if: always()
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then STATE=success; else STATE=failure; fi
+          gh api repos/${{ github.repository }}/statuses/$SHA -f state=$STATE -f context=harnas -f description="Harnas $STATE"
