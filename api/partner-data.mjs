@@ -8,7 +8,7 @@
    ============================================================ */
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
-const data = require('../dashboard/data/partners.json');
+const data = require('../dashboard-oud/data/partners.json');
 
 function parseBasic(header) {
   if (!header || !header.startsWith('Basic ')) return null;

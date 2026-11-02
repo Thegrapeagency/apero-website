@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   }
   if (req.method !== 'POST') { res.status(405).json({ error: 'POST only' }); return; }
 
-  const { GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH = 'main', CONTENT_PATH = 'dashboard/data/content.json', SAVE_SECRET } = process.env;
+  const { GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH = 'main', CONTENT_PATH = 'dashboard-oud/data/content.json', SAVE_SECRET } = process.env;
   if (!GITHUB_TOKEN || !GITHUB_REPO) {
     res.status(503).json({ error: 'Opslag-API niet geconfigureerd. Gebruik "Exporteer content.json" en commit handmatig.' });
     return;

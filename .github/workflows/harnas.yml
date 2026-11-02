@@ -32,7 +32,7 @@ jobs:
           git fetch origin main --depth=50
           GEWIJZIGD=$(git diff --name-only origin/main...HEAD)
           echo "$GEWIJZIGD"
-          FOUT=$(echo "$GEWIJZIGD" | grep -E '^(api/|\.github/|supabase/|middleware\.js$|vercel\.json$|\.vercelignore$|package(-lock)?\.json$|CLAUDE\.md$|\.env|js/(shop|ticketbeheer)\.js$|(ticketbeheer|scanner|tickets|bedankt|voorwaarden)\.html$|tools/sjablonen/kassa\.mjs$|dashboard/|studio/|partner/)' || true)
+          FOUT=$(echo "$GEWIJZIGD" | grep -E '^(api/|\.github/|supabase/|middleware\.js$|vercel\.json$|\.vercelignore$|package(-lock)?\.json$|CLAUDE\.md$|\.env|js/(shop|ticketbeheer)\.js$|(ticketbeheer|scanner|tickets|bedankt|voorwaarden)\.html$|tools/sjablonen/kassa\.mjs$|dashboard/|dashboard-oud/|studio/|partner/)' || true)
           if [ -n "$FOUT" ] && [[ "$GITHUB_REF_NAME" == claude/* || "$GITHUB_HEAD_REF" == claude/* ]]; then
             echo "::error::De bouwbot heeft beschermde bestanden aangepast: $FOUT"
             exit 1

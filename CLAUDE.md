@@ -18,7 +18,7 @@ Je krijgt een bouwverzoek uit APÉRO Studio. Het label `site` of `app` zegt waar
 
 ### Harde regels (het harnas)
 
-- Raak deze bestanden nooit aan: `api/`, `.github/`, `supabase/`, `middleware.js`, `vercel.json`, `.vercelignore`, `CLAUDE.md`, `js/shop.js`, `js/ticketbeheer.js`, `ticketbeheer.html`, `scanner.html`, `tickets.html`, `bedankt.html`, `voorwaarden.html`, `tools/sjablonen/kassa.mjs`, `dashboard/`, `studio/`, `partner/`, `.env*`. Een wijziging daarin wordt automatisch tegengehouden.
+- Raak deze bestanden nooit aan: `api/`, `.github/`, `supabase/`, `middleware.js`, `vercel.json`, `.vercelignore`, `CLAUDE.md`, `js/shop.js`, `js/ticketbeheer.js`, `ticketbeheer.html`, `scanner.html`, `tickets.html`, `bedankt.html`, `voorwaarden.html`, `tools/sjablonen/kassa.mjs`, `dashboard/`, `dashboard-oud/`, `studio/`, `partner/`, `.env*`. Een wijziging daarin wordt automatisch tegengehouden.
 - Geen nieuwe externe scripts of diensten, geen sleutels in de code.
 - Heeft een wens een serverfunctie nodig (bijvoorbeeld AI in de app)? Bouw de voorkant zo dat die netjes werkt zolang de functie er nog niet is, en beschrijf in de pull request welke functie Milan moet toevoegen.
 - Verwijder nooit inhoud die niet in het verzoek genoemd wordt.
