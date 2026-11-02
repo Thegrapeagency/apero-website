@@ -626,7 +626,7 @@ registreer('stats','Statistieken',async function(p){
    MODULE: FESTIVAL / DRAAIBOEK
    ============================================================ */
 var DRAAIBOEK=[
-  {fase:'Fundament',items:['Datum definitief kiezen','Locatie Noorderpark aanvragen/bevestigen','Vergunningstraject starten bij gemeente Utrecht','Begroting v1 opstellen','Verzekering regelen']},
+  {fase:'Fundament',items:['Datum definitief kiezen','Locatie Noordsepark aanvragen/bevestigen','Vergunningstraject starten bij gemeente Utrecht','Begroting v1 opstellen','Verzekering regelen']},
   {fase:'Partners & bars',items:['Zes wereldslots invullen met partners','Signature serves definitief per bar','Alcoholvrije variant per wereld vastleggen','Partnercontracten getekend','Partnerportaal-logins versturen']},
   {fase:'Programma',items:['Masterclass-line-up per wereld','Talks met makers en importeurs boeken','Podcast live-opname plannen','Wijnbiecht-format uitwerken','Lange tafel: catering en dekking']},
   {fase:'Productie',items:['Barbouw en inrichting per wereld','Techniek: geluid en licht','Bewegwijzering in huisstijl','Glaswerk en logistiek','Crew en vrijwilligers']},

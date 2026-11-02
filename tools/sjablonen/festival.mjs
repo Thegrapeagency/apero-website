@@ -18,7 +18,7 @@ export function pagina({ html, esc, inschenkerBlok, OP_SLUG }) {
   ].filter(([s]) => OP_SLUG[s]);
   const vragen = [
     ['Wanneer is het precies?', 'In juni 2027, van donderdag tot en met zondag. Het wordt het tweede of het derde weekend van juni; de precieze data maken we deze winter bekend. Je ticket blijft gewoon geldig voor de dag die je kiest.'],
-    ['Waar is het?', 'In het Noorderpark in Utrecht. Waar je precies naar binnen gaat en hoe je er het best komt, lees je hier zodra het terrein vastligt.'],
+    ['Waar is het?', 'In het Noordsepark in Utrecht. Waar je precies naar binnen gaat en hoe je er het best komt, lees je hier zodra het terrein vastligt.'],
     ['Wat kost een ticket?', 'Een early bird kost € 9,50, voor elke dag hetzelfde. Daar komt € 0,95 servicekosten per ticket bij, en € 0,33 per bestelling voor de betaling. Wat er in het glas en op het bord komt, reken je ter plekke af.'],
     ['Kan ik later van dag wisselen?', 'Ja. Op je ticketpagina kun je zelf een andere dag kiezen, zolang die dag niet vol is en je ticket nog niet gescand is. Dat kost niets.'],
     ['Kan ik mijn ticket doorgeven?', 'Ja. Op je ticketpagina stuur je een ticket door naar iemand anders, die het dan op eigen naam zet. Geld terug kan niet, behalve als het festival niet doorgaat. Zo staat het ook in de <a href="/voorwaarden.html">voorwaarden</a>.'],
@@ -28,9 +28,9 @@ export function pagina({ html, esc, inschenkerBlok, OP_SLUG }) {
   ];
   const ld = `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Festival', name: 'APÉRO Festival 2027',
-    description: 'Vier dagen aperitiefcultuur in het Noorderpark in Utrecht: zes werelden, zes bars, en iets te eten naast elk glas.',
+    description: 'Vier dagen aperitiefcultuur in het Noordsepark in Utrecht: zes werelden, zes bars, en iets te eten naast elk glas.',
     startDate: '2027-06', eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    location: { '@type': 'Place', name: 'Noorderpark', address: { '@type': 'PostalAddress', addressLocality: 'Utrecht', addressCountry: 'NL' } },
+    location: { '@type': 'Place', name: 'Noordsepark', address: { '@type': 'PostalAddress', addressLocality: 'Utrecht', addressCountry: 'NL' } },
     offers: { '@type': 'Offer', name: 'Early bird', price: '9.50', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: 'https://www.apero-culture.com/festival.html#tickets' },
     organizer: { '@type': 'Organization', name: 'APÉRO Culture', url: 'https://www.apero-culture.com' }
   })}</script>`;
@@ -39,7 +39,7 @@ export function pagina({ html, esc, inschenkerBlok, OP_SLUG }) {
 <div class="petals" aria-hidden="true"></div>
 <div class="w"><div class="fkop-in">
 <div class="fkop-tekst">
-<span class="lbl">APÉRO Festival · Noorderpark, Utrecht</span>
+<span class="lbl">APÉRO Festival · Noordsepark, Utrecht</span>
 <h1 class="kop-xl">Het uur,<br><em>vier dagen lang.</em></h1>
 <p class="stand">Donderdag tot en met zondag, in juni 2027. Zes werelden uit het magazine worden zes bars, en bij elk glas staat iets te eten.</p>
 <p class="acties"><a class="knop knop-tickets" href="#tickets">Early bird · €&nbsp;9,50</a><a class="knop licht" href="#bars">De zes bars</a></p>
@@ -48,7 +48,7 @@ export function pagina({ html, esc, inschenkerBlok, OP_SLUG }) {
 </div>
 <dl class="feiten">
 <div><dt>Wanneer</dt><dd>Juni 2027, do t/m zo</dd><dd class="klein">De data volgen deze winter</dd></div>
-<div><dt>Waar</dt><dd>Noorderpark, Utrecht</dd><dd class="klein">Het precieze terrein volgt</dd></div>
+<div><dt>Waar</dt><dd>Noordsepark, Utrecht</dd><dd class="klein">Het precieze terrein volgt</dd></div>
 <div><dt>Tickets</dt><dd>Early bird €&nbsp;9,50</dd><dd class="klein">Voor elke dag dezelfde prijs</dd></div>
 </dl>
 </div></header>
@@ -97,9 +97,9 @@ export function pagina({ html, esc, inschenkerBlok, OP_SLUG }) {
 <div class="rv"><span class="lbl">Wat er nog komt</span><h2 class="kop-l" style="margin:10px 0 20px">In deze volgorde</h2>
 <ol class="tijdlijn">
 <li><span class="y">Nu</span><h3>De early bird</h3><p>€ 9,50 voor elke dag, zolang de voorraad strekt.</p></li>
-<li><span class="y">Deze winter</span><h3>De data en het terrein</h3><p>Welk weekend het wordt, en waar je in het Noorderpark naar binnen gaat. Wie De Inschenker leest, hoort het een week eerder.</p></li>
+<li><span class="y">Deze winter</span><h3>De data en het terrein</h3><p>Welk weekend het wordt, en waar je in het Noordsepark naar binnen gaat. Wie De Inschenker leest, hoort het een week eerder.</p></li>
 <li><span class="y">Voorjaar 2027</span><h3>Het programma</h3><p>Wie er schenkt, wie er kookt, welke masterclasses er zijn. Stap voor stap, zodra het vaststaat.</p></li>
-<li><span class="y">Juni 2027</span><h3>Aan tafel</h3><p>In het Noorderpark.</p></li>
+<li><span class="y">Juni 2027</span><h3>Aan tafel</h3><p>In het Noordsepark.</p></li>
 </ol></div>
 <div class="rv"><span class="lbl">Goed om te weten</span><h2 class="kop-l" style="margin:10px 0 20px">Vragen</h2>
 <div class="vraaglijst">${vragen.map(([v, a]) => `<details class="weten"><summary>${esc(v)}<span class="pijl" aria-hidden="true">+</span></summary><p class="antwoord">${a}</p></details>`).join('')}</div>
@@ -113,8 +113,8 @@ ${sporen.length ? `<section class="blok"><div class="w">
 
 ${inschenkerBlok('festival')}`;
   return html({
-    titel: 'APÉRO Festival · juni 2027 · Noorderpark, Utrecht',
-    omschrijving: 'Vier dagen aperitiefcultuur in het Noorderpark in Utrecht, juni 2027. Zes werelden, zes bars, en iets te eten naast elk glas. Early bird tickets € 9,50.',
+    titel: 'APÉRO Festival · juni 2027 · Noordsepark, Utrecht',
+    omschrijving: 'Vier dagen aperitiefcultuur in het Noordsepark in Utrecht, juni 2027. Zes werelden, zes bars, en iets te eten naast elk glas. Early bird tickets € 9,50.',
     pad: '/festival.html', actief: '/festival.html', body, beeld: 'assets/fresco/fresco-04.jpg', ld,
     extraHead: '<link rel="stylesheet" href="/css/kassa.css">',
     scripts: '<script src="/js/qrcode.min.js" defer></script>\n<script src="/js/shop.js" defer></script>\n'
