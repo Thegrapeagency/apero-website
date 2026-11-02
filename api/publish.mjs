@@ -17,7 +17,7 @@
      GITHUB_TOKEN   fine-grained PAT met 'Contents: read and write' op de repo
      GITHUB_REPO    standaard "Thegrapeagency/apero-website"
      GITHUB_BRANCH  standaard "main"
-     CONTENT_PATH   standaard "dashboard/data/content.json"
+     CONTENT_PATH   standaard "dashboard-oud/data/content.json"
    Zonder GITHUB_TOKEN antwoordt de route met 503 + uitleg.
    ============================================================ */
 
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     GITHUB_TOKEN,
     GITHUB_REPO = 'Thegrapeagency/apero-website',
     GITHUB_BRANCH = 'main',
-    CONTENT_PATH = 'dashboard/data/content.json'
+    CONTENT_PATH = 'dashboard-oud/data/content.json'
   } = process.env;
 
   if (!GITHUB_TOKEN) {

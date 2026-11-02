@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     GITHUB_TOKEN,
     GITHUB_REPO = 'Thegrapeagency/apero-website',
     GITHUB_BRANCH = 'main',
-    CONTENT_PATH = 'dashboard/data/content.json'
+    CONTENT_PATH = 'dashboard-oud/data/content.json'
   } = process.env;
 
   if (!GITHUB_TOKEN) { res.status(503).json({ error: 'Depubliceren is nog niet geconfigureerd: zet GITHUB_TOKEN in Vercel.' }); return; }

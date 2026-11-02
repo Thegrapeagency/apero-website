@@ -4,7 +4,7 @@
    Twee rollen, allebei via HTTP basic-auth, niets hardcoded
    (deze repo is publiek):
 
-   REDACTIE (volledige toegang: /dashboard, /studio, /api, /partner)
+   REDACTIE (volledige toegang: /dashboard-oud, /studio, /api, /partner)
      DASH_USER   (bv. "redactie")
      DASH_PASS   (een sterk wachtwoord)
 
@@ -12,13 +12,14 @@
      PARTNER_AUTH   lijst "gebruiker:wachtwoord" gescheiden door ;
                     bv. "mirabeau:x7...;barbayanni:q2..."
                     De gebruikersnaam moet gelijk zijn aan de
-                    partner-slug in dashboard/data/partners.json.
+                    partner-slug in dashboard-oud/data/partners.json.
 
    Zet ze in Vercel: Project → Settings → Environment Variables.
    Zolang er niets gezet is, blijft alles dicht (veilige default).
    De rest van de site (incl. /tools) blijft publiek.
    ============================================================ */
-export const config = { matcher: ['/dashboard/:path*', '/studio/:path*', '/studio', '/api/:path*', '/partner/:path*'] };
+// /dashboard is de nieuwe APÉRO Studio (eigen login), die wordt doorgestuurd via vercel.json en valt hier dus buiten.
+export const config = { matcher: ['/dashboard-oud/:path*', '/studio/:path*', '/studio', '/api/:path*', '/partner/:path*'] };
 
 function parseBasic(header) {
   if (!header || !header.startsWith('Basic ')) return null;
