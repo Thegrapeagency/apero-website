@@ -12,6 +12,10 @@
       "destination": "https://apero-werkplaats.vercel.app/dashboard"
     },
     {
+      "source": "/dashboard/",
+      "destination": "https://apero-werkplaats.vercel.app/dashboard/"
+    },
+    {
       "source": "/dashboard/:path*",
       "destination": "https://apero-werkplaats.vercel.app/dashboard/:path*"
     },
