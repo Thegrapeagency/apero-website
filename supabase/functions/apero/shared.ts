@@ -216,7 +216,7 @@ export async function trySendTicketEmail(order: OrderRow, cfg: Record<string, st
     const nl = order.locale !== 'en'
     const viltje = order.channel === 'viltje'
     const datum = nl ? (cfg.EVENT_DATES_NL ?? 'juni 2027') : (cfg.EVENT_DATES_EN ?? 'June 2027')
-    const plek = cfg.EVENT_LOCATION ?? 'Noorderpark, Utrecht'
+    const plek = cfg.EVENT_LOCATION ?? 'Noordsepark, Utrecht'
     const subject = nl
       ? `Je tickets voor APÉRO Festival (${order.short_ref})`
       : `Your tickets for APÉRO Festival (${order.short_ref})`

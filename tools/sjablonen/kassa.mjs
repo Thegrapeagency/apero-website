@@ -27,7 +27,7 @@ export function voorwaarden({ html }) {
 <p>Je bestelling is rond zodra je betaling gelukt is en je een bevestiging per mail hebt gekregen. Alle prijzen zijn in euro's en inclusief btw. Voordat je betaalt zie je welke servicekosten erbij komen. Je betaalt via Mollie.</p>
 <p>Je ticket is geldig voor de dag die erop staat. Je krijgt het met een persoonlijke QR-code per mail, en je vindt het altijd terug via de link in die mail. Deel je QR-code niet online: wie als eerste scant, komt binnen, een kopie daarna niet meer. Een ticket is voor één persoon. We kunnen een ticket ongeldig maken als het vervalst is, vaker verkocht is of op een onrechtmatige manier is verkregen.</p>
 <h2>3. Data en plek</h2>
-<p>APÉRO Festival is in juni 2027, van donderdag tot en met zondag, in het Noorderpark in Utrecht. De precieze data en het precieze terrein maken we later bekend. Je ticket blijft geldig voor de dag van de week die je kocht. Past die dag je dan niet meer, dan wissel je zelf kosteloos van dag op je ticketpagina, zolang er op de andere dag plek is.</p>
+<p>APÉRO Festival is in juni 2027, van donderdag tot en met zondag, in het Noordsepark in Utrecht. De precieze data en het precieze terrein maken we later bekend. Je ticket blijft geldig voor de dag van de week die je kocht. Past die dag je dan niet meer, dan wissel je zelf kosteloos van dag op je ticketpagina, zolang er op de andere dag plek is.</p>
 <h2>4. Wat er in je ticket zit</h2>
 <p>Je ticket geeft toegang tot het festival. Wat je drinkt en eet is niet inbegrepen, tenzij er bij je bestelling iets anders staat. Masterclasses en andere extra's kunnen aparte tickets zijn.</p>
 <h2>5. Geen geld terug, wel doorgeven</h2>

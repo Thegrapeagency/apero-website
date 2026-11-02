@@ -831,7 +831,7 @@ insert into apero_app_config (key, value) values
   ('EVENT_EDITION', '2027'),
   ('EVENT_DATES_NL', 'juni 2027'),
   ('EVENT_DATES_EN', 'June 2027'),
-  ('EVENT_LOCATION', 'Noorderpark, Utrecht'),
+  ('EVENT_LOCATION', 'Noordsepark, Utrecht'),
   ('FESTIVAL_DATES', '{}'),
   ('SITE_BASE_URL', 'https://www.apero-culture.com'),
   ('ALLOWED_ORIGINS', 'https://www.apero-culture.nl,https://apero-culture.nl,https://www.apero-culture.com,https://apero-culture.com,http://localhost:8755,http://localhost:8762'),
