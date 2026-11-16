@@ -1,0 +1,75 @@
+/* APÉRO Studio · Calculatie. Bouwt voort op studio.css. */
+.calc .acties{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.calc .acties .knop{min-height:36px;padding:7px 13px;font-size:13px}
+.calc .paneel{max-width:1320px}
+.kopregel{display:flex;gap:18px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}
+.kopregel .uitleg{max-width:70ch;margin:4px 0 0}
+.kopregel code,.uitleg code{background:var(--panna-2);border-radius:4px;padding:1px 5px;font-size:12.5px}
+input.titel{font-family:var(--disp);font-weight:800;font-size:clamp(26px,4vw,40px);line-height:1.05;border:0;background:none;padding:0;width:min(100%,22ch);border-bottom:1px dashed transparent}
+input.titel:hover,input.titel:focus{border-bottom-color:var(--ink-30);outline:none}
+.scenario{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--ink-70)}
+.scenario select{margin-left:6px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--panna-3);font-weight:600}
+.scenario .knop{min-height:36px;padding:7px 12px;font-size:13px}
+
+.tegels{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.tegel{background:var(--panna-3);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.tegel b{font-family:var(--disp);font-weight:800;font-size:26px;line-height:1.15;font-variant-numeric:tabular-nums}
+.tegel small{color:var(--ink-50);font-size:12.5px}
+.tegel.groot{background:var(--espresso);color:var(--panna);border-color:var(--espresso)}
+.tegel.groot .lbl{color:var(--burro)}
+.tegel.groot small{color:rgba(244,234,214,.7)}
+.tegel.groot b.min{color:#F0A58A}
+.min{color:var(--mattone)}
+.plus{color:#5C6B3C}
+.tegel.groot .plus{color:var(--panna)}
+.stand{font-size:14px;color:var(--ink-70);margin:12px 0}
+h2.deel{font-family:var(--disp);font-weight:800;font-size:28px;margin:34px 0 10px}
+
+.tabelrol{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panna-3)}
+.calc table{border-collapse:collapse;width:100%;font-size:14px;min-width:760px}
+.calc th,.calc td{padding:0;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+.calc thead th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50);font-weight:600;padding:9px 10px;background:var(--panna-2);position:sticky;top:0}
+.calc .g{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.calc td.g,.calc th.g{padding:7px 10px}
+.calc tr.sub th{padding:12px 10px 5px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--terracotta);background:none;border-bottom:1px solid var(--line)}
+.calc tr.som td{padding:10px;font-weight:700;border-top:2px solid var(--espresso);border-bottom:0}
+.calc tr.som.eind td{font-size:16px}
+.calc tbody tr:not(.sub):hover{background:rgba(238,178,74,.12)}
+.calc table.totaal{min-width:560px}
+.calc table.totaal td{padding:8px 10px}
+.calc table.totaal a{text-decoration:none;border-bottom:1px solid var(--ink-30)}
+
+.calc input.cel,.calc input.tekst{width:100%;border:0;background:none;padding:8px 10px;min-height:38px;border-radius:0}
+.calc input.cel{text-align:right;font-variant-numeric:tabular-nums;min-width:108px}
+.calc input.cel.smal{min-width:64px}
+.calc input.tekst{min-width:150px}
+.calc td:first-child input.tekst{min-width:300px;font-weight:500}
+.calc .duur{color:var(--mattone)}
+.calc .mee{color:#5C6B3C}
+.calc input.cel:focus,.calc input.tekst:focus{outline:2px solid var(--terracotta);outline-offset:-2px;background:#fff}
+.calc input.cel.formule:not(:focus){color:var(--mattone)}
+.calc input.cel.fout{background:rgba(196,95,56,.18);text-align:left}
+.calc input::placeholder{color:var(--ink-30)}
+.calc td.weg{width:34px;text-align:center}
+.calc td.weg button{border:0;background:none;color:var(--ink-30);font-size:18px;cursor:pointer;padding:6px 10px;line-height:1}
+.calc td.weg button:hover{color:var(--mattone)}
+.mini{border:0;background:none;color:var(--terracotta);font-weight:600;font-size:12px;cursor:pointer;text-transform:none;letter-spacing:0;padding:0 10px}
+
+details.blok{margin:14px 0}
+details.blok>summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:10px 2px}
+details.blok>summary::-webkit-details-marker{display:none}
+details.blok>summary h2{font-family:var(--disp);font-weight:700;font-size:22px;margin:0}
+details.blok>summary h2::before{content:"+";display:inline-block;width:20px;color:var(--terracotta);font-family:var(--body);font-weight:500}
+details.blok[open]>summary h2::before{content:"–"}
+details.blok .rechts{display:flex;gap:12px;align-items:baseline;font-weight:700;font-variant-numeric:tabular-nums}
+details.blok .rechts small{font-weight:500;color:var(--mattone);font-size:12.5px}
+details.blok>.uitleg{margin:0 0 8px 22px}
+
+@media print{
+  .testdata,.balk,.knoppen,.scenario .knop,.weg,.mini,.toast{display:none!important}
+  body{background:#fff}
+  .tabelrol{overflow:visible;border:0}
+  .calc thead th{position:static}
+  details.blok{break-inside:avoid-page}
+  .tegel.groot{background:none;color:inherit;border-color:var(--line)}
+}
