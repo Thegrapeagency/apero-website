@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Partnerpitch · APÉRO</title><meta name="description" content="Word partner van APÉRO: een plek in een van de zes werelden op het festival in Utrecht, MMXXVII, plus een jaar lang redactionele inbedding in verhalen, app en socials.">
+<title>Partnerpitch · APÉRO</title><meta name="description" content="Partner worden van APÉRO: een plek in een van de zes werelden op het festival in juni 2027 in het Noordsepark in Utrecht, en een jaar lang in het magazine, de app en op Instagram.">
 <meta name="robots" content="noindex">
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#F4EAD6">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -148,19 +148,25 @@ html{scroll-behavior:smooth}
   #vgang{display:none}
 }
 
-/* ---- print: hetzelfde verhaal als PDF-deck ---- */
+/* ---- print: hetzelfde verhaal als PDF-deck, één dia per liggende A4 ---- */
+@page{size:A4 landscape;margin:0}
 @media print{
-  nav.top,.dots,.pijl,.printknop,footer{display:none !important}
-  .dia{min-height:auto;page-break-after:always;padding:40px 0;border-bottom:none}
+  html,body{background:var(--panna);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  nav.top,.dots,.pijl,.printknop,footer,.grain,.veil{display:none !important}
+  .dia{width:297mm;height:209.5mm;min-height:0;box-sizing:border-box;padding:0;border-bottom:none;break-after:page;break-inside:avoid;overflow:hidden;display:flex;align-items:center}
+  .dia:last-of-type{break-after:auto}
+  .dia .wrap{zoom:.84}
+  #d3 .wrap,#d4 .wrap,#d5m .wrap{zoom:.72}
+  #d5 .wrap{zoom:.6}
   .onthul{opacity:1 !important;transform:none !important}
   .wkaart{break-inside:avoid}
   .arch .fmv{display:none !important}
-  body{background:#fff}
+  .petals,.slotP .flower.draai{animation:none !important}
 }
 .printknop{position:fixed;left:22px;bottom:18px;z-index:60;font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--panna);border:1px solid var(--line);border-radius:100px;padding:10px 16px;cursor:pointer;color:var(--espresso)}
 .printknop:hover{border-color:var(--terracotta);color:var(--terracotta)}
 </style><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head><body>
-<nav class="top"><div class="in"><a class="lk" href="index.html">AP&Eacute;R<span class="flower"></span><span class="cul">CULTURE</span></a><div class="links"><a href="verhaal.html">Het verhaal</a><a href="index.html#werelden">De werelden</a><a href="lezen.html">Verhalen</a><a href="lexicon.html">Lexicon</a><a href="festival.html">Festival</a></div></div></nav>
+<nav class="top"><div class="in"><a class="lk" href="index.html">AP&Eacute;R<span class="flower"></span><span class="cul">CULTURE</span></a><div class="links"><a href="verhalen/">Verhalen</a><a href="werelden/italie.html">De werelden</a><a href="lexicon.html">Lexicon</a><a href="festival.html">Festival</a></div></div></nav>
 
 <div id="vgang"><i></i></div>
 <div class="dots" id="dots"></div>
@@ -172,11 +178,11 @@ html{scroll-behavior:smooth}
   <div class="wrap">
     <div class="hgrid">
       <div>
-        <span class="dnum onthul">Een onderzoek naar de Europese aperitiefcultuur</span>
+        <span class="dnum onthul">Voor merken, makers en importeurs</span>
         <div class="wm onthul v1">AP&Eacute;R<span class="flower"></span></div>
         <h1 class="dkop onthul v2" style="margin-top:26px">Kies je wereld.</h1>
-        <p class="dlede onthul v3">AP&Eacute;RO onderzoekt de Europese aperitiefcultuur en bekroont dat in MMXXVII met een festival in Utrecht: zes werelden, zes bars. Elke wereld biedt ruimte aan merken die erbij passen, met een jaar aan media eromheen: verhalen, app en Instagram. Dit is de uitnodiging.</p>
-        <div class="onthul v4" style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#d9">Plan een gesprek</a><a class="btn ghost" href="#d2">Bekijk de pitch</a></div>
+        <p class="dlede onthul v3">AP&Eacute;RO Culture is een magazine over het aperitief in Europa en rond de Middellandse Zee. In juni 2027 wordt het een festival: vier dagen in het Noordsepark in Utrecht, met zes werelden die elk een eigen bar krijgen. In elke wereld is plek voor merken die er thuishoren. Hieronder lees je wat je krijgt en wat we van je vragen.</p>
+        <div class="onthul v4" style="margin-top:30px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#d9">Plan een gesprek</a><a class="btn ghost" href="#d2">Lees verder</a></div>
       </div>
       <div class="arch onthul v3"><div class="fresco" style="background-image:url('assets/motion/fresco-proost-poster.jpg')"></div><video class="fmv" autoplay muted loop playsinline preload="metadata" poster="assets/motion/fresco-proost-poster.jpg"><source src="assets/motion/fresco-proost.mp4" type="video/mp4"></video><div class="wash"></div><div class="grain"></div></div>
     </div>
@@ -188,16 +194,16 @@ html{scroll-behavior:smooth}
 <section class="dia" id="d2">
   <div class="wrap">
     <span class="dnum onthul">01 · Het moment</span>
-    <h2 class="dkop onthul v1">De generatie die minder drinkt, drinkt beter</h2>
+    <h2 class="dkop onthul v1">Er wordt minder gedronken, en beter gekozen</h2>
     <div class="duo">
-      <p class="dtekst onthul v2">Elke nieuwe generatie drinkt minder alcohol dan de vorige, en de drankindustrie wordt er nerveus van. Maar wie goed kijkt ziet iets anders: het glas verandert, het uur blijft. In Madrid en Barcelona staan de bodega's van opa alweer vol dertigers. Jonge Fransen vieren de ap&eacute;ro onverminderd, met alcoholvrije pastis en een steeds rijkere planche.</p>
-      <p class="dtekst onthul v3">Voor merken is dat de kans: wie bewust drinkt, koopt minder flessen maar betere, en betaalt daar meer voor. Dat is jouw klant. Die leest nu al mee met AP&Eacute;RO, en in MMXXVII staat hij aan jouw bar.</p>
+      <p class="dtekst onthul v2">Elke nieuwe generatie drinkt minder alcohol dan de vorige. Het uur tussen werk en diner is gebleven. In Spanje haalden twintigers en dertigers rond 2010 de vermut van hun opa terug. In Frankrijk drinken jonge mensen minder, en de ap&eacute;ro staat nog gewoon op de klok.</p>
+      <p class="dtekst onthul v3">Wie minder drinkt, kiest bewuster wat er in het glas komt en wil weten waar het vandaan komt. Voor die mensen schrijven we. In juni 2027 staan ze aan je bar.</p>
     </div>
     <div class="cijfers onthul v4">
-      <div class="cij"><div class="n" data-tel="4">4</div><div class="l">dagen festival in Utrecht, MMXXVII</div></div>
+      <div class="cij"><div class="n" data-tel="4">4</div><div class="l">dagen festival, donderdag tot en met zondag</div></div>
       <div class="cij"><div class="n" data-tel="6">6</div><div class="l">werelden, van Italië tot Marokko</div></div>
-      <div class="cij"><div class="n" data-tel="2000" data-suffix="+">2000+</div><div class="l">jaar aperocultuur als verhaal</div></div>
-      <div class="cij"><div class="n" data-tel="1">1</div><div class="l">jaar aan media rond elke partner</div></div>
+      <div class="cij"><div class="n" data-tel="2000">2000</div><div class="l">jaar geschiedenis, vanaf de Romeinse mulsum</div></div>
+      <div class="cij"><div class="n" data-tel="1">1</div><div class="l">jaar aan verhalen rond elke partner</div></div>
     </div>
   </div>
 </section>
@@ -206,21 +212,21 @@ html{scroll-behavior:smooth}
 <section class="dia" id="d3">
   <div class="wrap">
     <span class="dnum onthul">02 · Wat AP&Eacute;RO is</span>
-    <h2 class="dkop onthul v1">Het onderzoek loopt al.</h2>
+    <h2 class="dkop onthul v1">Het magazine staat er al.</h2>
     <div class="mduo">
       <div>
-        <p class="dtekst onthul v2">AP&Eacute;RO publiceert al maanden: drie edities vol artikelen, zes longreads en een leesapp, met een groeiende stroom op Instagram. Het festival is de bekroning; de verhalen eromheen lopen het hele jaar door. Als partner stap je dus in iets dat al bestaat en al gelezen wordt.</p>
-        <p class="dtekst onthul v3">Alles in een eigen beeldtaal: de fresco's, het petal-patroon en de typografie op deze pagina, tot en met het bewegende beeld hiernaast. Die stijl ligt klaar voor jouw wereld.</p>
+        <p class="dtekst onthul v2">Op de site staan nu achttien verhalen, zes lange stukken over de werelden en een lexicon met twintig termen. Er is een app waarin je alles ook zonder verbinding leest, een nieuwsbrief die om de week verschijnt en een vaste reeks op Instagram. De kaartverkoop voor het festival is open.</p>
+        <p class="dtekst onthul v3">Alles heeft dezelfde beeldtaal: de fresco's, het bloempatroon en de letters op deze pagina. Wat we rond je merk maken, ziet er net zo uit.</p>
       </div>
       <div class="arch onthul v3"><div class="fresco" style="background-image:url('assets/motion/fresco-stilleven-poster.jpg')"></div><video class="fmv" autoplay muted loop playsinline preload="metadata" poster="assets/motion/fresco-stilleven-poster.jpg"><source src="assets/motion/fresco-stilleven.mp4" type="video/mp4"></video><div class="wash"></div><div class="grain"></div></div>
     </div>
     <div class="cijfers onthul v3">
-      <div class="cij"><div class="n" data-tel="3">3</div><div class="l">edities vol artikelen live</div></div>
-      <div class="cij"><div class="n" data-tel="6">6</div><div class="l">longreads over de werelden</div></div>
-      <div class="cij"><div class="n" data-tel="1">1</div><div class="l">leesapp, offline op elke telefoon</div></div>
+      <div class="cij"><div class="n" data-tel="18">18</div><div class="l">verhalen in het magazine</div></div>
+      <div class="cij"><div class="n" data-tel="6">6</div><div class="l">lange stukken over de werelden</div></div>
+      <div class="cij"><div class="n" data-tel="1">1</div><div class="l">app, ook zonder verbinding te lezen</div></div>
       <div class="cij"><div class="n" data-tel="20">20</div><div class="l">termen in het lexicon</div></div>
     </div>
-    <p class="dtekst onthul v4" style="margin-top:26px">Kijk zelf even rond: <a href="lezen.html">de verhalen</a>, <a href="werelden/italie.html">de longreads</a>, <a href="app/">de app</a>. Daar komt jouw merk tussen te staan.</p>
+    <p class="dtekst onthul v4" style="margin-top:26px">Kijk zelf rond: <a href="verhalen/">de verhalen</a>, <a href="werelden/italie.html">de werelden</a>, <a href="app/">de app</a>. Daar komt je merk tussen te staan.</p>
   </div>
 </section>
 
@@ -228,14 +234,14 @@ html{scroll-behavior:smooth}
 <section class="dia" id="d4">
   <div class="wrap">
     <span class="dnum onthul">03 · Het festival</span>
-    <h2 class="dkop onthul v1">Geen beursvloer, maar een festival.</h2>
+    <h2 class="dkop onthul v1">Vier dagen in het Noordsepark.</h2>
     <div class="mduo"><div>
-      <p class="dtekst onthul v2">In MMXXVII strijkt het onderzoek neer in Utrecht. Zes werelden worden zes bars, elk met een eigen ritueel, een eigen verhaal en een eigen signature serve. Je loopt niet langs een stand, je stapt een cultuur binnen.</p>
-      <p class="dtekst onthul v3">Daaromheen masterclasses per wereld, talks met makers en importeurs, en de wijnbiecht voor wie iets op te biechten heeft. Bezoekers komen voor een drankje en blijven voor het verhaal. Jouw verhaal, als je op tijd bent.</p>
+      <p class="dtekst onthul v2">Van donderdag tot en met zondag in juni 2027 staan er zes bars in het Noordsepark in Utrecht, één per wereld. Elke bar heeft een eigen drank, een eigen manier van schenken en iets te eten ernaast. De bar van Marokko is helemaal alcoholvrij, en bij de andere vijf staat een alcoholvrije serve op de kaart.</p>
+      <p class="dtekst onthul v3">Daarnaast zijn er masterclasses per wereld en gesprekken met de mensen die het maken, schenken en importeren. Een deel van de bezoekers heeft het verhaal al gelezen voordat ze bij je bar staan. De rest hoort het daar. De precieze data maken we deze winter bekend.</p>
     </div>
       <div class="arch onthul v3"><div class="fresco" style="background-image:url('assets/motion/fresco-terras-poster.jpg')"></div><video class="fmv" autoplay muted loop playsinline preload="metadata" poster="assets/motion/fresco-terras-poster.jpg"><source src="assets/motion/fresco-terras.mp4" type="video/mp4"></video><div class="wash"></div><div class="grain"></div></div>
     </div>
-    <p class="quote onthul v4" style="margin-top:36px">"Je merk wordt niet geproefd, het wordt <b>begrepen</b>. Dat is het verschil tussen sampling en een herinnering."</p>
+    <p class="quote onthul v4" style="margin-top:36px">"Om tien voor tien vraagt iemand of ze nog gaan eten. Niemand antwoordt meteen."<br><span style="font-size:14px;font-style:normal;color:var(--ink-50)">Uit het verhaal Athene, 18:14. Zo klinkt het magazine.</span></p>
   </div>
 </section>
 
@@ -243,16 +249,15 @@ html{scroll-behavior:smooth}
 <section class="dia" id="d5">
   <div class="wrap">
     <span class="dnum onthul">04 · De zes werelden</span>
-    <h2 class="dkop onthul v1">Zes werelden om uit te kiezen.</h2>
-    <p class="dtekst onthul v2">Elke wereld is een land met een eigen ritueel, drank en bord. Er is per wereld ruimte voor meerdere merken die er thuishoren, en wie er vroeg bij is, kiest als eerste.</p>
-    <p class="dtekst onthul v3">Want een aperitief is meer dan één glas. Bij elke wereld hoort een drank, een bier, soms een spirit of een wijn, en altijd een bord. Ruimte genoeg dus voor verschillende merken die bij die wereld passen.</p>
+    <h2 class="dkop onthul v1">Zes werelden, per wereld meerdere merken.</h2>
+    <p class="dtekst onthul v2">Elke wereld is een land of streek met een eigen drank, een eigen ritueel en een eigen bord. Bij zo'n wereld hoort meer dan één glas: een aperitief, een bier, soms een wijn of een spirit, en altijd iets te eten. Per wereld is er dus plek voor verschillende merken. Wie zich het eerst meldt, kiest het eerst.</p>
     <div class="werelddeck onthul v3">
-      <a class="wkaart" href="werelden/italie.html"><img src="assets/landen/italie.jpg" alt="Italië"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar I · Het podium</span><h3>Italië</h3><p class="serve">Negroni &amp; Spritz met Select. Het aperitivo als theater.</p></div></a>
-      <a class="wkaart" href="werelden/frankrijk.html"><img src="assets/landen/frankrijk.jpg" alt="Frankrijk"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar II · De pauze</span><h3>Frankrijk</h3><p class="serve">Pastis, één op vijf. De grens tussen dag en leven.</p></div></a>
-      <a class="wkaart" href="werelden/spanje.html"><img src="assets/landen/spanje.jpg" alt="Spanje"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar III · De revival</span><h3>Spanje</h3><p class="serve">Vermut uit het vat, met sifón. De drank van opa, nu van iedereen.</p></div></a>
-      <a class="wkaart" href="werelden/anijsgordel.html"><img src="assets/landen/anijsgordel.jpg" alt="De anijsgordel"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar IV · De vertraging</span><h3>De anijsgordel</h3><p class="serve">Ouzo &amp; arak, melkwit geslagen. Het meest gefilmde moment van de dag.</p></div></a>
-      <a class="wkaart" href="werelden/portugal.html"><img src="assets/landen/portugal.jpg" alt="Portugal"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar V · De verrassing</span><h3>Portugal</h3><p class="serve">Portonico, ijskoud met munt. Het best bewaarde geheim van Porto.</p></div></a>
-      <a class="wkaart" href="werelden/marokko.html"><img src="assets/landen/marokko.jpg" alt="Marokko"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar VI · De schenkende hand</span><h3>Marokko</h3><p class="serve">Atay, van dertig centimeter hoog. Volledig alcoholvrij, vol programma.</p></div></a>
+      <a class="wkaart" href="werelden/italie.html"><img src="assets/landen/italie.jpg" alt="Italië"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar I · Het podium</span><h3>Italië</h3><p class="serve">Negroni en spritz met Select. Het aperitivo als theater.</p></div></a>
+      <a class="wkaart" href="werelden/frankrijk.html"><img src="assets/landen/frankrijk.jpg" alt="Frankrijk"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar II · De pauze</span><h3>Frankrijk</h3><p class="serve">Pastis, één deel op vijf delen water. Het glas wordt troebel.</p></div></a>
+      <a class="wkaart" href="werelden/spanje.html"><img src="assets/landen/spanje.jpg" alt="Spanje"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar III · De revival</span><h3>Spanje</h3><p class="serve">Vermut uit het vat, met een sifón op tafel.</p></div></a>
+      <a class="wkaart" href="werelden/anijsgordel.html"><img src="assets/landen/anijsgordel.jpg" alt="De anijsgordel"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar IV · De vertraging</span><h3>De anijsgordel</h3><p class="serve">Ouzo, rakı en arak. Er gaat water bij en het wordt melkwit.</p></div></a>
+      <a class="wkaart" href="werelden/portugal.html"><img src="assets/landen/portugal.jpg" alt="Portugal"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar V · De verrassing</span><h3>Portugal</h3><p class="serve">Witte port met tonic, ijskoud, met munt.</p></div></a>
+      <a class="wkaart" href="werelden/marokko.html"><img src="assets/landen/marokko.jpg" alt="Marokko"><div class="grad"></div><span class="beschikbaar">Beschikbaar</span><div class="inhoud"><span class="bar">Bar VI · De schenkende hand</span><h3>Marokko</h3><p class="serve">Atay, van dertig centimeter hoog ingeschonken. Helemaal zonder alcohol.</p></div></a>
     </div>
   </div>
 </section>
@@ -261,20 +266,20 @@ html{scroll-behavior:smooth}
 <!-- 5b · de mediawaarde -->
 <section class="dia" id="d5m">
   <div class="wrap">
-    <span class="dnum onthul">05 · De mediawaarde</span>
-    <h2 class="dkop onthul v1">Een heel jaar aan media rond jouw merk.</h2>
-    <p class="dtekst onthul v2">Dit is wat er als partner rond jouw merk gemaakt kan worden, door onze redactie, in onze stijl:</p>
+    <span class="dnum onthul">05 · In het magazine</span>
+    <h2 class="dkop onthul v1">Een jaar lang in het magazine.</h2>
+    <p class="dtekst onthul v2">Dit maken we als partner rond je merk. Onze redactie schrijft het, in de stijl van het magazine.</p>
     <div class="formats media3 onthul v3">
-      <div class="format"><span class="flabel">Longread</span><h3>Jouw wereld, uitgeschreven</h3><p>Een longread van meer dan tweeduizend woorden over jouw wereld en product. Blijvend op de site en in de app, niet één dag in een goodiebag.</p></div>
-      <div class="format"><span class="flabel">Verhalen</span><h3>De seizoenseditie</h3><p>Artikelen rond jouw wereld in de verhalen, gelezen in de app die mensen op hun telefoon installeren en offline meenemen.</p></div>
-      <div class="format"><span class="flabel">Op termijn</span><h3>Podcast</h3><p>Een podcastserie is onze ambitie voor de toekomst. Heeft jouw merk daar interesse in, dan bouwen we die samen op.</p></div>
-      <div class="format"><span class="flabel">Instagram</span><h3>Een eigen serie</h3><p>Carrousels en reels rond jouw wereld in onze vaste cadans, gemaakt met onze eigen beeldtaal en generator.</p></div>
-      <div class="format"><span class="flabel">Lexicon</span><h3>In het naslagwerk</h3><p>Jouw drank en termen opgenomen in het lexicon, op de site en in de app. Daar zoeken lezers hun termen op, jaar in jaar uit.</p></div>
-      <div class="format"><span class="flabel">Campagne</span><h3>Festival &amp; pers</h3><p>Partnerpagina, persbericht en een plek in de campagne richting kaartverkoop, tot en met de festivaldagen zelf.</p></div>
+      <div class="format"><span class="flabel">Lang stuk</span><h3>Je wereld, uitgeschreven</h3><p>Een stuk van ruim tweeduizend woorden over je wereld en je product. Het blijft op de site en in de app staan.</p></div>
+      <div class="format"><span class="flabel">Verhalen</span><h3>Kortere stukken</h3><p>Verhalen rond je wereld in het magazine en in de app, die lezers op hun telefoon zetten.</p></div>
+      <div class="format"><span class="flabel">Instagram</span><h3>Een eigen reeks</h3><p>Carrousels en reels rond je wereld, in het vaste ritme van ons account.</p></div>
+      <div class="format"><span class="flabel">Lexicon</span><h3>In het naslagwerk</h3><p>Je drank en de woorden die erbij horen komen in het lexicon, op de site en in de app.</p></div>
+      <div class="format"><span class="flabel">Campagne</span><h3>Festival en pers</h3><p>Een partnerpagina, een persbericht en een plek in de campagne voor de kaartverkoop, tot en met de festivaldagen.</p></div>
+      <div class="format"><span class="flabel">Op termijn</span><h3>Podcast</h3><p>Een podcast is er nog niet. Wil je die met ons opzetten, dan horen we het graag.</p></div>
     </div>
     <div class="duo" style="margin-top:26px">
-      <p class="dtekst onthul v4"><b>Doorlopend, het hele jaar.</b> Je merk zit niet één campagne lang in beeld, maar loopt het hele jaar mee in de verhalen, de socials en de app. Van nu tot en met het festival.</p>
-      <p class="dtekst onthul v4"><b>Alles mag je hergebruiken.</b> Elke longread, foto en carrousel over jouw merk zet je zelf opnieuw in: op je site, je socials, in je salesgesprekken. Dat staat gewoon in de deal, zonder extra kosten.</p>
+      <p class="dtekst onthul v4"><b>Het loopt het hele jaar door.</b> Je merk komt terug in de verhalen, op Instagram en in de app, van nu tot en met het festival.</p>
+      <p class="dtekst onthul v4"><b>Je mag alles hergebruiken.</b> Elk stuk, elke foto en elke carrousel over je merk zet je in op je eigen site, je socials en in verkoopgesprekken. Dat kost niets extra.</p>
     </div>
   </div>
 </section>
@@ -283,27 +288,26 @@ html{scroll-behavior:smooth}
 <section class="dia" id="d6">
   <div class="wrap">
     <span class="dnum onthul">06 · De verdeling</span>
-    <h2 class="dkop onthul v1">Wij bouwen alles. Jij levert drie dingen.</h2>
+    <h2 class="dkop onthul v1">Wij bouwen de bar. Jij levert drie dingen.</h2>
     <div class="duo" style="margin-top:34px">
       <div class="blok donker onthul v2">
         <h3>Wat AP&Eacute;RO levert</h3>
         <ul>
-          <li>Het mediapakket hierboven: longread, artikelen, Instagram-serie en lexicon, het hele jaar door</li>
-          <li>Doorlopende aandacht, niet één campagne maar het hele jaar</li>
-          <li>Jouw bar op het festival: ontwerp, bouw, bemanning en vergunning</li>
-          <li>Partnerpagina, persbericht en de campagne richting kaartverkoop</li>
-          <li>Een eigen partnerportaal met planning en checklist, altijd actueel</li>
-          <li>Hergebruiksrecht op alle content die we over jouw merk maken</li>
+          <li>Het lange stuk, de verhalen, de Instagram-reeks en de plek in het lexicon, het hele jaar door</li>
+          <li>Je bar op het festival: ontwerp, bouw, bemanning en vergunning</li>
+          <li>Een partnerpagina, een persbericht en de campagne voor de kaartverkoop</li>
+          <li>Een eigen partnerportaal met de planning en een checklist</li>
+          <li>Het recht om alles wat we over je merk maken zelf te gebruiken</li>
         </ul>
       </div>
       <div class="blok onthul v3">
         <h3>Wat jij levert</h3>
         <ul>
-          <li>Het product dat bij jouw wereld hoort: de drank, het bier, de spirit of het hapje</li>
-          <li>Het verhaal: iemand die het kan vertellen, voor de masterclass en de artikelen</li>
-          <li>Merkmateriaal en productinformatie voor artikelen en lexicon</li>
+          <li>Het product dat bij je wereld hoort: de drank, het bier, de spirit of het eten</li>
+          <li>Iemand die het verhaal kan vertellen, voor de masterclass en de stukken</li>
+          <li>Merkmateriaal en productinformatie voor de stukken en het lexicon</li>
         </ul>
-        <p style="font-size:13px;color:var(--ink-50);margin-top:14px">Meer niet. De productie, de redactie en het publiek zijn ons werk.</p>
+        <p style="font-size:13px;color:var(--ink-50);margin-top:14px">Dat is het. Productie, redactie en kaartverkoop doen wij.</p>
       </div>
     </div>
   </div>
@@ -312,17 +316,17 @@ html{scroll-behavior:smooth}
 <!-- 7 · de formats -->
 <section class="dia" id="d7">
   <div class="wrap">
-    <span class="dnum onthul">07 · De formats</span>
-    <h2 class="dkop onthul v1">Wat voor merken passen hierbij?</h2>
+    <span class="dnum onthul">07 · Wie er past</span>
+    <h2 class="dkop onthul v1">Welke merken passen hierbij</h2>
     <div class="formats onthul v2">
-      <div class="format top"><span class="flabel">De aperitief</span><h3>Drankmerken &amp; importeurs</h3><p>Het hart van elke wereld: vermout, pastis, port, ouzo, arak en de goede alcoholvrije variant. Van producent of importeur.</p></div>
-      <div class="format"><span class="flabel">Het koude glas</span><h3>Bierbrouwers</h3><p>Elke wereld heeft een bierverhaal, van de Spaanse caña tot Casablanca. Voor brouwers en bierimporteurs met een eigen geschiedenis.</p></div>
-      <div class="format"><span class="flabel">De fles</span><h3>Wijnhuizen</h3><p>De wijn die bij het land en het uur hoort, van het huis zelf of van de importeur die het naar Nederland bracht.</p></div>
-      <div class="format"><span class="flabel">De sterke kant</span><h3>Spirits &amp; bitters</h3><p>Gin, likeuren, vermout en bitters die het aperitief maken of net dat laatste zetje geven.</p></div>
-      <div class="format"><span class="flabel">Het bord</span><h3>Foodmerken</h3><p>Wat naast het glas staat: kaas, charcuterie, olijven, conserven, zoetwaren. Het bord is de helft van het ritueel.</p></div>
-      <div class="format"><span class="flabel">De makers</span><h3>Horeca &amp; verhalenvertellers</h3><p>Cateraars, chefs en makers die een wereld tot leven brengen, op het festival en in de verhalen eromheen.</p></div>
+      <div class="format top"><span class="flabel">Het aperitief</span><h3>Drankmerken en importeurs</h3><p>Vermout, pastis, port, ouzo, arak, en een alcoholvrije variant die ernaast kan staan. Van de producent of van de importeur.</p></div>
+      <div class="format"><span class="flabel">Het koude glas</span><h3>Bierbrouwers</h3><p>Elke wereld heeft een bier, van de Spaanse caña tot Casablanca. Voor brouwers en importeurs.</p></div>
+      <div class="format"><span class="flabel">De fles</span><h3>Wijnhuizen</h3><p>De wijn die bij het land en het uur hoort, van het huis zelf of van de importeur die hem naar Nederland haalt.</p></div>
+      <div class="format"><span class="flabel">De sterke kant</span><h3>Spirits en bitters</h3><p>Gin, likeuren, vermout en bitters die in het aperitief gaan.</p></div>
+      <div class="format"><span class="flabel">Het bord</span><h3>Foodmerken</h3><p>Wat naast het glas staat: kaas, charcuterie, olijven, conserven, zoetwaren.</p></div>
+      <div class="format"><span class="flabel">De makers</span><h3>Horeca en makers</h3><p>Cateraars en chefs die voor een wereld koken, op het festival en in de verhalen.</p></div>
     </div>
-    <p class="dtekst onthul v3" style="margin-top:26px">Past jouw merk hier niet precies tussen maar wel bij het verhaal? Ook goed, we denken graag mee. De dealstructuur maken we per partner op maat en ronden we in één gesprek af. Wie er vroeg bij is, vóór datum en kaartverkoop, kiest de wereld die het best past en krijgt de scherpste voorwaarden.</p>
+    <p class="dtekst onthul v3" style="margin-top:26px">Past je merk hier niet precies tussen, maar wel bij een van de werelden? Mail ons dan ook. De afspraken maken we per partner. Wie zich meldt voordat de data bekend zijn, kiest als eerste een wereld en krijgt de scherpste voorwaarden.</p>
   </div>
 </section>
 
@@ -332,9 +336,9 @@ html{scroll-behavior:smooth}
     <span class="dnum onthul">08 · Zo werkt het</span>
     <h2 class="dkop onthul v1">Van eerste gesprek tot festival</h2>
     <div class="stappen">
-      <div class="stap onthul v1"><span class="snum">Stap één</span><h3>Het gesprek</h3><p>Een uur, liefst met een glas erbij. We kijken welke wereld bij je merk past en wat je wil vertellen.</p></div>
-      <div class="stap onthul v2"><span class="snum">Stap twee</span><h3>Je plek is vastgelegd</h3><p>Format en dealstructuur op papier, je plek in de wereld vastgelegd. Je krijgt een eigen portaal-login waarin je alles volgt: planning, checklist, materiaal.</p></div>
-      <div class="stap onthul v3"><span class="snum">Stap drie</span><h3>Het verhaal gaat lopen</h3><p>Jouw merk komt het onderzoek in: verhalen, app en socials. En in MMXXVII staat jouw wereld op het festival in Utrecht.</p></div>
+      <div class="stap onthul v1"><span class="snum">Stap één</span><h3>Het gesprek</h3><p>Een uur, liefst met een glas erbij. We kijken welke wereld bij je merk past en wat je wilt vertellen.</p></div>
+      <div class="stap onthul v2"><span class="snum">Stap twee</span><h3>Je plek ligt vast</h3><p>We zetten de afspraken op papier en leggen je plek in de wereld vast. Je krijgt een eigen login voor het partnerportaal, met de planning, de checklist en het materiaal.</p></div>
+      <div class="stap onthul v3"><span class="snum">Stap drie</span><h3>De verhalen verschijnen</h3><p>Je merk komt in het magazine, in de app en op Instagram. In juni 2027 staat je wereld in het Noordsepark.</p></div>
     </div>
   </div>
 </section>
@@ -345,12 +349,12 @@ html{scroll-behavior:smooth}
   <div class="wrap">
     <span class="dnum onthul">09 · Aan tafel</span>
     <h2 class="dkop onthul v1">Open de avond met ons.</h2>
-    <p class="dlede onthul v2">Zes werelden, en volop ruimte om aan te sluiten. Mail ons en we plannen een gesprek; we vertellen je graag welke wereld bij je merk past.</p>
+    <p class="dlede onthul v2">Mail ons, dan plannen we een gesprek van een uur. Daarna weet je welke wereld bij je merk past en wat we van elkaar vragen.</p>
     <div class="onthul v3" style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
-      <a class="btn" style="background:var(--terracotta)" href="mailto:hallo@apero-culture.nl?subject=Partner worden van APERO&body=Hoi! Wij zijn geïnteresseerd in een wereld op APERO. Ons merk: ">hallo@apero-culture.nl</a>
-      <a class="btn ghost" style="color:var(--panna);box-shadow:inset 0 0 0 1px rgba(244,234,214,.4)" href="verhaal.html">Eerst het verhaal lezen</a>
+      <a class="btn" style="background:var(--terracotta)" href="mailto:hallo@apero-culture.nl?subject=Partner%20worden%20van%20AP%C3%89RO&body=Hoi%2C%20wij%20hebben%20interesse%20in%20een%20wereld%20op%20AP%C3%89RO.%20Ons%20merk%3A%20">hallo@apero-culture.nl</a>
+      <a class="btn ghost" style="color:var(--panna);box-shadow:inset 0 0 0 1px rgba(244,234,214,.4)" href="verhalen/">Eerst de verhalen lezen</a>
     </div>
-    <p class="onthul v4" style="margin-top:44px;font-size:12px;color:rgba(244,234,214,.5)">AP&Eacute;RO Culture · een onderzoek naar de aperocultuur · Utrecht · MMXXVII · een initiatief van The Grape Agency</p>
+    <p class="onthul v4" style="margin-top:44px;font-size:12px;color:rgba(244,234,214,.5)">AP&Eacute;RO Culture · juni 2027 · Noordsepark, Utrecht · een initiatief van The Grape Agency</p>
   </div>
 </section>
 
