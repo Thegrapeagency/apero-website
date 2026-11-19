@@ -3,7 +3,7 @@ export function pagina({ html, aanmeldForm, OP_SLUG }) {
   const a = OP_SLUG['athene-1814'];
   const body = `<header class="pkop"><div class="w"><div class="twee" style="align-items:end">
 <div><span class="lbl">De nieuwsbrief</span><h1 class="kop-xl">De Inschenker</h1>
-<p class="stand" style="max-width:34ch;margin-top:14px">Eens in de twee weken, op donderdag, net voordat het uur begint.</p></div>
+<p class="stand" style="max-width:34ch;margin-top:14px">Eens in de twee weken, op donderdag, net voor het aperitief.</p></div>
 <div>${aanmeldForm('inschenker-pagina', true)}</div>
 </div></div></header>
 

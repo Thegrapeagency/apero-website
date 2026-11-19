@@ -20,7 +20,7 @@
       serve: "Een rustig begin: water op tafel, amandelen, brood, niemand hoeft iets te bewijzen",
       snack: "Amandelen, radijs, saucisson, brood, dingen die de pauze dragen",
       scene: "Frankrijk als grens: de dag stopt omdat de tafel dat zegt",
-      gesture: "Er wordt gewacht tot iedereen zit. Pas dan begint het uur.",
+      gesture: "Er wordt gewacht tot iedereen zit. Pas dan begint het aperitief.",
       why: "Je zoekt geen spektakel maar een sociale grens. De pauze is bij jou heilig: even niemand die trekt, even samen afspreken dat de dag klaar is.",
       reading: ["Nantes, 2010: negenduizend mensen", "Het louche-effect", "L'heure de l'apéro"]
     },

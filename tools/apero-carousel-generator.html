@@ -231,10 +231,10 @@
   /* default content per type (stem uit de Merkbijbel) */
   function blank(type){
     switch(type){
-      case "cover":   return {type:"cover", kicker:"Een onderzoek naar de apéro", titel:"Het uur gaat open.", achtergrond:"fresco", beeldUrl:DEFAULT_IMG};
+      case "cover":   return {type:"cover", kicker:"Een onderzoek naar de apéro", titel:"De avond gaat open.", achtergrond:"fresco", beeldUrl:DEFAULT_IMG};
       case "verhaal": return {type:"verhaal", kop:"Torino, 1786", body:"Antonio Benedetto Carpano mengt witte wijn met kruiden en noemt het vermout. Het aperitief is geboren."};
       case "citaat":  return {type:"citaat", quote:"Aperire, openen. De avond begint met één glas.", bron:"@apero.festival", vlak:"terracotta", beeldUrl:DEFAULT_IMG};
-      case "beeld":   return {type:"beeld", beeldUrl:DEFAULT_IMG, onderschrift:"Het uur tussen werk en diner"};
+      case "beeld":   return {type:"beeld", beeldUrl:DEFAULT_IMG, onderschrift:"Het aperitief"};
       case "lijst":   return {type:"lijst", kop:"De zes werelden", items:["Vermout-uur","Bar der Klassiekers","De Lange Tafel","Het Apéro-college"]};
       case "slot":    return {type:"slot", payoff:"Open de avond.", handle:"apero-festival.nl"};
     }
@@ -711,7 +711,7 @@
 
   function startSlides(){
     if(DASH){
-      var titel = DASH.titel || "Het uur gaat open.";
+      var titel = DASH.titel || "De avond gaat open.";
       var tekst = DASH.tekst || "";
       var cover=blank("cover");   cover.titel=titel; cover.kicker="APÉRO Culture";
       var citaat=blank("citaat"); if(tekst) citaat.quote=tekst;

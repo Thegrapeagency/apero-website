@@ -69,7 +69,7 @@ Dat gebaar, buigen voor je glas, is misschien het mooiste Nederlandse drinkritue
 
 Waar het woord *borrel* vandaan komt, is niet zeker. Er gaan twee verklaringen rond. De ene leidt het terug op *borre*, een oud woord voor bron, met een verkleinende uitgang: een klein beetje van iets dat opwelt. De andere houdt het bij *borrelen*, het geluid van vloeistof die bubbelt. Beide passen. Geen van beide is bewezen.
 
-Wel zeker is dat *een borrel* lang niet een bijeenkomst betekende maar een glas: een klein glas jenever. Het *bitteruur* was het uur waarop je een bittertje dronk, jenever met kruiden. Wat erbij kwam, werd later het *bittergarnituur*: kaasblokjes, worst, en uiteindelijk de bitterbal.
+Wel zeker is dat *een borrel* lang niet een bijeenkomst betekende maar een glas: een klein glas jenever. Het *bitteruur* was het moment waarop je een bittertje dronk, jenever met kruiden. Wat erbij kwam, werd later het *bittergarnituur*: kaasblokjes, worst, en uiteindelijk de bitterbal.
 
 Pas in de twintigste eeuw schoof de betekenis op, van het glas naar het moment en van het moment naar de afspraak. De borrel werd iets wat in de agenda staat, en in veel bedrijven iets op vrijdagmiddag, van vijf tot zeven.
 

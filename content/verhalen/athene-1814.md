@@ -43,7 +43,7 @@ Het is 18:14 op een dinsdag in oktober, in Pangrati, een woonwijk naast het marm
 Op tafel: drie kleine glazen ouzo, een karaf water die beslaat, een schaaltje ijs dat sneller smelt dan iemand drinkt. Een brommer rijdt voorbij, dan nog een. Binnen tikt iemand met stenen op een tavlibord.
 ]]
 
-Niemand aan deze tafel heeft honger, en dat is het eerste wat je over dit uur moet weten. In Griekenland is de lunch de grote maaltijd, ergens tussen twee en vier. Het avondeten begint laat: negen uur is vroeg, tien uur is normaal. Tussen die twee ligt een uur of vier waarin de dag al voorbij is en de avond nog niet begonnen.
+Niemand aan deze tafel heeft honger, en dat is het eerste wat je over dit moment moet weten. In Griekenland is de lunch de grote maaltijd, ergens tussen twee en vier. Het avondeten begint laat: negen uur is vroeg, tien uur is normaal. Tussen die twee ligt een uur of vier waarin de dag al voorbij is en de avond nog niet begonnen.
 
 Wat er in die uren op tafel komt, is geen maaltijd. Het is ook geen borrel in de Nederlandse zin, want er staat geen eindtijd op. Het is een reden om te blijven zitten.
 
@@ -77,7 +77,7 @@ In de crisisjaren na 2010 veranderde Athene nog een keer. In wijken als Pangrati
 Om 19:40 staat er een vierde glas. Een neef van de man die om de hoek woont, zag hen zitten en schoof een stoel bij van het tafeltje ernaast. Er wordt niets uitgelegd. Er komt een bord gegrilde courgette bij.
 ]]
 
-Op een dinsdag is dit uur klein: een paar mensen, een paar glazen, iemand die na een uur weer naar huis moet. Op zondag loopt het anders. Dan schuift de lunch vaak zo ver op dat hij ongemerkt overgaat in de middag, en de middag in dit uur. Wie op zondag om vijf uur een taverna binnenloopt, ziet vaak nog tafels waar om twee uur aan begonnen is.
+Op een dinsdag is het aperitief klein: een paar mensen, een paar glazen, iemand die na een uur weer naar huis moet. Op zondag loopt het anders. Dan schuift de lunch vaak zo ver op dat hij ongemerkt overgaat in de middag, en de middag in het aperitief. Wie op zondag om vijf uur een taverna binnenloopt, ziet vaak nog tafels waar om twee uur aan begonnen is.
 
 ## Wie betaalt
 
@@ -111,9 +111,9 @@ Wat opvalt als je van Athene naar Thessaloniki reist: het tempo is anders, en he
 
 ## Op een eiland: de volta
 
-Op de eilanden heeft het uur een ander begin. Rond zonsondergang lopen mensen langs de haven of over het plein, heen en terug, in wat de Grieken de *volta* noemen: de avondwandeling. Het woord komt uit het Italiaans en betekent zoiets als "een ronde". Je loopt niet om ergens aan te komen. Je loopt om gezien te worden, en om te zien wie er is.
+Op de eilanden heeft het aperitief een ander begin. Rond zonsondergang lopen mensen langs de haven of over het plein, heen en terug, in wat de Grieken de *volta* noemen: de avondwandeling. Het woord komt uit het Italiaans en betekent zoiets als "een ronde". Je loopt niet om ergens aan te komen. Je loopt om gezien te worden, en om te zien wie er is.
 
-Pas daarna gaat men zitten. Aan de haven, met het glas in de laatste zon, met een bord inktvis die die ochtend nog in zee zat. Het is de versie van dit uur die het vaakst op ansichtkaarten staat, en daarom ook de versie die het vaakst wordt nagespeeld voor bezoekers. Het echte verschil zie je aan wie er zit: in augustus vooral mensen van elders, in oktober vooral mensen van het eiland.
+Pas daarna gaat men zitten. Aan de haven, met het glas in de laatste zon, met een bord inktvis die die ochtend nog in zee zat. Het is de versie van het aperitief die het vaakst op ansichtkaarten staat, en daarom ook de versie die het vaakst wordt nagespeeld voor bezoekers. Het echte verschil zie je aan wie er zit: in augustus vooral mensen van elders, in oktober vooral mensen van het eiland.
 
 ## Wat blijft hangen
 
