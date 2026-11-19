@@ -1525,7 +1525,7 @@
     var gold = "#EEB24A";                 // burro
     var ev = (CFG && CFG.event) || {};
     var eventName = ev.name || "APÉRO Festival";
-    var edition = (ev.location ? ev.location + " · " : "") + (ev.dates_nl || "17 t/m 20 juni 2027");
+    var edition = (ev.location ? ev.location + " · " : "") + (ev.dates_nl || "juni 2027, van 17 t/m 20 juni");
     var tickets = data.tickets || [];
     var total = tickets.length;
     var buyer = data.buyer_name || "";
