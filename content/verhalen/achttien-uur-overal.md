@@ -7,7 +7,7 @@ beeld: assets/motion/fresco-terras-poster.jpg
 plekken: Milaan, Marseille, Barcelona, Lesbos, Bekavallei, Porto, Marrakech, Utrecht
 dranken: aperitivo, pastis, vermut, ouzo, arak, port, atay
 tijd: nu
-themas: het uur
+themas: aperitief
 verder: athene-1814,ombra,spanje-1974-en-nu,nederland-borrel
 datum: 2026-03-20
 intro: Het is zes uur.
@@ -19,7 +19,7 @@ bijschrift:
 
 ::: kort
 
-<p>Het is zes uur. In Milaan staan de olijven al klaar bij een glas dat nog besteld moet worden, in Marseille slaat de eerste pastis troebel, en in Marrakech valt een straal thee van dertig centimeter hoog. Overal hetzelfde: er schuift iemand aan, en de rest van de dag mag wachten.</p><p>Volg de klokslag van Barcelona (waar het vat op zondag wacht) via Lesbos en de Bekavallei naar Porto, en je ziet tijdzone na tijdzone hetzelfde ritueel. Alleen in Utrecht heet dat uur voorlopig nog de file.</p><p>Daar gaan we iets aan doen.</p>
+<p>Het is zes uur. In Milaan staan de olijven al klaar bij een glas dat nog besteld moet worden, in Marseille slaat de eerste pastis troebel, en in Marrakech valt een straal thee van dertig centimeter hoog. Overal hetzelfde: er schuift iemand aan, en de rest van de dag mag wachten.</p><p>Volg de klokslag van Barcelona (waar het vat op zondag wacht) via Lesbos en de Bekavallei naar Porto, en je ziet tijdzone na tijdzone hetzelfde ritueel. Alleen in Utrecht heet dat moment voorlopig nog de file.</p><p>Daar gaan we iets aan doen.</p>
 
 ::: middel
 

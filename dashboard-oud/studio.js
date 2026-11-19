@@ -714,7 +714,7 @@ registreer('merk','Merk & assets',function(p){
 
   var bp=el('div','kaart');bp.style.marginTop='16px';
   bp.innerHTML='<span class="klabel kl">Boilerplates</span><h3>Kant-en-klare teksten</h3>';
-  [['Instagram-bio','Een onderzoek naar de aperocultuur van Europa.\nZes werelden, één uur: dat tussen werk en diner.\nFestival in Utrecht, MMXXVII. Open de avond.'],
+  [['Instagram-bio','Een onderzoek naar de aperocultuur van Europa.\nZes werelden, één aperitief.\nFestival in Utrecht, MMXXVII. Open de avond.'],
    ['Korte omschrijving','APÉRO Culture onderzoekt hoe Europa de avond opent: het aperitivo van Milaan, de pastis van Marseille, de vermut van Barcelona, de anijs van de Levant, de port van Porto en de muntthee van Marrakech. In MMXXVII wordt de conclusie een festival in Utrecht.'],
    ['Persregel','APÉRO is een onderzoek naar de aperocultuur van Europa dat in MMXXVII uitmondt in een festival in Utrecht: zes werelden, zes bars, één lange tafel. Een initiatief van The Grape Agency.']].forEach(function(x){
     var r=el('div','kaart zacht');r.style.marginTop='10px';

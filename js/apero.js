@@ -72,11 +72,11 @@
       if (u && a) {
         var zin = 'Het is ' + u.t + ' in Utrecht. ';
         var su = stand(u.h, u.m), sa = stand(a.h, a.m), x = u.h + u.m / 60;
-        if (su === 'aan tafel') zin += 'Het uur is begonnen.';
+        if (su === 'aan tafel') zin += 'Tijd voor een aperitief.';
         else if (sa === 'aan tafel') zin += 'In Athene is het ' + a.t + ': daar zit men al.';
         else if (su === 'bijna') zin += 'Nog even.';
-        else if (x >= 6 && x < 16) { var n = Math.round(17.5 - x); zin += 'Nog ' + (n <= 1 ? 'een uur' : n + ' uur') + ', dan begint het.'; }
-        else zin += 'Het uur is voorbij. Morgen weer, rond zes.';
+        else if (x >= 6 && x < 16) { var n = Math.round(17.5 - x); zin += 'Nog ' + (n <= 1 ? 'een uur' : n + ' uur') + ' tot het aperitief.'; }
+        else zin += 'Het aperitief is voorbij. Morgen weer, rond zes.';
         k.lastChild.textContent = zin;
       }
     }

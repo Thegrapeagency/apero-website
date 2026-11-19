@@ -127,7 +127,7 @@ const V = (url) => `${url}?v=${versie(url.replace(/^\//, ''))}`;
 /* ---------------- gedeelde stukken ---------------- */
 const NAV = [
   ['Verhalen', '/verhalen/', 'Alles wat er te lezen is'],
-  ['Steden', '/steden.html', 'Waar het uur zich afspeelt'],
+  ['Steden', '/steden.html', 'Waar het aperitief zich afspeelt'],
   ['Lexicon', '/lexicon.html', 'De woorden van de tafel'],
   ['Festival', '/festival.html', 'Noordsepark, 17–20 juni 2027'],
   ['Over', '/verhaal.html', 'Wat APÉRO is']
@@ -149,7 +149,7 @@ export function kop(actief) {
 }
 export function voet() {
   return `<!--voet--><footer class="voet"><div class="petals" aria-hidden="true"></div><div class="w"><div class="in">
-<div><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><p>Een magazine over het uur tussen werk en diner. Van <em>aperire</em>, openen. Van 17 tot en met 20 juni 2027 aan tafel in het Noordsepark in Utrecht.</p></div>
+<div><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><p>Een magazine over de aperitiefcultuur van Europa. Van <em>aperire</em>, openen. Van 17 tot en met 20 juni 2027 aan tafel in het Noordsepark in Utrecht.</p></div>
 <div><h4>Lezen</h4><a href="/verhalen/">Verhalen</a><a href="/steden.html">Steden</a><a href="/verhalen/?reeks=werelden">De zes werelden</a><a href="/lexicon.html">Lexicon</a></div>
 <div><h4>APÉRO</h4><a href="/verhaal.html">Over</a><a href="/festival.html">Festival 2027</a><a href="/festival.html#tickets">Tickets</a><a href="/tickets.html">Je tickets terugvinden</a><a href="/app.html">De Aperokiezer</a><a href="/partners.html">Partners</a><a href="/faq.html">Vragen</a></div>
 <div><h4>Blijf in de buurt</h4><a href="/inschenker.html">De Inschenker</a><a href="https://www.instagram.com/apero.festival">Instagram</a><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a></div>
@@ -166,7 +166,7 @@ export function aanmeldForm(bron, licht) {
 }
 export function inschenkerBlok(bron) {
   return `<section class="inschenker" aria-labelledby="ins-${bron}"><div class="petals" aria-hidden="true"></div><div class="w"><div class="in">
-<div><span class="lbl">De Inschenker · de nieuwsbrief</span><h2 class="kop-l" id="ins-${bron}">Eén verhaal, net voordat het uur begint.</h2>
+<div><span class="lbl">De Inschenker · de nieuwsbrief</span><h2 class="kop-l" id="ins-${bron}">Eén verhaal, net voor het aperitief.</h2>
 <p>Eens in de twee weken op donderdagmiddag. Het nieuwste verhaal, één ding om zelf te proberen, en wat we onderweg tegenkwamen. Wie meeleest, hoort ook als eerste nieuws over juni 2027.</p></div>
 ${aanmeldForm(bron)}
 </div></div></section>`;
@@ -325,7 +325,7 @@ function verhalenIndex() {
 <div id="bewaard" hidden style="margin-top:48px"><span class="lbl">Bewaard voor later</span><ul class="vragen" style="margin-top:8px"></ul></div>
 </div></section>
 ${inschenkerBlok('verhalen')}`;
-  return html({ titel: 'Verhalen · APÉRO Culture', omschrijving: 'Verhalen over het uur tussen werk en diner: steden, dranken, gebruiken en de mensen aan tafel. Kies kort, middel of lang.', pad: '/verhalen/', actief: '/verhalen/', body });
+  return html({ titel: 'Verhalen · APÉRO Culture', omschrijving: 'Verhalen over het aperitief: steden, dranken, gebruiken en de mensen aan tafel. Kies kort, middel of lang.', pad: '/verhalen/', actief: '/verhalen/', body });
 }
 
 /* ---------------- voorpagina ---------------- */
@@ -356,7 +356,7 @@ function voorpagina() {
   const body = `<section class="welkom">
 <div class="achter" aria-hidden="true"><img src="/assets/motion/fresco-terras-poster.jpg" alt="" loading="eager" decoding="async"><video autoplay muted loop playsinline preload="metadata" poster="/assets/motion/fresco-terras-poster.jpg"><source src="/assets/motion/fresco-terras.mp4" type="video/mp4"></video></div>
 <div class="w"><div class="tekst-kol">
-<p class="klok" id="klok"><span class="punt" aria-hidden="true"></span><span>Het uur tussen werk en diner.</span></p>
+<p class="klok" id="klok"><span class="punt" aria-hidden="true"></span><span>Tijd voor een aperitief.</span></p>
 <h1 class="merkkop"><span class="lockup">APÉR<span class="flower" aria-hidden="true"></span><span class="sr">O</span></span><span class="cul">Culture</span></h1>
 <p class="kop-l slogan">Het aperitief, <em>van Rome tot jouw terras.</em></p>
 <p class="stand">APÉRO Culture is een magazine over de aperitiefcultuur van Europa en de Middellandse Zee. Over wat er in het glas zat, wat er op tafel stond en wie er aanschoof, door de eeuwen heen.</p>
@@ -371,7 +371,7 @@ function voorpagina() {
 <section class="watis"><div class="w"><div class="drie">
 <a class="punt-w rv" href="/verhalen/"><span class="n">01</span><h2>Verhalen</h2><p>Over het glas, het bord en de mensen eromheen. Elk verhaal lees je in één, vier of zeven minuten.</p><span class="tekstlink">Naar de verhalen</span></a>
 <a class="punt-w rv" href="#eeuwen"><span class="n">02</span><h2>Door de tijd</h2><p>Van de honingwijn van de Romeinen tot de vermut van 1974. Wat dronken zij, en wat drink jij?</p><span class="tekstlink">Van Rome tot nu</span></a>
-<a class="punt-w rv" href="/festival.html"><span class="n">03</span><h2>17–20 juni 2027</h2><p>Dan komt APÉRO naar het Noordsepark in Utrecht. Vier dagen lang wordt het uur tussen werk en diner een plek.</p><span class="tekstlink">Over het festival</span></a>
+<a class="punt-w rv" href="/festival.html"><span class="n">03</span><h2>17–20 juni 2027</h2><p>Dan komt APÉRO naar het Noordsepark in Utrecht. Vier dagen lang draait alles om het aperitief.</p><span class="tekstlink">Over het festival</span></a>
 </div>
 <div class="bkop" id="eeuwen" style="margin-top:56px"><div><span class="lbl">Door de eeuwen heen</span><h2 class="kop-l">Wat dronken zij?</h2></div><a class="tekstlink" href="/verhaal.html#tijdlijn">De hele tijdlijn</a></div>
 <ol class="eeuwen" aria-label="Door de eeuwen heen">${eeuwen.map(([j, d, p, s, img]) => stap(j, d, p, `${OP_SLUG[s].url}?v=k`, img)).join('')}${stap('Nu', 'Jij', 'Op het terras', '/verhalen/?tijd=nu', beeld('tijd-jij', 'fresco/fresco-01.jpg'), true)}</ol>
@@ -445,8 +445,8 @@ ${inschenkerBlok('voorpagina')}
 <p class="lede">Donderdag tot en met zondag wordt elke wereld uit dit magazine een bar: de vermut van Madrid, de pastis van Marseille, de thee van Marrakech. Er staat iets te eten naast elk glas, en alcoholvrij hoort er gewoon bij.</p>
 <p class="acties" style="margin-top:24px"><a class="knop knop-tickets" href="/festival.html#tickets">Early bird · € 9,50</a><a class="tekstlink" href="/festival.html">Alles over het festival</a></p></div>
 </div></div></section>`;
-  const ld = `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'APÉRO Culture', url: SITE, inLanguage: 'nl', description: 'Een magazine over het uur tussen werk en diner.' })}</script>`;
-  return html({ titel: 'APÉRO Culture · het uur tussen werk en diner', omschrijving: 'Een magazine over het uur tussen werk en diner: Athene om kwart over zes, een Spaanse bar in 1974, wie er betaalt. Van 17 tot en met 20 juni 2027 aan tafel in het Noordsepark in Utrecht.', pad: '/', beeld: hoofd.beeld, actief: '/', body, ld });
+  const ld = `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'APÉRO Culture', url: SITE, inLanguage: 'nl', description: 'Een magazine over de aperitiefcultuur van Europa.' })}</script>`;
+  return html({ titel: 'APÉRO Culture · de cultuur van het aperitief', omschrijving: 'Een magazine over het aperitief in Europa: Athene om kwart over zes, een Spaanse bar in 1974, wie er betaalt. Van 17 tot en met 20 juni 2027 aan tafel in het Noordsepark in Utrecht.', pad: '/', beeld: hoofd.beeld, actief: '/', body, ld });
 }
 
 const WERELDEN = [
@@ -474,9 +474,9 @@ function steden() {
   }).join('');
   const lengtes = [-5, 0, 5, 10, 15, 20, 25, 30, 35].map((l) => `<line x1="${X(l)}" y1="0" x2="${X(l)}" y2="560" stroke="var(--line)" stroke-dasharray="2 6"/>`).join('');
   const svg = `<svg viewBox="0 0 1000 560" role="img" aria-labelledby="kaart-titel kaart-uitleg"><title id="kaart-titel">Steden in APÉRO</title><desc id="kaart-uitleg">Elke stip is een stad waar een verhaal speelt. Hoe groter de stip, hoe meer verhalen.</desc>${lengtes}${punten}
-<text x="16" y="546" font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--ink-50)">West · het uur begint later</text><text x="984" y="546" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--ink-50)">Oost · daar zit men al</text></svg>`;
+<text x="16" y="546" font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--ink-50)">West · het aperitief begint later</text><text x="984" y="546" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--ink-50)">Oost · daar zit men al</text></svg>`;
   const body = `<header class="pkop"><div class="w">
-<span class="lbl">Steden</span><h1 class="kop-xl">Waar het uur zich afspeelt</h1>
+<span class="lbl">Steden</span><h1 class="kop-xl">Waar het aperitief zich afspeelt</h1>
 <p class="lede">Het zes-uurmoment trekt elke avond van oost naar west over de kaart. In Beiroet zit men al als Porto nog aan het werk is. Kies een stad.</p>
 </div></header>
 <section class="blok" style="padding-top:20px"><div class="w">

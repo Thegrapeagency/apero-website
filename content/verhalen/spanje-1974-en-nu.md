@@ -73,7 +73,7 @@ Op 2 januari 2011 ging het rookverbod in. Binnen roken mocht niet meer, op het t
 
 Veranderd: wie er staat. De bar is niet meer van de mannen alleen, en wie in 2026 een Spaanse bar binnenloopt, ziet vrouwen van alle leeftijden bestellen, betalen en de toon zetten. Veranderd ook: de lucht, het tempo, de prijs van de vermut in de nieuwe zaken.
 
-Gebleven: de toog. In Spanje drink je nog steeds vaak staand, en staand drinken maakt dat je met iedereen in gesprek kunt raken die naast je staat. Gebleven ook: het bord. Er komt nooit een glas zonder iets erbij. En gebleven: de zondag rond enen, het uur voor de lunch, dat in veel families nog altijd vaststaat.
+Gebleven: de toog. In Spanje drink je nog steeds vaak staand, en staand drinken maakt dat je met iedereen in gesprek kunt raken die naast je staat. Gebleven ook: het bord. Er komt nooit een glas zonder iets erbij. En gebleven: de zondag rond enen, het moment voor de lunch, dat in veel families nog altijd vaststaat.
 
 En de manier van betalen. Wie in Spanje met vrienden uitgaat, betaalt rondjes (vandaag betaal jij, de volgende ronde ik), of deelt de rekening door het aantal mensen, *a escote*. En wie van plan is om meerdere bars te doen, legt vooraf geld in een pot: de *bote*. Daaruit wordt de hele middag betaald. Niemand hoeft te rekenen, en niemand hoeft te onthouden wie er aan de beurt is.
 
@@ -81,7 +81,7 @@ En de manier van betalen. Wie in Spanje met vrienden uitgaat, betaalt rondjes (v
 
 ## Bilbao: de cuadrilla en de txikito
 
-In Baskenland heeft dit uur een eigen vorm, en die laat de verandering nog scherper zien.
+In Baskenland heeft het aperitief een eigen vorm, en die laat de verandering nog scherper zien.
 
 Een *cuadrilla* is een vriendengroep die vaak al sinds de kindertijd bestaat, en wie er niet bij hoort, komt er moeilijk tussen. Een partner soms. Een nieuwe collega bijna nooit. De cuadrilla gaat samen op pad, van bar naar bar, en in elke bar drinkt iedereen één klein glas wijn met misschien één pintxo. Dat heet *txikiteo*, naar de *txikito*, het kleine glas waarin de wijn wordt geschonken. De mannen die dat deden, heetten *txikiteros*.
 

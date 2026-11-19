@@ -2,7 +2,7 @@
 slug: italie-het-podium
 serie: werelden
 titel: Italië, het podium
-ondertitel: Het uur waarop Italië zichzelf wordt
+ondertitel: Het moment waarop Italië zichzelf wordt
 beeld: assets/landen/italie.jpg
 plekken: Milaan, Turijn, Venetië, Florence
 dranken: vermout, Campari, Negroni, Spritz
@@ -20,7 +20,7 @@ bijschrift:
 
 ::: kort
 
-<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het uur waarop Italië zichzelf wordt. Bitter is hier geen bijwerking.</p>
+<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het moment waarop Italië zichzelf wordt. Bitter is hier geen bijwerking.</p>
 <blockquote>
 <p>Op 14 november 1867 werd in Milaan een jongen geboren in een winkelpassage. Niet ernaast, niet erboven: erin. Davide Campari, eerste burger van de Galleria. Het aperitief heeft in Italië een geboorteakte, en er staat een adres op.</p>
 </blockquote>
@@ -28,13 +28,13 @@ bijschrift:
 
 ::: middel
 
-<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het uur waarop Italië zichzelf wordt. Bitter is hier geen bijwerking.</p>
+<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het moment waarop Italië zichzelf wordt. Bitter is hier geen bijwerking.</p>
 <blockquote>
 <p>Op 14 november 1867 werd in Milaan een jongen geboren in een winkelpassage. Niet ernaast, niet erboven: erin. Davide Campari, eerste burger van de Galleria. Het aperitief heeft in Italië een geboorteakte, en er staat een adres op.</p>
 </blockquote>
-<h2><span class="chapnum">Hoofdstuk 01</span>Het uur waarop Italië zichzelf wordt</h2>
+<h2><span class="chapnum">Hoofdstuk 01</span>Het moment waarop Italië zichzelf wordt</h2>
 <p>Op 14 november 1867 werd in Milaan een jongen geboren in een winkelpassage. Niet ernaast, niet erboven: erin. De Galleria Vittorio Emanuele II was net opgeleverd, Gaspare Campari had er op de hoek met de Piazza del Duomo zijn Caffè Campari geopend, en zijn zoon Davide kwam ter wereld als eerste burger van Milaan die in de Galleria geboren werd. Je kunt het een toevalligheid noemen. Je kunt ook zeggen: het aperitief heeft in Italië een geboorteakte, en er staat een adres op.</p>
-<p>Wie wil begrijpen wat het aperitivo voor Italië betekent, moet eerst begrijpen wat het niet is. Het is geen happy hour. Er wordt niets goedkoper, er wordt niets weggegoten, er wordt niemand dronken. Het aperitivo is het tegenovergestelde van ontsnappen: het is verschijnen. Tussen zes en acht uur 's avonds verandert elke Italiaanse stad in een toneel, en iedereen heeft een rol. De barman die het schaaltje olijven neerzet voordat erom gevraagd is. De vriendinnen die elkaar drie keer per week zien en elkaar begroeten alsof het drie jaar was. De man van tachtig die zijn Americano drinkt op de stoel waar hij hem in 1975 ook dronk. Het glas is hier geen doel. Het is een toegangsbewijs tot het uur waarop je niets hoeft en alles mag.</p>
+<p>Wie wil begrijpen wat het aperitivo voor Italië betekent, moet eerst begrijpen wat het niet is. Het is geen happy hour. Er wordt niets goedkoper, er wordt niets weggegoten, er wordt niemand dronken. Het aperitivo is het tegenovergestelde van ontsnappen: het is verschijnen. Tussen zes en acht uur 's avonds verandert elke Italiaanse stad in een toneel, en iedereen heeft een rol. De barman die het schaaltje olijven neerzet voordat erom gevraagd is. De vriendinnen die elkaar drie keer per week zien en elkaar begroeten alsof het drie jaar was. De man van tachtig die zijn Americano drinkt op de stoel waar hij hem in 1975 ook dronk. Het glas is hier geen doel. Het is een toegangsbewijs tot het moment waarop je niets hoeft en alles mag.</p>
 <hr />
 <h2><span class="chapnum">Hoofdstuk 02</span>Turijn, 1786: de apotheker van de koning</h2>
 <p>De sociale geschiedenis van het aperitivo begint niet in een bar maar in een kruidenwinkel. Turijn, 1786. Antonio Benedetto Carpano, kruidenhandelaar, mengt zoete Piemontese moscatowijn met alcohol en zo'n dertig kruiden en specerijen. De ruggengraat van het recept is alsem, in het Duits Wermut, en zo heet de drank al snel ook: vermout. Het verhaal wil dat de winkel van Carpano zo populair werd dat hij dag en nacht open bleef, en dat het hof van Savoye de drank omarmde als verfijnd alternatief voor de zware rode wijn van het platteland.</p>
@@ -45,14 +45,14 @@ bijschrift:
 
 ::: lang
 
-<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het uur waarop Italië zichzelf wordt. Bitter is hier geen bijwerking.</p>
+<p>Om zes uur verandert elke Italiaanse stad in een toneel. De barman zet olijven neer voordat erom gevraagd is, de Negroni heeft een geboortejaar en de Spritz een Oostenrijks litteken. Van de fluwelen salons van Turijn tot de schaduwrijke wijnkramen van Venetië: dit is het moment waarop Italië zichzelf wordt. Bitter is hier geen bijwerking.</p>
 <blockquote>
 <p>Op 14 november 1867 werd in Milaan een jongen geboren in een winkelpassage. Niet ernaast, niet erboven: erin. Davide Campari, eerste burger van de Galleria. Het aperitief heeft in Italië een geboorteakte, en er staat een adres op.</p>
 </blockquote>
 <hr />
-<h2><span class="chapnum">Hoofdstuk 01</span>Het uur waarop Italië zichzelf wordt</h2>
+<h2><span class="chapnum">Hoofdstuk 01</span>Het moment waarop Italië zichzelf wordt</h2>
 <p>Op 14 november 1867 werd in Milaan een jongen geboren in een winkelpassage. Niet ernaast, niet erboven: erin. De Galleria Vittorio Emanuele II was net opgeleverd, Gaspare Campari had er op de hoek met de Piazza del Duomo zijn Caffè Campari geopend, en zijn zoon Davide kwam ter wereld als eerste burger van Milaan die in de Galleria geboren werd. Je kunt het een toevalligheid noemen. Je kunt ook zeggen: het aperitief heeft in Italië een geboorteakte, en er staat een adres op.</p>
-<p>Wie wil begrijpen wat het aperitivo voor Italië betekent, moet eerst begrijpen wat het niet is. Het is geen happy hour. Er wordt niets goedkoper, er wordt niets weggegoten, er wordt niemand dronken. Het aperitivo is het tegenovergestelde van ontsnappen: het is verschijnen. Tussen zes en acht uur 's avonds verandert elke Italiaanse stad in een toneel, en iedereen heeft een rol. De barman die het schaaltje olijven neerzet voordat erom gevraagd is. De vriendinnen die elkaar drie keer per week zien en elkaar begroeten alsof het drie jaar was. De man van tachtig die zijn Americano drinkt op de stoel waar hij hem in 1975 ook dronk. Het glas is hier geen doel. Het is een toegangsbewijs tot het uur waarop je niets hoeft en alles mag.</p>
+<p>Wie wil begrijpen wat het aperitivo voor Italië betekent, moet eerst begrijpen wat het niet is. Het is geen happy hour. Er wordt niets goedkoper, er wordt niets weggegoten, er wordt niemand dronken. Het aperitivo is het tegenovergestelde van ontsnappen: het is verschijnen. Tussen zes en acht uur 's avonds verandert elke Italiaanse stad in een toneel, en iedereen heeft een rol. De barman die het schaaltje olijven neerzet voordat erom gevraagd is. De vriendinnen die elkaar drie keer per week zien en elkaar begroeten alsof het drie jaar was. De man van tachtig die zijn Americano drinkt op de stoel waar hij hem in 1975 ook dronk. Het glas is hier geen doel. Het is een toegangsbewijs tot het moment waarop je niets hoeft en alles mag.</p>
 <hr />
 <h2><span class="chapnum">Hoofdstuk 02</span>Turijn, 1786: de apotheker van de koning</h2>
 <p>De sociale geschiedenis van het aperitivo begint niet in een bar maar in een kruidenwinkel. Turijn, 1786. Antonio Benedetto Carpano, kruidenhandelaar, mengt zoete Piemontese moscatowijn met alcohol en zo'n dertig kruiden en specerijen. De ruggengraat van het recept is alsem, in het Duits Wermut, en zo heet de drank al snel ook: vermout. Het verhaal wil dat de winkel van Carpano zo populair werd dat hij dag en nacht open bleef, en dat het hof van Savoye de drank omarmde als verfijnd alternatief voor de zware rode wijn van het platteland.</p>
@@ -89,7 +89,7 @@ bijschrift:
 <div class="tl-item"><div class="y">1919, Florence en Padua</div><h3>De Negroni en de Aperol</h3><p>Graaf Camillo Negroni laat de soda uit zijn Americano vervangen door gin, en in datzelfde jaar presenteren de broers Barbieri een lichte oranje bitter: Aperol. Twee dranken die een eeuw later de wereld zouden veroveren, geboren in één jaar.</p>
 <div class="tl-item"><div class="y">1996, Piozzo</div><h3>Italië herontdekt het bier</h3><p>In een dorp in Piemonte begint Teo Musso met Baladin te brouwen, en met hem ontstaat de Italiaanse ambachtelijke bierwereld. Het wijnland gaat opnieuw bier maken, en het meent het serieus.</p>
 <div class="tl-item"><div class="y">De jaren 2010</div><h3>De Spritz verovert de wereld</h3><p>Wat een Venetiaanse gewoonte was, wordt het oranje symbool van de zomer. Van Milaan tot Amsterdam bestelt iedereen ineens een Aperol Spritz, en de aperitivo wordt een wereldtaal. Je hebt het van dichtbij zien gebeuren.</p>
-<div class="tl-item"><div class="y">Vandaag</div><h3>Drie glazen, één uur</h3><p>De Spritz op elk terras, de birra bij de pizza, de Negroni in elke cocktailbar. Italië heeft geen keuze gemaakt tussen zijn glazen, het heeft ze naast elkaar op tafel gezet en er een uur omheen gebouwd.</p></div>
+<div class="tl-item"><div class="y">Vandaag</div><h3>Drie glazen, één aperitief</h3><p>De Spritz op elk terras, de birra bij de pizza, de Negroni in elke cocktailbar. Italië heeft geen keuze gemaakt tussen zijn glazen, het heeft ze naast elkaar op tafel gezet en er een uur omheen gebouwd.</p></div>
 </div>
 
 

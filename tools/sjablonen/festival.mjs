@@ -40,7 +40,7 @@ export function pagina({ html, esc, inschenkerBlok, OP_SLUG }) {
 <div class="w"><div class="fkop-in">
 <div class="fkop-tekst">
 <span class="lbl">APÉRO Festival · Noordsepark, Utrecht</span>
-<h1 class="kop-xl">Het uur,<br><em>vier dagen lang.</em></h1>
+<h1 class="kop-xl">Het aperitief,<br><em>vier dagen lang.</em></h1>
 <p class="stand">Donderdag 17 tot en met zondag 20 juni 2027. Zes werelden uit het magazine worden zes bars, en bij elk glas staat iets te eten.</p>
 <p class="acties"><a class="knop knop-tickets" href="#tickets">Early bird · €&nbsp;9,50</a><a class="knop licht" href="#bars">De zes bars</a></p>
 </div>
@@ -58,7 +58,7 @@ export function pagina({ html, esc, inschenkerBlok, OP_SLUG }) {
 <div class="proza">
 <p>Ergens tussen vijf en zeven gebeurt in Europa ongeveer hetzelfde. Iemand schenkt iets in, er komt iets te eten bij, en er schuift iemand aan die niet was uitgenodigd. Daar schrijven we al maanden over, van een stoeptafel in Athene tot een Spaanse bar in 1974.</p>
 <p>In juni zetten we die tafels neer. Niet als beurs met standjes en muntjes, maar als een terrein waar je rondloopt zoals je door een stad loopt: hier een vermut van het vat, daar thee van hoog, en overal een plek om te blijven zitten.</p>
-<p>Het begint vroeg, rond het uur waar APÉRO over gaat. En het duurt zo lang als het gesprek.</p>
+<p>Het begint vroeg, rond de tijd van het aperitief. En het duurt zo lang als het gesprek.</p>
 </div></div>
 <div class="rv"><ul class="lijst-weten">
 <li><span><b>Eten naast elk glas.</b> Olijven, iets zouts, een bord om te delen. Nooit op de droge hamer.</span></li>

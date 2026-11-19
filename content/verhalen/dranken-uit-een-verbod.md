@@ -13,7 +13,7 @@ datum: 2026-09-22
 intro: Sommige dranken zijn uitgevonden.
 kicker: Waarom we dit drinken · Geschiedenis
 status: gepubliceerd
-bron-editie: Editie 3 · Najaar · Het uur terug
+bron-editie: Editie 3 · Najaar · Het aperitief terug
 bijschrift: 
 ---
 
@@ -31,4 +31,4 @@ bijschrift:
 
 ::: bronnen
 
-- **Bron** · Oorspronkelijk verschenen in Editie 3 · Najaar · Het uur terug. Bronnen van de bijbehorende wereld staan op de wereldpagina.
+- **Bron** · Oorspronkelijk verschenen in Editie 3 · Najaar · Het aperitief terug. Bronnen van de bijbehorende wereld staan op de wereldpagina.
