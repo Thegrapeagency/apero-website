@@ -169,7 +169,7 @@ registreer('overzicht','Overzicht',async function(p){
   var c=await laadContent(),pa=await laadPartners();
   var per={};c.items.forEach(function(i){per[i.status]=(per[i.status]||0)+1});
   var partnersActief=(pa.partners||[]).filter(function(x){return ['akkoord','live'].indexOf(x.status)>-1}).length;
-  var fest=LS.get('festdatum','2027-06-21');
+  var fest=LS.get('festdatum','2027-06-17');
   var dagen=Math.max(0,Math.ceil((new Date(fest)-new Date())/86400000));
   var db=LS.get('draaiboek',{});var dbTot=0,dbAf=0;
   DRAAIBOEK.forEach(function(f,fi){f.items.forEach(function(it,ii){dbTot++;if(db[fi+'.'+ii])dbAf++})});
@@ -635,7 +635,7 @@ var DRAAIBOEK=[
 ];
 registreer('festival','Draaiboek',async function(p){
   var d=await laadPartners();
-  var fest=LS.get('festdatum','2027-06-21');
+  var fest=LS.get('festdatum','2027-06-17');
   var db=LS.get('draaiboek',{});
   var dagen=Math.max(0,Math.ceil((new Date(fest)-new Date())/86400000));
 

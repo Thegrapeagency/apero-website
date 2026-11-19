@@ -129,7 +129,7 @@ const NAV = [
   ['Verhalen', '/verhalen/', 'Alles wat er te lezen is'],
   ['Steden', '/steden.html', 'Waar het uur zich afspeelt'],
   ['Lexicon', '/lexicon.html', 'De woorden van de tafel'],
-  ['Festival', '/festival.html', 'Noordsepark, juni 2027'],
+  ['Festival', '/festival.html', 'Noordsepark, 17–20 juni 2027'],
   ['Over', '/verhaal.html', 'Wat APÉRO is']
 ];
 export function kop(actief) {
@@ -143,13 +143,13 @@ export function kop(actief) {
 <div class="menu" id="menu" aria-hidden="true" role="dialog" aria-label="Menu">
 <div class="mtop"><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><button class="menuknop" type="button" data-sluit-menu>Sluit</button></div>
 <nav aria-label="Menu">${NAV.map(([n, u, s]) => `<a href="${u}">${n}<small>${s}</small></a>`).join('')}</nav>
-<div class="mvoet"><a class="knop knop-tickets" href="/festival.html#tickets">Tickets · juni 2027</a><a class="knop licht" href="/inschenker.html">Ontvang De Inschenker</a><a class="tekstlink" href="https://www.instagram.com/apero.festival">Instagram</a></div>
+<div class="mvoet"><a class="knop knop-tickets" href="/festival.html#tickets">Tickets · 17–20 juni 2027</a><a class="knop licht" href="/inschenker.html">Ontvang De Inschenker</a><a class="tekstlink" href="https://www.instagram.com/apero.festival">Instagram</a></div>
 <div class="petals" aria-hidden="true"></div>
 </div><!--/nav-->`;
 }
 export function voet() {
   return `<!--voet--><footer class="voet"><div class="petals" aria-hidden="true"></div><div class="w"><div class="in">
-<div><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><p>Een magazine over het uur tussen werk en diner. Van <em>aperire</em>, openen. In juni 2027 aan tafel in het Noordsepark in Utrecht.</p></div>
+<div><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><p>Een magazine over het uur tussen werk en diner. Van <em>aperire</em>, openen. Van 17 tot en met 20 juni 2027 aan tafel in het Noordsepark in Utrecht.</p></div>
 <div><h4>Lezen</h4><a href="/verhalen/">Verhalen</a><a href="/steden.html">Steden</a><a href="/verhalen/?reeks=werelden">De zes werelden</a><a href="/lexicon.html">Lexicon</a></div>
 <div><h4>APÉRO</h4><a href="/verhaal.html">Over</a><a href="/festival.html">Festival 2027</a><a href="/festival.html#tickets">Tickets</a><a href="/tickets.html">Je tickets terugvinden</a><a href="/app.html">De Aperokiezer</a><a href="/partners.html">Partners</a><a href="/faq.html">Vragen</a></div>
 <div><h4>Blijf in de buurt</h4><a href="/inschenker.html">De Inschenker</a><a href="https://www.instagram.com/apero.festival">Instagram</a><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a></div>
@@ -364,14 +364,14 @@ function voorpagina() {
 </div></div>
 </section>
 
-<a class="festband" href="/festival.html#tickets" aria-label="APÉRO Festival, juni 2027 in het Noordsepark. Naar de tickets.">
-<span class="fb-in"><span class="fb-lbl">Festival</span><span class="fb-t"><b>Juni 2027</b> · donderdag t/m zondag · Noordsepark, Utrecht</span><span class="fb-cta">Early bird € 9,50</span></span>
+<a class="festband" href="/festival.html#tickets" aria-label="APÉRO Festival, 17 tot en met 20 juni 2027 in het Noordsepark. Naar de tickets.">
+<span class="fb-in"><span class="fb-lbl">Festival</span><span class="fb-t"><b>17–20 juni 2027</b> · donderdag t/m zondag · Noordsepark, Utrecht</span><span class="fb-cta">Early bird € 9,50</span></span>
 </a>
 
 <section class="watis"><div class="w"><div class="drie">
 <a class="punt-w rv" href="/verhalen/"><span class="n">01</span><h2>Verhalen</h2><p>Over het glas, het bord en de mensen eromheen. Elk verhaal lees je in één, vier of zeven minuten.</p><span class="tekstlink">Naar de verhalen</span></a>
 <a class="punt-w rv" href="#eeuwen"><span class="n">02</span><h2>Door de tijd</h2><p>Van de honingwijn van de Romeinen tot de vermut van 1974. Wat dronken zij, en wat drink jij?</p><span class="tekstlink">Van Rome tot nu</span></a>
-<a class="punt-w rv" href="/festival.html"><span class="n">03</span><h2>Juni 2027</h2><p>Dan komt APÉRO naar het Noordsepark in Utrecht. Vier dagen lang wordt het uur tussen werk en diner een plek.</p><span class="tekstlink">Over het festival</span></a>
+<a class="punt-w rv" href="/festival.html"><span class="n">03</span><h2>17–20 juni 2027</h2><p>Dan komt APÉRO naar het Noordsepark in Utrecht. Vier dagen lang wordt het uur tussen werk en diner een plek.</p><span class="tekstlink">Over het festival</span></a>
 </div>
 <div class="bkop" id="eeuwen" style="margin-top:56px"><div><span class="lbl">Door de eeuwen heen</span><h2 class="kop-l">Wat dronken zij?</h2></div><a class="tekstlink" href="/verhaal.html#tijdlijn">De hele tijdlijn</a></div>
 <ol class="eeuwen" aria-label="Door de eeuwen heen">${eeuwen.map(([j, d, p, s, img]) => stap(j, d, p, `${OP_SLUG[s].url}?v=k`, img)).join('')}${stap('Nu', 'Jij', 'Op het terras', '/verhalen/?tijd=nu', beeld('tijd-jij', 'fresco/fresco-01.jpg'), true)}</ol>
@@ -446,7 +446,7 @@ ${inschenkerBlok('voorpagina')}
 <p class="acties" style="margin-top:24px"><a class="knop knop-tickets" href="/festival.html#tickets">Early bird · € 9,50</a><a class="tekstlink" href="/festival.html">Alles over het festival</a></p></div>
 </div></div></section>`;
   const ld = `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'APÉRO Culture', url: SITE, inLanguage: 'nl', description: 'Een magazine over het uur tussen werk en diner.' })}</script>`;
-  return html({ titel: 'APÉRO Culture · het uur tussen werk en diner', omschrijving: 'Een magazine over het uur tussen werk en diner: Athene om kwart over zes, een Spaanse bar in 1974, wie er betaalt. In juni 2027 aan tafel in Utrecht.', pad: '/', beeld: hoofd.beeld, actief: '/', body, ld });
+  return html({ titel: 'APÉRO Culture · het uur tussen werk en diner', omschrijving: 'Een magazine over het uur tussen werk en diner: Athene om kwart over zes, een Spaanse bar in 1974, wie er betaalt. Van 17 tot en met 20 juni 2027 aan tafel in het Noordsepark in Utrecht.', pad: '/', beeld: hoofd.beeld, actief: '/', body, ld });
 }
 
 const WERELDEN = [

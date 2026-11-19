@@ -19,7 +19,7 @@ export function pagina({ html }) {
     ['Spanje, 1974', 'De toog', 'Vermut van de tap, dominostenen op marmer, en bijna alleen mannen aan de bar.'],
     ['Milaan, rond 2000', 'Apericena', 'Het aperitivo-buffet wordt zo groot dat studenten er hun avondeten van maken. Grootmoeders zijn er niet blij mee.'],
     ['Madrid en Barcelona, rond 2010', 'De vermut komt terug', 'Een nieuwe generatie haalt de drank van opa terug, en de zondag erbij.'],
-    ['Utrecht, juni 2027', 'APÉRO', 'Het uur tussen werk en diner wordt een plek waar je naartoe kunt.']
+    ['Utrecht, 17–20 juni 2027', 'APÉRO', 'Het uur tussen werk en diner wordt een plek waar je naartoe kunt.']
   ];  const body = `<header class="pkop"><div class="w">
 <span class="lbl">Over APÉRO</span><h1 class="kop-xl">Het uur tussen werk en diner</h1>
 <p class="stand" style="max-width:40ch">APÉRO komt van het Latijnse <em>aperire</em>: openen. De eetlust, het gesprek, de avond.</p>
@@ -39,7 +39,7 @@ export function pagina({ html }) {
 <p><b>Wie schuift er aan?</b> En wie juist niet. Wie er in 1974 aan een Spaanse bar stond, of wie in 1881 in een Nederlandse kroeg zijn loon kreeg, zegt meer over een land dan wat er in het glas zat.</p>
 <h2>Waarom</h2>
 <p>Omdat Nederland dat uur een beetje kwijt is. We hebben de borrel, maar de borrel staat in de agenda en heeft een eindtijd. Elders is het het beste deel van de dag, en het duurt zo lang als het gesprek.</p>
-<p>En omdat we het in juni 2027 willen laten zien. Dan wordt het uur tussen werk en diner een paar dagen lang een plek in Utrecht. Het magazine is geen voorprogramma van dat festival. Het festival is het magazine, maar dan met stoelen.</p>
+<p>En omdat we het willen laten zien. Van 17 tot en met 20 juni 2027 wordt het uur tussen werk en diner een plek in het Noordsepark in Utrecht. Het magazine is geen voorprogramma van dat festival. Het festival is het magazine, maar dan met stoelen.</p>
 </div></section>
 
 <section class="blok" id="werkwijze"><div class="w-lees proza">
@@ -64,5 +64,5 @@ export function pagina({ html }) {
 <p class="lede" style="margin-top:14px">APÉRO is een initiatief van The Grape Agency, het team achter onder meer Meisjes van de Wijn en Nacht van de Wijn.</p></div>
 <div class="rv" style="display:flex;justify-content:center"><span class="lockup" style="font-size:clamp(80px,16vw,170px)">APÉR<span class="flower"></span></span></div>
 </div></div></section>`;
-  return html({ titel: 'Over · APÉRO Culture', omschrijving: 'APÉRO is een magazine over het uur tussen werk en diner, en in juni 2027 een festival in Utrecht. Zo werken we.', pad: '/verhaal.html', actief: '/verhaal.html', body });
+  return html({ titel: 'Over · APÉRO Culture', omschrijving: 'APÉRO is een magazine over het uur tussen werk en diner, en van 17 tot en met 20 juni 2027 een festival in het Noordsepark in Utrecht. Zo werken we.', pad: '/verhaal.html', actief: '/verhaal.html', body });
 }

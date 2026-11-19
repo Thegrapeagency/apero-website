@@ -215,7 +215,7 @@ export async function trySendTicketEmail(order: OrderRow, cfg: Record<string, st
     const link = `${cfg.SITE_BASE_URL}/tickets.html?order=${order.id}&token=${order.order_token}`
     const nl = order.locale !== 'en'
     const viltje = order.channel === 'viltje'
-    const datum = nl ? (cfg.EVENT_DATES_NL ?? 'juni 2027') : (cfg.EVENT_DATES_EN ?? 'June 2027')
+    const datum = nl ? (cfg.EVENT_DATES_NL ?? '17 t/m 20 juni 2027') : (cfg.EVENT_DATES_EN ?? '17–20 June 2027')
     const plek = cfg.EVENT_LOCATION ?? 'Noordsepark, Utrecht'
     const subject = nl
       ? `Je tickets voor APÉRO Festival (${order.short_ref})`
@@ -223,14 +223,14 @@ export async function trySendTicketEmail(order: OrderRow, cfg: Record<string, st
     const hello = nl ? `Ha ${escapeHtml(order.buyer_name)},` : `Hi ${escapeHtml(order.buyer_name)},`
     const intro = viltje
       ? (nl
-        ? `Je raadde het woord op de viltjes van Nacht van de Wijn, en dit is je ticket. APÉRO Festival is in ${escapeHtml(datum)} in het ${escapeHtml(plek)}.`
-        : `You found the word on the coasters at Nacht van de Wijn, and this is your ticket. APÉRO Festival takes place in ${escapeHtml(datum)} at ${escapeHtml(plek)}.`)
+        ? `Je raadde het woord op de viltjes van Nacht van de Wijn, en dit is je ticket. APÉRO Festival is van ${escapeHtml(datum)} in het ${escapeHtml(plek)}.`
+        : `You found the word on the coasters at Nacht van de Wijn, and this is your ticket. APÉRO Festival takes place ${escapeHtml(datum)} at ${escapeHtml(plek)}.`)
       : (nl
-        ? `Je tickets voor het eerste APÉRO Festival zijn binnen. We zien je in ${escapeHtml(datum)} in het ${escapeHtml(plek)}.`
-        : `Your tickets for the first APÉRO Festival are confirmed. See you in ${escapeHtml(datum)} at ${escapeHtml(plek)}.`)
+        ? `Je tickets voor het eerste APÉRO Festival zijn binnen. We zien je van ${escapeHtml(datum)} in het ${escapeHtml(plek)}.`
+        : `Your tickets for the first APÉRO Festival are confirmed. See you ${escapeHtml(datum)} at ${escapeHtml(plek)}.`)
     const verder = nl
-      ? 'De precieze data en het programma sturen we je zodra ze vaststaan. Je ticket blijft gewoon geldig voor de dag die je koos. Die dag kun je tot het festival zelf nog omzetten op je ticketpagina.'
-      : 'We will send you the exact dates and the programme as soon as they are confirmed. Your ticket stays valid for the day you picked, and you can still switch days on your ticket page.'
+      ? 'Het programma sturen we je zodra het vaststaat. Je ticket geldt voor de dag die je koos. Die dag kun je tot het festival zelf nog omzetten op je ticketpagina.'
+      : 'We will send you the programme as soon as it is confirmed. Your ticket is valid for the day you picked, and you can still switch days on your ticket page.'
     const html = mailLayout({
       kicker: nl ? 'Je bent erbij' : "You're in",
       title: nl ? 'Je tickets zijn binnen.' : 'Your tickets are in.',
