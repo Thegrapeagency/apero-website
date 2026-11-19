@@ -308,7 +308,7 @@
   "id": "p-024",
   "datum": "2027-01-14",
   "type": "nieuwsbrief",
-  "titel": "#8 · Juni 2027: de data en de plek (een week eerder dan de rest)",
+  "titel": "#8 · Juni 2027: het terrein en het programma (een week eerder dan de rest)",
   "status": "gepland",
   "verhaal": "",
   "kanaal": "mail"
@@ -387,11 +387,11 @@
  },
  {
   "id": "p-035",
-  "datum": "2027-06-15",
+  "datum": "2027-06-17",
   "type": "festival",
-  "titel": "APÉRO Festival, Utrecht (datum volgt)",
+  "titel": "APÉRO Festival, Noordsepark Utrecht (17 t/m 20 juni)",
   "status": "voorstel",
-  "notitie": "Placeholderdatum",
+  "notitie": "",
   "kanaal": "festival"
  },
  {

@@ -18,7 +18,7 @@
   function el(tag, cls, html) { var n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
 
-  // De precieze data in juni 2027 staan nog niet vast: dagen zonder datum.
+  // APÉRO Festival 2027: donderdag 17 t/m zondag 20 juni.
   var DAY_LABEL = {
     thu: { nl: "donderdag", en: "Thursday" },
     fri: { nl: "vrijdag", en: "Friday" },
@@ -33,10 +33,10 @@
     sun: { nl: "Zondag", en: "Sunday" }
   };
   var DAY_DATE = {
-    thu: { nl: "juni", en: "June" },
-    fri: { nl: "juni", en: "June" },
-    sat: { nl: "juni", en: "June" },
-    sun: { nl: "juni", en: "June" }
+    thu: { nl: "17 juni", en: "17 June" },
+    fri: { nl: "18 juni", en: "18 June" },
+    sat: { nl: "19 juni", en: "19 June" },
+    sun: { nl: "20 juni", en: "20 June" }
   };
   function fmtDate(iso) {
     var d = new Date(iso); if (isNaN(d)) return "";
@@ -1525,7 +1525,7 @@
     var gold = "#EEB24A";                 // burro
     var ev = (CFG && CFG.event) || {};
     var eventName = ev.name || "APÉRO Festival";
-    var edition = (ev.location ? ev.location + " · " : "") + (ev.dates_nl || "juni 2027");
+    var edition = (ev.location ? ev.location + " · " : "") + (ev.dates_nl || "17 t/m 20 juni 2027");
     var tickets = data.tickets || [];
     var total = tickets.length;
     var buyer = data.buyer_name || "";

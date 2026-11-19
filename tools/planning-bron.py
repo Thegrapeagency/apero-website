@@ -32,7 +32,7 @@ for d,s,k,f,t,n in S: add(d,'social',t,verhaal=s,kanaal=k,format=f,notitie=n)
 edities=[('2026-10-08','#1 · Een bord dat niemand besteld heeft','athene-1814'),('2026-10-22','#2 · Zondag, kwart over één','spanje-1974-en-nu'),
          ('2026-11-05','#3 · Wie betaalt?','wie-betaalt'),('2026-11-19','#4 · Buigen voor je glas','jenever-en-het-loon'),
          ('2026-12-03','#5 · Een schaduw, graag','ombra'),('2026-12-17','#6 · Proosten (en een jaar in zes glazen)',''),
-         ('2027-01-14','#8 · Juni 2027: de data en de plek (een week eerder dan de rest)','')]
+         ('2027-01-14','#8 · Juni 2027: het terrein en het programma (een week eerder dan de rest)','')]
 for d,t,s in edities: add(d,'nieuwsbrief',t,verhaal=s,kanaal='mail')
 
 # ---- festivalmijlpalen ----
@@ -46,7 +46,7 @@ F=[('2026-10-06','Festivalpagina: minder vertellen, wel "wat we weten / nog niet
    ('2027-04-08','Onthulling 1: wie er schenkt (drie namen, drie verhalen)','voorstel','Elke naam krijgt een eigen verhaal op de site'),
    ('2027-05-06','Onthulling 2: de keukens en het programma','voorstel',''),
    ('2027-05-27','Praktisch: plattegrond, tijden, alcoholvrij','voorstel',''),
-   ('2027-06-15','APÉRO Festival, Utrecht (datum volgt)','voorstel','Placeholderdatum'),
+   ('2027-06-17','APÉRO Festival, Noordsepark Utrecht (17 t/m 20 juni)','voorstel',''),
    ('2027-06-24','Afterglow: verslag, foto\'s, "wat we leerden"','voorstel','')]
 for d,t,st,n in F: add(d,'festival',t,status=st,notitie=n,kanaal='festival')
 

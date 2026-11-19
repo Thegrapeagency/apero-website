@@ -18,7 +18,8 @@
 import { config, corsHeaders, json, resetConfigCache, safeEqual, sb, sha256hexFull } from '../shared.ts'
 
 // De echte festivaldagen staan in apero_app_config.FESTIVAL_DATES als
-// {"2027-06-10":"thu",...}; zolang die leeg is draait de scanner in testmodus.
+// {"2027-06-17":"thu","2027-06-18":"fri","2027-06-19":"sat","2027-06-20":"sun"};
+// zolang die leeg is draait de scanner in testmodus.
 function festivalDays(cfg: Record<string, string>): Record<string, string> {
   try {
     const v = JSON.parse(cfg.FESTIVAL_DATES || '{}')

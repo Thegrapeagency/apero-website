@@ -495,7 +495,7 @@ function csvCell(v: unknown): string {
 }
 function ageFromBirthdate(val: string | null | undefined): string {
   if (!val || !/^\d{4}-\d{2}-\d{2}$/.test(val)) return ''
-  const b = new Date(val + 'T00:00:00Z'), ref = new Date('2027-06-10T00:00:00Z')
+  const b = new Date(val + 'T00:00:00Z'), ref = new Date('2027-06-17T00:00:00Z')
   let age = ref.getUTCFullYear() - b.getUTCFullYear()
   const m = ref.getUTCMonth() - b.getUTCMonth()
   if (m < 0 || (m === 0 && ref.getUTCDate() < b.getUTCDate())) age--

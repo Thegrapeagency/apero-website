@@ -90,7 +90,7 @@
     var inMaak = S.items.filter(function (i) { return ['research', 'schrijven', 'redactie'].indexOf(i.status) > -1; });
     var volgende = S.planning.filter(function (p) { return p.type === 'verhaal' && p.datum >= nu; }).sort(function (a, b) { return a.datum.localeCompare(b.datum); })[0];
     var fest = S.planning.filter(function (p) { return p.type === 'festival' && p.datum >= nu && !klaar(p); }).sort(function (a, b) { return a.datum.localeCompare(b.datum); }).slice(0, 3);
-    var weken = Math.round(dagen(nu, '2027-06-01') / 7);
+    var weken = Math.round(dagen(nu, '2027-06-17') / 7);
     var tel = function (t) { return dezeWeek.filter(function (p) { return p.type === t; }).length; };
     var zin = [];
     if (tel('verhaal')) zin.push(tel('verhaal') + (tel('verhaal') === 1 ? ' publicatie' : ' publicaties'));
@@ -119,7 +119,7 @@
         (it && it.festival ? '<div class="stap"><span class="stip" data-t="festival"></span><div><b>Festival</b><span>' + esc(it.festival) + '</span></div></div>' : '') + '</div>' +
         (it ? '<div class="knoppen"><button class="knop licht" data-open="' + it.id + '">Open het verhaal</button></div>' : '') + '</section>';
     }
-    h += '<section class="kaartje"><span class="lbl">Richting juni 2027</span><div class="aftel"><b>' + weken + '</b><span>weken tot juni</span></div><ul class="lijst">' +
+    h += '<section class="kaartje"><span class="lbl">Richting juni 2027</span><div class="aftel"><b>' + weken + '</b><span>weken tot 17 juni</span></div><ul class="lijst">' +
       fest.map(planRij).join('') + '</ul></section>';
     h += '<section class="kaartje"><h2 class="kop">Contentbank <small>' + S.items.filter(function (i) { return i.status === 'idee'; }).length + ' ideeën</small></h2><p class="uitleg">Hoogste prioriteit die nog geen datum heeft:</p><ul class="lijst">' +
       S.items.filter(function (i) { return i.status === 'idee' && +i.prioriteit === 1; }).sort(function (a, b) { return (a.maand || '').localeCompare(b.maand || ''); }).slice(0, 5).map(function (i) { return '<li><span class="dt">' + esc(i.maand || '') + '</span><div class="wat"><button class="link" data-open="' + i.id + '">' + esc(i.titel) + '</button><span>' + esc(reeksNaam(i.reeks)) + '</span></div><span>' + prio(i.prioriteit) + '</span></li>'; }).join('') + '</ul></section>';
