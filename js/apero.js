@@ -103,7 +103,7 @@
         .then(function (j) {
           if (j && j.ok && j.testmodus && !/\.vercel\.app$/.test(location.hostname)) {
             // Op het echte domein, maar nog geen nieuwsbriefdienst gekoppeld: niets laten verdwijnen.
-            var mailto = 'mailto:hallo@apero-culture.nl?subject=' + encodeURIComponent('Aanmelding De Inschenker') + '&body=' + encodeURIComponent('Zet me op de lijst voor De Inschenker: ' + mail);
+            var mailto = 'mailto:hallo@apero-culture.nl?subject=' + encodeURIComponent('Aanmelding nieuwsbrief') + '&body=' + encodeURIComponent('Zet me op de lijst voor de nieuwsbrief: ' + mail);
             st.innerHTML = 'Het automatisch inschrijven staat nog niet aan. <a href="' + mailto + '">Stuur ons even een mailtje</a>, dan zetten we je er zelf op.';
           } else if (j && j.ok) {
             LS.set('ingeschreven', true);

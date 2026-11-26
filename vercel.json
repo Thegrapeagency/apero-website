@@ -9,6 +9,21 @@
       "source": "/pitch.html",
       "destination": "/pitch",
       "permanent": false
+    },
+    {
+      "source": "/inschenker.html",
+      "destination": "/nieuwsbrief.html",
+      "permanent": true
+    },
+    {
+      "source": "/inschenker",
+      "destination": "/nieuwsbrief.html",
+      "permanent": true
+    },
+    {
+      "source": "/nieuwsbrief",
+      "destination": "/nieuwsbrief.html",
+      "permanent": false
     }
   ],
   "rewrites": [

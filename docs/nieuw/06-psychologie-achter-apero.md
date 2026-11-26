@@ -49,15 +49,15 @@ De route die we willen ondersteunen: **nieuwsgierigheid → ontdekking → herke
 
 ### 9. Mere exposure en herkenning
 **Wat:** herhaalde, positieve blootstelling aan iets vergroot de voorkeur ervoor (Zajonc); herkenning voelt als vertrouwdheid.
-**Waar:** de bloei-O, de fresco's, het patroon en de terugkerende woorden (*kerasma*, *bote*, *ombra*). En vooral: een gerecht, gebaar of drank verschijnt eerst in een verhaal, dan in De Inschenker, dan op Instagram, en pas later op het festival. "Hé, daar heb ik over gelezen."
+**Waar:** de bloei-O, de fresco's, het patroon en de terugkerende woorden (*kerasma*, *bote*, *ombra*). En vooral: een gerecht, gebaar of drank verschijnt eerst in een verhaal, dan in de nieuwsbrief, dan op Instagram, en pas later op het festival. "Hé, daar heb ik over gelezen."
 
 ### 10. Identiteit en verbondenheid
 **Wat:** mensen lezen en delen wat bij hun zelfbeeld past, en zoeken groepen waar ze bij horen.
-**Waar:** de lezer van APÉRO is iemand die nieuwsgierig is naar hoe anderen leven. Dat zeggen we niet, dat laten we zien: geen snobisme, geen expertjargon, wel het gevoel dat je iets weet wat anderen niet weten ("de slotenmakerstafel"). De nieuwsbrief heet De Inschenker: je wordt ingeschonken, je hoort erbij.
+**Waar:** de lezer van APÉRO is iemand die nieuwsgierig is naar hoe anderen leven. Dat zeggen we niet, dat laten we zien: geen snobisme, geen expertjargon, wel het gevoel dat je iets weet wat anderen niet weten ("de slotenmakerstafel"). De nieuwsbrief heet de nieuwsbrief: je wordt ingeschonken, je hoort erbij.
 
 ### 11. Echte wederkerigheid
 **Wat:** wie iets krijgt, wil iets teruggeven (Cialdini). Het werkt alleen duurzaam als de gift echt is.
-**Waar:** De Inschenker geeft elke editie iets om zelf te doen ("Zet vanavond iets op tafel voordat iemand erom vraagt"). Lezers van de nieuwsbrief horen festivalnieuws een week eerder. Dat is het enige voordeel dat we beloven, en we houden het.
+**Waar:** de nieuwsbrief geeft elke editie iets om zelf te doen ("Zet vanavond iets op tafel voordat iemand erom vraagt"). Lezers van de nieuwsbrief horen festivalnieuws een week eerder. Dat is het enige voordeel dat we beloven, en we houden het.
 
 ### 12. Anticipatie
 **Wat:** vooruitzien naar iets is zelf een bron van plezier; een deel van de waarde van een ervaring zit in het wachten erop.
@@ -88,6 +88,6 @@ De route die we willen ondersteunen: **nieuwsgierigheid → ontdekking → herke
 | Nieuwsgierigheid | Voorpagina: klok, hoofdverhaal, vragen | "Hè, interessant." |
 | Ontdekking | Verhaal, kort/middel/lang, Hierna | De lezer kiest en blijft |
 | Herkenning | Terugkerende woorden, beelden, reeksen | "Dit is APÉRO." |
-| Verbondenheid | De Inschenker, polls, lezersantwoorden | "Ik hoor erbij." |
+| Verbondenheid | De nieuwsbrief, polls, lezersantwoorden | "Ik hoor erbij." |
 | Anticipatie | Festivalpagina, onthullingen | "Wanneer hoor ik meer?" |
 | Deelname | Voorverkoop, festival | "Ik ga." |

@@ -2,7 +2,7 @@
    De kassa zelf (#ticketshop) wordt gevuld door /js/shop.js met de tickettypes
    uit het dashboard; prijzen in deze tekst moeten daarmee kloppen.
    Werk deze pagina per fase bij (zie docs/nieuw/08-marketing-en-uitrol.md). */
-export function pagina({ html, esc, inschenkerBlok, OP_SLUG }) {
+export function pagina({ html, esc, nieuwsbriefBlok, OP_SLUG }) {
   const bars = [
     ['I', 'Het podium', 'Italië', 'Negroni en spritz met Select. Het aperitivo als theater, waar je naartoe gaat om gezien te worden.', 'italie', '/werelden/italie.html'],
     ['II', 'De pauze', 'Frankrijk', 'Pastis, één deel op vijf delen water. Je kijkt hoe het glas troebel wordt en de dag ophoudt.', 'frankrijk', '/werelden/frankrijk.html'],
@@ -97,7 +97,7 @@ export function pagina({ html, esc, inschenkerBlok, OP_SLUG }) {
 <div class="rv"><span class="lbl">Wat er nog komt</span><h2 class="kop-l" style="margin:10px 0 20px">In deze volgorde</h2>
 <ol class="tijdlijn">
 <li><span class="y">Nu</span><h3>De early bird</h3><p>€ 9,50 voor elke dag, zolang de voorraad strekt.</p></li>
-<li><span class="y">Deze winter</span><h3>Het terrein</h3><p>Waar je in het Noordsepark naar binnen gaat. Wie De Inschenker leest, hoort het een week eerder.</p></li>
+<li><span class="y">Deze winter</span><h3>Het terrein</h3><p>Waar je in het Noordsepark naar binnen gaat. Wie de nieuwsbrief leest, hoort het een week eerder.</p></li>
 <li><span class="y">Voorjaar 2027</span><h3>Het programma</h3><p>Wie er schenkt, wie er kookt, welke masterclasses er zijn. Stap voor stap, zodra het vaststaat.</p></li>
 <li><span class="y">17–20 juni 2027</span><h3>Aan tafel</h3><p>In het Noordsepark.</p></li>
 </ol></div>
@@ -111,7 +111,7 @@ ${sporen.length ? `<section class="blok"><div class="w">
 <div class="raster r3">${sporen.map(([s, regel]) => { const v = OP_SLUG[s]; return `<a class="kaart rv" href="${v.url}?v=m"><div class="beeld"><img src="/${v.beeld && v.beeld !== 'petals' ? v.beeld : 'assets/fresco/fresco-12.jpg'}" alt="" loading="lazy" decoding="async"></div><div class="kt"><span class="lbl stil">${esc(v.kicker || '')}</span><h3 class="kop-m">${esc(v.titel)}</h3><p>${esc(regel)}</p></div></a>`; }).join('')}</div>
 </div></section>` : ''}
 
-${inschenkerBlok('festival')}`;
+${nieuwsbriefBlok('festival')}`;
   return html({
     titel: 'APÉRO Festival · 17–20 juni 2027 · Noordsepark, Utrecht',
     omschrijving: 'Vier dagen aperitiefcultuur in het Noordsepark in Utrecht, van 17 tot en met 20 juni 2027. Zes werelden, zes bars, en iets te eten naast elk glas. Early bird tickets € 9,50.',

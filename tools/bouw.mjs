@@ -5,7 +5,7 @@
 
    Leest  content/verhalen/*.md, content/reeksen.json, content/plekken.json
    Schrijft verhalen/<slug>.html, verhalen/index.html, index.html,
-            steden.html, festival.html, verhaal.html (Over), inschenker.html,
+            steden.html, festival.html, verhaal.html (Over), nieuwsbrief.html,
             lezen.html (doorverwijzing), studio/data/verhalen.json
    En zet dezelfde navigatie + voet op de oudere pagina's
    (werelden, lexicon, atlas, faq, partners, podcast, magazine),
@@ -18,7 +18,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pagina as festivalPagina } from './sjablonen/festival.mjs';
 import { pagina as overPagina } from './sjablonen/over.mjs';
-import { pagina as inschenkerPagina } from './sjablonen/inschenker.mjs';
+import { pagina as nieuwsbriefPagina } from './sjablonen/nieuwsbrief.mjs';
 import { tickets as ticketsPagina, bedankt as bedanktPagina, voorwaarden as voorwaardenPagina } from './sjablonen/kassa.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -143,7 +143,7 @@ export function kop(actief) {
 <div class="menu" id="menu" aria-hidden="true" role="dialog" aria-label="Menu">
 <div class="mtop"><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><button class="menuknop" type="button" data-sluit-menu>Sluit</button></div>
 <nav aria-label="Menu">${NAV.map(([n, u, s]) => `<a href="${u}">${n}<small>${s}</small></a>`).join('')}</nav>
-<div class="mvoet"><a class="knop knop-tickets" href="/festival.html#tickets">Tickets · 17–20 juni 2027</a><a class="knop licht" href="/inschenker.html">Ontvang De Inschenker</a><a class="tekstlink" href="https://www.instagram.com/apero.festival">Instagram</a></div>
+<div class="mvoet"><a class="knop knop-tickets" href="/festival.html#tickets">Tickets · 17–20 juni 2027</a><a class="knop licht" href="/nieuwsbrief.html">Ontvang de nieuwsbrief</a><a class="tekstlink" href="https://www.instagram.com/apero.festival">Instagram</a></div>
 <div class="petals" aria-hidden="true"></div>
 </div><!--/nav-->`;
 }
@@ -152,7 +152,7 @@ export function voet() {
 <div><a class="merk" href="/">APÉR<span class="flower" aria-hidden="true"></span></a><p>Een magazine over de aperitiefcultuur van Europa. Van <em>aperire</em>, openen. Van 17 tot en met 20 juni 2027 aan tafel in het Noordsepark in Utrecht.</p></div>
 <div><h4>Lezen</h4><a href="/verhalen/">Verhalen</a><a href="/steden.html">Steden</a><a href="/verhalen/?reeks=werelden">De zes werelden</a><a href="/lexicon.html">Lexicon</a></div>
 <div><h4>APÉRO</h4><a href="/verhaal.html">Over</a><a href="/festival.html">Festival 2027</a><a href="/festival.html#tickets">Tickets</a><a href="/tickets.html">Je tickets terugvinden</a><a href="/app.html">De Aperokiezer</a><a href="/partners.html">Partners</a><a href="/faq.html">Vragen</a></div>
-<div><h4>Blijf in de buurt</h4><a href="/inschenker.html">De Inschenker</a><a href="https://www.instagram.com/apero.festival">Instagram</a><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a></div>
+<div><h4>Blijf in de buurt</h4><a href="/nieuwsbrief.html">Nieuwsbrief</a><a href="https://www.instagram.com/apero.festival">Instagram</a><a href="mailto:hallo@apero-culture.nl">hallo@apero-culture.nl</a></div>
 </div><div class="noot">APÉRO Culture · Utrecht · een initiatief van The Grape Agency</div></div></footer><!--/voet-->`;
 }
 export function aanmeldForm(bron, licht) {
@@ -164,9 +164,9 @@ export function aanmeldForm(bron, licht) {
 <p class="klein">Eens in de twee weken, op donderdag. Afmelden kan in elke mail. We delen je adres met niemand.</p>
 </form>`;
 }
-export function inschenkerBlok(bron) {
-  return `<section class="inschenker" aria-labelledby="ins-${bron}"><div class="petals" aria-hidden="true"></div><div class="w"><div class="in">
-<div><span class="lbl">De Inschenker · de nieuwsbrief</span><h2 class="kop-l" id="ins-${bron}">Eén verhaal, net voor het aperitief.</h2>
+export function nieuwsbriefBlok(bron) {
+  return `<section class="nieuwsbrief" aria-labelledby="ins-${bron}"><div class="petals" aria-hidden="true"></div><div class="w"><div class="in">
+<div><span class="lbl">De nieuwsbrief</span><h2 class="kop-l" id="ins-${bron}">Eén verhaal, net voor het aperitief.</h2>
 <p>Eens in de twee weken op donderdagmiddag. Het nieuwste verhaal, één ding om zelf te proberen, en wat we onderweg tegenkwamen. Wie meeleest, hoort ook als eerste nieuws over juni 2027.</p></div>
 ${aanmeldForm(bron)}
 </div></div></section>`;
@@ -292,7 +292,7 @@ ${lVersie}
 <div class="bkop"><div><span class="lbl">Blijf nog even zitten</span><h2 class="kop-l" id="hierna-kop">Hierna</h2></div><a class="tekstlink" href="/verhalen/">Alle verhalen</a></div>
 <div class="raster r3">${spoor(v)}</div>
 </div></section>
-${inschenkerBlok('artikel-' + v.slug)}`;
+${nieuwsbriefBlok('artikel-' + v.slug)}`;
   const ld = `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Article', headline: v.titel, description: v.intro, datePublished: v.datum, inLanguage: 'nl', publisher: { '@type': 'Organization', name: 'APÉRO Culture' }, image: v.beeld && v.beeld !== 'petals' ? SITE + '/' + v.beeld : undefined })}</script>`;
   return html({ titel: `${v.titel} · APÉRO Culture`, omschrijving: v.intro, pad: v.url, beeld: v.beeld, actief: '/verhalen/', body, type: 'article', ld });
 }
@@ -324,7 +324,7 @@ function verhalenIndex() {
 <p class="leeg" id="leeg" hidden>Hier staat nog niets. <button type="button" class="tekstlink" onclick="document.getElementById('wis').click()">Wis de filters</button></p>
 <div id="bewaard" hidden style="margin-top:48px"><span class="lbl">Bewaard voor later</span><ul class="vragen" style="margin-top:8px"></ul></div>
 </div></section>
-${inschenkerBlok('verhalen')}`;
+${nieuwsbriefBlok('verhalen')}`;
   return html({ titel: 'Verhalen · APÉRO Culture', omschrijving: 'Verhalen over het aperitief: steden, dranken, gebruiken en de mensen aan tafel. Kies kort, middel of lang.', pad: '/verhalen/', actief: '/verhalen/', body });
 }
 
@@ -437,7 +437,7 @@ ${kaart(tweede).replace('class="kaart rv"', 'class="kaart groot rv"').replace('<
 <div class="reeksen">${REEKSEN.filter((r) => telReeks(r.id)).map((r, i) => `<a class="reeks" href="/verhalen/?reeks=${r.id}"><span class="n">${['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'][i]}</span><div><h3>${esc(r.naam)}</h3><p>${esc(r.kort)}</p></div><span class="tel">${telReeks(r.id)}</span></a>`).join('')}</div>
 </div></section>
 
-${inschenkerBlok('voorpagina')}
+${nieuwsbriefBlok('voorpagina')}
 
 <section class="blok festteaser"><div class="w"><div class="spoor">
 <div class="datum rv">Juni<br><em>2027</em></div>
@@ -483,7 +483,7 @@ function steden() {
 <div class="kaartvlak">${svg}</div>
 <div class="stad-lijst">${perStad.map(({ p, v }) => `<div class="stad" id="stad-${slugify(p.naam)}"><h3>${p.naam}<small>${p.land} · <span data-tz="${p.tz}"><span class="t"></span></span></small></h3><ul>${v.map((x) => `<li><a href="${x.url}?v=m">${esc(x.titel)}</a></li>`).join('')}</ul></div>`).join('')}</div>
 </div></section>
-${inschenkerBlok('steden')}`;
+${nieuwsbriefBlok('steden')}`;
   return html({ titel: 'Steden · APÉRO Culture', omschrijving: 'Van Porto tot Beiroet: de steden waar de verhalen van APÉRO spelen.', pad: '/steden.html', actief: '/steden.html', body });
 }
 
@@ -537,16 +537,16 @@ VERHALEN.forEach((v) => schrijf(`verhalen/${v.slug}.html`, artikel(v)));
 schrijf('verhalen/index.html', verhalenIndex());
 schrijf('index.html', voorpagina());
 schrijf('steden.html', steden());
-const ctx = { html, kop, voet, esc, aanmeldForm, inschenkerBlok, OP_SLUG, PUBLIEK, REEKSEN };
+const ctx = { html, kop, voet, esc, aanmeldForm, nieuwsbriefBlok, OP_SLUG, PUBLIEK, REEKSEN };
 schrijf('festival.html', festivalPagina(ctx));
 schrijf('tickets.html', ticketsPagina(ctx));
 schrijf('bedankt.html', bedanktPagina(ctx));
 schrijf('voorwaarden.html', voorwaardenPagina(ctx));
 schrijf('verhaal.html', overPagina(ctx));
-schrijf('inschenker.html', inschenkerPagina(ctx));
+schrijf('nieuwsbrief.html', nieuwsbriefPagina(ctx));
 schrijf('lezen.html', lezenDoorverwijzing());
 [['werelden/italie.html', '/verhalen/'], ['werelden/frankrijk.html', '/verhalen/'], ['werelden/spanje.html', '/verhalen/'], ['werelden/anijsgordel.html', '/verhalen/'], ['werelden/portugal.html', '/verhalen/'], ['werelden/marokko.html', '/verhalen/'], ['werelden/marokko-longread.html', '/verhalen/'],
   ['lexicon.html', '/lexicon.html'], ['faq.html', ''], ['partners.html', ''], ['podcast.html', ''], ['magazine/index.html', '/verhalen/'], ['magazine/editie-1.html', '/verhalen/'], ['magazine/editie-2.html', '/verhalen/']]
   .forEach(([b, a]) => { if (fs.existsSync(P(b))) vervangChrome(b, a); });
 studioData();
-console.log(`Gebouwd: ${VERHALEN.length} verhalen (${PUBLIEK.length} publiek), index, voorpagina, steden, festival, over, inschenker, studio-data.`);
+console.log(`Gebouwd: ${VERHALEN.length} verhalen (${PUBLIEK.length} publiek), index, voorpagina, steden, festival, over, nieuwsbrief, studio-data.`);

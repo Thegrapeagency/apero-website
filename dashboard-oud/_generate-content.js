@@ -151,7 +151,7 @@ function maandmotor(mm, thema, wereld, status){
   const T=(type,wk,titel,kan)=>items.push(mkItem({type,thema,titel,status,publishDate:date(mm,wk),kanalen:kan,bron:'maandmotor (publicatie-pijplijn.md)'}));
   T('landingsfeit',1, wereld+': landenpagina-feiten verversen', CH.site);
   T('social-carrousel',1, 'Opening: '+wereld, CH.iglinkedin);
-  T('nieuwsbrief',1, 'De Inschenker: '+wereld, CH.mail);
+  T('nieuwsbrief',1, 'Nieuwsbrief: '+wereld, CH.mail);
   T('longread',2, 'Longread: '+wereld, CH.site);
   T('podcast',2, 'De Importeur Vertelt: '+wereld, CH.podcast);
   T('reel',2, 'Sfeerloop: '+wereld, CH.reel);

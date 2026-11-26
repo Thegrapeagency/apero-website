@@ -3,7 +3,7 @@
 De website, het magazine en de magazine-app van APÉRO Culture: een onderzoek naar de Europese aperitiefcultuur, bekroond met een festival (17 t/m 20 juni 2027, Noordsepark, Utrecht). Statische HTML, CSS en JavaScript zonder build-stap, gehost op Vercel. Elke merge naar `main` gaat direct live.
 
 - Merkbasis: `apero-tokens.css` (kleuren panna, burro, terracotta, mattone, salvia, espresso; Bodoni Moda voor koppen, Hanken Grotesk voor tekst; de bloei-O). Algemene stijl in `styles.css`, gedeeld script in `site.js`.
-- Veel pagina's worden gegenereerd door `node tools/bouw.mjs` uit `content/` en `tools/sjablonen/` (verhalen, voorpagina, festival, Over, De Inschenker). Pas bij die pagina's de bron aan en draai daarna het bouwscript; anders gaat je wijziging bij de volgende bouw verloren.
+- Veel pagina's worden gegenereerd door `node tools/bouw.mjs` uit `content/` en `tools/sjablonen/` (verhalen, voorpagina, festival, Over, de nieuwsbrief). Pas bij die pagina's de bron aan en draai daarna het bouwscript; anders gaat je wijziging bij de volgende bouw verloren.
 - De magazine-app staat in `app/` (PWA: `index.html`, `app.js`, `app.css`, `content.js`, `sw.js`). Verhoog bij een wijziging de cacheversie in `sw.js`.
 - Let op: de globale regels in `styles.css` voor `section`, `footer` en `header` werken op elke pagina door.
 

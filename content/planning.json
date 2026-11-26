@@ -94,7 +94,7 @@
   "verhaal": "athene-1814",
   "kanaal": "instagram",
   "format": "story-poll",
-  "notitie": "Ja, meteen / Nee, later / Ik laat het gebeuren. Resultaat delen in De Inschenker."
+  "notitie": "Ja, meteen / Nee, later / Ik laat het gebeuren. Resultaat delen in de nieuwsbrief."
  },
  {
   "id": "p-043",
@@ -195,7 +195,7 @@
   "verhaal": "wie-betaalt",
   "kanaal": "instagram",
   "format": "story-poll",
-  "notitie": "Resultaat in de volgende Inschenker."
+  "notitie": "Resultaat in de volgende nieuwsbrief."
  },
  {
   "id": "p-020",
@@ -293,7 +293,7 @@
   "verhaal": "ombra",
   "kanaal": "instagram",
   "format": "story-vraag",
-  "notitie": "Open vraag; de beste antwoorden in De Inschenker (met toestemming)."
+  "notitie": "Open vraag; de beste antwoorden in de nieuwsbrief (met toestemming)."
  },
  {
   "id": "p-023",
@@ -317,7 +317,7 @@
   "id": "p-027",
   "datum": "2027-01-14",
   "type": "festival",
-  "titel": "Onthulling data + plek, eerst in De Inschenker",
+  "titel": "Onthulling data + plek, eerst in de nieuwsbrief",
   "status": "voorstel",
   "notitie": "Belofte: een week eerder dan de rest",
   "kanaal": "festival"
@@ -344,7 +344,7 @@
   "id": "p-030",
   "datum": "2027-03-11",
   "type": "festival",
-  "titel": "Voorverkoop voor lezers van De Inschenker",
+  "titel": "Voorverkoop voor lezers van de nieuwsbrief",
   "status": "voorstel",
   "notitie": "Geen aftelklok, wel een echte, eerlijke eerste kans",
   "kanaal": "festival"
