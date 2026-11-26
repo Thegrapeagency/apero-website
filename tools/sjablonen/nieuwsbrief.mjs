@@ -1,10 +1,10 @@
-/* De Inschenker: de nieuwsbrief. Geen pop-up, geen aftelklok: een pagina die laat zien wat je krijgt. */
+/* De nieuwsbrief. Geen pop-up, geen aftelklok: een pagina die laat zien wat je krijgt. */
 export function pagina({ html, aanmeldForm, OP_SLUG }) {
   const a = OP_SLUG['athene-1814'];
   const body = `<header class="pkop"><div class="w"><div class="twee" style="align-items:end">
-<div><span class="lbl">De nieuwsbrief</span><h1 class="kop-xl">De Inschenker</h1>
+<div><span class="lbl">APÉRO Culture</span><h1 class="kop-xl">De nieuwsbrief</h1>
 <p class="stand" style="max-width:34ch;margin-top:14px">Eens in de twee weken, op donderdag, net voor het aperitief.</p></div>
-<div>${aanmeldForm('inschenker-pagina', true)}</div>
+<div>${aanmeldForm('nieuwsbrief-pagina', true)}</div>
 </div></div></header>
 
 <section class="blok"><div class="w"><div class="twee">
@@ -24,5 +24,5 @@ export function pagina({ html, aanmeldForm, OP_SLUG }) {
 <p style="margin:0">Tot over twee weken.<br>De redactie</p>
 </div></div>
 </div></div></section>`;
-  return html({ titel: 'De Inschenker · de nieuwsbrief van APÉRO Culture', omschrijving: 'Eens in de twee weken op donderdag: één verhaal, één ding om te proberen, en alles over juni 2027 een week eerder.', pad: '/inschenker.html', actief: '/inschenker.html', body });
+  return html({ titel: 'De nieuwsbrief van APÉRO Culture', omschrijving: 'Eens in de twee weken op donderdag: één verhaal, één ding om te proberen, en alles over juni 2027 een week eerder.', pad: '/nieuwsbrief.html', actief: '/nieuwsbrief.html', body });
 }

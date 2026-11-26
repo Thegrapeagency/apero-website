@@ -9,7 +9,7 @@
 1. **Elke post komt uit een verhaal.** Geen losse "wist je dat"-posts. Als er geen verhaal achter zit, posten we niet.
 2. **Fragment, geen samenvatting.** Eén scène, één cijfer, één woord, één vraag.
 3. **Posten op het moment van het verhaal.** Een post over zondag 13:15 gaat om 13:15 op zondag de deur uit.
-4. **Polls die ergens over gaan**, en waarvan de uitslag terugkomt (in De Inschenker of een volgende post).
+4. **Polls die ergens over gaan**, en waarvan de uitslag terugkomt (in de nieuwsbrief of een volgende post).
 5. **Hergebruik zonder kopiëren.** Hetzelfde verhaal krijgt op elk kanaal een andere vorm (zie tabel).
 6. **Rust.** Voor een klein team: gemiddeld twee feedposts per week, plus stories. Liever minder en goed.
 7. **Nooit:** "Cheers!", "Tag je aperitivo buddy", "Wie herkent dit?", stockbeeld van proostende glazen.
@@ -21,7 +21,7 @@ Voorbeeld: *Wie betaalt?*
 | Kanaal | Vorm | Inhoud |
 |---|---|---|
 | Site | Verhaal kort/middel | Het hele stuk |
-| De Inschenker | Editie | Waarom we het schreven + "om te proberen: stel vanavond een pot voor" |
+| De nieuwsbrief | Editie | Waarom we het schreven + "om te proberen: stel vanavond een pot voor" |
 | Instagram feed | Carrousel | 4 landen, 4 systemen, laatste slide: "En bij jou?" |
 | Instagram stories | Poll | "Rondje, pot of ieder voor zich?" |
 | Later, festival | Aan de bar | De bote als manier van betalen? (idee, zie Studio) |
@@ -45,7 +45,7 @@ Voorbeeld: *Wie betaalt?*
 ### Fase 1 · Oktober–november 2026: wereld bouwen
 **Doel:** laten zien wat APÉRO is, met de vijf nieuwe verhalen. Het festival bestaat op social nog nauwelijks.
 **Waarom nu:** er zijn acht maanden te gaan; het publiek moet eerst de wereld leren kennen, dan pas het festival. Najaar is binnen-seizoen: lezen, bruine cafés, lange avonden.
-**Ritme:** elke twee weken een verhaal (dinsdag), carrousel woensdag, poll vrijdag, De Inschenker donderdag.
+**Ritme:** elke twee weken een verhaal (dinsdag), carrousel woensdag, poll vrijdag, de nieuwsbrief donderdag.
 **Voorbeeldposts** (staan in Studio):
 - 7 okt · Carrousel *Het bord dat niemand besteld heeft*: de tafel om 18:14, kerasma, xerosfyri, Volos, refené.
 - 13 okt · Reel *Ouzo wordt wit*: 15 sec macro, omgevingsgeluid, tekst "Nooit op de droge hamer."
@@ -64,7 +64,7 @@ Voorbeeld: *Wie betaalt?*
 - Behind the story: "De campanile-schaduw konden we niet bewijzen. Dus staat er overlevering."
 
 ### Fase 3 · Januari 2027: datum en plek
-**Doel:** de eerste festivalonthulling, eerst in De Inschenker (14 jan), een week later publiek (21 jan).
+**Doel:** de eerste festivalonthulling, eerst in de nieuwsbrief (14 jan), een week later publiek (21 jan).
 **Waarom nu:** januari is planningsmaand (mensen vullen hun agenda), en Dry January geeft een natuurlijk alcoholvrij verhaal.
 **Voorbeeldposts:**
 - 21 jan · Post: "Juni 2027. Utrecht. [plek]." Eén beeld, verder niets. Link naar het essay *Waarom een festival een tafel is*.
@@ -75,12 +75,12 @@ Voorbeeld: *Wie betaalt?*
 **Doel:** de lezers aan het woord.
 **Waarom nu:** de rustigste maand; tijd om te luisteren.
 **Voorbeeldposts:**
-- Poll: "Hoe laat eet jij?" → uitslag in De Inschenker, gebruikt in *Waarom Nederlanders om zes uur eten*.
+- Poll: "Hoe laat eet jij?" → uitslag in de nieuwsbrief, gebruikt in *Waarom Nederlanders om zes uur eten*.
 - Oproep: "Heeft je (groot)moeder ooit verteld dat ze niet alleen een café in mocht?" → bronmateriaal voor *Waar mocht een vrouw alleen zitten?* (met toestemming, anoniem als gewenst).
 - Interview-carrousel *De Utrechtse kroegbaas*.
 
 ### Fase 5 · Maart 2027: voorverkoop
-**Doel:** eerste kaarten, eerst voor lezers van De Inschenker (11 mrt), dan iedereen (18 mrt).
+**Doel:** eerste kaarten, eerst voor lezers van de nieuwsbrief (11 mrt), dan iedereen (18 mrt).
 **Waarom nu:** terrasseizoen begint; het Nederlandse terras-verhaal en *Utrecht, 17:30* brengen het festival letterlijk naar de stad.
 **Voorbeeldposts:**
 - 8 maart · Carrousel *Waar mocht een vrouw alleen zitten?* (vier deuren, vier jaartallen).
@@ -105,5 +105,5 @@ Voorbeeld: *Wie betaalt?*
 
 ## Wat meten (en wat niet)
 
-- **Wel:** opslaan en delen per post (die zeggen of iets waarde had), aanmeldingen voor De Inschenker vanaf Instagram, antwoorden op polls.
+- **Wel:** opslaan en delen per post (die zeggen of iets waarde had), aanmeldingen voor de nieuwsbrief vanaf Instagram, antwoorden op polls.
 - **Minder:** likes en bereik. Nuttig als signaal, niet als doel.

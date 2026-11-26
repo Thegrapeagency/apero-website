@@ -295,7 +295,7 @@
       '<div class="rij2">' + veld('status', 'Status', it.status, 'select', STATUS.map(function (s) { return [s, STATUSNAAM[s]]; })) + veld('reeks', 'Reeks', it.reeks, 'select', S.reeksen.map(function (r) { return [r.id, r.naam]; })) + '</div>' +
       '<div class="rij3">' + veld('datum', 'Publicatiedatum', it.datum, 'date') + veld('prioriteit', 'Prioriteit', it.prioriteit, 'select', [[1, '1 · eerst'], [2, '2'], [3, '3 · later']]) + veld('schrijver', 'Wie', it.schrijver) + '</div>' +
       veld('invalshoek', 'Invalshoek', it.invalshoek, 'area') +
-      '<div class="knoppen">' + (it.url ? '<a class="knop licht" target="_blank" rel="noopener" href="' + SITE + it.url + '">Bekijk op de site</a>' : '') + '<button type="button" class="knop" data-actie="social-nieuw" data-item="' + it.id + '">+ Social</button><button type="button" class="knop licht" data-actie="nb-nieuw" data-item="' + it.id + '">+ In De Inschenker</button></div>' +
+      '<div class="knoppen">' + (it.url ? '<a class="knop licht" target="_blank" rel="noopener" href="' + SITE + it.url + '">Bekijk op de site</a>' : '') + '<button type="button" class="knop" data-actie="social-nieuw" data-item="' + it.id + '">+ Social</button><button type="button" class="knop licht" data-actie="nb-nieuw" data-item="' + it.id + '">+ In de nieuwsbrief</button></div>' +
       '<h3 style="font-family:var(--disp);margin:16px 0 4px">De keten</h3>' +
       (keten.length ? '<div class="keten">' + keten.map(function (p) { return '<div class="stap"><span class="stip" data-t="' + p.type + '"></span><div><b><button type="button" style="all:unset;cursor:pointer" data-plan="' + p.id + '">' + esc(TYPES[p.type]) + (p.format ? ' · ' + esc(p.format) : '') + '</button></b><span>' + kortDatum(p.datum) + ' · ' + esc(p.titel) + (klaar(p) ? ' · gedaan' : '') + '</span></div></div>'; }).join('') + '</div>' : '<p class="uitleg">Nog niets gepland rond dit verhaal. Voeg een social-afgeleide of een nieuwsbriefvermelding toe.</p>') +
       (it.social && it.social.length ? '<p class="uitleg" style="margin-top:8px"><b>Ideeën voor social:</b> ' + it.social.map(esc).join(' · ') + '</p>' : '') +
@@ -367,7 +367,7 @@
       var volgendeDo = basis; while (new Date(volgendeDo + 'T12:00:00').getDay() !== 4) volgendeDo = plus(volgendeDo, 1);
       openPlan(null, act === 'social-nieuw'
         ? { id: uid('p'), type: 'social', titel: it.titel, datum: plus(basis, 1), status: 'gepland', format: 'carrousel', kanaal: 'instagram', verhaal: sleutel(it), notitie: '' }
-        : { id: uid('p'), type: 'nieuwsbrief', titel: 'De Inschenker · ' + it.titel, datum: volgendeDo, status: 'gepland', format: 'editie', kanaal: 'mail', verhaal: sleutel(it), notitie: '' });
+        : { id: uid('p'), type: 'nieuwsbrief', titel: 'Nieuwsbrief · ' + it.titel, datum: volgendeDo, status: 'gepland', format: 'editie', kanaal: 'mail', verhaal: sleutel(it), notitie: '' });
     }
     if (act === 'plan-nieuw') openPlan(null, { id: uid('p'), type: 'taak', titel: '', datum: vandaag(), status: 'open', verhaal: '' });
     if (act === 'plan-weg') { if (confirm('Dit planningsitem verwijderen?')) { S.planning = S.planning.filter(function (x) { return x.id !== a.getAttribute('data-plan-id'); }); bewaar(); sluitLade(); route(); } }

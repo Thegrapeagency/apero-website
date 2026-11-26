@@ -1,5 +1,5 @@
 /* ============================================================
-   POST /api/aanmelden  ·  aanmelding voor De Inschenker
+   POST /api/aanmelden  ·  aanmelding voor de nieuwsbrief
    ------------------------------------------------------------
    Er is (nog) geen nieuwsbriefdienst gekoppeld. Kies er één en zet
    de bijbehorende variabelen in Vercel. Zonder variabelen draait het
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       const r = await fetch('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', {
         method: 'POST',
         headers: { 'api-key': BREVO_API_KEY, 'content-type': 'application/json', accept: 'application/json' },
-        body: JSON.stringify({ email, includeListIds: [Number(BREVO_LIST_ID)], templateId: Number(BREVO_DOI_TEMPLATE_ID), redirectionUrl: BREVO_REDIRECT_URL || 'https://www.apero-culture.nl/inschenker.html?bevestigd=1', attributes: { BRON: bron } })
+        body: JSON.stringify({ email, includeListIds: [Number(BREVO_LIST_ID)], templateId: Number(BREVO_DOI_TEMPLATE_ID), redirectionUrl: BREVO_REDIRECT_URL || 'https://www.apero-culture.nl/nieuwsbrief.html?bevestigd=1', attributes: { BRON: bron } })
       });
       if (!r.ok && r.status !== 204) throw new Error('brevo ' + r.status);
       return res.status(200).json({ ok: true });

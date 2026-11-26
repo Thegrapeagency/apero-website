@@ -35,7 +35,7 @@
 | **Bronnen alleen intern** (in `content/verhalen/*.md` en Studio), niet op de site | Besluit na de eerste review: bronvermelding op de site is niet nodig. Ook de oude "Bronnen (selectie)"-blokken van de wereldpagina's zijn weg; die lijsten staan in `content/wereldbronnen.md` |
 | **Samengestelde scènes** gelabeld in de tekst | Beeldend schrijven zonder feiten te verzinnen |
 | **Mobiele navigatie** (menu) | De oude site had onder 860px géén navigatie |
-| **Echte nieuwsbriefaanmelding** (`api/aanmelden.mjs`, De Inschenker) | Was een `mailto:`-link. Werkt in testmodus tot er een dienst is gekoppeld, en zegt dat eerlijk |
+| **Echte nieuwsbriefaanmelding** (`api/aanmelden.mjs`, de nieuwsbrief) | Was een `mailto:`-link. Werkt in testmodus tot er een dienst is gekoppeld, en zegt dat eerlijk |
 | **Festivalpagina vertelt minder**: wat we weten, wat nog niet, wanneer je wat hoort | Progressive disclosure; ruimte voor herkenning later. De zes bars staan nog in de partnerpitch |
 | **Over-pagina** met werkwijze | Uitleg van de labels, van kort/middel/lang en correcties |
 | **Beeld klopt bij het verhaal** | Anijsgordel toonde Portugal; twee stukken deelden één Spaanse tuin |

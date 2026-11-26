@@ -12,7 +12,7 @@
 - **De nieuwsbrief als ruggengraat.** Onafhankelijke food- en cultuurtitels bouwen hun publiek via de mail, niet via algoritmes (algemene observatie van het veld 2020–2026; zie ook [KCRW Good Food](https://kcrwgoodfood.substack.com/p/newsletters-are-everywhere)).
 - **Print en fysiek als bekroning.** Titels die online beginnen, zoeken na een paar jaar een fysieke vorm: print, diners, events. APÉRO heeft die fysieke vorm al in de planning: het festival.
 
-**Wat APÉRO ermee doet:** vaste reeksen, De Inschenker als ruggengraat, en het festival als de "printeditie".
+**Wat APÉRO ermee doet:** vaste reeksen, de nieuwsbrief als ruggengraat, en het festival als de "printeditie".
 
 ## Food- en drinkmedia
 

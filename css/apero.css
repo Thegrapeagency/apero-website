@@ -225,13 +225,13 @@ section.blok{padding:56px 0;border-bottom:1px solid var(--line)}
 .fragment .bron a{color:var(--terracotta);font-weight:600}
 
 /* nieuwsbrief */
-.inschenker{background:var(--espresso);color:var(--panna);position:relative;overflow:hidden}
-.inschenker .in{display:grid;gap:26px;padding:56px 0}
-@media(min-width:900px){.inschenker .in{grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:80px 0}}
-.inschenker .lbl{color:var(--burro)}
-.inschenker .kop-l{color:var(--panna);margin:10px 0 14px}
-.inschenker p{color:rgba(244,234,214,.78);margin:0;max-width:46ch}
-.inschenker .petals{position:absolute;right:-60px;top:-60px;width:240px;height:240px;--c:30px;--a:var(--mattone);--b:var(--burro);background-color:transparent;opacity:.3;border-radius:50%}
+.nieuwsbrief{background:var(--espresso);color:var(--panna);position:relative;overflow:hidden}
+.nieuwsbrief .in{display:grid;gap:26px;padding:56px 0}
+@media(min-width:900px){.nieuwsbrief .in{grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:80px 0}}
+.nieuwsbrief .lbl{color:var(--burro)}
+.nieuwsbrief .kop-l{color:var(--panna);margin:10px 0 14px}
+.nieuwsbrief p{color:rgba(244,234,214,.78);margin:0;max-width:46ch}
+.nieuwsbrief .petals{position:absolute;right:-60px;top:-60px;width:240px;height:240px;--c:30px;--a:var(--mattone);--b:var(--burro);background-color:transparent;opacity:.3;border-radius:50%}
 .aanmeld{display:flex;flex-direction:column;gap:10px;position:relative}
 .aanmeld .rij{display:flex;flex-direction:column;gap:10px}
 @media(min-width:520px){.aanmeld .rij{flex-direction:row}}
@@ -405,7 +405,7 @@ body.nacht .boog img{filter:brightness(.82)}
 .stad:target{background:linear-gradient(90deg,rgba(238,178,74,.18),transparent)}
 
 /* ============================================================
-   INHOUDSPAGINA'S (festival, over, inschenker)
+   INHOUDSPAGINA'S (festival, over, nieuwsbrief)
    ============================================================ */
 .proza p{font-size:18px;line-height:1.72;color:rgba(35,27,19,.84);margin:0 0 1.1em}
 .proza h2{font-family:var(--disp);font-weight:700;font-size:clamp(24px,3.4vw,32px);margin:1.8em 0 .5em}

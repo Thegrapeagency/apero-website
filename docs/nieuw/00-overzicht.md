@@ -42,7 +42,7 @@ Status `klaar` of `gepubliceerd` = zichtbaar op de site. Status `idee`, `researc
 ## Studio in één minuut
 
 - **Vandaag**: wat de komende zeven dagen gebeurt, wat achterloopt, wat in de maak is, de volgende publicatie met zijn keten, en hoe ver juni 2027 nog is.
-- **Verhalen**: van idee tot gepubliceerd. De kolom Idee is de contentbank. Klik een kaart open voor alle details en de keten (+ Social, + In De Inschenker).
+- **Verhalen**: van idee tot gepubliceerd. De kolom Idee is de contentbank. Klik een kaart open voor alle details en de keten (+ Social, + In de nieuwsbrief).
 - **Kalender**: verhalen, social, nieuwsbrief, festival en taken in één tijdlijn, met de fasen tot juni bovenaan.
 - **Bibliotheek**: deze documenten, alle bronnen (doorzoekbaar), plekken en beelden.
 - **+ Idee** (of de toets `n`): alleen een titel is genoeg.
