@@ -67,8 +67,8 @@ function md(src) {
   }
   return out.join('\n');
 }
-function leesVerhaal(bestand) {
-  const src = fs.readFileSync(bestand, 'utf8');
+function leesVerhaal(bestand, bron) {
+  const src = bron ?? fs.readFileSync(bestand, 'utf8');
   const m = src.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!m) throw new Error('Geen frontmatter in ' + bestand);
   const fm = {};
@@ -108,7 +108,24 @@ const REEKS = Object.fromEntries(REEKSEN.map((r) => [r.id, r]));
 const PLEKKEN = JSON.parse(lees('content/plekken.json'));
 function plekVan(naam) { return PLEKKEN.find((p) => p.naam === naam || (p.alias || []).includes(naam)); }
 
-const VERHALEN = fs.readdirSync(P('content/verhalen')).filter((f) => f.endsWith('.md')).map((f) => leesVerhaal(P('content/verhalen', f)))
+/* ---------------- verhalen uit APÉRO Studio ----------------
+   Artikelen die in de artikelbuilder van de Studio gepubliceerd zijn, staan in de database en niet in content/verhalen.
+   Ze komen als kant-en-klare markdown binnen (zelfde formaat als de .md-bestanden). Een bestand met dezelfde slug gaat voor.
+   Lukt ophalen niet, dan stopt de bouw: anders zou een deploy de Studio-artikelen van de site halen.
+   Lokaal zonder internet bouwen kan met BOUW_ZONDER_STUDIO=1. */
+const STUDIO_RPC = 'https://snfojphxsbzfewwfbfka.supabase.co/rest/v1/rpc/apero_studio_artikelen_publiek';
+const STUDIO_SLEUTEL = 'sb_publishable_MymbMA8MJ5i5SfJR4mORvg_oFpWXNsg'; // publieke sleutel, leest alleen gepubliceerde artikelen
+async function studioVerhalen() {
+  if (process.env.BOUW_ZONDER_STUDIO) { console.warn('Let op: gebouwd zonder de artikelen uit de Studio.'); return []; }
+  const r = await fetch(STUDIO_RPC, { method: 'POST', headers: { apikey: STUDIO_SLEUTEL, 'Content-Type': 'application/json' }, body: '{}', signal: AbortSignal.timeout(20000) });
+  if (!r.ok) throw new Error(`Artikelen uit de Studio ophalen mislukt (${r.status}). Probeer opnieuw, of bouw lokaal met BOUW_ZONDER_STUDIO=1.`);
+  return r.json();
+}
+const UIT_BESTANDEN = fs.readdirSync(P('content/verhalen')).filter((f) => f.endsWith('.md')).map((f) => leesVerhaal(P('content/verhalen', f)));
+const UIT_STUDIO = (await studioVerhalen())
+  .filter((r) => r.slug && r.markdown && !UIT_BESTANDEN.some((v) => v.slug === r.slug))
+  .map((r) => leesVerhaal(`studio:${r.slug}`, r.markdown));
+const VERHALEN = [...UIT_BESTANDEN, ...UIT_STUDIO]
   .map((v) => {
     const mins = { k: minuten(v.kort), m: minuten(v.middel) };
     if (v.langType === 'vervolg') mins.l = mins.m + minuten(v.lang);
