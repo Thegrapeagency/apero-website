@@ -1,6 +1,5 @@
 # Interne bestanden horen niet op de publieke site.
 # studio/ blijft meegaan: op de publieke site zit /studio achter de redactie-login (middleware.js);
 # het losse Studio-project (rootDirectory studio) heeft die map nodig.
+# tools/ en content/ gaan wel mee, want de build (vercel.json) draait tools/bouw.mjs. Die haalt ze na het bouwen weer weg.
 docs/
-tools/
-content/
