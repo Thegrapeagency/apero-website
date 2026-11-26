@@ -1,5 +1,6 @@
 {
   "buildCommand": "node tools/bouw.mjs && rm -rf tools content docs",
+  "outputDirectory": ".",
   "redirects": [
     {
       "source": "/viltjes",
